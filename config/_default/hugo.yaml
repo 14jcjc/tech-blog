@@ -4,6 +4,10 @@ theme: hugo-theme-stack
 title: katsuのブログ
 copyright: katsu
 
+# Include drafts when building.
+# buildDrafts: false
+buildDrafts: true
+
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
 DefaultContentLanguage: ja
