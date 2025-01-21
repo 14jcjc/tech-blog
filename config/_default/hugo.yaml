@@ -1,4 +1,5 @@
 baseURL: "https://14katsumix.github.io/tech-blog/"
+# baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 languageCode: ja
 theme: hugo-theme-stack
 title: katsuのブログ
