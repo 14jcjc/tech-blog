@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Disallow: /test/
+Sitemap: https://14katsumix.github.io/tech-blog/sitemap.xml
