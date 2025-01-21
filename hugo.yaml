@@ -12,7 +12,12 @@ DefaultContentLanguage: ja
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
 
+
+
 languages:
+    ja:
+        languageName: "日本語"
+        contentDir: "content/ja"
     en:
         languageName: English
         title: Example Site
