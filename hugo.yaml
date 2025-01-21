@@ -12,12 +12,10 @@ DefaultContentLanguage: ja
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
 
-
-
 languages:
     ja:
-        languageName: "日本語"
-        contentDir: "content/ja"
+        languageName: 日本語
+        # contentDir: "content/ja"
     en:
         languageName: English
         title: Example Site
@@ -81,15 +79,16 @@ params:
             src: img/avatar.png
 
     article:
-        math: false
+        math: true
         toc: true
-        readingTime: true
+        readingTime: false
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: true
+        # enabled: true
+        enabled: false
         provider: disqus
 
         disqusjs:
@@ -190,7 +189,7 @@ params:
     opengraph:
         twitter:
             # Your Twitter username
-            site:
+            site: 14katsumix
 
             # Available values: summary, summary_large_image
             card: summary_large_image
@@ -223,13 +222,13 @@ menu:
     social:
         - identifier: github
           name: GitHub
-          url: https://github.com/CaiJimmy/hugo-theme-stack
+          url: "https://github.com/14katsumix/100knocks-dp"
           params:
               icon: brand-github
 
         - identifier: twitter
           name: Twitter
-          url: https://twitter.com
+          url: https://x.com/14katsumix
           params:
               icon: brand-twitter
 
@@ -259,8 +258,13 @@ markup:
                         - - \(
                           - \)
         renderer:
-            ## Set to true if you have HTML content inside Markdown
-            unsafe: true
+            unsafe: true # HTMLタグがレンダリングされるようにする
+        parser:
+          attribute:
+            block: true
+            title: true
+          # 独立した画像要素に属性を適用するには、デフォルトの折り返し動作を無効にする
+          wrapStandAloneImageWithinParagraph: false
     tableOfContents:
         endLevel: 4
         ordered: true
