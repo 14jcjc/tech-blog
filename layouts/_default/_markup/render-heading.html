@@ -1,0 +1,5 @@
+{{ $level := .Level }}
+<h{{ $level }} id="{{ .Anchor | safeURL }}">
+  <a class="header-anchor" href="#{{ .Anchor | safeURL }}">#</a>
+  {{ .Text | replaceRE "^#+" "" | safeHTML }}
+</h{{ $level }}>

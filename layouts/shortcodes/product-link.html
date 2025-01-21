@@ -7,6 +7,8 @@
   {{ errorf "The %q shortcode requires a 'platform' argument. See %s" .Name .Position }}
 {{ end }}
 {{ $type := .Get "type" | default "afiurl" }}
+{{- $class := .Get "class" | default "link" -}}
+{{- $target := .Get "target" | default "_blank" -}}
 {{ $text := .Get "text" }}
 {{/*  {{ $found := false }}  */}}
 
@@ -20,7 +22,7 @@
   {{ end }}
   {{ with index . $platform }}
     {{ with index . $type }}
-      <a href="{{- . -}}" target="_blank">{{- $text -}}</a>
+      <a class="{{- $class -}}" href="{{- . -}}" target="{{- $target -}}">{{- $text -}}</a>
     {{ else }}
       {{ errorf "%q shortcode: type '%s' not found." $.Name $type }}
     {{ end }}

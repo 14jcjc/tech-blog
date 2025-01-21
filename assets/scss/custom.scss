@@ -1,5 +1,37 @@
 /* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
 
+:root {
+  --main-top-padding: 35px;
+
+  @include respond(xl) {
+      --main-top-padding: 50px;
+  }
+
+  --body-background: #f5f5fa;
+
+  --accent-color: #34495e;
+  --accent-color-darker: #2c3e50;
+  --accent-color-text: #fff;
+  --body-text-color: #707070;
+
+  --tag-border-radius: 4px;
+
+  --section-separation: 40px;
+
+  --scrollbar-thumb: hsl(0, 0%, 85%);
+  --scrollbar-track: var(--body-background);
+
+  &[data-scheme="dark"] {
+      --body-background: #303030;
+      --accent-color: #ecf0f1;
+      --accent-color-darker: #bdc3c7;
+      --accent-color-text: #000;
+      --body-text-color: rgba(255, 255, 255, 0.7);
+      --scrollbar-thumb: hsl(0, 0%, 40%);
+      --scrollbar-track: var(--body-background);
+  }
+}
+
 /**
 *   Global font family
 */
@@ -11,6 +43,248 @@
   --code-font-family: "Roboto Mono", "Monaco", "Consolas", "Courier New", Menlo, var(--zh-font-family), monospace;
 }
 
+/**
+*   Article content font settings
+*/
+:root {
+  --article-font-family: var(--base-font-family);
+  // --article-font-size: 1.6rem;
+  --article-font-size: 1.5rem;
+
+  @include respond(md) {
+      // --article-font-size: 1.7rem;
+      --article-font-size: 1.6rem;
+  }
+
+  // --article-line-height: 1.85;
+  --article-line-height: 2.0;
+}
+
+/*
+*   Article content style
+*/
+:root {
+  --blockquote-border-size: 4px;
+  --blockquote-background-color: rgb(248 248 248);
+
+  --heading-border-size: 4px;
+
+  --link-background-color: 189, 195, 199;
+  --link-background-opacity: 0.5;
+  --link-background-opacity-hover: 0.7;
+
+  --pre-background-color: #272822;
+  --pre-text-color: #f8f8f2;
+
+  // --code-background-color: rgba(0, 0, 0, 0.12);
+  // --code-text-color: #808080;
+
+  --code-background-color: rgba(0, 0, 0, 0.04);
+  --code-text-color: #303030;
+
+  --table-border-color: #dadada;
+  --tr-even-background-color: #efefee;
+
+  --kbd-border-color: #dadada;
+
+  &[data-scheme="dark"] {
+      --code-background-color: #272822;
+      // --code-background-color: #333430;
+      --code-text-color: rgba(255, 255, 255, 0.9);
+
+      --table-border-color: #717171;
+      --tr-even-background-color: #545454;
+
+      --blockquote-background-color: rgb(75 75 75);
+  }
+}
+
+// -------------------------------------------------------------------------------
+/*
+*   Shadow style
+*   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
+*/
+[data-scheme="light"] {
+  --pre-text-color: #272822;
+  --pre-background-color: #fafafa;
+  @import "partials/highlight/light.scss";
+}
+
+[data-scheme="dark"] {
+  --pre-text-color: #f8f8f2;
+  --pre-background-color: #272822;
+  @import "partials/highlight/dark.scss";
+}
+
+// a .link
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+
+  &:hover {
+      color: var(--accent-color-darker);
+  }
+
+  &.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    position: relative; // 影の調整のため追加
+    padding-top: 0px; // 影がより上に見えるように余白を確保
+  
+    box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      box-shadow: 0px calc(-1.0em * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+    }
+  
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: url("../icons/link.svg") no-repeat center center;
+      background-size: contain;
+      flex-shrink: 0;
+      filter: invert(20%);
+    }
+  
+    [data-scheme="dark"] &::before {
+      filter: invert(100%) brightness(2);
+    }
+  
+    // class="link noicon" の場合はアイコンを非表示
+    &.noicon::before {
+      content: none;
+    }
+  }
+
+  // &.link {
+  //   display: inline-flex;
+  //   align-items: center;
+  //   gap: 4px;
+  //   text-decoration: none;
+  
+  //   box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+  //   transition: all 0.3s ease;
+  
+  //   &:hover {
+  //     box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+  //   }
+  
+  //   &::before {
+  //     content: "";
+  //     display: inline-block;
+  //     width: 16px;
+  //     height: 16px;
+  //     background: url("../icons/link.svg") no-repeat center center;
+  //     background-size: contain;
+  //     flex-shrink: 0;
+  //     filter: invert(20%);
+  //   }
+  
+  //   [data-scheme="dark"] &::before {
+  //     filter: invert(100%) brightness(2);
+  //   }
+  
+  //   // class="link noicon" の場合はアイコンを非表示
+  //   &.noicon::before {
+  //     content: none; // アイコンを消す
+  //   }
+  // }
+  
+  // &.link {
+  //     box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+  //     transition: all 0.3s ease;
+  //     // katsu
+  //     position: relative;
+  //     padding-left: 20px; // アイコンのスペースを確保
+
+  //     &:hover {
+  //         box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+  //     }
+
+  //     &::before {
+  //       content: "";
+  //       display: inline-block;
+  //       position: absolute;
+  //       left: 0;
+  //       top: 50%;
+  //       width: 16px;
+  //       height: 16px;
+  //       // アイコン画像のパスに注意!
+  //       background: url("../icons/link.svg") no-repeat center center;
+  //       background-size: contain;
+  //       transform: translateY(-50%);
+  //       box-shadow: none; /* box-shadow の影響を受けないように */
+  //       filter: invert(20%); /* デフォルトの色 */
+  //     }
+  //     [data-scheme="dark"] &::before {
+  //       filter: invert(100%) brightness(2); /* ダークモード時に色を反転 */
+  //     }
+
+  //     // class="link noicon" の場合はアイコンを非表示
+  //     &.noicon::before {
+  //       content: none; // アイコンを消す
+  //     }
+  // }
+  
+}
+
+// -------------------------------------------------------------------------------
+
+.article-content {
+  font-family: var(--article-font-family);
+  font-size: var(--article-font-size);
+  padding: 0 var(--card-padding);
+  line-height: var(--article-line-height);
+
+  & > p {
+      margin: 1.5em 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      margin-inline-start: calc((var(--card-padding)) * -1);
+      padding-inline-start: calc(var(--card-padding) - var(--heading-border-size));
+      border-inline-start: var(--heading-border-size) solid var(--accent-color);
+      position: relative;
+
+      a.header-anchor {
+          transition: opacity 0.3s ease;
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          width: var(--card-padding);
+          text-align: center;
+          color: var(--accent-color);
+
+          &:before {
+              content: "";
+          }
+      }
+
+      &:hover,
+      &:focus {
+          a.header-anchor {
+              opacity: 1;
+          }
+      }
+  }
+
+  h2 {
+    border-bottom: 1.7px solid #BAD0E0;
+    padding-bottom: 3px; /* アンダーラインと文字の間隔 */
+  }
+}
+
+// -------------------------------------------------------------------------------
 /* stars */
 
 /* .rating-stars { */
@@ -169,18 +443,21 @@
   border-bottom: 1px solid #007BFF;
   /* アンダーラインと文字の間隔を調整 */
   padding-bottom: 0px;
-  font-size: calc(var(--base-font-size) * 1.0);
+  font-size: calc(var(--article-font-size) * 1.0);
   color: #007BFF;
   /* 親要素の値を引き継ぐ */
   /* color: inherit;  */
 }
-.dark .q-item .q-header .q-id a {
-  border-bottom-color: #40C0FF;
-  /* color: #80C0FF; */
-  /* color: #00ADFF; */
-  color: #40C0FF;
-  transition: color 0.3s ease;
+[data-scheme="dark"] {
+  .q-item .q-header .q-id a {
+    border-bottom-color: #40C0FF;
+    /* color: #80C0FF; */
+    /* color: #00ADFF; */
+    color: #40C0FF;
+    transition: color 0.3s ease;
+  }
 }
+
 .q-item .q-header .q-id a:hover {
   border-bottom-color: #FF4080;
   color: #FF4080;
@@ -193,23 +470,32 @@
   padding-left: 5px;
   padding-right: 5px;
   /* font-size: 0.9em; */
-  font-size: calc(var(--base-font-size) * 0.9);
+  font-size: calc(var(--article-font-size) * 0.92);
   line-height: 1.7;
-  color: var(--primary);
+  color: rgb(30, 30, 50);
   /* background-color: var(--theme); */
   /* background-color: #FCFCFF; */
   background-color: #FCFCFF;
 }
-.dark .q-item .q-content {
-  color: var(--primary);
-  /* background-color: #202020; */
-  /* background-color: #252532 */
-  background-color: #282834;
+[data-scheme="dark"] {
+  .q-item .q-content {
+    color: rgb(218, 218, 219);
+    background-color: #282834;
+  }
 }
 
-.q-item .q-header {
-  padding: 0 5px;
-  background-color: var(--code-bg);
+.q-item {
+  .q-header {
+    padding: 0 5px;
+    background-color: rgb(240, 248, 255);
+  }
+}
+[data-scheme="dark"] {
+  .q-item {
+    .q-header {
+      background-color: rgb(55, 56, 62);
+    }
+  }
 }
 
 /* ホバー時の背景変更 */
@@ -225,14 +511,17 @@
   background-color: #F5F6FF;
   transition: background-color 0.3s ease;
 }
-.dark .q-item:hover {
-  background-color: #050520;
-}
-.dark .q-item:hover .q-header {
-  background-color: #232950
-}
-.dark .q-item:hover .q-content {
-  background-color: #050520;
+
+[data-scheme="dark"] {
+  .q-item:hover {
+    background-color: #050520;
+  }
+  .q-item:hover .q-header {
+    background-color: #232950
+  }
+  .q-item:hover .q-content {
+    background-color: #050520;
+  }
 }
 
 /* タイトル (全編など) */
@@ -240,7 +529,7 @@
   font-weight: bold;
   margin-top: 0px;
   margin-bottom: 10px;
-  font-size: calc(var(--base-font-size) * 1.1);
+  font-size: calc(var(--article-font-size) * 1.1);
 }
 
 /* <div class="row edition"> のブロックを非表示にする */
@@ -271,9 +560,11 @@
   /* color: #2196f3; */
   color: #1976d2; 
 }
-.dark .list-toggle input[type="radio"]:checked + span {
-  /* color: #60C0FF; */
-  color: #50C0FF;
+[data-scheme="dark"] {
+  .list-toggle input[type="radio"]:checked + span {
+    /* color: #60C0FF; */
+    color: #50C0FF;
+  }
 }
 
 /* ラジオボタンとラベルを一緒に配置 */
@@ -309,8 +600,10 @@
   /* これで微調整 */
   top: 0px; 
 }
-.dark .list-toggle input[type="radio"] {
-  border-color: #BBBBBB;
+[data-scheme="dark"] {
+  .list-toggle input[type="radio"] {
+    border-color: #BBBBBB;
+  }
 }
 
 /* チェックマーク */
@@ -346,8 +639,10 @@
   /* 選択時のボーダー色 */
   border-color: #1976d2; 
 }
-.dark .list-toggle input[type="radio"]:checked {
-  border-color: #42a5f5;
+[data-scheme="dark"] {
+  .list-toggle input[type="radio"]:checked {
+    border-color: #42a5f5;
+  }
 }
 
 /* ラジオボタンがフォーカスされたとき */

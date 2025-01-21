@@ -62,11 +62,11 @@ TocOpen: false
 <div id="list-id-all" class="question-list" style="display:block;">
   <div class="edition-title">全編（番号順）</div>
 
-  1. {{< k100/site/edition "a" >}}
+  <p>{{< k100/site/edition "a" >}}</p>
   
   {{< k100/q-list ed="advanced" root="../.." sortkey="id" order="asc" >}}
 
-  2. {{< k100/site/edition "s" >}}
+  <p>{{< k100/site/edition "s" >}}</p>
   
   {{< k100/q-list ed="standard" root="../.." sortkey="id" order="asc" >}}
 

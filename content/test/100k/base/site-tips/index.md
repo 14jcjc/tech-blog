@@ -54,6 +54,24 @@ summary: の設定より優先度が高いです。
 
 ---
 
+## Link スタイル
+
+```md {linenos=false,anchorLineNos=false}
+{{</* href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" text="" */>}}
+```
+
+→ {{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" text="" >}}
+
+```md {linenos=false,anchorLineNos=false}
+   [overview-d2 はこちら]({{</* ref "overview.md#d2" */>}} "About us")
+```
+→ [overview-d2 はこちら]({{< ref "overview.md#d2" >}} "About us")
+
+Rendered:
+```html {lineNos=false}
+<a href="http://example.org/overview/#bbb" title="About us">こちら</a>
+```
+
 ## 演習問題
 
 ### 演習問題一覧の出力
@@ -223,6 +241,21 @@ Markdown は保持されることに注意。
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="リポジトリ📂" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
+{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
+ class="link noicon" */>}}
+```
+→ 
+{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="link noicon" >}}
+
+
+```go-html-template {linenos=false,anchorLineNos=false}
+{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" 
+class="nolink" title="About us" */>}}
+```
+→ 
+{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="nolink" title="About us" >}}
+
+```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
 ```
 → 
@@ -237,10 +270,11 @@ Markdown は保持されることに注意。
 {{< product-link id="ds100kdp" platform="amazon" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
-{{</* product-link id="ds100kdp" platform="amazon" type="url" text="これは通常のURL" */>}}
+{{</* product-link class="nolink" id="ds100kdp" platform="amazon"
+ type="url" text="これは通常のURL" */>}}
 ```
 → 
-{{< product-link id="ds100kdp" platform="amazon" type="url" text="これは通常のURL" >}}
+{{< product-link class="nolink" id="ds100kdp" platform="amazon" type="url" text="これは通常のURL" >}}
 
 ### ref {#ref}
 

@@ -61,7 +61,7 @@ params:
       - test
     featuredImageField: image
     rssFullContent: true
-    favicon: "/images/favicon/favicon.ico"
+    favicon: "favicon.png"
     # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
@@ -85,7 +85,7 @@ params:
         toc: true
         readingTime: false
         license:
-            enabled: true
+            enabled: false
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
