@@ -145,9 +145,10 @@ a {
       display: inline-block;
       width: 16px;
       height: 16px;
-      background: url("../icons/link.svg") no-repeat center center;
+      // background: url("../icons/link.svg") no-repeat center center;
       // background: url("/icons/link.svg") no-repeat center center;
-      background: url("/tech-blog/icons/link.svg") no-repeat center center;
+      // background: url("/tech-blog/icons/link.svg") no-repeat center center;
+      background: url("../images/link.svg") no-repeat center center;
       background-size: contain;
       flex-shrink: 0;
       filter: invert(20%);
