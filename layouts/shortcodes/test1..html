@@ -1,0 +1,15 @@
+{{/*  for debug  */}}
+{{ printf "`site.Params.products`:\n\n`%v`\n\n" site.Params.products | .Page.RenderString }}
+
+{{ $keys := slice }}  <!-- 空のスライスを初期化 -->
+{{ range $key, $value := .Site.Params.products }}
+  {{ $keys = append $keys (slice $key) }}  <!-- $keyをスライスに変換して追加 -->
+{{ end }}
+<br>
+
+{{ printf "$keys:\n\n%v\n\n" $keys | .Page.RenderString }}
+
+{{ range $keys }}
+  {{ $value := index site.Params.products . }}
+  {{ $value.name }}
+{{ end }}

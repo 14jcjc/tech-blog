@@ -1,0 +1,25 @@
+{{ $id := "ds100kdp" }} 
+{{ $platform := "amazon" }}
+{{ $type := "afiurl" }}
+
+{{- $context := .context -}}
+{{ $found := false }}
+{{ range $context.Site.Params.products }}
+  {{ if eq .id $id }}
+    {{ $found = true }}
+    {{ $name := .name }}
+    {{ with index . $platform }}
+      {{ with index . $type }}
+        <a href="{{- . -}}" target="_blank">{{- $.text | default $name -}}</a>
+      {{ else }}
+        {{ errorf "%q shortcode: type '%s' not found." $.Name $type }}
+      {{ end }}
+    {{ else }}
+      {{ errorf "%q shortcode: platform '%s' not found." $.Name $platform }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if not $found }}
+  {{ errorf "The %q shortcode was unable to find %q. See %s" .Name $id .Position }}
+{{ end }}

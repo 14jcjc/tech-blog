@@ -1,0 +1,361 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+
+/**
+*   Global font family
+*/
+:root {
+  --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, "Droid Sans", Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
+
+  --base-font-family: "Noto Sans JP", "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
+  --code-font-family: "Roboto Mono", "Monaco", "Consolas", "Courier New", Menlo, var(--zh-font-family), monospace;
+}
+
+/* stars */
+
+/* .rating-stars { */
+  /* テキストの中央揃え（保険） */
+  /* text-align: center;  */
+  /* 垂直方向の中央揃え */
+  /* vertical-align: middle;  */
+  /* display: flex; */
+  /* 左右中央揃え */
+  /* justify-content: center; */
+  /* 垂直方向の中央揃え */
+  /* align-items: center; */
+  /* 子要素が親要素のサイズを超えないようにする */
+  /* overflow: hidden; */
+  /* display: block; */
+  /* 左右中央揃え */
+  /* text-align: center;  */
+  /* 左右中央揃え */
+  /* margin: 0 auto;  */
+  /* width: 200px; */
+  /* width: 100%; */
+  /* height: 50px; */
+  /* width: calc(var(--base-font-size) * 4.0 * 5); */
+/* } */
+
+.rating-stars .filled-stars{
+  fill: #FF0088;
+}
+
+.rating-stars .empty-stars{
+  fill: #AAA;
+}
+
+/* 全体のコンテナのスタイリング */
+.q-difficulty-rating-container {
+  /* display: inline-block; */
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  justify-content: flex-start; /* 必要なら左寄せ、中央揃えの場合は center */
+  width: 110px;
+  /* position: relative; */
+}
+
+/* 星アイコン全体のデフォルトスタイリング */
+.q-difficulty-rating {
+  display: block;
+  vertical-align: middle; /* 古いブラウザ対応用 */
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: none;
+}
+
+/* 演習問題の難易度レーティング (星) */
+/* 塗りつぶされた星のデザイン */
+.q-difficulty-rating .filled-stars {
+  fill: #FFC107; /* 黄色 */
+  transition: fill 0.3s ease-in-out;
+}
+/* 空の星のデザイン */
+.q-difficulty-rating .empty-stars {
+  fill: #C0C0C0; /* 灰色 */
+  transition: fill 0.3s ease-in-out;
+}
+.dark .q-difficulty-rating .filled-stars {
+  /* fill: #ffd700; */
+  fill: var(--q-difficulty-rating-filled-stars);
+}
+.dark .q-difficulty-rating .empty-stars {
+  /* fill: #AAA; */
+  fill: var(--q-difficulty-rating-empty-stars);
+}
+
+/* ホバー時のスタイリング（例: 星が少し明るくなる） */
+.q-difficulty-rating-container:hover .filled-stars {
+  fill: #FFD54F; /* 明るい黄色 */
+}
+.q-difficulty-rating-container:hover .empty-stars {
+  fill: #D6D6D6; /* 明るい灰色 */
+}
+
+/* アクセシビリティ向上のためのフォーカス時のスタイリング */
+.q-difficulty-rating-container:focus-within .filled-stars,
+.q-difficulty-rating-container:focus-within .empty-stars {
+  outline: 2px solid #FFC107;
+  outline-offset: 4px;
+}
+
+// -------------------------------------------------------------------------------
+/* 問題文(1題)のスタイル */
+
+.question-difficulty {
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  gap: 8px; /* ラベルと星の間隔 */
+}
+
+.difficulty-label {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.question-text {
+  margin-top: 12px; /* 問題文との間隔 */
+}
+
+.question-difficulty .difficulty-stars .q-difficulty-rating {
+  display: block;
+  vertical-align: middle; /* 古いブラウザ対応用 */
+}
+
+.question-difficulty .difficulty-stars .q-difficulty-rating-container {
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  justify-content: flex-start; /* 必要なら左寄せ、中央揃えの場合は center */
+  width: 100px;
+}
+
+/* ------------------------------------------------------------------------------- */
+/* 演習問題一覧 */
+
+/* 問題全体のレイアウト */
+.q-item {
+  /* margin: 30px 0; */
+  margin-bottom: 12px;
+  padding-bottom: 0;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  /* border: 1px solid #ddd; */
+}
+
+/* ヘッダー部分 (No. と 星を横並び) */
+.q-item .q-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.q-item .q-header .q-difficulty .q-difficulty-rating-container {
+  display: flex;
+  align-items: center; /* 上下中央揃え */
+  width: 90px;
+}
+
+/* No. のスタイル */
+.q-item .q-header .q-id a {
+  /* すべてのスタイルをリセット */
+  /* all: unset;  */
+  /* inline要素に戻す */
+  /* display: inline;  */
+  /* font-weight: bold; */
+  /* text-decoration: none; */
+  /* text-decoration: underline; */
+  /* text-decoration: none;  */
+  /* アンダーライン */
+  border-bottom: 1px solid #007BFF;
+  /* アンダーラインと文字の間隔を調整 */
+  padding-bottom: 0px;
+  font-size: calc(var(--base-font-size) * 1.0);
+  color: #007BFF;
+  /* 親要素の値を引き継ぐ */
+  /* color: inherit;  */
+}
+.dark .q-item .q-header .q-id a {
+  border-bottom-color: #40C0FF;
+  /* color: #80C0FF; */
+  /* color: #00ADFF; */
+  color: #40C0FF;
+  transition: color 0.3s ease;
+}
+.q-item .q-header .q-id a:hover {
+  border-bottom-color: #FF4080;
+  color: #FF4080;
+}
+
+/* 問題文のスタイル */
+.q-item .q-content {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  /* font-size: 0.9em; */
+  font-size: calc(var(--base-font-size) * 0.9);
+  line-height: 1.7;
+  color: var(--primary);
+  /* background-color: var(--theme); */
+  /* background-color: #FCFCFF; */
+  background-color: #FCFCFF;
+}
+.dark .q-item .q-content {
+  color: var(--primary);
+  /* background-color: #202020; */
+  /* background-color: #252532 */
+  background-color: #282834;
+}
+
+.q-item .q-header {
+  padding: 0 5px;
+  background-color: var(--code-bg);
+}
+
+/* ホバー時の背景変更 */
+.q-item:hover {
+  background-color: #F5F6FF;
+  transition: background-color 0.3s ease;
+}
+.q-item:hover .q-header {
+  background-color: #E0E9FF;
+  transition: background-color 0.3s ease;
+}
+.q-item:hover .q-content {
+  background-color: #F5F6FF;
+  transition: background-color 0.3s ease;
+}
+.dark .q-item:hover {
+  background-color: #050520;
+}
+.dark .q-item:hover .q-header {
+  background-color: #232950
+}
+.dark .q-item:hover .q-content {
+  background-color: #050520;
+}
+
+/* タイトル (全編など) */
+.edition-title {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: calc(var(--base-font-size) * 1.1);
+}
+
+/* <div class="row edition"> のブロックを非表示にする */
+/* .list-toggle .edition {
+  display: none !important;
+} */
+
+/* ラジオボタンのレイアウト */
+.list-toggle {
+  display: flex;
+  flex-direction: column; /* 縦並びにする */
+  align-items: flex-start; /* 左寄せ */
+  margin-bottom: 20px;
+  gap: 18px; /* ラベル間の間隔 */
+}
+
+/* ラジオボタンの行を横並びに設定 */
+.list-toggle .row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px; /* ラジオボタン間の間隔 */
+}
+
+/* チェックされたラジオボタンのラベルの色を変更 */
+.list-toggle input[type="radio"]:checked + span {
+  /* background-color: #007bff; */
+  /* color: white; */
+  /* color: #2196f3; */
+  color: #1976d2; 
+}
+.dark .list-toggle input[type="radio"]:checked + span {
+  /* color: #60C0FF; */
+  color: #50C0FF;
+}
+
+/* ラジオボタンとラベルを一緒に配置 */
+.list-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* ラジオボタンとテキストの間隔 */
+  /* padding: 5px 10px; */
+  cursor: pointer;
+  font-size: calc(var(--base-font-size) * 0.9);
+  line-height: 1;
+}
+
+/* カスタムラジオボタン */
+.list-toggle input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  /* display: inline-block; */
+  /* vertical-align: middle; */
+  margin: 0; /* ラジオボタンのデフォルト余白を削除 */
+  padding: 0; /* 余白をなくす */
+  /* ズレを補正 */
+  position: relative;
+  vertical-align: middle; /* テキストとのズレを防ぐ */
+  outline: none; /* フォーカス枠を消す */
+  /* これで微調整 */
+  top: 0px; 
+}
+.dark .list-toggle input[type="radio"] {
+  border-color: #BBBBBB;
+}
+
+/* チェックマーク */
+.list-toggle input[type="radio"]::before {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%; /* 親要素の中央に配置 */
+  left: 50%; /* 親要素の中央に配置 */
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #2196f3;
+  border-radius: 50%;
+}
+
+/* 選択時にチェックマークを表示 */
+.list-toggle input[type="radio"]:checked::before {
+  display: block;
+}
+
+/* ラジオボタンにホバーしたときのエフェクト */
+.list-toggle input[type="radio"]:hover {
+  border-color: #42a5f5; /* ホバー時のボーダー色（青） */
+  background-color: #e3f2fd; /* ホバー時の背景色（淡い青） */
+}
+
+/* 選択中のラジオボタン */
+.list-toggle input[type="radio"]:checked {
+  /* 選択時の背景色 */
+  /* background-color: #2196f3; */
+  background-color: white;
+  /* 選択時のボーダー色 */
+  border-color: #1976d2; 
+}
+.dark .list-toggle input[type="radio"]:checked {
+  border-color: #42a5f5;
+}
+
+/* ラジオボタンがフォーカスされたとき */
+.list-toggle input[type="radio"]:focus {
+  /* デフォルトのアウトラインを消す */
+  outline: none;
+  /* フォーカス時の強調 */
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.5); 
+}
+
+/* ------------------------------------------------------------------------------- */

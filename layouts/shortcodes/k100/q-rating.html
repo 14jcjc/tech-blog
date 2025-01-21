@@ -1,0 +1,10 @@
+{{ $rating := .Get 0 | int }}
+{{ $class := .Get 1 | default "q-difficulty-rating" }}
+
+{{ if or (lt $rating 0) (gt $rating 5) }}
+  {{ errorf "shortcode: %q\nrating is out of range.\nIt must be between 0 and 5.\nSee %s" 
+    .Name .Position 
+  }}
+{{ else }}
+  {{- partial "rating-stars.html" (dict "rating" $rating "class" $class) -}}
+{{ end }}

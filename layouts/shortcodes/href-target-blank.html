@@ -1,0 +1,5 @@
+{{- $href := .Get "url" | default "#" -}}
+{{- $text := .Get "text" | default $href -}}
+<a href="{{ $href }}" target="_blank" rel="noopener noreferrer">
+  {{- $text -}}
+</a>

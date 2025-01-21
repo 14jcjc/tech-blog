@@ -16,28 +16,28 @@ languages:
     ja:
         languageName: 日本語
         # contentDir: "content/ja"
-    en:
-        languageName: English
-        title: Example Site
-        weight: 1
-        params:
-            sidebar:
-                subtitle: Example description
-    zh-cn:
-        languageName: 中文
-        title: 演示站点
-        weight: 2
-        params:
-            sidebar:
-                subtitle: 演示说明
-    ar:
-        languageName: عربي
-        languagedirection: rtl
-        title: موقع تجريبي
-        weight: 3
-        params:
-            sidebar:
-                subtitle: وصف تجريبي
+    # en:
+    #     languageName: English
+    #     title: Example Site
+    #     weight: 1
+    #     params:
+    #         sidebar:
+    #             subtitle: Example description
+    # zh-cn:
+    #     languageName: 中文
+    #     title: 演示站点
+    #     weight: 2
+    #     params:
+    #         sidebar:
+    #             subtitle: 演示说明
+    # ar:
+    #     languageName: عربي
+    #     languagedirection: rtl
+    #     title: موقع تجريبي
+    #     weight: 3
+    #     params:
+    #         sidebar:
+    #             subtitle: وصف تجريبي
 
 services:
     # Change it to your Disqus shortname before using
@@ -53,10 +53,12 @@ pagination:
 permalinks:
     post: /p/:slug/
     page: /:slug/
+    test: /:slug/
 
 params:
     mainSections:
       - post
+      - test
     featuredImageField: image
     rssFullContent: true
     favicon: "/images/favicon/favicon.ico"

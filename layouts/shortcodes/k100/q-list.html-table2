@@ -1,0 +1,62 @@
+{{ $dictE := dict 
+  "standard" .Site.Params.k100.site.edition.s
+  "advanced" .Site.Params.k100.site.edition.a
+}}
+
+{{ $root := .Get "root" | default ".." }}
+{{ $data := .Site.Data.k100.questions }}
+{{ if not $data }}
+  <div class="error-message">データが存在しません。</div>
+{{ else }}
+  {{ $ed := split (.Get "ed" | default "standard,advanced") "," }}
+  {{ range $ed }}
+    <div class="q-list-{{ . }}">
+    {{ $category := .}}
+    {{/*  <div class="q-list-category-title">  */}}
+      {{/*  {{ $edition := index $dictE $category }}  */}}
+      {{/*  {{ $edition }}  */}}
+    {{/*  </div>  */}}
+    <table class="q-list-table">
+      {{/*        
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>難易度</th>
+          <th>設問内容</th>
+        </tr>
+      </thead>
+      */}}
+      <tbody>
+        {{ $question := index $data $category }}
+        {{ if $question }}
+          {{ range $question }}
+            {{ $url := path.Join $root $category (lower .id) }}
+            <tr class="id-row">
+              <td class="q-id">
+                {{/*  <div class="q-id">  */}}
+                  <a href="{{ $url }}">{{ .id }}</a>
+                {{/*  </div>  */}}
+              </td>
+              {{/*  <td class="q-test">  */}}
+                {{/*  あああああああああああああああああああああああああああああああああああああああああああああああああああ  */}}
+              <td class="q-difficulty">
+                {{ partial "rating-stars.html" (dict "class" "q-difficulty-rating" "rating" .difficulty) }}
+              </td>
+              <td></td>
+            </tr>
+            <tr class="content-row">
+              <td colspan="3">
+                {{ .text | markdownify }}
+              </td>
+            </tr>
+          {{ end }}
+        {{ else }}
+          <tr>
+            <td colspan="3" class="no-data">指定されたカテゴリー「{{ $category }}」に対応するデータが存在しません。</td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+    </div>
+  {{ end }}{{/*  {{ range $ed }}  */}}
+{{ end }} {{/*  {{ if not $data }}  */}}
