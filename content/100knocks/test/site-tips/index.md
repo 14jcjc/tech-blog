@@ -14,8 +14,8 @@ params:
   testparam: "これは params.testparam."
   testparam2: 
     nestparam: "これは testparam2.nestparam."
-# images:
-# - papermod-cover.png
+image: box.png
+
 cover:
   # image: "images/papermod-cover.png" #< /static
   # relative: false

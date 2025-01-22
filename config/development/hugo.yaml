@@ -28,6 +28,7 @@ menu:
       weight: -20
       params: 
         icon: home
+        # newTab: true
     - name: About
       url: /about
       weight: -10
@@ -38,9 +39,20 @@ menu:
       url: "/test/q-list-test"
       # pageRef: "/test/100k/base/q-list-test"
       weight: 10
+      params: 
+        icon: question
+      
     - name: レビュー (test)
       url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
       weight: 20
+      params: 
+        icon: review
+
+    - name: 100k-test
+      url: "/test/100k"
+      weight: 30
+      identifier: 100k
+
     - name: Archives
     # - name: アーカイブ
       url: /archives
@@ -59,6 +71,17 @@ menu:
       weight: 60
       params:
           icon: link
+
+    # - name: "100k-standard"
+    #   url: "/test/100k/standard"
+    #   parent: 100k
+    #   weight: 1
+    #   identifier: standard
+    # - name: "100k-advanced"
+    #   url: "/test/100k/advanced"
+    #   parent: 100k
+    #   weight: 2
+    #   identifier: advanced
 
 module:
   mounts:

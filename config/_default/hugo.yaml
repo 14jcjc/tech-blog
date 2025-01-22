@@ -2,9 +2,12 @@
 
 baseURL: "https://14katsumix.github.io/tech-blog/"
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
+theme: hugo-theme-stack
+
 title: katsuのブログ
 copyright: katsu
-theme: hugo-theme-stack
+author: katsu
+# description: 
 
 # Include drafts when building.
 # buildDrafts: false
@@ -84,21 +87,26 @@ params:
     #   - "100knocks"
     #   - test
     #   - post
-    
+
+    # Front Matter field used to get the featured image of a page: 
     featuredImageField: image
-    rssFullContent: true
+
+    rssFullContent: true # Output page's full content in RSS.
+
     favicon: "favicon.png"
+    
     # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
         since: 2025
-        customText: 
+        customText: # HTML is supported.
 
     dateFormat:
         published: "2006-01-02"
-        lastUpdated: "2006-01-02 15:04"
+        lastUpdated: "2006-01-02 15:04 JST"
 
     sidebar:
+        compact: false
         emoji: "🧑‍💻"
         subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
         avatar:
@@ -130,9 +138,10 @@ params:
             - type: toc
             - type: tag-cloud
               params:
-                  limit: 50
-
+                  limit: 30
+    
     opengraph:
+    # Open Graph プロトコルにより, 任意のWebページをソーシャルグラフ内のリッチオブジェクトにすることができる
         twitter:
             # Your Twitter username
             site: 14katsumix
@@ -141,10 +150,13 @@ params:
             card: summary_large_image
 
     defaultImage:
-        opengraph:
-            enabled: false
-            local: false
-            src:
+        opengraph: 
+            # Open Graph と Twitter のデフォルト画像を有効にする: 
+            enabled: true
+            # If true, the image is a local file, and must be placed under assets folder. Otherwise, it is a remote URL.
+            local: true
+            # For example, if src is set to img/default.jpg, the image file must be placed under assets/img/default.jpg.
+            src: img/cover-100k.png
 
     colorScheme:
         # Display toggle
@@ -244,10 +256,8 @@ params:
             host:
             id:
 
-
 # セクションのメニュー エントリを自動的に定義する: 
 # sectionPagesMenu: main
-
 
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu

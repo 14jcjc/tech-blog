@@ -7,6 +7,8 @@ slug: "site-tips-test"
 # summary: 'これはsummaryです。'
 description: "This is description."
 
+# toc: false
+
 # related:
 #   show: true
 #   limit: 7 # 関連コンテンツを最大 N件まで表示 (default: 5)
@@ -23,16 +25,16 @@ params:
     nestparam: "これは testparam2.nestparam."
 # images:
 # - papermod-cover.png
-cover:
-  # image: "images/papermod-cover.png" #< /static
-  # relative: false
-  image: "tree.png" # image path/url
-  alt: "cover" # alt text
-  caption: "This is caption" # display caption under cover
-  relative: true # when using page bundles set this to true
-  # hidden: true
-  hiddenInList: false # hide on list pages and home
-  hiddenInSingle: true # hide on single page
+# cover:
+#   # image: "images/papermod-cover.png" #< /static
+#   # relative: false
+#   image: "tree.png" # image path/url
+#   alt: "cover" # alt text
+#   caption: "This is caption" # display caption under cover
+#   relative: true # when using page bundles set this to true
+#   # hidden: true
+#   hiddenInList: false # hide on list pages and home
+#   hiddenInSingle: true # hide on single page
 # Edit Link for Posts
 # 投稿のファイルパスを使用して編集先にリンクし, 変更を提案するボタンを追加する: 
 # editPost:
