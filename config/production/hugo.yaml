@@ -3,8 +3,8 @@
 baseURL: "https://14katsumix.github.io/tech-blog/"
 
 # Include drafts when building.
-buildDrafts: false
-# buildDrafts: true
+# buildDrafts: false
+buildDrafts: true
 
 # enableRobotsTXT: true # robots.txt の生成を有効にする
 enableRobotsTXT: false
@@ -63,13 +63,19 @@ menu:
       weight: -10
       params:
         icon: user
+
     - name: "[R+SQL] 演習問題"
       url: "/ds100knocks-alpha/q-list"
       weight: 10
+      params: 
+        icon: question
     - name: レビュー
       # url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
       url: "/ds100knocks-alpha/book-review/"
       weight: 20
+      params: 
+        icon: review
+
     - name: Archives
     # - name: アーカイブ
       url: /archives
