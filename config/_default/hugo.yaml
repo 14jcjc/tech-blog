@@ -1,3 +1,5 @@
+### _default
+
 baseURL: "https://14katsumix.github.io/tech-blog/"
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 title: katsuのブログ
@@ -69,27 +71,19 @@ languages:
     #         sidebar:
     #             subtitle: وصف تجريبي
 
-services:
-    # GA Tracking ID
-    googleAnalytics:
-        id: G-GLB0HGKER4
-    # Change it to your Disqus shortname before using
-    # disqus:
-    #     shortname: "hugo-theme-stack"
-
 pagination:
     pagerSize: 10
 
-permalinks:
-    page: /:slug/
-    post: /p/:slug/
-    test: /test/:slug/
+# permalinks:
+#     page: /:slug/
+#     post: /p/:slug/
+#     test: /test/:slug/
 
 params:
-    mainSections:
-      - "100knocks"
-      - test
-      - post
+    # mainSections:
+    #   - "100knocks"
+    #   - test
+    #   - post
     
     featuredImageField: image
     rssFullContent: true
@@ -259,56 +253,17 @@ params:
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main:
-    - name: Home
-      url: /
-      weight: -20
-      params: 
-        icon: home
-    - name: About
-      url: /about
-      weight: -10
+  social:
+    - identifier: github
+      name: GitHub
+      url: "https://github.com/14katsumix/100knocks-dp"
       params:
-        icon: user
-    - name: "[R+SQL] 演習問題"
-      # url: "test/100k/common/q-list"
-      url: "/test/q-list-test"
-      # pageRef: "/test/100k/base/q-list-test"
-      weight: 10
-    - name: レビュー
-      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
-      weight: 20
-    - name: Archives
-    # - name: アーカイブ
-      url: /archives
-      weight: 40
-      params: 
-        icon: archives
-    - name: Search
-    # - name: 検索
-      url: /search
-      weight: 50
-      params: 
-        icon: search
-    - name: Links
-    # - name: リンク
-      url: /links
-      weight: 60
+        icon: brand-github
+    - identifier: twitter
+      name: Twitter
+      url: https://x.com/14katsumix
       params:
-          icon: link
-
-    social:
-        - identifier: github
-          name: GitHub
-          url: "https://github.com/14katsumix/100knocks-dp"
-          params:
-              icon: brand-github
-
-        - identifier: twitter
-          name: Twitter
-          url: https://x.com/14katsumix
-          params:
-              icon: brand-twitter
+        icon: brand-twitter
 
 related:
     includeNewer: true
@@ -364,22 +319,3 @@ markup:
         # noHl: false
         # style: monokai
         # wrapperClass: highlight
-
-module:
-  mounts:
-  - excludeFiles: 
-      - test/books/**
-    source: content
-    target: content
-  - source: static
-    target: static
-  - source: layouts
-    target: layouts
-  - source: data
-    target: data
-  - source: assets
-    target: assets
-  - source: i18n
-    target: i18n
-  - source: archetypes
-    target: archetypes

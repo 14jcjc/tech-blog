@@ -1,14 +1,16 @@
 ---
-title: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-slug: "q-list-test"
-date: 2021-05-03T00:10:20+09:00
-draft: true
-weight: 12
-# description: "{{< k100/q-list >}} RとSQLの演習問題一覧です。"
-
-categories: ["Test"]
-tags: ["test", "site-tips"]
-
+title: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+slug: "q-list"
+date: 2025-01-20T01:01:20+09:00
+draft: false
+# draft: true
+weight: 1010
+description: "当ブログで紹介している R と SQL の演習問題です。"
+summary: "当ブログで紹介している R と SQL の演習問題一覧です。"
+categories: ["DS-100本ノック+α"]
+tags: ["R", "SQL"]
+ShowToc: false
+TocOpen: false
 params: 
   ShowPostNavLinks: false
 cover:
@@ -18,8 +20,6 @@ cover:
   hiddenInList: false
   hiddenInSingle: false # hide on single page
   # hidden: true
-ShowToc: false
-TocOpen: false
 ---
 
 <font color="#F0B007">★</font>は難易度です。
@@ -61,11 +61,11 @@ TocOpen: false
 <div id="list-id-all" class="question-list" style="display:block;">
   <div class="edition-title">全編（番号順）</div>
 
-  <p>{{< k100/site/edition "a" >}}</p>
+  1. {{< k100/site/edition "a" >}}
   
   {{< k100/q-list ed="advanced" root="../.." sortkey="id" order="asc" >}}
 
-  <p>{{< k100/site/edition "s" >}}</p>
+  2. {{< k100/site/edition "s" >}}
   
   {{< k100/q-list ed="standard" root="../.." sortkey="id" order="asc" >}}
 

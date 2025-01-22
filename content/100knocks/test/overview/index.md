@@ -1,13 +1,13 @@
 ---
-title: 'Test - [R+SQL] データサイエンス100本ノック＋α - 概要'
-slug: 'overview-test'
+title: "[R+SQL] データサイエンス100本ノック＋α - 概要"
+slug: "overview"
+date: 2021-04-02T00:31:23+09:00
 draft: true
-date: '2024-12-29T20:31:23+09:00'
-weight: 21
-description: 'This is description.'
+weight: 1150
+description: "This is description."
+# summary: ""
 categories: ["Test"]
 tags: ["test"]
-categories: ["DS-100本ノック"]
 
 cover:
   # image: "images/papermod-cover.png" #< /static
@@ -16,17 +16,8 @@ cover:
   hiddenInList: false
   hiddenInSingle: false # hide on single page
   # hidden: true
-disableHLJS: false
-disableShare: false
-hideSummary: false
-searchHidden: false
-ShowReadingTime: true
-ShowWordCount: true
-# ShowPostNavLinks: false
-# UseHugoToc: true
-# ShowBreadCrumbs: false
+
 # cover:
-#   caption: "This is caption" # display caption under cover
 #     image: "<image path/url>" # image path/url
 #     alt: "<alt text>" # alt text
 #     caption: "<text>" # display caption under cover
@@ -92,7 +83,7 @@ a
 a  
 a
 
-## 和文A {#wabuna}
+## 和文A
 
 Hugoは、サイトを構築するときに、静的ディレクトリ内のすべてをpublishDirのルート（通常はpublic）にコピーすることを覚えておいてください。
 

@@ -1,1 +1,80 @@
 ### development
+
+baseURL: "https://14katsumix.github.io/tech-blog/"
+
+# Include drafts when building.
+# buildDrafts: false
+buildDrafts: true
+
+permalinks:
+    page: /:slug/
+    post: /p/:slug/
+    test: /test/:slug/
+
+params:
+  env: development
+  mainSections:
+    - "100knocks"
+    - test
+    - post
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: -20
+      params: 
+        icon: home
+    - name: About
+      url: /about
+      weight: -10
+      params:
+        icon: user
+    - name: "[R+SQL] 演習問題 - test"
+      # url: "test/100k/common/q-list"
+      url: "/test/q-list-test"
+      # pageRef: "/test/100k/base/q-list-test"
+      weight: 10
+    - name: レビュー (test)
+      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+      weight: 20
+    - name: Archives
+    # - name: アーカイブ
+      url: /archives
+      weight: 40
+      params: 
+        icon: archives
+    - name: Search
+    # - name: 検索
+      url: /search
+      weight: 50
+      params: 
+        icon: search
+    - name: Links
+    # - name: リンク
+      url: /links
+      weight: 60
+      params:
+          icon: link
+
+module:
+  mounts:
+  - excludeFiles: 
+      - test/books/**
+    source: content
+    target: content
+  - source: static
+    target: static
+  - source: layouts
+    target: layouts
+  - source: data
+    target: data
+  - source: assets
+    target: assets
+  - source: i18n
+    target: i18n
+  - source: archetypes
+    target: archetypes

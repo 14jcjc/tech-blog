@@ -1,14 +1,14 @@
 ---
-title: "Test -【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』"
-slug: "book-review-test"
-date: 2024-12-04T00:01:10+09:00
-# draft: false
-draft: true
+title: "【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』"
+slug: "book-review"
+date: 2025-01-04T00:01:10+09:00
+draft: false
+# draft: true
 weight: 10
 # description: ""
 # summary: ""
-categories: ["レビュー", "Test", "DS-100本ノック+α"]
-tags: ["test", "site-tips"]
+categories: ["レビュー", "DS-100本ノック+α"]
+tags: ["R", "SQL"]
 # tags_weight: 1
 cover:
   # image: "images/papermod-cover.png" #< /static
