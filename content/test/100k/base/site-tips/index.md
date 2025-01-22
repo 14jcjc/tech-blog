@@ -54,24 +54,6 @@ summary: の設定より優先度が高いです。
 
 ---
 
-## Link スタイル
-
-```md {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" text="" */>}}
-```
-
-→ {{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" text="" >}}
-
-```md {linenos=false,anchorLineNos=false}
-   [overview-d2 はこちら]({{</* ref "overview.md#d2" */>}} "About us")
-```
-→ [overview-d2 はこちら]({{< ref "overview.md#d2" >}} "About us")
-
-Rendered:
-```html {lineNos=false}
-<a href="http://example.org/overview/#bbb" title="About us">こちら</a>
-```
-
 ## 演習問題
 
 ### 演習問題一覧の出力
@@ -235,6 +217,12 @@ Markdown は保持されることに注意。
 ### href-target-blank
 
 ```go-html-template {linenos=false,anchorLineNos=false}
+{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
+```
+→ 
+{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" >}}
+
+```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://..." text="リポジトリ📂" */>}}
 ```
 → 
@@ -242,24 +230,32 @@ Markdown は保持されることに注意。
 
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
- class="link noicon" */>}}
+ class="link2" */>}}
 ```
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="link noicon" >}}
-
+{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="link2" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" 
-class="nolink" title="About us" */>}}
+{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
+ title="About us" */>}}
 ```
 → 
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="nolink" title="About us" >}}
 
-```go-html-template {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
+```md {linenos=false,anchorLineNos=false}
+{{</* href-target-blank pre="　" url="https://tech.buty4649.net/entry/2024/04/20/122439" */>}}
 ```
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" >}}
+{{< href-target-blank pre="　" url="https://tech.buty4649.net/entry/2024/04/20/122439" >}}
+
+
+```md {linenos=false,anchorLineNos=false}
+{{</* href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" 
+target="_self" */>}}
+```
+→ 
+{{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439"
+ target="_self" >}}
 
 ### product\-link
 

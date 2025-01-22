@@ -1,8 +1,19 @@
+{{/*  {{- $pre := .Get "pre" | default "🔗 " -}}  */}}
+{{ $pre := "🔗" }}
+{{ with .Get "pre" }}
+  {{ $pre = . }}
+  {{- $trimmedPre := (strings.TrimSpace .) }}
+  {{- if eq $trimmedPre "" }}
+    {{ $pre = ""}}
+  {{- end }}
+{{ end }}
+
 {{- $class := .Get "class" | default "link" -}}
 {{- $href := .Get "url" | default "#" -}}
 {{- $target := .Get "target" | default "_blank" -}}
 {{- $title := .Get "title" | default "" -}}
-{{- $text := .Get "text" | default $href -}}
+{{- $text := .Get "text" | default $href }}
+<span style="white-space: pre;">{{ $pre }}</span>
 <a class="{{ $class }}" href="{{ $href }}" target="{{ $target }}" title="{{ $title }}" rel="noopener noreferrer">
   {{- $text -}}
 </a>
