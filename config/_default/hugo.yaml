@@ -1,14 +1,14 @@
 baseURL: "https://14katsumix.github.io/tech-blog/"
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
-languageCode: ja
-theme: hugo-theme-stack
 title: katsuのブログ
 copyright: katsu
+theme: hugo-theme-stack
 
 # Include drafts when building.
 # buildDrafts: false
 buildDrafts: true
 
+languageCode: ja
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
 DefaultContentLanguage: ja
@@ -16,6 +16,31 @@ DefaultContentLanguage: ja
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
+isCJKLanguage: true # (?) 内容言語が日中韓系のときは true に設定します.
+
+enableRobotsTXT: true # robots.txt の生成を有効にする
+enableInlineShortcodes: true # Markdown内でインラインショートコードを有効化する
+
+# シンボリックリンクを有効化する
+enableSymlinksIfOwnerMatch: true
+
+buildFuture: false # Include content with a future publication date.
+buildExpired: false # Include content already expired.
+enableEmoji: true
+capitalizeListTitles: true 
+titleCaseStyle: ap # ap, chicago, go, firstupper, or none.
+# summaryLength: 50
+
+# 各ページの .GitInfo オブジェクトを有効にします (Hugo サイトが Gitでバージョン管理されている場合）.
+# これにより、各ページの Lastmod パラメータが, そのコンテンツファイルの最後の git コミット日時で更新されます.
+# デフォルトは false です。
+enableGitInfo: true
+
+timeout: 30s # Timeout for generating page contents, specified as a duration or in seconds.
+
+# sitemap: 
+  # changefreq = "monthly"
+  # priority = 0.5
 
 languages:
     ja:
@@ -45,25 +70,27 @@ languages:
     #             subtitle: وصف تجريبي
 
 services:
-    # Change it to your Disqus shortname before using
-    disqus:
-        shortname: "hugo-theme-stack"
     # GA Tracking ID
     googleAnalytics:
         id: G-GLB0HGKER4
+    # Change it to your Disqus shortname before using
+    # disqus:
+    #     shortname: "hugo-theme-stack"
 
 pagination:
     pagerSize: 10
 
 permalinks:
-    post: /p/:slug/
     page: /:slug/
-    test: /:slug/
+    post: /p/:slug/
+    test: /test/:slug/
 
 params:
     mainSections:
-      - post
+      - "100knocks"
       - test
+      - post
+    
     featuredImageField: image
     rssFullContent: true
     favicon: "favicon.png"
@@ -71,14 +98,14 @@ params:
 
     footer:
         since: 2025
-        customText:
+        customText: 
 
     dateFormat:
-        published: Jan 02, 2006
-        lastUpdated: Jan 02, 2006 15:04 MST
+        published: "2006-01-02"
+        lastUpdated: "2006-01-02 15:04"
 
     sidebar:
-        emoji: 
+        emoji: "🧑‍💻"
         subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
         avatar:
             enabled: true
@@ -86,13 +113,57 @@ params:
             src: img/avatar.png
 
     article:
+        headingAnchor: true # 見出しのアンカー
         math: true
         toc: true
         readingTime: false
         license:
             enabled: false
             default: Licensed under CC BY-NC-SA 4.0
+    widgets:
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 1
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 20
+        page:
+            - type: toc
+            - type: tag-cloud
+              params:
+                  limit: 50
 
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site: 14katsumix
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+    
     comments:
         # enabled: true
         enabled: false
@@ -178,53 +249,53 @@ params:
         cusdis:
             host:
             id:
-    widgets:
-        homepage:
-            - type: search
-            - type: archives
-              params:
-                  limit: 5
-            - type: categories
-              params:
-                  limit: 10
-            - type: tag-cloud
-              params:
-                  limit: 10
-        page:
-            - type: toc
 
-    opengraph:
-        twitter:
-            # Your Twitter username
-            site: 14katsumix
 
-            # Available values: summary, summary_large_image
-            card: summary_large_image
+# セクションのメニュー エントリを自動的に定義する: 
+# sectionPagesMenu: main
 
-    defaultImage:
-        opengraph:
-            enabled: false
-            local: false
-            src:
-
-    colorScheme:
-        # Display toggle
-        toggle: true
-
-        # Available values: auto, light, dark
-        default: auto
-
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
 
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
-    main: []
+    main:
+    - name: Home
+      url: /
+      weight: -20
+      params: 
+        icon: home
+    - name: About
+      url: /about
+      weight: -10
+      params:
+        icon: user
+    - name: "[R+SQL] 演習問題"
+      # url: "test/100k/common/q-list"
+      url: "/test/q-list-test"
+      # pageRef: "/test/100k/base/q-list-test"
+      weight: 10
+    - name: レビュー
+      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+      weight: 20
+    - name: Archives
+    # - name: アーカイブ
+      url: /archives
+      weight: 40
+      params: 
+        icon: archives
+    - name: Search
+    # - name: 検索
+      url: /search
+      weight: 50
+      params: 
+        icon: search
+    - name: Links
+    # - name: リンク
+      url: /links
+      weight: 60
+      params:
+          icon: link
 
     social:
         - identifier: github
@@ -251,7 +322,14 @@ related:
           weight: 200
 
 markup:
+    tableOfContents:
+        endLevel: 4
+        ordered: true
+        startLevel: 2
+    
     goldmark:
+        renderer:
+            unsafe: true # HTMLタグがレンダリングされるようにする
         extensions:
             passthrough:
                 enable: true
@@ -264,18 +342,13 @@ markup:
                     inline:
                         - - \(
                           - \)
-        renderer:
-            unsafe: true # HTMLタグがレンダリングされるようにする
         parser:
           attribute:
             block: true
             title: true
           # 独立した画像要素に属性を適用するには、デフォルトの折り返し動作を無効にする
           wrapStandAloneImageWithinParagraph: false
-    tableOfContents:
-        endLevel: 4
-        ordered: true
-        startLevel: 2
+    
     highlight:
         noClasses: false
         codeFences: true
@@ -283,4 +356,30 @@ markup:
         lineNoStart: 1
         lineNos: true
         lineNumbersInTable: true
-        tabWidth: 4
+        # tabWidth: 2
+        # <code>タグ内を強調表示する. codeタグは code-inline という名前のクラスを取得する: 
+        # hl_inline: false
+        # hl_Lines: ""
+        # lineAnchors: ""
+        # noHl: false
+        # style: monokai
+        # wrapperClass: highlight
+
+module:
+  mounts:
+  - excludeFiles: 
+      - test/books/**
+    source: content
+    target: content
+  - source: static
+    target: static
+  - source: layouts
+    target: layouts
+  - source: data
+    target: data
+  - source: assets
+    target: assets
+  - source: i18n
+    target: i18n
+  - source: archetypes
+    target: archetypes

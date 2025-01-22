@@ -6,11 +6,6 @@ weight: 11
 slug: "site-tips"
 # summary: 'これはsummaryです。'
 description: "This is description."
-# hideSummary: true
-# hideFooter: false
-ShowToc: true
-UseHugoToc: true
-TocOpen: true
 
 # related:
 #   show: true
@@ -216,6 +211,12 @@ Markdown は保持されることに注意。
 
 ### href-target-blank
 
+aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzz" >}} aaaa
+
+
+
+
+
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
 ```
@@ -240,13 +241,13 @@ Markdown は保持されることに注意。
  title="About us" */>}}
 ```
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="nolink" title="About us" >}}
+{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" title="About us" >}}
 
 ```md {linenos=false,anchorLineNos=false}
-{{</* href-target-blank pre="　" url="https://tech.buty4649.net/entry/2024/04/20/122439" */>}}
+{{</* href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" */>}}
 ```
 → 
-{{< href-target-blank pre="　" url="https://tech.buty4649.net/entry/2024/04/20/122439" >}}
+{{< href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" >}}
 
 
 ```md {linenos=false,anchorLineNos=false}
@@ -671,7 +672,8 @@ Rendered:
 - layouts/_default/_markup/render-blockquote.html
 - i18n/ja.yaml
 - レイアウトの参考:  
-  {{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" text="" >}}
+  {{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" 
+  text="" >}}  
   {{< href-target-blank url="https://github.com/orgs/community/discussions/16925" text="" >}}
 
 ```text {lineNos=false}
