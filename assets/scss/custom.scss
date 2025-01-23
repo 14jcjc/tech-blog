@@ -81,6 +81,13 @@
   --code-font-family: Menlo, "Monaco", var(--zh-font-family), monospace, "Consolas";
 }
 
+// フォントが読み込まれるまでデフォルトフォントで表示し, 読み込まれたらWebフォントに切り替えるよ
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("https://fonts.gstatic.com/s/notosansjp/v26/pxiFyp8kv8JHgFVrJJfVlbQ5LgzKDwTQUm5HD4zsh6M.woff2") format("woff2");
+  font-display: swap;
+}
+
 /**
 *   Article content font settings
 */
