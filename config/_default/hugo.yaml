@@ -329,6 +329,7 @@ markup:
         guessSyntax: false
         lineNoStart: 1
         lineNos: true
+        # wrapperClass: highlight
         # lineNos=inline
         # equivalent to lineNos=true and lineNumbersInTable=false
         # lineNos=table
@@ -339,6 +340,5 @@ markup:
         # <code>タグ内を強調表示する. codeタグは code-inline という名前のクラスを取得する: 
         # hl_Lines: ""
         # noHl: false
-        wrapperClass: highlight
-        style: monokai
-        # style: nordic
+        # wrapperClass: highlight
+        # style: monokai

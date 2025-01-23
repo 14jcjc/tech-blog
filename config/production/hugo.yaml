@@ -29,7 +29,7 @@ permalinks:
     # 100knocks: /ds-100knocks-dp/:sections[1:]/:slug/
     100knocks: /ds100knocks-alpha/:slug/
     test: /test/:slug/
-    post: /p/:slug/
+    # post: /p/:slug/
     # aaa: /aaa/:year/:month/:slug/
     # xxx: /xxx/:slug
   # section:
@@ -95,21 +95,21 @@ menu:
     #       icon: link
 
 
-module:
-  mounts:
-  - excludeFiles: 
-      - test/books/**
-    source: content
-    target: content
-  - source: static
-    target: static
-  - source: layouts
-    target: layouts
-  - source: data
-    target: data
-  - source: assets
-    target: assets
-  - source: i18n
-    target: i18n
-  - source: archetypes
-    target: archetypes
+# module:
+#   mounts:
+#   - excludeFiles: 
+#       - test/books/**
+#     source: content
+#     target: content
+#   - source: static
+#     target: static
+#   - source: layouts
+#     target: layouts
+#   - source: data
+#     target: data
+#   - source: assets
+#     target: assets
+#   - source: i18n
+#     target: i18n
+#   - source: archetypes
+#     target: archetypes
