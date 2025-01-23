@@ -315,17 +315,30 @@ markup:
           wrapStandAloneImageWithinParagraph: false
     
     highlight:
-        noClasses: false
         codeFences: true
-        guessSyntax: true
+        # 指定行ハイライトの background-color を 100% にするため, 
+        # noClasses, lineNumbersInTable を true, false とすること!
+        # スクロールしても background-color が途切れないことを確認する!
+
+        # 外部 CSS ファイルの代わりにインライン CSS スタイルを使用するかどうか。外部 CSS ファイルを使用するには、この値を に設定しfalse、 コマンドを使用して CSS ファイルを生成します
+        # hugo gen chromastyles
+        # noClasses: true
+        noClasses: false
+        # lineNumbersInTable = false とすると行番号までコピーされる.
+        lineNumbersInTable: true
+        guessSyntax: false
         lineNoStart: 1
         lineNos: true
-        lineNumbersInTable: true
-        # tabWidth: 2
-        # <code>タグ内を強調表示する. codeタグは code-inline という名前のクラスを取得する: 
-        # hl_inline: false
-        # hl_Lines: ""
+        # lineNos=inline
+        # equivalent to lineNos=true and lineNumbersInTable=false
+        # lineNos=table
+        # equivalent to lineNos=true and lineNumbersInTable=true
+        # # tabWidth: 4
         # lineAnchors: ""
+        # hl_inline: false
+        # <code>タグ内を強調表示する. codeタグは code-inline という名前のクラスを取得する: 
+        # hl_Lines: ""
         # noHl: false
-        # style: monokai
-        # wrapperClass: highlight
+        wrapperClass: highlight
+        style: monokai
+        # style: nordic

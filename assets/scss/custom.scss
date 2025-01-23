@@ -153,10 +153,16 @@
   }
 }
 
+.chroma pre {
+  display: block;
+  width: 100%;
+}
+
 /* LineHighlight */
 .chroma .hl {
   display: block;
-  width: 100%;
+  width: 100% !important;
+  min-width: 100% !important;
   background-color: var(--chroma-background-color-hl) !important;
 }
 
@@ -359,15 +365,15 @@ a {
     padding-bottom: 3px; /* アンダーラインと文字の間隔 */
   }
 
-    hr {
-      // width: 100px;
-      width: 100%;
-      margin: 40px auto;
-      background: var(--card-text-color-tertiary);
-      height: 2px;
-      border: 0;
-      // opacity: 0.55;
-      opacity: 0.3;
+  hr {
+    // width: 100px;
+    width: 100%;
+    margin: 40px auto;
+    background: var(--card-text-color-tertiary);
+    height: 2px;
+    border: 0;
+    // opacity: 0.55;
+    opacity: 0.3;
   }
 }
 

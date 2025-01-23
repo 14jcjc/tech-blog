@@ -51,6 +51,42 @@ summary: の設定より優先度が高いです。
 
 ---
 
+```
+r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```
+→ 
+```r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+SQL: 
+
+```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["9-16"]}
+with customer_amount as (
+  select
+    customer_id, 
+    SUM(amount) as total_amount
+  from receipt
+  where customer_id NOT LIKE 'Z%'
+  group by customer_id
+)
+select 
+  *
+from
+  customer_amount
+where 
+  total_amount >= (select AVG(total_amount) from customer_amount)
+order by
+  total_amount DESC
+```
+
 ## 演習問題
 
 ### 演習問題一覧の出力
@@ -406,7 +442,11 @@ read: assets/test/pets.csv
 
 Rのコードは以下のようになります。
 
-```r {linenos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```
+r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```
+→ 
+```r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -417,9 +457,25 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
+```
+r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
+```
+→ 
+```r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+
 全ハイライト、アンカー付きのRのコードは以下のようになります。
 
-```r {linenos=inline,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+```r {lineNumbersInTable=false,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -553,7 +609,7 @@ Hugo's internal highlight. ⬇️
 
 Rのコードは以下のようになります。
 
-{{< highlight r >}}
+{{< highlight r "hl_lines=3-8" >}}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
