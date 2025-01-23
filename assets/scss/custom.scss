@@ -138,10 +138,42 @@
 *   Shadow style
 *   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
 */
+
+// katsu
+// light mode, dark mode 共に dark.scss を適用する
+// dark mode の Highlight の background-color が悪いので変更する.
+
+/* LineHighlight */
+// katsu
+:root {
+  // --chroma-background-color-hl: #ffffcc;
+  // --chroma-background-color-hl: rgba(255, 255, 230, 0.1);
+  --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+  &[data-scheme="dark"] {
+    --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+  }
+}
+.chroma .hl {
+  display: block;
+  width: 100%;
+  background-color: var(--chroma-background-color-hl) !important;
+}
+
+/* LineNumbers Link */
+.chroma .ln .lnlinks {
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+  color: #7f7f7f;
+  text-decoration: underline;
+}
+
 [data-scheme="light"] {
-  --pre-text-color: #272822;
-  --pre-background-color: #fafafa;
-  @import "partials/highlight/light.scss";
+  // --pre-text-color: #272822;
+  // --pre-background-color: #fafafa;
+  // @import "partials/highlight/light.scss";
+  --pre-text-color: #f8f8f2;
+  --pre-background-color: #272822;
+  @import "partials/highlight/dark.scss";
 }
 
 [data-scheme="dark"] {

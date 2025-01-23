@@ -51,6 +51,17 @@ summary: の設定より優先度が高いです。
 
 ---
 
+```r {linenos=inline,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
 ## 演習問題
 
 ### 演習問題一覧の出力
@@ -417,9 +428,9 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
-Rのコードは以下のようになります。
+全ハイライト、アンカー付きのRのコードは以下のようになります。
 
-```r {linenos=inline,lineNoStart=14,hl_lines=[2,"6-8"],anchorLineNos=true}
+```r {linenos=inline,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
