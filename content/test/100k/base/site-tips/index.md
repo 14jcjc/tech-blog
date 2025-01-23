@@ -52,12 +52,12 @@ summary: の設定より優先度が高いです。
 ---
 
 ```
-r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
 → 
-```r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(amount > 123.45)
   mutate(
     pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
     pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
@@ -65,10 +65,8 @@ receipt %>%
   mutate(diff_amount = amount - pre_amount) %>% 
   arrange(sales_ymd) # コメント
 ```
-
 SQL: 
-
-```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["9-16"]}
+```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["2-4","9-12"]}
 with customer_amount as (
   select
     customer_id, 
@@ -82,7 +80,7 @@ select
 from
   customer_amount
 where 
-  total_amount >= (select AVG(total_amount) from customer_amount)
+  total_amount >= 3
 order by
   total_amount DESC
 ```

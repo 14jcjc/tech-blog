@@ -143,37 +143,6 @@
 // light mode, dark mode 共に dark.scss を適用する
 // dark mode の Highlight の background-color が悪いので変更する.
 
-// katsu
-:root {
-  // --chroma-background-color-hl: #ffffcc;
-  --chroma-background-color-hl: #474733;
-  &[data-scheme="dark"] {
-    // --chroma-background-color-hl: #474733;
-    --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
-  }
-}
-
-.chroma pre {
-  display: block;
-  width: 100%;
-}
-
-/* LineHighlight */
-.chroma .hl {
-  display: block;
-  width: 100% !important;
-  min-width: 100% !important;
-  background-color: var(--chroma-background-color-hl) !important;
-}
-
-/* LineNumbers Link */
-.chroma .ln .lnlinks {
-  margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f7f7f;
-  text-decoration: underline;
-}
-
 [data-scheme="light"] {
   // --pre-text-color: #272822;
   // --pre-background-color: #fafafa;
@@ -189,6 +158,38 @@
   @import "partials/highlight/dark.scss";
 }
 
+// katsu
+:root {
+  // --chroma-background-color-hl: #ffffcc;
+  --chroma-background-color-hl: #474733;
+  &[data-scheme="dark"] {
+    // --chroma-background-color-hl: #474733;
+    --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+  }
+}
+
+// .chroma pre {
+//   display: block;
+//   width: 100%;
+// }
+
+/* LineHighlight */
+.chroma .hl {
+  display: block;
+  width: 100% !important;
+  // min-width: 100% !important;
+  background-color: var(--chroma-background-color-hl) !important;
+}
+
+/* LineNumbers Link */
+.chroma .ln .lnlinks {
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
+  color: #7f7f7f;
+  text-decoration: underline;
+}
+
+// -------------------------------------------------------------------------------
 // a .link
 a {
   text-decoration: none;
