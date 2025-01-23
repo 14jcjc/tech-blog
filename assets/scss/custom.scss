@@ -539,6 +539,8 @@
 .widget--toc {
   #TableOfContents {
 
+      font-size: 0.9em;
+
       ol,
       ul {
           margin: 0;
@@ -563,7 +565,7 @@
               margin-bottom: -5px;
           }
       }
-      
+
   }
 }
 
