@@ -147,12 +147,14 @@
 // katsu
 :root {
   // --chroma-background-color-hl: #ffffcc;
-  // --chroma-background-color-hl: rgba(255, 255, 230, 0.1);
-  --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+  // --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+  --chroma-background-color-hl: #474733;
   &[data-scheme="dark"] {
-    --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+    // --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+    --chroma-background-color-hl: #474733;
   }
 }
+
 .chroma .hl {
   display: block;
   width: 100%;
