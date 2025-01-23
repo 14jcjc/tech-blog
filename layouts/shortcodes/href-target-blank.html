@@ -13,6 +13,9 @@
 {{- $target := .Get "target" | default "_blank" -}}
 {{- $title := .Get "title" | default "" -}}
 {{- $text := .Get "text" | default $href }}
+
+{{ $href = $href | safeURL }}
+
 {{ if ne $pre "" }}
 <span style="white-space: pre;">{{ $pre }}</span>
 {{- end -}}
