@@ -51,17 +51,6 @@ summary: の設定より優先度が高いです。
 
 ---
 
-```r {linenos=inline,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
-receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
-  mutate(
-    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
-    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
-  ) %>% 
-  mutate(diff_amount = amount - pre_amount) %>% 
-  arrange(sales_ymd) # コメント
-```
-
 ## 演習問題
 
 ### 演習問題一覧の出力
@@ -449,7 +438,7 @@ Rのコードは上記のようになります。
 
 SQLのコードは以下のようになります。
 
-```sql {linenos=false}
+```sql {linenos=true,lineNoStart=1,hl_lines=["9-16"]}
 with customer_amount as (
   select
     customer_id, 
@@ -474,7 +463,7 @@ order by
 
 go-html-template のコードは以下のようになります。
 
-```go-html-template {linenos=false,anchorLineNos=false}
+```go-html-template {linenos=true,lineNoStart=1,hl_lines=["5-16"]}
 <div><p>xxxxxxxxxxxxxxxxxxxxxx</p></div>
 {{ if eq .Type "alert" }}
   <blockquote class="alert alert-{{ .AlertType }}">
