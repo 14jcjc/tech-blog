@@ -67,10 +67,14 @@
 *   Global font family
 */
 :root {
+  --ja-g-font-family: "Noto Sans JP", '游ゴシック', '游ゴシック Medium', 
+    'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic, 
+    'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
   --sys-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, "Droid Sans", Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   --zh-font-family: "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei";
   // --base-font-family: "Noto Sans JP", "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
-  --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
+  --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family), 
+    var(--zh-font-family), sans-serif;
   // --code-font-family: "Roboto Mono", "Monaco", "Consolas", "Courier New", Menlo, var
   // --code-font-family: "Monaco", "Consolas", "Courier New", Menlo, var(--zh-font-family), monospace;
   --code-font-family: Menlo, "Monaco", var(--zh-font-family), monospace, "Consolas";
