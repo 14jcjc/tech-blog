@@ -9,7 +9,8 @@ buildDrafts: true
 permalinks:
     page: /:slug/
     post: /p/:slug/
-    test: /test/:slug/
+    100knocks: /100knocks/:slug/
+    # test: /test/:slug/
 
 params:
   env: development
@@ -35,9 +36,8 @@ menu:
       params:
         icon: user
     - name: "[R+SQL] 演習問題 - test"
-      # url: "test/100k/common/q-list"
-      url: "/test/q-list-test"
-      # pageRef: "/test/100k/base/q-list-test"
+      # url: "/test/q-list-test"
+      pageRef: "/test/100k/base/q-list-test"
       weight: 10
       params: 
         icon: question
