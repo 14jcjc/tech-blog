@@ -51,13 +51,42 @@ summary: の設定より優先度が高いです。
 
 ---
 
-```
+## リスト
+
+1. ああああああああああああ
+   - ああああああああああああああ
+   - いいいいいいいいいいいいいい
+     - うううううううううううううう
+     - ええええええええええええええ
+2. いいいいいいいいいいいい
+   1. ああああああああああああああああ
+   2. いいいいいいいいいいいいいいいい
+      - ううううううううううううううううう
+---
+
+1. [SITE.全ページ](https://gohugo.io/methods/site/allpages/) すべての言語のすべてのページのコレクションを返します。
+   - [サイト.ページ](https://gohugo.io/methods/site/pages/)すべてのページのコレクションを返します。
+   - [SITE.通常ページ](https://gohugo.io/methods/site/regularpages/)すべての通常ページのコレクションを返します。  
+     ノート
+     - 最初のレベルのセクションページのコレクションを返します。
+     - [サイトセクション](https://gohugo.io/methods/site/sections/)最初のレベルのセクションページのコレクションを返します。
+2. デフォルトでは、Hugo はページ コレクションを次のように並べ替えます。
+   1.  [重さ](https://gohugo.io/methods/page/weight/)、[日付](https://gohugo.io/methods/page/date/)の降順
+   2.  [LinkTitle が](https://gohugo.io/methods/page/linktitle/)[Title](https://gohugo.io/methods/page/title/)に戻る[](https://gohugo.io/methods/page/title/)
+   3.  [](https://gohugo.io/methods/page/file/#filename)ページがファイルによってバックアップされている場合は[ファイル名](https://gohugo.io/methods/page/file/#filename)
+       - これらのメソッドを使用してページ コレクションを並べ替えます。
+       - これらのメソッドを使用してページ コレクションを並べ替えます。  
+For example, the base template below calls the [partial](https://gohugo.io/functions/partials/include/) function to include partial templates for the `head`, `header`, and `footer` elements of each page, and it uses the [block](https://gohugo.io/functions/go-template/block/) function to include `home`, `single`, `section`, `taxonomy`, and `term` templates within the `main` element of each page.
+
+## コード
+
+```md {linenos=false, anchorLineNos=false}
 r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
 → 
 ```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(amount > 123.45)
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
   mutate(
     pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
     pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
@@ -65,6 +94,20 @@ receipt %>%
   mutate(diff_amount = amount - pre_amount) %>% 
   arrange(sales_ymd) # コメント
 ```
+
+R
+
+```r {name="abcde.R", lineNos=false,lineNoStart=1,hl_lines=[2,"7-8"]}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
 SQL: 
 ```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["2-4","9-12"]}
 with customer_amount as (

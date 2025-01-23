@@ -53,6 +53,14 @@ menu:
       url: "/test/100k"
       weight: 30
       identifier: 100k
+      params: 
+        icon: arrow-back
+
+    - name: post
+      url: "/post"
+      weight: 35
+      params: 
+        icon: arrow-back
 
     - name: Archives
     # - name: アーカイブ
