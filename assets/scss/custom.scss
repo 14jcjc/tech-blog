@@ -425,19 +425,21 @@
 
   // リストのインデント幅を狭くする
   ul, ol {
-    padding-left: 1em;
-    margin-left: 0.3em;
+    // padding-left: 1em;
+    // margin-left: 0.3em;
+    padding-left: 22px;
+    margin-left: 0;
   }
 
   // ネストされたリストのインデント幅
-  ul ul, ol ol {
+  ul ul, ol ol, ul ol, ol ul {
     padding-left: 1em;
   }
 
   // li の余白を最適化（必要に応じて調整）
-  li {
-    margin-left: 0;
-  }
+  // li {
+  //   margin-left: 0;
+  // }
 }
 
 //-------------------------------------------------------------------------------
