@@ -1,3 +1,4 @@
+{{/*  katsu  */}}
 {{ $id := .Get "id" }}
 {{ if not $id }}
   {{ errorf "The %q shortcode requires a 'id' argument. See %s" .Name .Position }}
