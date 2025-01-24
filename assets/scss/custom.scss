@@ -455,10 +455,10 @@
     display: inline-block; /* アイコンをインライン表示 */
     margin-left: 8px; /* 見出しテキストとの間隔 */
     // font-size: 0.8em; /* アイコンのサイズ */
-    
+
     // ミックスインを使ってフォントサイズを設定
     // 640px以下のサイズ ($size-sm) とそれ以上のサイズ ($size-lg) を受け取る
-    @include font-size-responsive(0.6em, 0.8em);
+    @include font-size-responsive(0.8em, 0.8em);
   }
   
   // 画面幅が 640px (sm) 以上のとき
