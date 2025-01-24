@@ -1,7 +1,8 @@
 <h{{ .Level }} id="{{ .Anchor }}">
   {{- if site.Params.Article.HeadingAnchor -}}
     {{ .Text | safeHTML }}
-    <a class="header-anchor-2" aria-hidden="true" href="#{{ .Anchor }}"></a>
+    {{/*  <a href="#{{ .Anchor }}" class="header-anchor"></a>  */}}
+    <a hidden class="header-anchor-2" aria-hidden="true" href="#{{ .Anchor }}">#</a>
   {{ else }}
     {{ .Text | safeHTML }}
   {{- end -}}

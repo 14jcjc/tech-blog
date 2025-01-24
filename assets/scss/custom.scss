@@ -387,27 +387,86 @@
     }
   }
 
-  h2 {
+  // 見出しのアンカーリンクを "#" にする場合
+  // h2 {
+  //   display: flex;
+  //   align-items: center;
+  // }
+  // h2 .header-anchor-2 {
+  //   display: none; /* 初期状態では非表示 */
+  //   margin-left: 8px; /* 見出しテキストとの間隔 */
+  // }
+  // h1:hover .header-anchor-2,
+  // h2:hover .header-anchor-2,
+  // h3:hover .header-anchor-2,
+  // h4:hover .header-anchor-2,
+  // h5:hover .header-anchor-2,
+  // h6:hover .header-anchor-2 {
+  //   display: inline-flex;
+  //   color: var(--accent-color);
+  //   font-weight: 500;
+  //   user-select: none;
+  // }
+
+  /* 共通のスタイル設定 */
+  h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
   }
 
-  h2 .header-anchor-2 {
+  h2 .header-anchor-2,
+  h3 .header-anchor-2,
+  h4 .header-anchor-2,
+  h5 .header-anchor-2,
+  h6 .header-anchor-2 {
     display: none; /* 初期状態では非表示 */
     margin-left: 8px; /* 見出しテキストとの間隔 */
   }
 
-  h1:hover .header-anchor-2,
   h2:hover .header-anchor-2,
   h3:hover .header-anchor-2,
   h4:hover .header-anchor-2,
   h5:hover .header-anchor-2,
   h6:hover .header-anchor-2 {
     display: inline-flex;
-    color: var(--accent-color);
-    font-weight: 500;
-    user-select: none;
+    align-items: center; /* アイコンとテキストを縦方向に中央揃え */
   }
+
+  // ミックスインの定義
+  @mixin font-size-responsive($size-sm, $size-lg) {
+    font-size: $size-sm;
+
+    // メディアクエリを使って, 画面幅が 640px以上のときのフォントサイズを設定
+    @media (min-width: 640px) {
+      font-size: $size-lg;
+    }
+  }
+
+
+  h2 .header-anchor-2::after,
+  h3 .header-anchor-2::after,
+  h4 .header-anchor-2::after,
+  h5 .header-anchor-2::after,
+  h6 .header-anchor-2::after {
+    font-family: "Font Awesome 6 Free"; /* Font Awesomeのフォントを指定 */
+    content: "\f0c1"; /* アイコンのUnicode */
+    font-weight: 900; /* アイコンが正しく表示されるために必要 */
+    color: var(--accent-color); /* アイコンの色 */
+    display: inline-block; /* アイコンをインライン表示 */
+    margin-left: 8px; /* 見出しテキストとの間隔 */
+    // font-size: 0.8em; /* アイコンのサイズ */
+    
+    // ミックスインを使ってフォントサイズを設定
+    // 640px以下のサイズ ($size-sm) とそれ以上のサイズ ($size-lg) を受け取る
+    @include font-size-responsive(0.6em, 0.8em);
+  }
+  
+  // 画面幅が 640px (sm) 以上のとき
+  // @include respond(sm) {
+  //   h2 .header-anchor-2 .header-icon {
+  //     font-size: 0.75em;
+  //   }
+  // }
 
   // h2 {
   //   line-height: 1.7;
@@ -416,28 +475,28 @@
   //   padding-bottom: 3px; /* アンダーラインと文字の間隔 */
   // }
 
-  h2 {
-    // line-height: 1.5;
-    position: relative;
-    margin-top: 60px;
-    padding-bottom: 3px; /* アンダーラインと文字の間隔 */
+  // h2 {
+  //   // line-height: 1.5;
+  //   position: relative;
+  //   margin-top: 60px;
+  //   padding-bottom: 3px; /* アンダーラインと文字の間隔 */
     
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0.6em;
-      bottom: 0;
-      width: 97%;
-      height: 1.7px;
-      // background-color: #BAD0E0;
-      // background: linear-gradient(to right, #BAD0E0 0%, #FFFFFF 100%);
-      background: linear-gradient(to right, #90B0D0 0%, #F0F5FF 100%);
-    }
+  //   &::after {
+  //     content: "";
+  //     position: absolute;
+  //     left: 0.6em;
+  //     bottom: 0;
+  //     width: 97%;
+  //     height: 1.7px;
+  //     // background-color: #BAD0E0;
+  //     // background: linear-gradient(to right, #BAD0E0 0%, #FFFFFF 100%);
+  //     background: linear-gradient(to right, #90B0D0 0%, #F0F5FF 100%);
+  //   }
     
-    [data-scheme="dark"] &::after {
-      background: linear-gradient(to right, #D9E9FF 0%, #405060 100%);
-    }
-  }
+  //   [data-scheme="dark"] &::after {
+  //     background: linear-gradient(to right, #D9E9FF 0%, #405060 100%);
+  //   }
+  // }
 
   // h2 {
   //   position: relative;
