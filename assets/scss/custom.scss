@@ -78,9 +78,9 @@
   // --ja-g-font-family: "Noto Sans JP", '游ゴシック', '游ゴシック Medium', 
   //   'Yu Gothic Medium', '游ゴシック体', 'Yu Gothic', YuGothic, 
   //   'ヒラギノ角ゴ Pro', 'Hiragino Kaku Gothic Pro', 'メイリオ', 'Meiryo';
-  // // --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family), 
-
+  // --base-font-family: var(--ja-g-font-family), 'Lato', var(--sys-font-family), 
   //   var(--zh-font-family), sans-serif;
+
   // --code-font-family: "Roboto Mono", "Monaco", "Consolas", "Courier New", Menlo, var
   // --code-font-family: "Monaco", "Consolas", "Courier New", Menlo, var(--zh-font-family), monospace;
   --code-font-family: Menlo, "Monaco", var(--zh-font-family), monospace, "Consolas";
@@ -439,13 +439,16 @@
   ul, ol {
     // padding-left: 1em;
     // margin-left: 0.3em;
-    padding-left: 22px;
-    margin-left: 0;
+    // padding-left: 22px;
+    // margin-left: 0;
+    padding-left: 5px;
+    margin-left: 1em;
   }
 
   // ネストされたリストのインデント幅
   ul ul, ol ol, ul ol, ol ul {
-    padding-left: 1em;
+    // padding-left: 1em;
+    padding-left: 3px;
   }
 
   // li の余白を最適化（必要に応じて調整）
