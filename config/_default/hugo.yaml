@@ -88,6 +88,11 @@ params:
     #   - test
     #   - post
 
+    disableShare: false
+    ShowShareButtons: true
+    # To customize which share buttons to be enabled on page: 
+    # ShareButtons: [“x”, "linkedin"] #> 効かない
+
     # Front Matter field used to get the featured image of a page: 
     featuredImageField: image
 
