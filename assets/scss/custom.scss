@@ -409,10 +409,10 @@
   // }
 
   /* 共通のスタイル設定 */
-  h2, h3, h4, h5, h6 {
-    display: flex;
-    align-items: center;
-  }
+  // h2, h3, h4, h5, h6 {
+  //   display: flex;
+  //   align-items: center;
+  // }
 
   h2 .header-anchor-2,
   h3 .header-anchor-2,
@@ -435,13 +435,11 @@
   // ミックスインの定義
   @mixin font-size-responsive($size-sm, $size-lg) {
     font-size: $size-sm;
-
     // メディアクエリを使って, 画面幅が 640px以上のときのフォントサイズを設定
     @media (min-width: 640px) {
       font-size: $size-lg;
     }
   }
-
 
   h2 .header-anchor-2::after,
   h3 .header-anchor-2::after,
@@ -476,29 +474,6 @@
   // }
 
   // h2 {
-  //   // line-height: 1.5;
-  //   position: relative;
-  //   margin-top: 60px;
-  //   padding-bottom: 3px; /* アンダーラインと文字の間隔 */
-    
-  //   &::after {
-  //     content: "";
-  //     position: absolute;
-  //     left: 0.6em;
-  //     bottom: 0;
-  //     width: 97%;
-  //     height: 1.7px;
-  //     // background-color: #BAD0E0;
-  //     // background: linear-gradient(to right, #BAD0E0 0%, #FFFFFF 100%);
-  //     background: linear-gradient(to right, #90B0D0 0%, #F0F5FF 100%);
-  //   }
-    
-  //   [data-scheme="dark"] &::after {
-  //     background: linear-gradient(to right, #D9E9FF 0%, #405060 100%);
-  //   }
-  // }
-
-  // h2 {
   //   position: relative;
   //   margin-top: 60px;
   //   padding-bottom: 3px; /* アンダーラインと文字の間隔 */
@@ -507,6 +482,29 @@
   //   background-position: left bottom;
   //   background-repeat: no-repeat;
   // }
+
+  h2 {
+    // line-height: 1.5;
+    position: relative;
+    margin-top: 60px;
+    padding-bottom: 3px; /* アンダーラインと文字の間隔 */
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.6em;
+      bottom: 0;
+      width: 97%;
+      height: 1.7px;
+      // background-color: #BAD0E0;
+      // background: linear-gradient(to right, #BAD0E0 0%, #FFFFFF 100%);
+      background: linear-gradient(to right, #90B0D0 0%, #F0F5FF 100%);
+    }
+    
+    [data-scheme="dark"] &::after {
+      background: linear-gradient(to right, #D9E9FF 0%, #405060 100%);
+    }
+  }
   
   hr {
     // width: 100px;
