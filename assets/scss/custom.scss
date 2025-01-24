@@ -368,7 +368,8 @@
         content: "\f0c1";  // Font Awesome のアイコンコード（例: リンクアイコン）
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
-        font-size: 0.75em; // 見出しフォントサイズの75%に縮小
+        // font-size: 0.75em; // 見出しフォントサイズの75%に縮小
+        font-size: 0.5em; // 見出しフォントサイズの75%に縮小
         // content: "";
         // width: 1em;  // アイコンのサイズ
         // height: 1em;
@@ -379,9 +380,15 @@
     }
 
     // スマホサイズの調整
-    @media (max-width: 768px) {
+    // @media (max-width: 768px) {
+    //   a.header-anchor:before {
+    //     font-size: 0.5em; // スマホではさらに小さく
+    //   }
+    // }
+
+    @include respond(sm) {
       a.header-anchor:before {
-        font-size: 0.5em; // スマホではさらに小さく
+        font-size: 0.75em;
       }
     }
   }
