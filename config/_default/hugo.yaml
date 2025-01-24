@@ -130,6 +130,7 @@ params:
 
     article:
         headingAnchor: true # 見出しのアンカー
+        # headingAnchor: false # 見出しのアンカー
         math: true
         toc: true
         readingTime: false

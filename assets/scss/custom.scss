@@ -379,19 +379,34 @@
       }
     }
 
-    // スマホサイズの調整
-    // @media (max-width: 768px) {
-    //   a.header-anchor:before {
-    //     font-size: 0.5em; // スマホではさらに小さく
-    //   }
-    // }
-
     // 画面幅が 640px (sm) 以上のとき
     @include respond(sm) {
       a.header-anchor:before {
         font-size: 0.75em;
       }
     }
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+  }
+
+  h2 .header-anchor-2 {
+    display: none; /* 初期状態では非表示 */
+    margin-left: 8px; /* 見出しテキストとの間隔 */
+  }
+
+  h1:hover .header-anchor-2,
+  h2:hover .header-anchor-2,
+  h3:hover .header-anchor-2,
+  h4:hover .header-anchor-2,
+  h5:hover .header-anchor-2,
+  h6:hover .header-anchor-2 {
+    display: inline-flex;
+    color: var(--accent-color);
+    font-weight: 500;
+    user-select: none;
   }
 
   // h2 {
