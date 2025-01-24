@@ -386,6 +386,7 @@
     //   }
     // }
 
+    // 画面幅が 640px (sm) 以上のとき
     @include respond(sm) {
       a.header-anchor:before {
         font-size: 0.75em;

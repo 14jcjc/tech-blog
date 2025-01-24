@@ -32,7 +32,10 @@ enableSymlinksIfOwnerMatch: true
 buildFuture: false # Include content with a future publication date.
 buildExpired: false # Include content already expired.
 enableEmoji: true
-capitalizeListTitles: true 
+
+# capitalizeListTitles: true
+capitalizeListTitles: false
+
 titleCaseStyle: ap # ap, chicago, go, firstupper, or none.
 # summaryLength: 50
 
@@ -46,6 +49,10 @@ timeout: 30s # Timeout for generating page contents, specified as a duration or 
 # sitemap: 
   # changefreq = "monthly"
   # priority = 0.5
+
+# minify:
+#   disableXML: true
+#   minifyOutput: true
 
 languages:
     ja:
@@ -282,21 +289,24 @@ menu:
       params:
         icon: brand-twitter
 
+# 関連ページ (See also)
 related:
+    # 関連コンテンツ・リストに現在のページよりも新しいページを含める. 
+    # これにより, 新しい関連コンテンツが追加されると, 古い投稿の出力が変わる可能性がある: 
     includeNewer: true
+    # 0～100. 値が低いほど一致は多くなるが, 関連性は低くなる可能性がある: 
     threshold: 60
     toLower: false
     indices:
         - name: tags
           weight: 100
-
         - name: categories
           weight: 200
 
 markup:
     tableOfContents:
+        ordered: false
         endLevel: 4
-        ordered: true
         startLevel: 2
     
     goldmark:
