@@ -91,7 +91,7 @@ params:
     disableShare: false
     ShowShareButtons: true
     # To customize which share buttons to be enabled on page: 
-    # ShareButtons: [“x”, "linkedin"] #> 効かない
+    # ShareButtons: ["x", "linkedin", "facebook", "telegram"]
 
     # Front Matter field used to get the featured image of a page: 
     featuredImageField: image
@@ -104,7 +104,8 @@ params:
 
     footer:
         since: 2025
-        customText: # HTML is supported.
+        # HTML is supported: 
+        customText: 
 
     dateFormat:
         published: "2006-01-02"
