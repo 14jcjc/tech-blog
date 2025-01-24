@@ -104,8 +104,9 @@ params:
 
     footer:
         since: 2025
-        # HTML is supported: 
-        customText: 
+        # HTML is supported -> markdownify に改修: 
+        customText: |
+          [Privacy Policy]({{< ref "/privacy" >}})
 
     dateFormat:
         published: "2006-01-02"

@@ -64,7 +64,7 @@ menu:
       params:
         icon: user
 
-    - name: "[R+SQL] 演習問題"
+    - name: "R+SQL 演習問題"
       url: "/ds100knocks-alpha/q-list"
       weight: 10
       params: 

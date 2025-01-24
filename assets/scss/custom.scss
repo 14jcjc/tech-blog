@@ -368,7 +368,8 @@
         content: "\f0c1";  // Font Awesome のアイコンコード（例: リンクアイコン）
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
-        font-size: 0.75em; // 見出しフォントサイズの80%に縮小
+        // font-size: 0.75em; // 見出しフォントサイズの75%に縮小
+        font-size: 0.7em;
         // content: "";
         // width: 1em;  // アイコンのサイズ
         // height: 1em;
@@ -395,7 +396,7 @@
     &::after {
       content: "";
       position: absolute;
-      left: 0.8em;
+      left: 0.6em;
       bottom: 0;
       width: 97%;
       height: 1.7px;

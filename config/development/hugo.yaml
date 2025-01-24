@@ -35,7 +35,7 @@ menu:
       weight: -10
       params:
         icon: user
-    - name: "[R+SQL] 演習問題 - test"
+    - name: "R+SQL 演習問題 - test"
       # url: "/test/q-list-test"
       pageRef: "/test/100k/base/q-list-test"
       weight: 10
