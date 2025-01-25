@@ -120,6 +120,19 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
+全ハイライト、アンカー付きのRのコードは以下のようになります。
+
+```r {lineNumbersInTable=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
 SQL: 
 ```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["2-4","9-12"]}
 with customer_amount as (
@@ -525,10 +538,9 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
-
 全ハイライト、アンカー付きのRのコードは以下のようになります。
 
-```r {lineNumbersInTable=false,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+```r {lineNumbersInTable=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
