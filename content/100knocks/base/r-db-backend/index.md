@@ -7,7 +7,7 @@ draft: false
 weight: 15
 # description: ""
 # summary: ""
-categories: ["DS-100本ノック+α"]
+categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 cover:
   # image: "images/papermod-cover.png" #< /static

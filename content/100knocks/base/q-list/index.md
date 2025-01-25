@@ -7,7 +7,7 @@ draft: false
 weight: 1010
 description: "当ブログで紹介している R と SQL の演習問題です。"
 summary: "当ブログで紹介している R と SQL の演習問題一覧です。"
-categories: ["DS-100本ノック+α"]
+categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 ShowToc: false
 TocOpen: false

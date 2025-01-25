@@ -5,9 +5,8 @@ draft: true
 date: '2024-12-29T20:31:23+09:00'
 weight: 21
 description: 'This is description.'
-categories: ["Test"]
+categories: ["Test", "100本ノック+α-test"]
 tags: ["test"]
-categories: ["DS-100本ノック"]
 
 cover:
   # image: "images/papermod-cover.png" #< /static

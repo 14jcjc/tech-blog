@@ -7,7 +7,7 @@ draft: false
 weight: 20
 description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について。"
 # summary: ""
-categories: ["DS-100本ノック+α"]
+categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 cover:
   # image: "images/papermod-cover.png" #< /static

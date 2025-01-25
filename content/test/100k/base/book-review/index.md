@@ -7,7 +7,7 @@ draft: true
 weight: 10
 # description: ""
 # summary: ""
-categories: ["レビュー", "Test", "DS-100本ノック+α"]
+categories: ["レビュー", "Test", "100本ノック+α-test"]
 tags: ["test", "site-tips"]
 # tags_weight: 1
 cover:

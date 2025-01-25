@@ -7,7 +7,7 @@ draft: false
 weight: 10
 # description: ""
 # summary: ""
-categories: ["レビュー", "DS-100本ノック+α"]
+categories: ["レビュー", "100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 # tags_weight: 1
 cover:

@@ -5,8 +5,7 @@ date: 2021-05-03T00:10:20+09:00
 draft: true
 weight: 12
 # description: "{{< k100/q-list >}} RとSQLの演習問題一覧です。"
-
-categories: ["Test"]
+categories: ["Test", "100本ノック+α-test"]
 tags: ["test", "site-tips"]
 
 params: 

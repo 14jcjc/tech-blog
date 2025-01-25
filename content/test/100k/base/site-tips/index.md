@@ -13,7 +13,7 @@ description: "This is description."
 #   show: true
 #   limit: 7 # 関連コンテンツを最大 N件まで表示 (default: 5)
 
-categories: ["Test"]
+categories: ["Test", "100本ノック+α-test"]
 tags: ["test", "site-tips"]
 # tags_weight: 1
 params:
