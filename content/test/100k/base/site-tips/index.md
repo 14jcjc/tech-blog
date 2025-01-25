@@ -317,10 +317,6 @@ Markdown は保持されることに注意。
 
 aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzz" >}} aaaa
 
-
-
-
-
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
 ```

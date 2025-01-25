@@ -112,9 +112,10 @@ params:
     footer:
         since: 2025
         # HTML is supported -> markdownify に改修: 
+        # [Privacy Policy]({{< ref "/privacy" >}})
         customText: |
-          [Privacy Policy]({{< ref "/privacy" >}})
-
+          {{< href-target-blank url="/tech-blog/privacy" text="Privacy Policy" class="link-2" >}}
+    
     dateFormat:
         published: "2006-01-02"
         lastUpdated: "2006-01-02 15:04 JST"
