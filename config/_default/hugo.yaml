@@ -122,8 +122,9 @@ params:
 
     sidebar:
         compact: false
-        emoji: "🧑‍💻"
-        subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
+        # emoji: "🧑‍💻"
+        # subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
+        subtitle: "現場で役立つデータの世界 : <br>RとSQLで学ぶ実践スキル"
         avatar:
             enabled: true
             local: true
