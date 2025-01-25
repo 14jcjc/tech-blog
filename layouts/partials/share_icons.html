@@ -1,18 +1,21 @@
-{{- $pageurl := .Permalink }}
-{{- $title := .Title }}
+{{- $pageurl := .Permalink -}}
+{{- $title := .Title -}}
 
-{{- $.Scratch.Set "tags" ""}}
+{{- $.Scratch.Set "tags" "" -}}
 
-{{- with .Params.Tags }}
-{{- $hashtags := newScratch}}
-{{- range . }}{{ $hashtags.Add "tags" (slice (replaceRE "(\\s)" "" . ))}}{{end}}
-{{- $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") }}
+{{- with .Params.Tags -}}
+{{- $hashtags := newScratch -}}
+{{- range . -}}{{- $hashtags.Add "tags" (slice (replaceRE "(\\s)" "" . )) -}}{{- end -}}
+{{- $.Scratch.Set "tags" (delimit ($hashtags.Get "tags") ",") -}}
 {{- end -}}
 
-{{- $custom := false }}
-{{- $ShareButtons := (.Param "ShareButtons")}}
-{{- with $ShareButtons }}{{ $custom = true }}{{ end }}
+{{- $custom := false -}}
+{{- $ShareButtons := (.Param "ShareButtons") -}}
+{{- with $ShareButtons -}}{{- $custom = true -}}{{- end -}}
 
+
+{{/*  <div class="share-buttons-div">  */}}
+<article class="main-article">
 <ul class="share-buttons">
     {{- if (or (cond ($custom) (in $ShareButtons "x") (true)) (cond ($custom) (in $ShareButtons "twitter") (true))) }}
     <li>
@@ -99,3 +102,5 @@
     </li>
     {{- end }}
 </ul>
+</article>
+{{/*  </div>  */}}

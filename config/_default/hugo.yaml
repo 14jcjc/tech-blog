@@ -4,7 +4,8 @@ baseURL: "https://14katsumix.github.io/tech-blog/"
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 theme: hugo-theme-stack
 
-title: katsuのブログ
+# title: katsu'sブログ
+title: katsuブログ
 copyright: katsu
 author: katsu
 # description: 
