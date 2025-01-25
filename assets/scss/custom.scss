@@ -107,7 +107,7 @@
   }
 
   // --article-line-height: 1.85;
-  --article-line-height: 2.0;
+  --article-line-height: 1.95;
 }
 
 /*
@@ -195,7 +195,7 @@
 .article-content code {
   // margin: auto 4px;
   /* padding: 4px 6px; */
-  padding: 2px 6px;
+  // padding: 2px 6px;
   // font-size: 15px;
   font-size: var(--code-font-size);
   line-height: 1.8;
@@ -325,7 +325,7 @@
   // background: var(--code-block-bg) !important;
   // border-radius: var(--radius);
   // overflow-x: auto;
-  word-break: break-all;
+  // word-break: break-all;
 }
 
 // -------------------------------------------------------------------------------
@@ -449,9 +449,10 @@
   padding: 0 var(--card-padding);
   line-height: var(--article-line-height);
 
-  // & > p {
-  //     margin: 1.5em 0;
-  // }
+  & > p {
+      // margin: 1.5em 0;
+      margin: 1.0em 0;
+  }
 
   h1,
   h2,
@@ -605,6 +606,10 @@
     [data-scheme="dark"] &::after {
       background: linear-gradient(to right, #D9E9FF 0%, #405060 100%);
     }
+  }
+
+  h3 {
+    margin-top: 35px;
   }
   
   hr {
