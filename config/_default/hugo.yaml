@@ -306,7 +306,7 @@ related:
 
 markup:
     tableOfContents:
-        ordered: false
+        ordered: true
         endLevel: 4
         startLevel: 2
     
