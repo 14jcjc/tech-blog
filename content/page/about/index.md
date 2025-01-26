@@ -2,26 +2,29 @@
 title: About
 description: 
 date: 2025-01-07
+disableShare: true
+# ShowShareButtons: false
 links:
   - title: Twitter
     description: 
-    website: https://x.com/14katsumix
+    website: https://x.com/14katsumix/
     # image: https://abs.twimg.com/responsive-web/client-web/icon-svg.168b89da.svg
     image: twitter.svg
   - title: GitHub
     description: 
-    website: https://github.com/14katsumix/100knocks-dp
+    website: https://github.com/14katsumix/
     # image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
     image: github.svg
 ---
 
 ## katsu について
 
-R が好きなエンジニアです。個人でこのブログを運営しています。
+R が好きなデータ解析系エンジニアです。個人でこのブログを運営しています。  
+趣味は、映画、ドラマ、アニメ、ミステリー小説です。
 
 ## 当ブログについて
 
-R と SQL を中心に、データサイエンスに役立つ情報を発信しています。
+R と SQL を中心に、データサイエンスに役立つ情報を発信しています。  
 特に、演習問題を通じて実践的なスキルを身につけられるよう工夫しています。
 
 演習問題を解く際は、以下の順序で記事を参考にしていただくとスムーズです。
