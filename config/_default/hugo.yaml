@@ -115,7 +115,7 @@ params:
         # HTML is supported -> markdownify に改修: 
         # [Privacy Policy]({{< ref "/privacy" >}})
         customText: |
-          {{< href-target-blank url="/tech-blog/privacy" text="Privacy Policy" class="link-2" >}}
+          {{< href-target-blank url="/tech-blog/privacy" text="Privacy Policy" class="link-2" target="_self" >}}
     
     dateFormat:
         published: "2006-01-02"
