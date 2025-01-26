@@ -26,8 +26,6 @@ cover:
 #   show: true
 #   limit: 7 # 関連コンテンツを最大 N件まで表示 (default: 5)
 
-ShowToc: true
-TocOpen: true
 # disableHLJS: false
 # disableShare: false
 # hideSummary: false

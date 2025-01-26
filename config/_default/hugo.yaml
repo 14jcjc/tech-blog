@@ -349,7 +349,7 @@ markup:
         lineNumbersInTable: true
         guessSyntax: false
         lineNoStart: 1
-        lineNos: true
+        lineNos: false
         # wrapperClass: highlight
         # lineNos=inline
         # equivalent to lineNos=true and lineNumbersInTable=false
