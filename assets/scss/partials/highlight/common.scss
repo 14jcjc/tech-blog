@@ -2,6 +2,10 @@
 .chroma {
     color: $color;
     background-color: $background-color;
+    // katsu
+    // --comment-text-color: #75715e;
+    // --comment-text-color: #909060;
+    --comment-text-color: #858050;
 }
 
 /* Other */
@@ -337,37 +341,37 @@
 
 /* Comment */
 .chroma .c {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentHashbang */
 .chroma .ch {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentMultiline */
 .chroma .cm {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentSingle */
 .chroma .c1 {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentSpecial */
 .chroma .cs {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentPreproc */
 .chroma .cp {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* CommentPreprocFile */
 .chroma .cpf {
-    color: #75715e;
+    color: var(--comment-text-color);
 }
 
 /* Generic */
