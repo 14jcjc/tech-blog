@@ -27,12 +27,6 @@ dplyr のテーブル参照オブジェクト
 
 * ToDo
 
-- db_result の print は LIMIT付き、について追記。 >![NOTE]
-
-- コードブロックのコメントのカラーを修正する
-
-- About
-
 - privacy を robots.txt などから除外する
 
 - categories: "100本ノック＋α (⭐️5)" などの編集, 画像も(Quantico)
@@ -68,6 +62,7 @@ dplyr のテーブル参照オブジェクト
 - ショートコードで表示したリンクのスタイルが異なる
   -> href-target-blank.html を改修.
 - code, .chroma のフォントサイズ
+- コードブロックのコメントのカラーを変更する
 - コードブロックのスタイルをカスタマイズ: (ファイル名を付ける)
 - コードブロックの半角のフォントが読みずらい（特にスマホで）
 - Alerts
@@ -81,6 +76,7 @@ dplyr のテーブル参照オブジェクト
   -> capitalizeListTitles: false を設定
 - [Privacy Policy]({{< ref "privacy" >}})
 - ドラフトページにアイコンを出す
+- About
 
 * href-target-blank の名称を変更
 
