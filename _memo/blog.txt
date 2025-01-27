@@ -8,7 +8,7 @@ rg -i "関連するコンテンツ" ./layouts -uu
 rg -i "share_icons" ./layouts -uu
 
 rg -i "-accent-color" ./themes/hugo-theme-stack/assets/scss -uu
-rg -i "related-content" ./themes/hugo-theme-stack/assets/scss -uu
+rg -i "blockquote" ./themes/hugo-theme-stack/assets/scss -uu
 
 rg -i "ul" ../tech-blog-2/themes/PaperMod/assets/css -uu
 rg -i "share-buttons" ../tech-blog-2/themes/PaperMod/assets/css -uu

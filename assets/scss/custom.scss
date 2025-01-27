@@ -775,15 +775,15 @@
 
 /* アラート全体のスタイル */
 blockquote.alert {
-  padding-left: 10pt;
+  // padding-left: 10pt;
   padding-top: 1px;
-  padding-bottom: 8px;
+  // padding-bottom: 8px;
   // margin-top: 1.6em;
   // margin-bottom: 1.6em;
-  border-left: 3px solid;
-  background-color: var(--alert-bg-color);
-  color: var(--alert-text-color);
-  font-size: 1.0em;
+  // border-left: 3px solid;
+  // background-color: var(--alert-bg-color);
+  // color: var(--alert-text-color);
+  // font-size: 1.0em;
   /* background-color: #f9f9f9; */
   /* border-radius: 4px; */
   /* font-size: 1rem; */
@@ -792,7 +792,7 @@ blockquote.alert {
 
 /* 各アラートタイプに応じたスタイル */
 .alert-heading {
-  margin-bottom: 0.4em !important; /* 下部マージンを指定 */
+  margin-bottom: -0.4em !important; // 下部マージンを指定
 }
 
 .alert-note {
