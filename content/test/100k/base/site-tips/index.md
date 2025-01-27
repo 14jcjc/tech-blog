@@ -92,18 +92,6 @@ For example, the base template below calls the [partial](https://gohugo.io/func
 
 ## コード
 
-```python
-# この行はコメントアウト.
-```
-
-```sql
--- この行はコメントアウト.
-select 
-  *
-from
-  customer_amount
-```
-
 ```md {linenos=false, anchorLineNos=false}
 r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```

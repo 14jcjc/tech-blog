@@ -1,0 +1,18 @@
+{{- $context := .Context -}}
+<section class="widget archives">
+    <h2 class="widget-title section-title">Share:</h2>
+    <ul class="widget-social">
+        <li><a href="https://twitter.com/intent/tweet?url={{ $context.Permalink }}&text={{ $context.Title }}" class="sc-twitter" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a></li>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ $context.Permalink }}&t={{ $context.Title }}" class="sc-facebook" target="_blank" title="Share on Facebook">
+            <i class="fab fa-facebook"></i>
+        </a></li>
+        <li><a href="https://www.reddit.com/submit?url={{ $context.Permalink }}&title={{ $context.Title }}" class="sc-reddit" target="_blank" title="Share via Reddit">
+        <i class="fab fa-reddit-alien"></i>
+        </a></li>
+        <li><a href="mailto:?subject={{ $context.Title }}&body={{ $context.Permalink }}" class="sc-envelope" target="_blank" title="Share via Email">
+        <i class="fas fa-envelope"></i>
+        </a></li>
+    </ul>
+</section>

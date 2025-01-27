@@ -157,6 +157,10 @@ params:
             - type: tag-cloud
               params:
                   limit: 30
+            # - type: sharebutton
+            - type: share-icons
+              params:
+                shareButtons: ["x", "linkedin", "facebook", "telegram"]
     
     opengraph:
     # Open Graph プロトコルにより, 任意のWebページをソーシャルグラフ内のリッチオブジェクトにすることができる

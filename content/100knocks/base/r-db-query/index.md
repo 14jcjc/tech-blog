@@ -72,9 +72,10 @@ db_result =
   arrange(desc(profit))
 ```
 
-`tbl()` でデータベースの **テーブルを dplyr で参照するオブジェクト** [^1] を作成します。これにより、`dbplyr` を使用できるようになります。
+`tbl()` でデータベースの **テーブルを dplyr で参照するオブジェクト** [^1] を作成します。
+これにより、`filter()` などの `dplyr`コードに対し `dbplyr` が別の方法で実行するようになり、コードが SQL に変換されます準備が整います。
 
-`db_result` はテーブル操作をSQLクエリの構造で保持しています。この時点ではまだデータベース操作は行われていません。
+その結果、`db_result` はテーブル操作をSQLクエリの構造で保持します。この時点ではまだデータベース操作は行われていません。
 
 [^1]: `tbl()` が返すオブジェクトについて、他には以下のような表現が適切かと思います。
     - dplyr のテーブル参照
@@ -95,7 +96,7 @@ WHERE (sales >= 15000.0)
 ORDER BY profit DESC
 ```
 
-データベース操作に対応している `dplyr` の関数については、以下の公式ドキュメントを参照してください。  
+データベース操作に対応している `dplyr` の関数については、以下の公式ドキュメントに一覧があります。
 `tidyr` の一部の関数も対応しています。
 
 - {{< href-target-blank url="https://dbplyr.tidyverse.org/reference/index.html#dplyr-verbs">}}
@@ -111,8 +112,9 @@ ORDER BY profit DESC
 df_result = collect(db_result)
 df_result %>% head(3) # 出力
 ```
+<p>
 
-```
+```text
 # A tibble: 3 × 3
   store_code sales profit
   <chr>      <dbl>  <dbl>
@@ -129,8 +131,9 @@ df_result %>% head(3) # 出力
 > ```r
 > db_result %>% print(n = 3)
 > ```
+> <p>
 >
-> ```
+> ```text
 > # Source:     SQL [?? x 3]
 > # Database:   DuckDB v1.1.3-dev165 [root@Darwin 24.1.0:R 4.4.2/:memory:]
 > # Ordered by: desc(profit)

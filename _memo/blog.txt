@@ -6,6 +6,7 @@ rg -i "関連するコンテンツ" ./themes/hugo-theme-stack -uu
 rg -i ".Draft" ./themes/hugo-theme-stack/ -uu
 rg -i "関連するコンテンツ" ./layouts -uu
 rg -i "share_icons" ./layouts -uu
+rg -i "ShowShareButtons" ./layouts -uu
 
 rg -i "-accent-color" ./themes/hugo-theme-stack/assets/scss -uu
 rg -i "blockquote" ./themes/hugo-theme-stack/assets/scss -uu

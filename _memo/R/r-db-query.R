@@ -55,6 +55,27 @@ df_result %>% head(3)
 # 3 S005       16000   3200
 
 #-------------------------------------------------------------------------------
+# カスタムメソッドを定義
+custom_db_get_info = function(dbObj, ...) {
+  ll = attr(dbObj, "driver") |> dbGetInfo()
+  # s = ll$dbname
+  # dbname = paste0(
+  #   stringr::str_sub(s, 1, 7), 
+  #   "...", 
+  #   stringr::str_sub(s, stringr::str_length(s) - 24)
+  # )
+  list(
+    # dbname = ll$dbname, 
+    dbname = stringr::str_trunc(ll$dbname, 23, "left"), 
+    # dbname = dbname, 
+    db.version = ll$driver.version
+  )
+}
+
+# dbGetInfo メソッドを duckdb_connection 用にオーバーライド
+methods::setMethod("dbGetInfo", "duckdb_connection", custom_db_get_info)
+
+#-------------------------------------------------------------------------------
 
 db_result %>% print(n = 3)
 

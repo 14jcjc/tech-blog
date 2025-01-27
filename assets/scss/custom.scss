@@ -239,7 +239,8 @@
 // katsu
 :root {
   // --chroma-background-color-hl: #ffffcc;
-  --chroma-background-color-hl: #474733;
+  // --chroma-background-color-hl: #4B4B38;
+  --chroma-background-color-hl: rgba(255, 255, 100, 0.08);
   &[data-scheme="dark"] {
     // --chroma-background-color-hl: #474733;
     // --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
@@ -500,7 +501,7 @@
 
 // -------------------------------------------------------------------------------
 
-// 記事の本文
+// 記事の本文 (.article-content)
 
 .article-content {
   font-family: var(--article-font-family);
@@ -703,6 +704,8 @@
   //   margin-left: 0;
   // }
 }
+
+// .share-buttons
 
 .share-buttons {
     border: 1px solid var(--accent-color);
