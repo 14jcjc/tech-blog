@@ -109,6 +109,7 @@ r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=
 ```
 → 
 ```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+# この行はコメントアウト.
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
   mutate(
@@ -122,6 +123,7 @@ receipt %>%
 R
 
 ```r {name="abcde.R", lineNos=false,lineNoStart=1,hl_lines=[2,"7-8"]}
+# この行はコメントアウト.
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
   mutate(
@@ -155,6 +157,7 @@ with customer_amount as (
   where customer_id NOT LIKE 'Z%'
   group by customer_id
 )
+-- この行はコメントアウト.
 select 
   *
 from
