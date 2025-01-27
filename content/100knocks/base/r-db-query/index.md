@@ -9,6 +9,7 @@ weight: 15
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
+# image: rdb.webp
 # disableShare: false
 # ShowReadingTime: false
 # ShowWordCount: false
@@ -56,40 +57,46 @@ data = tribble(
 DBI::dbWriteTable(
   con, "store_sales", data, overwrite = TRUE
 )
-
-# データベースの store_sales テーブルを dplyr で参照
-db_store_sales = tbl(con, "store_sales")
 ```
 
 ## 遅延評価とは？
 
 `dplyr` を用いたデータベース操作では、すぐにクエリが実行されるわけではありません。
-例えば、以下のコードを実行してもデータ操作はまだ行われません。
+例えば、以下のコードを実行してもデータベース操作はまだ行われません。
 
 ```r
 db_result = 
-  db_store_sales %>% filter(sales >= 15000)
+  tbl(con, "store_sales") %>% filter(sales >= 15000)
 ```
 
-この状態では `db_result` に SQLクエリの構造が保持されているだけで、データ操作は行われていません。
+この状態では `db_result` に SQLクエリの構造が保持されているだけで、データベース操作は行われていません。
 **遅延評価 (lazy evaluation)** の仕組みにより、`collect()` などを呼び出して、データの取得を明示的に要求したときに初めてクエリが実行されます。
 
-## dplyr を用いたクエリ操作
+## dplyr を用いたテーブル操作
 
-次に、`dplyr` を用いてデータを操作 (フィルタリングとソート) します。
+次に、`dplyr` を用いてテーブルを操作します。
+ここでは、フィルタリングとソートをしています。
 
 ```r
-# テーブル操作をSQLクエリとして保持
+db_store_sales = tbl(con, "store_sales")
 db_result = 
   db_store_sales %>%
   filter(sales >= 15000) %>%
   arrange(desc(profit))
 ```
 
+`tbl()` でデータベースの **テーブルを dplyr で参照するオブジェクト** [^1] を作成します。これにより、`dbplyr` を使用できるようになります。
+
+`db_result` はテーブル操作をSQLクエリの構造で保持しています。
+
+[^1]: `tbl()` が返すオブジェクトについて、他には以下のような表現が適切かと思います。
+    - dplyr のテーブル参照
+    - データベースのテーブル参照
+    - テーブル参照
+
 `show_query()` を使うと、実際の SQLクエリを確認できます。
 
 ```r
-# SQLクエリの生成・確認
 show_query(db_result)
 ```
 
@@ -106,7 +113,7 @@ ORDER BY profit DESC
 
 - {{< href-target-blank url="https://dbplyr.tidyverse.org/reference/index.html#dplyr-verbs">}}
 
-## SQLクエリの実行タイミング
+## SQLクエリの実行のタイミング
 
 遅延評価により、SQLクエリが実際に実行されるのは **データ取得を要求する処理** を行ったときです。  
 例えば、`collect()` を呼び出すと、SQLクエリがデータベースで実行され、全ての結果がデータフレームとして返されます。
@@ -130,6 +137,34 @@ df_result %>% head(3) # 出力
 ```
 
 この後、`df_result` を用いて純粋な R コードで作業を継続できます。
+
+> [!NOTE]
+> インタラクティブな表示を含め、`print()` で表示したときにも SQLクエリが実行されます。
+>
+> ```r
+> db_result %>% print(n = 3)
+> ```
+>
+> ```
+> # Source:     SQL [?? x 3]
+> # Database:   DuckDB v1.1.3-dev165 [root@Darwin 24.1.0:R 4.4.2/:memory:]
+> # Ordered by: desc(profit)
+>   store_code sales profit
+>   <chr>      <dbl>  <dbl>
+> 1 S004       20000   4000
+> 2 S002       18000   3500
+> 3 S005       16000   3200
+> ```
+>
+> 厳密には、次のような `LIMIT` 付きのクエリが発行され、最初の3行だけが取得されます。
+>
+> ```sql
+> SELECT *
+> FROM store_sales
+> WHERE (sales >= 15000.0)
+> ORDER BY profit DESC
+> LIMIT 3
+> ```
 
 ## まとめ
 
@@ -173,7 +208,7 @@ DBI::dbWriteTable(
 db_store_sales = tbl(con, "store_sales")
 
 # フィルタリングとソート
-# (テーブル操作をSQLクエリとして保持)
+# (テーブル操作をSQLクエリの構造で保持)
 db_result = 
   db_store_sales %>%
   filter(sales >= 15000) %>%
