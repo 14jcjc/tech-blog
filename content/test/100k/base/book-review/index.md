@@ -4,7 +4,7 @@ slug: "book-review-test"
 date: 2024-12-04T00:01:10+09:00
 # draft: false
 draft: true
-weight: 10
+weight: 1000
 # description: ""
 # summary: ""
 categories: ["レビュー", "Test", "100本ノック+α-test"]

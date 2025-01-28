@@ -96,8 +96,9 @@ params:
     #   - test
     #   - post
 
-    disableShare: false
     ShowShareButtons: true
+    # disableShare: false
+    
     # To customize which share buttons to be enabled on page: 
     # ShareButtons: ["x", "linkedin", "facebook", "telegram"]
 

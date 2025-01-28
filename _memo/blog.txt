@@ -32,6 +32,8 @@ https://ken-info.com/datascience-100knocks/
 #-------------------------------------------------------------------------------
 * ToDo
 
+- single.html から widget/share-icons.html を呼ぶよう修正
+
 - privacy を robots.txt などから除外する
 
 - categories: "100本ノック＋α (Lv5)" などの編集, 画像も(Quantico)

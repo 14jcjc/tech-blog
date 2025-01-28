@@ -1,5 +1,5 @@
 {{- $context := .Context -}}
-{{- $params := .Params -}}
+{{- $params := .Params | default "" -}}
 
 {{/*  {{ printf "%v" $context.Params }}  */}}
 {{/*  {{ printf "%v" $context.Params.Tags }}  */}}
