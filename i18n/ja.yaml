@@ -1,3 +1,4 @@
+# katsu
 note: ノート
 tip: ヒント
 important: 重要
@@ -59,6 +60,10 @@ widget:
     categoriesCloud:
         title:
             other: カテゴリ
+    
+    shareIcons:
+        title:
+            other: シェア
 
 search:
     title:

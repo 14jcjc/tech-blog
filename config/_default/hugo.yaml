@@ -98,7 +98,7 @@ params:
 
     ShowShareButtons: true
     # disableShare: false
-    
+
     # To customize which share buttons to be enabled on page: 
     # ShareButtons: ["x", "linkedin", "facebook", "telegram"]
 
@@ -161,7 +161,8 @@ params:
             # - type: sharebutton
             - type: share-icons
               params:
-                shareButtons: ["x", "linkedin", "facebook", "telegram"]
+                icon: true
+                # shareButtons: ["x", "linkedin", "facebook", "telegram"]
     
     opengraph:
     # Open Graph プロトコルにより, 任意のWebページをソーシャルグラフ内のリッチオブジェクトにすることができる

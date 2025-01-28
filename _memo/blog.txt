@@ -32,7 +32,7 @@ https://ken-info.com/datascience-100knocks/
 #-------------------------------------------------------------------------------
 * ToDo
 
-- single.html から widget/share-icons.html を呼ぶよう修正
+- 画像の圧縮（WebP 形式を利用）
 
 - privacy を robots.txt などから除外する
 

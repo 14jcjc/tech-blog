@@ -1,6 +1,13 @@
 {{- $context := .Context -}}
 {{- $params := .Params | default "" -}}
 
+{{/*  {{ printf "%v" $params }}  */}}
+
+{{ $icon := false }}
+{{ with $params.icon }}
+  {{ $icon = . }}
+{{ end }}
+
 {{/*  {{ printf "%v" $context.Params }}  */}}
 {{/*  {{ printf "%v" $context.Params.Tags }}  */}}
 {{/*  []string{"R", "SQL"}  */}}
@@ -23,10 +30,16 @@
 {{- if (and site.Params.ShowShareButtons (ne $context.Params.disableShare true)) }}
 {{/*  {{- if site.Params.ShowShareButtons }}  */}}
 
-{{/*  <div class="share-buttons-div">  */}}
-<section class="widget archives">
-  <h2 class="widget-title section-title">シェア</h2>
+<section class="widget shareIcons">
+  {{- if $icon -}}
+  <div class="widget-icon">
+    {{- partial "helper/icon" "share" -}}
+  </div>
+  {{- end -}}
+  <h2 class="widget-title section-title">{{ T "widget.shareIcons.title" }}</h2>
+  {{/*  <h2 class="widget-title section-title">シェア</h2>  */}}
   <article class="main-article">
+    {{/*  <div class="tagCloud-tags">  */}}
     <ul class="share-buttons">
         {{- if (or (cond ($custom) (in $ShareButtons "x") (true)) (cond ($custom) (in $ShareButtons "twitter") (true))) -}}
         <li>
