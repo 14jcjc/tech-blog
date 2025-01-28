@@ -74,12 +74,11 @@ menu:
       weight: 50
       params: 
         icon: search
-    - name: Links
-    # - name: リンク
-      url: /links
-      weight: 60
-      params:
-          icon: link
+    # - name: Links
+    #   url: /links
+    #   weight: 60
+    #   params:
+    #       icon: link
 
     # - name: "100k-standard"
     #   url: "/test/100k/standard"
