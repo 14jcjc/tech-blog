@@ -87,6 +87,7 @@ db_result =
 ```r
 show_query(db_result)
 ```
+
 <p>
 
 ```sql
@@ -112,6 +113,7 @@ ORDER BY profit DESC
 df_result = collect(db_result)
 df_result %>% head(3) # 出力
 ```
+
 <p>
 
 ```text
@@ -131,6 +133,7 @@ df_result %>% head(3) # 出力
 > ```r
 > db_result %>% print(n = 3)
 > ```
+>
 > <p>
 >
 > ```text

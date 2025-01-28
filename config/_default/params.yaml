@@ -27,10 +27,7 @@ k100:
     sdc: "データサイエンティスト協会スキル定義委員会"
     title: "データサイエンス100本ノック（構造化データ加工編）"
     git: 
-      url: |
-        "https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess"
-    # book: 
-    #   title: "データサイエンス100本ノック～構造化データ加工編ガイドブック"
+      url: "https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess"
 
 products: 
   ds100kdp: 

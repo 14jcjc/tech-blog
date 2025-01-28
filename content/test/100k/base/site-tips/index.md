@@ -302,6 +302,7 @@ Markdown は保持されることに注意。
    ```go-html-template {linenos=false,anchorLineNos=false}
    {{</* param k100.site.title */>}}  
    ```
+   
    → {{< param k100.site.title >}}  
 
 2. content内のparams
@@ -309,11 +310,13 @@ Markdown は保持されることに注意。
    ```go-html-template {linenos=false,anchorLineNos=false}
    {{</* param testparam */>}}
    ```
+
    → {{< param testparam >}}  
 
    ```go-html-template {linenos=false,anchorLineNos=false}
    {{</* param testparam2.nestparam */>}}
    ```
+
    → {{< param testparam2.nestparam >}}
 
 ### href-target-blank
@@ -323,12 +326,14 @@ aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
 ```
+
 → 
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://..." text="リポジトリ📂" */>}}
 ```
+
 → 
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="リポジトリ📂" >}}
 
@@ -336,6 +341,7 @@ aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
  class="link2" */>}}
 ```
+
 → 
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="link2" >}}
 
@@ -343,12 +349,14 @@ aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text
 {{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
  title="About us" */>}}
 ```
+
 → 
 {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" title="About us" >}}
 
 ```md {linenos=false,anchorLineNos=false}
 {{</* href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" */>}}
 ```
+
 → 
 {{< href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" >}}
 
@@ -357,15 +365,25 @@ aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text
 {{</* href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" 
 target="_self" */>}}
 ```
+
 → 
 {{< href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439"
  target="_self" >}}
+
+### product\-name
+
+```go-html-template {linenos=false,anchorLineNos=false}
+{{</* product-name "ds100kdp" */>}}
+```
+
+→ {{< product-name "ds100kdp" >}}
 
 ### product\-link
 
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* product-link id="ds100kdp" platform="amazon" */>}}
 ```
+
 → 
 {{< product-link id="ds100kdp" platform="amazon" >}}
 
@@ -373,6 +391,7 @@ target="_self" */>}}
 {{</* product-link class="nolink" id="ds100kdp" platform="amazon"
  type="url" text="これは通常のURL" */>}}
 ```
+
 → 
 {{< product-link class="nolink" id="ds100kdp" platform="amazon" type="url" text="これは通常のURL" >}}
 
@@ -382,6 +401,7 @@ target="_self" */>}}
 {{</* ref "overview.md#d2" */>}}    → 絶対URL
 {{</* relref "overview.md#d2" */>}} → 相対URL
 ```
+
 →  
 {{< ref "overview.md#d2" >}}  
 {{< relref "overview.md#d2" >}}
@@ -391,6 +411,7 @@ target="_self" */>}}
   ```md {linenos=false,anchorLineNos=false}
   [overview-BBB はこちら]({{</* ref "overview#bbb" */>}} "overview-BBB")
   ```
+
   → [overview-BBB はこちら]({{< ref "overview#bbb" >}} "overview-BBB")
 
 - overview.md#d2 へのリンク
@@ -398,6 +419,7 @@ target="_self" */>}}
   ```md {linenos=false,anchorLineNos=false}
    [overview-d2 はこちら]({{</* ref "overview.md#d2" */>}} "About us")
   ```
+
   → [overview-d2 はこちら]({{< ref "overview.md#d2" >}} "About us")
 
   Rendered:
