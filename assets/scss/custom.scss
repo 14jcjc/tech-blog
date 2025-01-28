@@ -190,9 +190,10 @@
   // --code-background-color: rgba(0, 0, 0, 0.12);
   // --code-text-color: #808080;
 
-  --code-background-color: rgba(0, 0, 0, 0.04);
+  --code-background-color: rgba(0, 0, 0, 0.08);
   // --code-text-color: #303030;
-  --code-text-color: rgba(0, 0, 0, 0.95)
+  // --code-text-color: rgba(0, 0, 0, 0.95)
+  --code-text-color: rgba(20, 20, 30, 0.9)
 
   --table-border-color: #dadada;
   --tr-even-background-color: #efefee;
@@ -248,6 +249,19 @@
   }
 }
 
+.article-content .code-block-content {
+  margin-left: 5px;
+  margin-bottom: 20px;
+
+  .highlight {
+    // padding: var(--card-padding);
+    // margin-left: calc(var(--card-padding) * (-0.8));
+    // background-color: #FF9900;
+    // padding: 10px 15px 10px calc(var(--card-padding) * 0.8);
+    padding: 10px 2px 10px calc(var(--card-padding) - 5px);
+  }
+}
+
 // .chroma pre {
 //   display: block;
 //   width: 100%;
@@ -295,6 +309,10 @@
 }
 
 /* LineNumbers (link) */
+.chroma .ln .lnlinks {
+  color: #7f7f7f;
+  text-decoration: underline;
+}
 .chroma .lnt .lnlinks {
   color: #7f7f7f;
   text-decoration: underline;
@@ -796,6 +814,8 @@ blockquote.alert {
 /* 各アラートタイプに応じたスタイル */
 .alert-heading {
   margin-bottom: -0.4em !important; // 下部マージンを指定
+  font-size: 0.95em;
+  font-weight: bold;
 }
 
 .alert-note {

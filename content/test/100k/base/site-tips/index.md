@@ -53,7 +53,10 @@ summary: の設定より優先度が高いです。
 
 ## リスト
 
-本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文。
+- ああああああああああああああ
+  - うううううううううううううう
+  - ええええええええええええええ
+<p>
 
 - ああああああああああああああ
 - いいいいいいいいいいいいいい
@@ -95,7 +98,7 @@ For example, the base template below calls the [partial](https://gohugo.io/func
 ```md {linenos=false, anchorLineNos=false}
 r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
-→ 
+
 ```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 # この行はコメントアウト.
 receipt %>% 
@@ -124,7 +127,7 @@ receipt %>%
 
 全ハイライト、アンカー付きのRのコードは以下のようになります。
 
-```r {lineNumbersInTable=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+```r {lineNumbersInTable=false,linenos=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -302,7 +305,7 @@ Markdown は保持されることに注意。
    ```go-html-template {linenos=false,anchorLineNos=false}
    {{</* param k100.site.title */>}}  
    ```
-   
+
    → {{< param k100.site.title >}}  
 
 2. content内のparams
@@ -529,10 +532,12 @@ read: assets/test/pets.csv
 
 Rのコードは以下のようになります。
 
-```
+```text
 r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
+
 → 
+
 ```r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
@@ -547,7 +552,9 @@ receipt %>%
 ```
 r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
+
 → 
+
 ```r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 

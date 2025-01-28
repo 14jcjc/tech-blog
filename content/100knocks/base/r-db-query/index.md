@@ -88,8 +88,6 @@ db_result =
 show_query(db_result)
 ```
 
-<p>
-
 ```sql
 SELECT store_sales.*
 FROM store_sales
@@ -114,8 +112,6 @@ df_result = collect(db_result)
 df_result %>% head(3) # 出力
 ```
 
-<p>
-
 ```text
 # A tibble: 3 × 3
   store_code sales profit
@@ -133,8 +129,6 @@ df_result %>% head(3) # 出力
 > ```r
 > db_result %>% print(n = 3)
 > ```
->
-> <p>
 >
 > ```text
 > # Source:     SQL [?? x 3]

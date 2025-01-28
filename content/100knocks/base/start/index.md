@@ -1,90 +1,176 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α - 概要・導入"
 slug: "start"
-date: 2025-01-06T00:03:13+09:00
+date: 2025-01-07T22:34:13+09:00
 draft: false
-# draft: true
 weight: 15
-description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について。"
+description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
-cover:
-  # image: "images/papermod-cover.png" #< /static
-  # image: "images/100knocks/cover-100k-standard.png" #< /static
-  relative: false
-  hiddenInList: false
-  hiddenInSingle: false # hide on single page
-  # hidden: true
-# ShowToc: false
-# TocOpen: false
-# disableHLJS: false
 # disableShare: false
-# hideSummary: false
-# searchHidden: false
-# ShowReadingTime: false
-# ShowWordCount: false
 ---
 
-前回の記事: 
-データサイエンス100本ノック～構造化データ加工編ガイドブック レビュー
+**参考記事:**
+- [【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』]({{< ref "book-review" >}})
+- [R でデータベース操作 – dplyr/dbplyr を使った SQLクエリ生成]({{< ref "r-db-query" >}})
 
-## 概要
+## はじめに
 
-当ブログでは「データサイエンス100本ノック＋α」と題し、書籍の演習問題を解説し、R と SQL のサンプルコードを紹介していきます。
-「標準編」では書籍の30題ほどの演習問題をピックアップし、「発展編」ではオリジナル問題を紹介していく予定です。
-基本的に、各演習問題では以下のサンプルコードを解説付きで紹介します。
+本ブログでは、「データサイエンス100本ノック＋α」と題し、100本ノックの演習問題をベースに、R によるデータベース操作を加えた解説を行います。
 
-- Rコード: データフレームでの処理
-- Rコード: データベース・バックエンドでの処理 << --> データベース・バックエンドの章にリンクを貼る >>
-- SQLクエリ: 上記処理と等価のもの
+- **シリーズ構成**
+  - **標準編**: 100本ノックの中から約30本をピックアップし、R と SQL の両方で解説
+  - **発展編**: オリジナル問題を作成し、より実践的なデータ処理を紹介予定
+<p>
 
-サンプルコードはなるべくエレガントな記述を心がけたいと思います。
+- **解説方針**  
+  各問題について、以下のコードを掲載します。
+  - **Rコード** : データフレーム操作
+  - **Rコード** : データベース操作
+  - **SQLクエリ** : 上記の操作と等価なコード
+
+サンプルコードは可能な限りエレガントで効率的な記述を心がけたいと思います。
 
 ## 環境構築
 
-データサイエンス100本ノック＋α では、Docker や jupyter notebook などの環境を必要とせず、RStudio など R の実行環境さえあれば OK です。
-なお、私は VSCode を愛用しています。
+このシリーズでは、Docker や Jupyter Notebook などの環境を必要とせず、**RStudio などの R 実行環境** があれば十分です。
+私は VSCode を愛用していますが、RStudio でも問題なく動作します。
 
-環境構築の手順は以下の通りです。
+### 1. GitHub リポジトリをクローン
 
-1. ...
-2. ...
-3. ...
-4. ディレクトリ構成
-5. 作業ディレクトリについて
+以下のコマンドでリポジトリをクローンします。
 
-## 利用できる項目
+```sh
+cd /your_directory_path
+git clone https://github.com/xxx/100knocks-dp.git
+```
 
-環境構築後、以下の項目を利用できるようになります。
+`100knocks-dp` が作成されディレクトリ構成は以下のようになります。
 
-### パッケージ
-<< リスト or 表 >>
+```text {name="100knocks-dp"}
+work
+  ├── DB
+  │   └── _ReadMe.txt
+  ├── data
+  │   └── _ReadMe.txt
+  ├── data_setup.R
+  ├── env_setup.R
+  ├── functions.R
+  └── init.R
+```
 
-### 変数
-<< リスト or 表 >>
-con, df_receipt, db_receipt, ...
+### 2. init.R を実行する
 
-### 関数
-<< リスト or 表 >>
-my_show_query, my_sql_render, my_select
+RStudio などで `init.R` を開いて実行します。  
+実行後、以下のようなディレクトリ構成になります。
 
-使い方については後述します。
+```text {name="100knocks-dp"}
+work
+  ├── DB
+  │   ├── 100knocks.duckdb
+  │   └── _ReadMe.txt
+  ├── data
+  │   ├── 100knocks_ER.png
+  │   ├── _ReadMe.txt
+  │   ├── category.csv
+  │   ├── customer.csv
+  │   ├── geocode.csv
+  │   ├── product.csv
+  │   ├── receipt.csv
+  │   └── store.csv
+  ├── data_setup.R
+  ├── env_setup.R
+  ├── functions.R
+  └── init.R
+```
 
-### ER図 (データの構造・関係性)
+もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
 
-work/data/100knocks_ER.png
+```r {name="init.R"}
+work_dir_path = init_path |> dirname()
+```
 
-これら6個のテーブルのER図: 
+`init.R` の上記の箇所を、例えば以下のように変更して、再実行してみてください。
 
-<< ここに画像を貼る >>
-<< 出典を記載 >>
+```r
+work_dir_path = "."
+```
+
+## 利用可能なリソース
+
+環境構築後、以下のリソースが利用できます。
+
+### 1. データベースファイル
+
+`work/DB/100knocks.duckdb`
+
+### 2. 主な R パッケージ
+
+- `dplyr`
+- `tidyr`
+- `magrittr`
+- `tibble`
+- `stringr`
+- `lubridate`
+- `DBI`
+- `dbplyr`
+- `dbx`
+- `duckdb`
+
+### 3. R オブジェクト
+
+#### データベース接続オブジェクト
+
+- `con`
+
+#### データフレーム
+
+- `df_customer`
+- `df_receipt`
+- `df_product`
+- `df_store`
+- `df_category`
+- `df_geocode`
+
+#### データベースのテーブル参照
+
+- `db_customer`
+- `db_receipt`
+- `db_product`
+- `db_store`
+- `db_category`
+- `db_geocode`
+
+#### 便利な関数
+
+- `my_show_query()`
+- `my_sql_render()`
+- `my_select()`
+
+## ER図 (データの構造・関係性)
+
+本シリーズで扱う6つのテーブルの関係を示すER図は、`work/data/100knocks_ER.png` にあります。
+
+{{< figure src="ER.png" alt="ER図" title="" caption="" width="100%" link="" 
+  rel="noopener" target="_blank" >}}
+{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
 
 ## DuckDB について
 
+本シリーズでは、軽量かつ高速なデータベースエンジン **DuckDB** を使用します。
+DuckDB は、データサイエンスのニーズに合わせて設計された高性能データベースで、分析向けの機能が充実しています。
+特に、ローカル環境でのデータ分析や R との統合に適しています。
+
+本シリーズで DuckDB を使用するのは、ファイルベースで手軽に扱える上、
+PostgreSQL 互換の SQL 構文を扱うため、学習した内容を他のデータベースに簡単に適用でき、教育に最適だからです。
+
+今回のような小規模なデータセットでしたら、インメモリモード (完全に RAM 上で動作) で使い、クエリ処理をさらに高速化することもできます。
 
 ## 謝辞
 
-データサイエンティスト協会様が作成された素晴らしい教育コンテンツを、より豊かにできればという思いで当ブログを作成しました。データサイエンティスト協会様に感謝申し上げます。
-当ブログで使用するデータおよびER図の権利はデータサイエンティスト協会様にあります。
-より多くの方のスキルアップのために活用いただければ幸いです。
+当ブログは、{{< param k100.dss.name >}}様が作成された素晴らしい教育コンテンツを、さらに発展させる目的で作成しました。
+
+**データおよび ER図の権利は{{< param k100.dss.name >}}様に帰属します。**
+
+より多くの方がデータサイエンスのスキルを高める一助となれば幸いです。
