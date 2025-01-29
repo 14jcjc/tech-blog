@@ -36,6 +36,7 @@ https://ken-info.com/datascience-100knocks/
 
 - photoswipe
   https://junpei-sugiyama.com/photoswipe/
+  shortcodeも！
 
 - 画像の圧縮（WebP 形式を利用）
 
