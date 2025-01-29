@@ -51,7 +51,43 @@ summary: の設定より優先度が高いです。
 
 ---
 
-## PhotoSwipe Lightbox
+## Gallery
+
+イメージファイルはローカルに置く必要がある。
+外部イメージは使用不可。
+
+![pareto](pareto.png) ![treemap](treemap.png)
+![box](box.png) ![tree](tree.png)
+
+## v4
+
+<ul class="pswp-gallery gallery-base">
+  <li>
+  <a href="box.png" data-width="600" data-height="400">
+    <img class="gallery-image" src="box.png" width="48%" alt="サムネイル1">
+  </a>
+  </li>
+  <li>
+  <a href="tree.png" data-width="400" data-height="300">
+    <img class="gallery-image" src="tree.png" width="48%" alt="サムネイル2">
+  </a>
+  </li>
+</ul>
+
+{{% comment %}}
+<div class="gallery-base">
+  <a href="box.png" data-width="600" data-height="400">
+    <img class="gallery-image" src="box.png" alt="サムネイル1">
+  </a>
+  <a href="tree.png" data-width="400" data-height="300">
+    <img class="gallery-image" src="tree.png" alt="サムネイル2">
+  </a>
+</div>
+{{% /comment %}}
+
+## PhotoSwipe　v5 (Lightbox)
+
+上述のMarkdownシンタックスを使う！
 
 <div class="pswp-gallery" id="gallery-base">
   <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
@@ -79,8 +115,6 @@ summary: の設定より優先度が高いです。
     <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-200.jpg" alt="" />
   </a>
 </div>
-
-本文本文本文本文本文本文本文本文本文本文本文本文
 
 ## リスト
 
@@ -815,18 +849,31 @@ Rendered:
 
 ### 引用 (\>, \>>)
 
+#### quote
+
+{{< quote author="A famous person" source="The book they wrote" url="https://en.wikipedia.org/wiki/Book">}}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore **magna aliqua**. Ut enim ad minim veniam, quis ***nostrud exercitation*** ullamco laboris nisi ut aliquip ex ea commodo consequat.
+{{< /quote >}}
+
+{{< quote >}}
+[これは ref で作ったリンク]({{< ref "#" >}} "リンク")  
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore **magna aliqua**. Ut enim ad minim veniam, quis ***nostrud exercitation*** 
+{{< /quote >}}
+
 #### 出典を明記しない引用
 
 > *ブロック引用符内*でマークダウン構文を使用できることに**注意してください**。
 
-``` {lineNos=false}
-> - aaaaaaaaaaaaaaaaaaaaa
-> - bbbbbbbbbbbbbbbbbbbbb
+```text
+> aaaaaaaaaaaaaaaaaaaaa  
+> bbbbbbbbbbbbbbbbbbbbb
 >> xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
 → 
-> - aaaaaaaaaaaaaaaaaaaaa
-> - bbbbbbbbbbbbbbbbbbbbb
+
+> aaaaaaaaaaaaaaaaaaaaa  
+> bbbbbbbbbbbbbbbbbbbbb
 >> xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 #### 出典を明記した引用

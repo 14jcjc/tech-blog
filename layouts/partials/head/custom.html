@@ -37,25 +37,55 @@
 {{ $css := "awesome/css/awesome.css" | relURL }}
 <link rel="stylesheet" href="{{ $css }}">
 
-{{/*  PhotoSwipe  */}}
+{{/*  PhotoSwipe v5 */}}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.min.css" integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{/*  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.min.css" integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  */}}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe.umd.min.js" defer>
-</script>
+{{/*  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe.umd.min.js" defer>
+</script>  */}}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe-lightbox.umd.min.js" defer>
-</script>
+{{/*  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe-lightbox.umd.min.js" defer>
+</script>  */}}
 
-<script defer>
+{{/*  <script defer>
   document.addEventListener("DOMContentLoaded", function () {
     const lightbox = new PhotoSwipeLightbox({
-      gallery: '#gallery-base', // 適宜変更
+      gallery: '#gallery-base', 
       children: 'a',
       pswpModule: PhotoSwipe
     });
     lightbox.init();
   });
+</script>  */}}
+
+{{/*  PhotoSwipe v4 */}}
+
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  var pswpElement = document.querySelectorAll('.pswp')[0];
+  var galleryElements = document.querySelectorAll('.gallery-base a');
+
+  var items = Array.from(galleryElements).map(function (el) {
+    return {
+      src: el.getAttribute('href'),
+      w: parseInt(el.dataset.width, 10),
+      h: parseInt(el.dataset.height, 10)
+    };
+  });
+
+  galleryElements.forEach(function (el, index) {
+    el.addEventListener('click', function (event) {
+      event.preventDefault();
+      var options = {
+        index: index,
+        bgOpacity: 0.7,
+        showHideOpacity: true
+      };
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+      gallery.init();
+    });
+  });
+});
 </script>
 
 {{/*  
@@ -68,4 +98,3 @@
   });
   lightbox.init();
 </script>  */}}
-
