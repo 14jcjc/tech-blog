@@ -51,12 +51,51 @@ summary: の設定より優先度が高いです。
 
 ---
 
+## PhotoSwipe Lightbox
+
+<div class="pswp-gallery" id="gallery-base">
+  <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+    data-pswp-width="1669" 
+    data-pswp-height="2500"  
+     target="_blank">
+    <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+  </a>
+  <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-2500.jpg" 
+    data-pswp-width="1875" 
+    data-pswp-height="2500" 
+     target="_blank">
+    <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-200.jpg" alt="" />
+  </a>
+</div>
+
+本文本文本文本文本文本文本文本文本文本文本文本文
+
+<div class="pswp-gallery" id="gallery-base">
+  <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+    data-pswp-width="1669" 
+    data-pswp-height="2500"  
+     target="_blank">
+    <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+  </a>
+  <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-2500.jpg" 
+    data-pswp-width="1875" 
+    data-pswp-height="2500" 
+     target="_blank">
+    <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/7/img-200.jpg" alt="" />
+  </a>
+</div>
+
 ## リスト
+
+- ああああああああああああああ
+  - いいいいいいいいいいいいいい
+<!-- <p> -->
+- うううううううううううううう
+  - ええええええええええええええ
 
 - ああああああああああああああ
   - うううううううううううううう
   - ええええええええええええええ
-<p>
 
 - ああああああああああああああ
 - いいいいいいいいいいいいいい

@@ -36,3 +36,38 @@
 {{/*  font awesome  */}}
 {{ $css := "awesome/css/awesome.css" | relURL }}
 <link rel="stylesheet" href="{{ $css }}">
+
+{{/*  PhotoSwipe  */}}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.min.css" integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe.umd.min.js" defer>
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe-lightbox.umd.min.js" defer>
+</script>
+
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery-base', // 適宜変更
+      children: 'a',
+      pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+  });
+</script>
+
+{{/*  
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.min.js';
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-base',
+    children: 'a',
+    pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.esm.min.js')
+  });
+  lightbox.init();
+</script>  */}}
+
+
+

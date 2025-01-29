@@ -1,6 +1,8 @@
 
 * grep
 
+rg -i "photoswipe" ./themes/hugo-theme-stack/ -uu
+
 rg -i "@media" ./themes/hugo-theme-stack/assets/scss -uu
 rg -i "code-block-content" ./themes/hugo-theme-stack -uu
 rg -i ".Draft" ./themes/hugo-theme-stack/ -uu
@@ -8,7 +10,7 @@ rg -i "関連するコンテンツ" ./layouts -uu
 rg -i "share_icons" ./layouts -uu
 rg -i "ShowShareButtons" ./layouts -uu
 
-rg -i "code-block-content" ./themes/hugo-theme-stack/assets/scss -uu
+rg -i "PhotoSwipe" ./themes/hugo-theme-stack/ -uu
 rg -i "highlight" ./themes/hugo-theme-stack/assets/scss -uu
 
 rg -i "ul" ../tech-blog-2/themes/PaperMod/assets/css -uu
@@ -31,6 +33,9 @@ https://ken-info.com/datascience-100knocks/
 
 #-------------------------------------------------------------------------------
 * ToDo
+
+- photoswipe
+  https://junpei-sugiyama.com/photoswipe/
 
 - 画像の圧縮（WebP 形式を利用）
 
@@ -448,146 +453,4 @@ disableLazyLoading = true
 
 以下のブログ記事をブラッシュアップして。
 
----
-title: "[R+SQL] データサイエンス100本ノック＋α - 概要・導入"
-slug: "start"
-date: 2025-01-07T22:34:13+09:00
-draft: false
-weight: 15
-description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について"
-categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
----
-
-## はじめに
-
-本ブログでは、「データサイエンス100本ノック＋α」と題し、『データサイエンス100本ノック（構造化データ加工編）』の演習問題をベースに、R によるデータベース操作を加えた解説を行います。
-
-**シリーズ構成**
-- **標準編**: 100本ノックの中から約30本をピックアップし、RとSQLの両方で解説
-- **発展編**: オリジナル問題を作成し、より実践的なデータ処理を紹介
-
-**解説方針**
-各問題について、以下のコードを掲載します。
-- **Rコード** : データフレーム操作
-- **Rコード** : データベース操作
-- **SQLクエリ** : 上記の操作と等価なコード
-
-コードは可能な限りエレガントで効率的に記述し、シンプルかつ実用的な解決策を提示します。
-
----
-
-## 環境構築
-
-このシリーズでは、Docker や Jupyter Notebook を使用せず、**RStudio などの R 実行環境**があれば十分です。
-
-私は VSCode を愛用していますが、RStudio でも問題なく動作します。
-
-### 1. GitHub リポジトリのクローン
-
-以下のコマンドでリポジトリをクローンしてください。
-
-```sh
-cd /your_directory_path
-git clone https://github.com/xxx/100knocks-dp.git
-```
-
-### 2. init.R の実行
-
-RStudio などで `init.R` を開き、実行してください。
-
-初回実行後、`work/DB/100knocks.duckdb` が作成され、データベースが利用できるようになります。
-
-もしエラーが発生した場合は、作業ディレクトリの設定を見直してください。
-
-```r
-work_dir_path = init_path |> dirname()
-```
-
-必要に応じて、以下のように変更して再実行してください。
-
-```r
-work_dir_path = "."
-```
-
----
-
-## 利用可能なリソース
-
-環境構築後、以下のリソースが利用できます。
-
-### 1. 主なRパッケージ
-- `dplyr`
-- `tidyr`
-- `magrittr`
-- `tibble`
-- `stringr`
-- `lubridate`
-- `DBI`
-- `dbplyr`
-- `dbx`
-- `duckdb`
-
-### 2. データベース接続オブジェクト
-- `con`
-
-### 3. データフレーム
-- `df_customer`
-- `df_receipt`
-- `df_product`
-- `df_store`
-- `df_category`
-- `df_geocode`
-
-### 4. データベーステーブル参照
-- `db_customer`
-- `db_receipt`
-- `db_product`
-- `db_store`
-- `db_category`
-- `db_geocode`
-
-### 5. 便利な関数
-- `my_show_query()`
-- `my_sql_render()`
-- `my_select()`
-
-### 6. データベースファイル
-`work/DB/100knocks.duckdb`
-
----
-
-## ER図（データの構造）
-
-本シリーズで扱う6つのテーブルの関係を示すER図は、`work/data/100knocks_ER.png` にあります。
-
-{{< figure src="ER.png" alt="ER図" width="100%" >}}
-
-また、詳細なER図は以下からも参照可能です。
-{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}
-
----
-
-## DuckDB について
-
-本シリーズでは、シンプルで軽量なデータベースエンジン **DuckDB** を使用します。
-
-DuckDB は、R環境内で簡単にデータベース操作を行うための強力なツールです。
-
-特徴:
-- **軽量**: インメモリ処理が可能で、高速なクエリ実行が可能
-- **シンプル**: SQLite のように扱えるが、分析向けの機能が充実
-- **Rとの親和性**: `DBI` や `dbplyr` で簡単に操作可能
-
-本ブログでは、DuckDBを使った効率的なデータ処理手法も紹介していきます。
-
----
-
-## 謝辞
-
-このブログは、データサイエンティスト協会様が作成された『データサイエンス100本ノック（構造化データ加工編）』の教材を、さらに発展させる目的で作成しました。
-
-**データおよびER図の権利はデータサイエンティスト協会様に帰属します。**
-
-より多くの方がデータサイエンスのスキルを高める一助となれば幸いです。
-
+#-------------------------------------------------------------------------------

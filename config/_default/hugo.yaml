@@ -323,6 +323,7 @@ markup:
         renderer:
             unsafe: true # HTMLタグがレンダリングされるようにする
         extensions:
+            # hardWraps: true
             passthrough:
                 enable: true
                 delimiters:

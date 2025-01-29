@@ -249,6 +249,43 @@
   }
 }
 
+// リスト <li>の中の<p>
+.article-content li p {
+  margin: 0 0;
+}
+
+// PhotoSwipe
+
+// .gallery {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 10px;
+// }
+
+// .gallery-image {
+//   flex: 1;
+//   cursor: pointer;
+//   position: relative;
+// }
+
+// .gallery-image img {
+//   max-width: 100%;
+//   height: auto;
+//   display: block;
+// }
+
+// .pswp-gallery {
+//   display: inline-block;
+//   margin: 0px;
+//   padding: 0px;
+// }
+
+// .pswp-gallery a {
+//   display: inline-block;
+//   margin: 5px;
+//   border: none;
+// }
+
 .article-content .code-block-content {
   margin-left: 5px;
   margin-bottom: 20px;
