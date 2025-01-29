@@ -51,6 +51,72 @@ summary: の設定より優先度が高いです。
 
 ---
 
+## コード
+
+```md {linenos=false, anchorLineNos=false}
+r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```
+
+```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+# この行はコメントアウト.
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+R
+
+```r {name="abcde.R", lineNos=false,lineNoStart=1,hl_lines=[2,"7-8"]}
+# この行はコメントアウト.
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+全ハイライト、アンカー付きのRのコードは以下のようになります。
+
+```r {lineNumbersInTable=false,linenos=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+SQL: 
+```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["2-4","9-12"]}
+with customer_amount as (
+  select
+    customer_id, 
+    SUM(amount) as total_amount
+  from receipt
+  where customer_id NOT LIKE 'Z%'
+  group by customer_id
+)
+-- この行はコメントアウト.
+select 
+  *
+from
+  customer_amount
+where 
+  total_amount >= 3
+order by
+  total_amount DESC
+```
+
 ## Gallery
 
 イメージファイルはローカルに置く必要がある。
@@ -162,72 +228,6 @@ summary: の設定より優先度が高いです。
        - これらのメソッドを使用してページ コレクションを並べ替えます。
        - これらのメソッドを使用してページ コレクションを並べ替えます。  
 For example, the base template below calls the [partial](https://gohugo.io/functions/partials/include/) function to include partial templates for the `head`, `header`, and `footer` elements of each page, and it uses the [block](https://gohugo.io/functions/go-template/block/) function to include `home`, `single`, `section`, `taxonomy`, and `term` templates within the `main` element of each page.
-
-## コード
-
-```md {linenos=false, anchorLineNos=false}
-r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
-```
-
-```r {name="abcde.R", lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
-# この行はコメントアウト.
-receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
-  mutate(
-    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
-    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
-  ) %>% 
-  mutate(diff_amount = amount - pre_amount) %>% 
-  arrange(sales_ymd) # コメント
-```
-
-R
-
-```r {name="abcde.R", lineNos=false,lineNoStart=1,hl_lines=[2,"7-8"]}
-# この行はコメントアウト.
-receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% filter(between(amount, 120.34, 567.89))
-  mutate(
-    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
-    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
-  ) %>% 
-  mutate(diff_amount = amount - pre_amount) %>% 
-  arrange(sales_ymd) # コメント
-```
-
-全ハイライト、アンカー付きのRのコードは以下のようになります。
-
-```r {lineNumbersInTable=false,linenos=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
-receipt %>% 
-  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
-  mutate(
-    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
-    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
-  ) %>% 
-  mutate(diff_amount = amount - pre_amount) %>% 
-  arrange(sales_ymd) # コメント
-```
-
-SQL: 
-```sql {lineNumbersInTable=true, linenos=true,lineNoStart=1,hl_lines=["2-4","9-12"]}
-with customer_amount as (
-  select
-    customer_id, 
-    SUM(amount) as total_amount
-  from receipt
-  where customer_id NOT LIKE 'Z%'
-  group by customer_id
-)
--- この行はコメントアウト.
-select 
-  *
-from
-  customer_amount
-where 
-  total_amount >= 3
-order by
-  total_amount DESC
-```
 
 ## 演習問題
 
