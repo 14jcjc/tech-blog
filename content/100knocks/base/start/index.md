@@ -153,9 +153,18 @@ work_dir_path = "."
 
 本シリーズで扱う6つのテーブルの関係を示すER図は、`work/data/100knocks_ER.png` にあります。
 
+<div class="gallery-image gallery-base">
+  <a href="ER.png" data-width="1692" data-height="928">
+    <img src="ER.png" alt="ER図" style="display: block; margin: auto;">
+  </a>
+</div>
+{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+
+{{% comment %}}
 {{< figure src="ER.png" alt="ER図" title="" caption="" width="100%" link="" 
   rel="noopener" target="_blank" >}}
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+{{% /comment %}}
 
 ## DuckDB について
 

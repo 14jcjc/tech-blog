@@ -8,7 +8,7 @@ rg -i "code-block-content" ./themes/hugo-theme-stack -uu
 rg -i ".Draft" ./themes/hugo-theme-stack/ -uu
 rg -i "関連するコンテンツ" ./layouts -uu
 rg -i "share_icons" ./layouts -uu
-rg -i "ShowShareButtons" ./layouts -uu
+rg -i "code-block-filename" ./layouts -uu
 
 rg -i "PhotoSwipe" ./themes/hugo-theme-stack/ -uu
 rg -i "highlight" ./themes/hugo-theme-stack/assets/scss -uu
@@ -455,6 +455,3 @@ disableLazyLoading = true
 以下のブログ記事をブラッシュアップして。
 
 #-------------------------------------------------------------------------------
-
-https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/
-のバージョンでの .js を書いて。

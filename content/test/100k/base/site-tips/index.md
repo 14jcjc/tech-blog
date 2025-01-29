@@ -392,6 +392,29 @@ Markdown は保持されることに注意。
 
    → {{< param testparam2.nestparam >}}
 
+### render-link フック
+
+```md
+[github](https://github.com/14katsumix/100knocks-dp)
+```
+
+→ 
+[github](https://github.com/14katsumix/100knocks-dp)
+
+```md
+[overview-test#d2](../overview-test#d2)
+```
+
+→ 
+[overview-test#d2](../overview-test#d2)
+
+```md
+[overview]({{</* ref "overview#d2" */>}})
+```
+
+→ 
+[overview]({{< ref "overview#d2" >}})
+
 ### href-target-blank
 
 aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzz" >}} aaaa
@@ -433,6 +456,26 @@ aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text
 → 
 {{< href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" >}}
 
+```md
+{{</* href-target-blank url="../overview" */>}}
+```
+
+→ 
+{{< href-target-blank url="../overview-test" >}}
+
+```md
+{{</* href-target-blank url="http://localhost:1313/tech-blog/test/100k/base/overview-test" */>}}
+```
+
+→ 
+{{< href-target-blank url="http://localhost:1313/tech-blog/test/100k/base/overview-test" >}}
+
+
+```md
+{{</* href-target-blank url="https://14jcjc.github.io/tech-blog/ds100knocks-alpha/start/" */>}}
+```
+→ 
+{{< href-target-blank url="https://14jcjc.github.io/tech-blog/ds100knocks-alpha/start/" >}}
 
 ```md {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://tech.buty4649.net/entry/2024/04/20/122439" 
@@ -487,6 +530,7 @@ target="_self" */>}}
 
   → [overview-BBB はこちら]({{< ref "overview#bbb" >}} "overview-BBB")
 
+<!-- <p> -->
 - overview.md#d2 へのリンク
 
   ```md {linenos=false,anchorLineNos=false}
@@ -496,6 +540,7 @@ target="_self" */>}}
   → [overview-d2 はこちら]({{< ref "overview.md#d2" >}} "About us")
 
   Rendered:
+
   ```html {lineNos=false}
   <a href="http://example.org/overview/#bbb" title="About us">こちら</a>
   ```
@@ -603,12 +648,10 @@ read: assets/test/pets.csv
 Rのコードは以下のようになります。
 
 ```text
-r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+r {lineNumbersInTable=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
 
-→ 
-
-```r {lineNumbersInTable=true, lineNos=true,lineNoStart=1,hl_lines=[2,"7-8"]}
+```r {lineNumbersInTable=true,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -619,13 +662,13 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
-```
-r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
+Rのコードは以下のようになります。
+
+```text
+r {lineNos=true,lineNumbersInTable=false,lineNoStart=1,hl_lines=[2,"7-8"]}
 ```
 
-→ 
-
-```r {lineNumbersInTable=false, lineNoStart=1,hl_lines=[2,"7-8"]}
+```r {lineNos=true,lineNumbersInTable=false,lineNoStart=1,hl_lines=[2,"7-8"]}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -638,7 +681,7 @@ receipt %>%
 
 全ハイライト、アンカー付きのRのコードは以下のようになります。
 
-```r {lineNumbersInTable=true,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
+```r {lineNos=true,lineNumbersInTable=false,lineNoStart=14,hl_lines=[2,"3-8"],anchorLineNos=true}
 receipt %>% 
   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
   mutate(
@@ -860,6 +903,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore **magna aliqua**. Ut enim ad minim veniam, quis ***nostrud exercitation*** 
 {{< /quote >}}
 
+##### code block を含む場合
+
+xxxxxxxxxxxxxxxxxxxxxx
+
+{{< quote >}}
+本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+
+```r
+receipt %>% 
+  summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+  mutate(
+    pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+    pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+  ) %>% 
+  mutate(diff_amount = amount - pre_amount) %>% 
+  arrange(sales_ymd) # コメント
+```
+
+本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+{{< /quote >}}
+
+yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
 #### 出典を明記しない引用
 
 > *ブロック引用符内*でマークダウン構文を使用できることに**注意してください**。
@@ -937,6 +1003,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 > Urgent info that needs immediate user attention to avoid problems.
 
 CAUTION は無し
+
+#### code block を含む場合
+
+> [!NOTE]
+> 本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+> 
+> ```r
+> receipt %>% 
+>   summarise(amount = sum(amount), .by = "sales_ymd") %>% 
+>   mutate(
+>     pre_sales_ymd = lag(sales_ymd, n = 1L, order_by = sales_ymd), 
+>     pre_amount = lag(amount, n = 1L, default = NA, order_by = sales_ymd)
+>   ) %>% 
+>   mutate(diff_amount = amount - pre_amount) %>% 
+>   arrange(sales_ymd) # コメント
+> ```
+> 
+> 本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
 
 ### 注釈
 
