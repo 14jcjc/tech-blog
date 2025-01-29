@@ -86,13 +86,18 @@ work
   └── init.R
 ```
 
+ダウンロードした 6個の CSVファイル (`data/*.csv`)[^1] を読み込み、テーブルとしてデータベースファイル (`DB/100knocks.duckdb`) に保存しています。
+
+[^1]: データは「{{< param k100.dss.title >}}」のリポジトリの以下のディレクトリからダウンロードしています。  
+{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" >}}
+
 もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
 
 ```r {name="init.R"}
 work_dir_path = init_path |> dirname()
 ```
 
-`init.R` の上記の箇所を、例えば以下のように変更して、再実行してみてください。
+`init.R` の上記の箇所を、例えば以下のように変更して再実行してみてください。
 
 ```r
 work_dir_path = "."
