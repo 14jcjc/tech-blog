@@ -5,7 +5,7 @@ date: 2025-01-07T00:04:13+09:00
 draft: false
 # draft: true
 weight: 20
-description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について。"
+description: "データサイエンス100本ノック＋α に関連する便利なノウハウについて。"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
@@ -160,7 +160,7 @@ d
 
 結果は、以下のようにデータフレーム (デフォルトで tibble) となります。
 
-n```text
+```text
 # A tibble: 7,061 × 2
   product_cd total_sales
   <chr>            <dbl>

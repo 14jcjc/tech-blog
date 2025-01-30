@@ -288,16 +288,16 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
   social:
-    - identifier: github
-      name: GitHub
-      url: "https://github.com/14katsumix/100knocks-dp"
-      params:
-        icon: brand-github
     - identifier: twitter
       name: Twitter
       url: https://x.com/14katsumix
       params:
         icon: brand-twitter
+    - identifier: github
+      name: GitHub
+      url: "https://github.com/14katsumix"
+      params:
+        icon: brand-github
 
 # 関連ページ (See also)
 related:

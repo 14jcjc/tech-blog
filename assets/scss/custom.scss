@@ -23,7 +23,8 @@
   --scrollbar-track: var(--body-background);
 
   &[data-scheme="dark"] {
-      --body-background: #303030;
+      // --body-background: #303030;
+      --body-background: #101030;
       --accent-color: #ecf0f1;
       --accent-color-darker: #bdc3c7;
       --accent-color-text: #000;
@@ -332,10 +333,10 @@
   display: table;
   max-width: 100%;
   // background: var(--accent-color-darker);
-  // background: var(--accent-color);
-  // color: var(--accent-color-text);
-  background: var(--card-background-selected);
-  color: var(--card-text-color-main);
+  // background: var(--card-background-selected);
+  // color: var(--card-text-color-main);
+  background: var(--accent-color);
+  color: var(--accent-color-text);
   font-size: var(--code-filename-fontsize);
   line-height: 1;
   padding-top: calc(var(--code-filename-fontsize) * 0.5);
