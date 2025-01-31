@@ -14,7 +14,7 @@ tags: ["R", "SQL"]
 **参考記事:**
 
 - [【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』]({{< ref "book-review" >}})
-- [R でデータベース操作 – dplyr/dbplyr を使った SQLクエリ生成]({{< ref "r-db-query" >}})
+- [R でデータベース操作 – dplyr/dbplyr を使った SQLクエリ生成]({{< ref "r-sql-auto-query" >}})
 
 ## はじめに
 
@@ -88,7 +88,7 @@ work
 
 ダウンロードした 6個の CSVファイル (`data/*.csv`)[^1] を読み込み、テーブルとしてデータベースファイル (`DB/100knocks.duckdb`) に保存しています。
 
-[^1]: データは「{{< param k100.dss.title >}}」のリポジトリの以下のディレクトリからダウンロードしています。  
+[^1]: データは「{{< param k100.dss.title >}}」のリポジトリより、以下のディレクトリからダウンロードしています。  
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" >}}
 
 もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
