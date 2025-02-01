@@ -10,7 +10,20 @@ categories: ["レビュー", "100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 # tags_weight: 1
 
+# toc: true # Show / hide table of contents of the page.
 # disableShare: false
+
+# ShowToc: true
+# ShowToc: false
+# TocOpen: true
+# TocOpen: false
+
+# style: 
+#   background: #ffff00
+#   color: #0000ff
+
+# background: #ffff00
+# color: #0000ff
 ---
 
 ## はじめに

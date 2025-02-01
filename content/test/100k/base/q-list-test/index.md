@@ -7,18 +7,8 @@ weight: 12
 # description: "{{< k100/q-list >}} RとSQLの演習問題一覧です。"
 categories: ["Test", "100本ノック+α-test"]
 tags: ["test", "site-tips"]
-
-params: 
-  ShowPostNavLinks: false
-cover:
-  # image: "images/papermod-cover.png" #< /static
-  # image: "images/100knocks/cover-100k-standard.png" #< /static
-  # relative: false
-  hiddenInList: false
-  hiddenInSingle: false # hide on single page
-  # hidden: true
+toc: false # 目次
 ShowToc: false
-TocOpen: false
 ---
 
 <font color="#F0B007">★</font>は難易度です。

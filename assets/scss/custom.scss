@@ -794,6 +794,7 @@
   // }
 }
 
+// -------------------------------------------------------------------------------
 // .share-buttons
 
 .share-buttons {
@@ -819,10 +820,75 @@
 
 //-------------------------------------------------------------------------------
 
-.widget--toc {
+// .tocContent a:hover {
+//   box-shadow: 0 1px 0;
+//   box-decoration-break: clone;
+//   -webkit-box-decoration-break: clone;
+// }
+
+.tocContent {
+  font-size: var(--article-font-size);
+  margin: 20px 10px 20px 10px;
+  color: var(--body-text-color);
+  border: 1px solid var(--table-border-color);
+  background: var(--body-background);
+  border-radius: var(--card-border-radius);
+  padding: 10px 0;
+  
+  @include respond(lg) {
+    display: none;
+  }
+}
+
+// .dark .tocContent {
+//   background: var(--entry);
+// }
+
+.tocContent details summary {
+  cursor: zoom-in;
+  margin-inline-start: calc(var(--card-padding) - 10px);
+  user-select: none;
+  color: var(--body-text-color);
+}
+
+.tocContent details[open] summary {
+  cursor: zoom-out;
+}
+
+.tocContent .details {
+  display: inline;
+  // font-weight: 500;
+  font-weight: bold;
+}
+
+.tocContent .inner {
+  margin: 5px 10px 0 calc(var(--card-padding) * 0.8);
+  // padding: 0 10px;
+  // opacity: 0.9;
+}
+
+.tocContent summary:focus {
+  outline: 0;
+}
+
+// .tocContent li ul {
+//   margin-inline-start: 0px;
+// }
+
+//-------------------------------------------------------------------------------
+
+.widget--toc, 
+.main-article
+{
   #TableOfContents {
 
       font-size: 0.94em;
+
+      a:hover {
+        box-shadow: 0 1px 0;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
 
       ol,
       ul {

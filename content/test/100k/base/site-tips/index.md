@@ -8,6 +8,11 @@ slug: "site-tips-test"
 description: "This is description."
 
 # toc: false
+# UseHugoToc: true
+# ShowToc: true
+# ShowToc: false
+# TocOpen: true
+# TocOpen: false
 
 # related:
 #   show: true

@@ -8,13 +8,13 @@ rg -i "code-block-content" ./themes/hugo-theme-stack -uu
 rg -i ".Draft" ./themes/hugo-theme-stack/ -uu
 rg -i "関連するコンテンツ" ./layouts -uu
 rg -i "share_icons" ./layouts -uu
-rg -i "code-block-filename" ./layouts -uu
+rg -i "ShowShareButtons" ./layouts -uu
 
 rg -i "PhotoSwipe" ./themes/hugo-theme-stack/ -uu
 rg -i "highlight" ./themes/hugo-theme-stack/assets/scss -uu
 
-rg -i "ul" ../tech-blog-2/themes/PaperMod/assets/css -uu
 rg -i "share-buttons" ../tech-blog-2/themes/PaperMod/assets/css -uu
+rg -i "toc \{" ../tech-blog-2/themes/PaperMod/assets/css -uu
 
 #-------------------------------------------------------------------------------
 * tbl()が返すオブジェクト
@@ -501,4 +501,11 @@ B:
 dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
+
+{{- $headers := findRE "<h[1-6][^>]*>.*?</h[1-6]>" "<h2 id=はじめに>はじめに\n</h2>" -}}
+
+以下のいずれのケースもキャプチャしたい: 
+
+"<h2>はじめに</h2>"
+"<h2 id=はじめに>はじめに\n</h2>"
 

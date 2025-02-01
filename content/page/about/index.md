@@ -3,7 +3,7 @@ title: About
 description: 
 date: 2025-01-07
 disableShare: true
-# ShowShareButtons: false
+ShowToc: false
 links:
   - title: Twitter
     description: 

@@ -9,6 +9,11 @@ description: "データサイエンス100本ノック＋α の概要とコード
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 # disableShare: false
+# UseHugoToc: true
+# ShowToc: true
+# ShowToc: false
+# TocOpen: true
+# TocOpen: false
 ---
 
 **参考記事:**

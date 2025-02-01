@@ -99,6 +99,10 @@ params:
     ShowShareButtons: true
     # disableShare: false
 
+    UseHugoToc: true
+    ShowToc: true
+    TocOpen: true
+
     # To customize which share buttons to be enabled on page: 
     # ShareButtons: ["x", "linkedin", "facebook", "telegram"]
 
@@ -124,6 +128,7 @@ params:
 
     sidebar:
         compact: false
+        # compact: true
         # emoji: "🧑‍💻"
         # subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
         subtitle: "現場で役立つデータの世界 : <br>RとSQLで学ぶ実践スキル"
@@ -133,10 +138,10 @@ params:
             src: img/avatar.png
 
     article:
+        toc: true
         headingAnchor: true # 見出しのアンカー
         # headingAnchor: false # 見出しのアンカー
         math: true
-        toc: true
         readingTime: false
         license:
             enabled: false
@@ -315,7 +320,8 @@ related:
 
 markup:
     tableOfContents:
-        ordered: true
+        # ordered: true
+        ordered: false
         endLevel: 4
         startLevel: 2
     
