@@ -29,7 +29,7 @@
             {{- $largest := 6 -}}
             {{- range $headers -}}
             {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
-            {{- $headerLevel := len (seq $headerLevel) -}}
+            {{- $headerLevel := len (seq $headerLevel) -}}{{- $largest := 6 -}}
             {{- if lt $headerLevel $largest -}}
             {{- $largest = $headerLevel -}}
             {{- end -}}

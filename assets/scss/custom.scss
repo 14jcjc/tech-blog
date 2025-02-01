@@ -846,7 +846,7 @@
 
 .tocContent details summary {
   cursor: zoom-in;
-  margin-inline-start: calc(var(--card-padding) - 10px);
+  margin-inline-start: calc(var(--card-padding) - 8px);
   user-select: none;
   color: var(--body-text-color);
 }
@@ -862,7 +862,10 @@
 }
 
 .tocContent .inner {
-  margin: 5px 10px 0 calc(var(--card-padding) * 0.8);
+  // margin: 5px 10px 0 calc(var(--card-padding) * 0.8);
+  // margin: 5px 10px 0 calc(var(--card-padding) * 0.2);
+  // margin: 5px 10px 0 calc(var(--card-padding) - 20px);
+  margin-left: calc(var(--card-padding) - 20px);
   // padding: 0 10px;
   // opacity: 0.9;
 }
