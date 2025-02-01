@@ -1,11 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class='svglite' width='340.16pt' height='340.16pt' viewBox='0 0 340.16 340.16'>
     <defs>
         <style>
-            <![CDATA[@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap");]]>
-            .cls-1{font-family: 'Noto Sans JP', sans-serif;}
+          <![CDATA[
+            @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap");
+            .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+              fill: none;
+              stroke: #000000;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-miterlimit: 10.00;
+            }
+            .svglite text {
+              white-space: pre;
+            }
+          ]]>
         </style>
     </defs>
     <g clip-path='url(#cpMC4wMHwzNDAuMTZ8MC4wMHwzNDAuMTY=)'>
-    <text x='170.08' y='103.37' text-anchor='middle' style='font-size: 50.00px;fill: #FFFF00; font-family: "Noto Sans JP";' textLength='296.14px' lengthAdjust='spacingAndGlyphs'>テスト-g-019</text>
+    <text x='170.08' y='103.37' text-anchor='middle' style='font-size: 50.00px;fill: #FF0000; font-family: "Noto Sans JP";' textLength='296.14px' lengthAdjust='spacingAndGlyphs'>テスト-g-019</text>
     </g>
 </svg>
