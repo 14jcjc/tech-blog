@@ -4,12 +4,14 @@
   <style type='text/css'><![CDATA[
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.gstatic.com/s/notosansjp/v53/-F62fjtqLzI2JPCgQBnw7HFowwII2lcnk-AFfrgQrvWXpdFg3KXxAMsKMbdN.0.woff2") format("woff2");
+      src: local("Noto Sans JP"),
+           url("https://fonts.gstatic.com/s/notosansjp/v53/-F62fjtqLzI2JPCgQBnw7HFowwII2lcnk-AFfrgQrvWXpdFg3KXxAMsKMbdN.0.woff2") format("woff2");
       font-weight: normal;
     }
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.gstatic.com/s/notosansjp/v53/-F62fjtqLzI2JPCgQBnw7HFowwII2lcnk-AFfrgQrvWXpdFg3KXxAMsKMbdN.0.woff2") format("woff2");
+      src: local("Noto Sans JP"),
+           url("https://fonts.gstatic.com/s/notosansjp/v53/-F62fjtqLzI2JPCgQBnw7HFowwII2lcnk-AFfrgQrvWXpdFg3KXxAMsKMbdN.0.woff2") format("woff2");
       font-weight: bold;
     }
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
