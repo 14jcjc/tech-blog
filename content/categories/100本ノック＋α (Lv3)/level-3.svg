@@ -4,12 +4,12 @@
   <style type='text/css'><![CDATA[
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff2");
+      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff");
       font-weight: normal;
     }
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff2");
+      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff");
       font-weight: bold;
     }
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
