@@ -62,13 +62,6 @@ https://ken-info.com/datascience-100knocks/
 r-sql-auto-query
 r-sql-translation
 
-- R で SVG作成
-
-- categories: "100本ノック＋α (Lv5)" などの編集, 
-  /content/categories/*
-  画像: square, Sofia Sans, size: 40
-  https://favicon.io/favicon-generator/
-
 - 画像の圧縮（WebP 形式を利用）
 
 - privacy を robots.txt などから除外する
@@ -81,6 +74,7 @@ r-sql-translation
 - menus:
 - /config/
 
+- R で SVG作成
 - 本番環境で, sitemap.xml にdraftのページなどが含まれないようにする
 - robots.txt
 - コードブロックについて調べる: 
@@ -122,6 +116,8 @@ r-sql-translation
   shortcodeも！
 - スマホ画面に目次をつける
   UseHugoToc = false の場合の修正：
+- categories: "100本ノック＋α (Lv5)" などの編集, 
+  /content/categories/*
 
 * href-target-blank の名称を変更
 

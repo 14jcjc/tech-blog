@@ -2,6 +2,11 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='340.16pt' height='340.16pt' viewBox='0 0 340.16 340.16'>
 <defs>
   <style type='text/css'><![CDATA[
+    @font-face {
+      font-family: "Noto Sans JP";
+      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap") format("woff");
+      font-weight: bold;
+    }
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
       fill: none;
       stroke: #000000;
