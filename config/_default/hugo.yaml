@@ -99,6 +99,7 @@ params:
     ShowShareButtons: true
     # disableShare: false
 
+    # スマホ画面での目次
     UseHugoToc: true
     ShowToc: true
     TocOpen: true

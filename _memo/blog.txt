@@ -62,9 +62,14 @@ https://ken-info.com/datascience-100knocks/
 r-sql-auto-query
 r-sql-translation
 
+{{- $headers := findRE "<h[1-6][^>]*>(?s).*?</h[1-6]>" .Content -}}
+
+- R で SVG作成
+
 - スマホ画面に目次をつける
   UseHugoToc = false の場合の修正：
 
+  {{- $headers := findRE "<h[1-6][^>]*>(?s).*?</h[1-6]>" .Content -}}
   {{- $largest := 6 -}}
   {{- range $headers -}}
     {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}

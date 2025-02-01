@@ -1,16 +1,6 @@
 {{/*  katsu  */}}
-
 {{/*  {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" .Content -}}  */}}
 {{- $headers := findRE "<h[1-6][^>]*>(?s).*?</h[1-6]>" .Content -}}
-
-{{/*  {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" . -}}  */}}
-{{/*  {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" "<h2 id=はじめに>はじめに</h2>" -}}  */}}
-{{/*  {{- $headers := findRE "<h[1-6].*?>(.|\n])+?</h[1-6]>" "<h2 id=はじめに>はじめに\n</h2>" -}}  */}}
-{{/*  {{- $headers := findRE "<h[1-6][^>]*>.*?</h[1-6]>" "<h2 id=はじめに>はじめに\n</h2>" -}}  */}}
-
-{{/*  {{ printf "%v" .Content }}  */}}
-{{/*  {{ printf "%#v" $headers }}  */}}
-{{/*  {{ printf "%v" (.Param "TocOpen") }}  */}}
 
 {{- $has_headers := ge (len $headers) 1 -}}
 {{- if $has_headers -}}
@@ -26,23 +16,14 @@
             {{- if (.Param "UseHugoToc") }}
             {{- .TableOfContents -}}
             {{- else }}
-            
-            {{/*  {{- $largest := 6 -}}
+            {{- $largest := 6 -}}
             {{- range $headers -}}
-              {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
-              {{- $headerLevel := len (seq $headerLevel) -}}{{- $largest := 6 -}}
-              {{- if lt $headerLevel $largest -}}
-                {{- $largest = $headerLevel -}}
-              {{- end -}}
-            {{- end -}}  */}}
-            {{- $largest := 4 -}}
-            {{- range $headers -}}
-              {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}
-              {{- if lt $headerLevel $largest -}}
-                {{- $largest = $headerLevel -}}
-              {{- end -}}
+            {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+            {{- $headerLevel := len (seq $headerLevel) -}}
+            {{- if lt $headerLevel $largest -}}
+            {{- $largest = $headerLevel -}}
             {{- end -}}
-
+            {{- end -}}
             {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}}
 
             {{- $.Scratch.Set "bareul" slice -}}
@@ -102,6 +83,7 @@
                     {{- end -}}
                     <!-- {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}} -->
                     {{- $firstHeaderLevel := $largest }}
+                    
                     {{- $lastHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers (sub (len $headers) 1)) 1) 0)) }}
                 </li>
                 {{- range seq (sub $lastHeaderLevel $firstHeaderLevel) -}}
@@ -118,5 +100,4 @@
     </details>
 </div>
 </div>
-{{/*  </article>  */}}
 {{- end }}

@@ -9,7 +9,6 @@ description: "This is description."
 
 # toc: false
 # UseHugoToc: true
-UseHugoToc: false
 # ShowToc: true
 # ShowToc: false
 # TocOpen: true
