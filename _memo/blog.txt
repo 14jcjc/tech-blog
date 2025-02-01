@@ -60,16 +60,27 @@ https://ken-info.com/datascience-100knocks/
 * ToDo
 
 r-sql-auto-query
-r-dbplyr-sql-translation
+r-sql-translation
 
 - スマホ画面に目次をつける
+  UseHugoToc = false の場合の修正：
+
+  {{- $largest := 6 -}}
+  {{- range $headers -}}
+    {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}
+    {{- if lt $headerLevel $largest -}}
+      {{- $largest = $headerLevel -}}
+    {{- end -}}
+  {{- end -}}
+
+- categories: "100本ノック＋α (Lv5)" などの編集, 
+  /content/categories/*
+  画像: square, Sofia Sans, size: 40
+  https://favicon.io/favicon-generator/
 
 - 画像の圧縮（WebP 形式を利用）
 
 - privacy を robots.txt などから除外する
-
-- categories: "100本ノック＋α (Lv5)" などの編集, 画像も(Quantico)
-  /content/categories/*
 
 - Twitter cards のチェック.
 
@@ -118,6 +129,7 @@ r-dbplyr-sql-translation
 - photoswipe
   https://junpei-sugiyama.com/photoswipe/
   shortcodeも！
+
 
 * href-target-blank の名称を変更
 
@@ -502,10 +514,11 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-{{- $headers := findRE "<h[1-6][^>]*>.*?</h[1-6]>" "<h2 id=はじめに>はじめに\n</h2>" -}}
-
-以下のいずれのケースもキャプチャしたい: 
-
-"<h2>はじめに</h2>"
-"<h2 id=はじめに>はじめに\n</h2>"
-
+{{- $largest := 4 -}}
+            {{- range $headers -}}
+              {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}
+              {{- if lt $headerLevel $largest -}}
+                {{- $largest = $headerLevel -}}
+              {{- end -}}
+            {{- end -}}
+としても、$largest が6になってしまう。

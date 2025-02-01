@@ -26,13 +26,21 @@
             {{- if (.Param "UseHugoToc") }}
             {{- .TableOfContents -}}
             {{- else }}
-            {{- $largest := 6 -}}
+            
+            {{/*  {{- $largest := 6 -}}
             {{- range $headers -}}
-            {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
-            {{- $headerLevel := len (seq $headerLevel) -}}{{- $largest := 6 -}}
-            {{- if lt $headerLevel $largest -}}
-            {{- $largest = $headerLevel -}}
-            {{- end -}}
+              {{- $headerLevel := index (findRE "[1-6]" . 1) 0 -}}
+              {{- $headerLevel := len (seq $headerLevel) -}}{{- $largest := 6 -}}
+              {{- if lt $headerLevel $largest -}}
+                {{- $largest = $headerLevel -}}
+              {{- end -}}
+            {{- end -}}  */}}
+            {{- $largest := 4 -}}
+            {{- range $headers -}}
+              {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}
+              {{- if lt $headerLevel $largest -}}
+                {{- $largest = $headerLevel -}}
+              {{- end -}}
             {{- end -}}
 
             {{- $firstHeaderLevel := len (seq (index (findRE "[1-6]" (index $headers 0) 1) 0)) -}}

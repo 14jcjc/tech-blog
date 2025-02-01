@@ -833,7 +833,7 @@
   border: 1px solid var(--table-border-color);
   background: var(--body-background);
   border-radius: var(--card-border-radius);
-  padding: 10px 0;
+  // padding: 10px 0;
   
   @include respond(lg) {
     display: none;
@@ -847,12 +847,15 @@
 .tocContent details summary {
   cursor: zoom-in;
   margin-inline-start: calc(var(--card-padding) - 8px);
+  padding: 12px 0;
+  // margin-top: 10px;
   user-select: none;
   color: var(--body-text-color);
 }
 
 .tocContent details[open] summary {
   cursor: zoom-out;
+  padding-bottom: 5px;
 }
 
 .tocContent .details {
