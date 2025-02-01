@@ -5,7 +5,8 @@
 
     {{/*  {{ printf "%v" .Params.ShowToc }}  */}}
     {{/*  {{ printf "%s" (site.Param "ShowToc") }}  */}}
-
+    {{/*  katsu  */}}
+    
     {{- if (.Param "ShowToc") }}
     {{- partial "article/components/toc.html" . }}
     {{- end }}

@@ -13,9 +13,14 @@ toc: false # 目次
 ShowToc: false
 ---
 
-<font color="#F0B007">★</font>は難易度です。
-{{< k100/site/edition "s" >}}では概要を掲載してます。
+- <font color="#F0B007">★</font>は難易度です。  
+- {{< k100/site/edition "s" >}}では概要を設問の掲載してます。  
+- 各設問は、基本的に以下の3つのコードを書くという内容です。
+  - **Rコード** : データフレーム操作
+  - **Rコード** : データベース操作
+  - **SQLクエリ**
 
+<br>
 <div class="list-toggle">
   <div class="row">
     <label>
