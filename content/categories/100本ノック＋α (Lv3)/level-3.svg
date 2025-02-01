@@ -4,14 +4,12 @@
   <style type='text/css'><![CDATA[
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.gstatic.com/s/notosansjp/v26/pxiFyp8kv8JHgFVr9tKzJA8G8v4-RvPpXjHOzldbdP5Z-R2L7ayZ_dZoB53Pjsf8Nf87V0dWChI.woff2") format("woff2"),
-           url("https://fonts.gstatic.com/s/notosansjp/v26/pxiFyp8kv8JHgFVr9tKzJA8G8v4-RvPpXjHOzldbdP5Z-R2L7ayZ_dZoB53Pjsf8Nf87V0dWChI.woff") format("woff");
+      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff2");
       font-weight: normal;
     }
     @font-face {
       font-family: "Noto Sans JP";
-      src: url("https://fonts.gstatic.com/s/notosansjp/v26/pxiFyp8kv8JHgFVr9tKzJA8G8v4-RvPpXjHOzldbdP5Z-R2L7ayZ_dZoB53Pjsf8Nf87V0dWChI.woff2") format("woff2"),
-           url("https://fonts.gstatic.com/s/notosansjp/v26/pxiFyp8kv8JHgFVr9tKzJA8G8v4-RvPpXjHOzldbdP5Z-R2L7ayZ_dZoB53Pjsf8Nf87V0dWChI.woff") format("woff");
+      src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap") format("woff2");
       font-weight: bold;
     }
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
