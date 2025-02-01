@@ -11,7 +11,7 @@ rg -i "share_icons" ./layouts -uu
 rg -i "ShowShareButtons" ./layouts -uu
 
 rg -i "PhotoSwipe" ./themes/hugo-theme-stack/ -uu
-rg -i "highlight" ./themes/hugo-theme-stack/assets/scss -uu
+rg -i "article-font-family" ./themes/hugo-theme-stack/assets/scss -uu
 
 rg -i "share-buttons" ../tech-blog-2/themes/PaperMod/assets/css -uu
 rg -i "toc \{" ../tech-blog-2/themes/PaperMod/assets/css -uu
