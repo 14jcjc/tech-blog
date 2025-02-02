@@ -835,7 +835,7 @@
 // }
 
 .tocContent {
-  font-size: var(--article-font-size);
+  font-size: calc(var(--article-font-size) * 0.98);
   margin: 24px 10px 40px 10px;
   color: var(--body-text-color);
   border: 1px solid var(--table-border-color);
@@ -853,6 +853,7 @@
 // }
 
 .tocContent details summary {
+  font-size: var(--article-font-size);
   cursor: zoom-in;
   margin-inline-start: calc(var(--card-padding) - 8px);
   padding: 12px 0;
@@ -896,7 +897,8 @@
 {
   #TableOfContents {
 
-      font-size: 0.94em;
+      font-size: 0.88em;
+      font-weight: bold;
 
       a:hover {
         box-shadow: 0 1px 0;
@@ -924,6 +926,7 @@
 
           & > ol,
           & > ul {
+              font-weight: normal;
               // margin-top: 10px;
               // margin-top: 20px;
               margin-top: 15px; // li.margin-top + li.padding-top
