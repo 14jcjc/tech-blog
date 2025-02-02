@@ -480,10 +480,6 @@ disableLazyLoading = true
 
 -------------------------------------------------------------------------------
 
-以下のブログ記事をブラッシュアップして。
-
-#-------------------------------------------------------------------------------
-
 q = sql("
 WITH q01 AS (
   SELECT tab1.* FROM tab1 WHERE (x > 5.0)
@@ -502,21 +498,7 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-<div id="TableOfContents">
-  本文
-</div>
+以下のブログ記事をブラッシュアップして。
 
-<div id="TableOfContents">
-  <div class="tocContent">
-  本文
-</div>
-</div>
-
-#TableOfContents {
-  font-size: calc(var(--article-font-size) * 0.88);
-}
-
-.tocContent {
-  font-size: calc(var(--article-font-size) * 2.0) !important;
-}
+#-------------------------------------------------------------------------------
 
