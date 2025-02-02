@@ -835,9 +835,8 @@
 //   -webkit-box-decoration-break: clone;
 // }
 
-// #TableOfContents .tocContent,
-// #TableOfContents .tocContent * {
-//   font-size: inherit;
+// .tocContent, .tocContent * {
+//   color: inherit;
 // }
 
 .tocContent {
@@ -845,7 +844,7 @@
   // #TableOfContents の font-size を基準に拡大したフォントをベースにする
   font-size: calc(var(--article-font-size) * 0.95 * (1.0 / 0.9));
   margin: 24px 10px 40px 10px;
-  color: var(--body-text-color);
+  // color: var(--body-text-color);
   border: 1px solid var(--table-border-color);
   background: var(--body-background);
   border-radius: var(--card-border-radius);
@@ -904,10 +903,15 @@
 .widget--toc, 
 .main-article
 {
+  // #TableOfContents, #TableOfContents * {
+  //   color: inherit;
+  // }
+
   #TableOfContents {
 
       // font-size: calc(var(--article-font-size) * 0.9);
       font-size: 0.9em;
+      // color: var(--body-text-color);
       font-weight: bold;
 
       a:hover {
