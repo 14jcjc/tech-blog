@@ -827,6 +827,7 @@
 }
 
 //-------------------------------------------------------------------------------
+// .tocContent
 
 // .tocContent a:hover {
 //   box-shadow: 0 1px 0;
@@ -834,8 +835,15 @@
 //   -webkit-box-decoration-break: clone;
 // }
 
+// #TableOfContents .tocContent,
+// #TableOfContents .tocContent * {
+//   font-size: inherit;
+// }
+
 .tocContent {
-  font-size: calc(var(--article-font-size) * 1.0);
+  // transform: none !important;
+  // #TableOfContents の font-size を基準に拡大したフォントをベースにする
+  font-size: calc(var(--article-font-size) * 0.95 * (1.0 / 0.9));
   margin: 24px 10px 40px 10px;
   color: var(--body-text-color);
   border: 1px solid var(--table-border-color);
@@ -853,7 +861,7 @@
 // }
 
 .tocContent details summary {
-  font-size: calc(var(--article-font-size) * 1.05);
+  font-size: calc(var(--article-font-size) * 1.0);
   cursor: zoom-in;
   margin-inline-start: calc(var(--card-padding) - 8px);
   padding: 12px 0;
@@ -891,13 +899,15 @@
 // }
 
 //-------------------------------------------------------------------------------
+// #TableOfContents
 
 .widget--toc, 
 .main-article
 {
   #TableOfContents {
 
-      font-size: 0.88em;
+      // font-size: calc(var(--article-font-size) * 0.9);
+      font-size: 0.9em;
       font-weight: bold;
 
       a:hover {

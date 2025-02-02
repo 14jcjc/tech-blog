@@ -502,11 +502,21 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-{{- $largest := 4 -}}
-            {{- range $headers -}}
-              {{- $headerLevel := int (index (findRE "[1-6]" . 1) 0) -}}
-              {{- if lt $headerLevel $largest -}}
-                {{- $largest = $headerLevel -}}
-              {{- end -}}
-            {{- end -}}
-としても、$largest が6になってしまう。
+<div id="TableOfContents">
+  本文
+</div>
+
+<div id="TableOfContents">
+  <div class="tocContent">
+  本文
+</div>
+</div>
+
+#TableOfContents {
+  font-size: calc(var(--article-font-size) * 0.88);
+}
+
+.tocContent {
+  font-size: calc(var(--article-font-size) * 2.0) !important;
+}
+
