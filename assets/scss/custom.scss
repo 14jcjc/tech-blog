@@ -758,9 +758,17 @@
   }
 
   h3 {
-    margin-top: 35px;
+    margin-top: 40px;
   }
   
+  h4, 
+  h5, 
+  h6 {
+    margin-top: 30px;
+    margin-bottom: -0.2em;
+  }
+  
+
   hr {
     // width: 100px;
     width: 50%;

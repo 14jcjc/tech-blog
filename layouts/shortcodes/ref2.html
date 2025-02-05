@@ -1,5 +1,6 @@
 {{- $path := .Params.path -}}
 {{- $text := .Params.text -}}
+{{- $class := .Params.class -}}
 
 {{- if not $path -}}
   {{ errorf "ref2 shortcode error: 'path' is required." }}
@@ -44,4 +45,4 @@
 {{- /* ref を使って URL を取得 */ -}}
 {{- $url := ref . $path -}}
 
-<a class="link" href="{{ $url }}{{ $hash }}">{{ $text }}</a>
+<a class="{{ $class }}" href="{{ $url }}{{ $hash }}">{{ $text }}</a>
