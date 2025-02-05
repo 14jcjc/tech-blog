@@ -14,8 +14,7 @@
 
         <div class="inner">
             {{- if (.Param "UseHugoToc") }}
-              {{/*  katsu  */}}
-              {{ partial "toc-list.html" . }}
+            {{- .TableOfContents -}}
             {{- else }}
             {{- $largest := 6 -}}
             {{- range $headers -}}

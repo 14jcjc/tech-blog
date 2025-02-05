@@ -103,6 +103,10 @@ params:
     UseHugoToc: true
     ShowToc: true
     TocOpen: true
+    tableOfContents:
+      ordered: false
+      startLevel: 2
+      endLevel: 4
 
     # To customize which share buttons to be enabled on page: 
     # ShareButtons: ["x", "linkedin", "facebook", "telegram"]

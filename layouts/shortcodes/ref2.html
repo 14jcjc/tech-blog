@@ -1,0 +1,48 @@
+{{- $path := .Params.path -}}
+{{- $text := .Params.text -}}
+
+{{- if not $path -}}
+  {{ errorf "ref2 shortcode error: 'path' is required." }}
+{{- end -}}
+
+{{- /* $path の最初に ../ を追加 */ -}}
+{{- $path = printf "../%s" $path -}}
+
+{{- /* ハッシュ (#d2) 部分を分離 */ -}}
+{{- $hash := "" -}}
+{{- if strings.Contains $path "#" -}}
+  {{- $hashParts := split $path "#" -}}
+  {{- $path = index $hashParts 0 -}}
+  {{- $hash = printf "#%s" (index $hashParts 1) -}}
+{{- end -}}
+
+{{- /* 現在のページのディレクトリを取得 */ -}}
+{{- $currentDir := path.Dir .Page.File.Path -}}
+
+{{- /* 相対パス (../) を処理し、絶対パスに変換 */ -}}
+{{- if not (hasPrefix $path "/") -}}
+  {{- $path = printf "%s/%s" $currentDir $path | path.Clean -}}
+{{- end -}}
+
+{{- /* Markdown ファイルのパスを取得 (ハッシュ部分を除外) */ -}}
+{{- $file := printf "content/%s" $path -}}
+
+{{- /* ファイルが存在しない場合はエラー */ -}}
+{{- if not (fileExists $file) -}}
+  {{ errorf "ref2 shortcode error: file '%s' does not exist." $file }}
+{{- end -}}
+
+{{- /* text が指定されていない場合、タイトルを取得 */ -}}
+{{- if not $text -}}
+  {{- with site.GetPage $path -}}
+    {{- $text = .Title -}}
+  {{- else -}}
+    {{ errorf "ref2 shortcode error: Unable to get title for '%s'." $path }}
+  {{- end -}}
+{{- end -}}
+
+{{- /* relref を使って URL を取得 */ -}}
+{{/*  {{- $url := relref . $path -}}  */}}
+{{- $url := ref . $path -}}
+
+<a class="link" href="{{ $url }}{{ $hash }}">{{ $text }}</a>

@@ -41,12 +41,12 @@ con = DBI::dbConnect(duckdb::duckdb())
 
 # サンプルのデータフレームを作成
 data = tribble(
-  ~store_code, ~sales, ~profit,
-   "S001", 15000, 3000,
-   "S002", 18000, 3500,
-   "S003", 12000, 2500,
-   "S004", 20000, 4000,
-   "S005", 16000, 3200
+  ~store, ~sales, ~profit,
+  "S001", 15000, 3000,
+  "S002", 18000, 3500,
+  "S003", 12000, 2500,
+  "S004", 20000, 4000,
+  "S005", 16000, 3200
 )
 
 # store_sales テーブルとしてデータベースに登録
@@ -115,11 +115,11 @@ df_result %>% head(3) # 出力
 
 ```text
 # A tibble: 3 × 3
-  store_code sales profit
-  <chr>      <dbl>  <dbl>
-1 S004       20000   4000
-2 S002       18000   3500
-3 S005       16000   3200
+  store sales profit
+  <chr> <dbl>  <dbl>
+1 S004  20000   4000
+2 S002  18000   3500
+3 S005  16000   3200
 ```
 
 この後、`df_result` を用いて純粋な R コードで作業を継続できます。
@@ -135,11 +135,11 @@ df_result %>% head(3) # 出力
 > # Source:     SQL [?? x 3]
 > # Database:   DuckDB v1.1.3-dev165 [root@Darwin 24.1.0:R 4.4.2/:memory:]
 > # Ordered by: desc(profit)
->   store_code sales profit
->   <chr>      <dbl>  <dbl>
-> 1 S004       20000   4000
-> 2 S002       18000   3500
-> 3 S005       16000   3200
+>   store sales profit
+>   <chr> <dbl>  <dbl>
+> 1 S004  20000   4000
+> 2 S002  18000   3500
+> 3 S005  16000   3200
 > ```
 >
 > 厳密には、次のような `LIMIT` 付きのクエリが発行され、最初の3行だけが取得されます。
@@ -176,12 +176,12 @@ con = DBI::dbConnect(duckdb::duckdb())
 
 # サンプルのデータフレームを作成
 data = tribble(
-  ~store_code, ~sales, ~profit,
-   "S001", 15000, 3000,
-   "S002", 18000, 3500,
-   "S003", 12000, 2500,
-   "S004", 20000, 4000,
-   "S005", 16000, 3200
+  ~store, ~sales, ~profit,
+  "S001", 15000, 3000,
+  "S002", 18000, 3500,
+  "S003", 12000, 2500,
+  "S004", 20000, 4000,
+  "S005", 16000, 3200
 )
 
 # store_sales テーブルとしてデータベースに登録
@@ -215,12 +215,12 @@ df_result = collect(db_result)
 # 以下、データフレームでの処理
 df_result %>% head(3)
 # => 
-# A tibble: 3 × 3
-#   store_code sales profit
-#   <chr>      <dbl>  <dbl>
-# 1 S004       20000   4000
-# 2 S002       18000   3500
-# 3 S005       16000   3200
+# # A tibble: 3 × 3
+#   store sales profit
+#   <chr> <dbl>  <dbl>
+# 1 S004  20000   4000
+# 2 S002  18000   3500
+# 3 S005  16000   3200
 ```
 
 ハイライトした箇所のように、データベースのテーブルをデータフレームライクに操作できます！

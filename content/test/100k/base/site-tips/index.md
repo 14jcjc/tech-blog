@@ -56,6 +56,17 @@ summary: の設定より優先度が高いです。
 
 ---
 
+### ref2
+
+{{% ref2 path="overview" %}}
+
+{{% ref2 path="overview#d2" %}}
+
+{{% ref2 path="../standard/test-ref2.md" %}}
+
+{{% ref2 path="../standard/test-ref2.md#d2" %}}
+
+
 ## コード
 
 ```md {linenos=false, anchorLineNos=false}
@@ -524,25 +535,25 @@ target="_self" */>}}
 ```
 
 →  
-{{< ref "overview.md#d2" >}}  
-{{< relref "overview.md#d2" >}}
+{{% ref "overview.md#d2" %}}  
+{{% relref "overview.md#d2" %}}
 
 - overview#bbb へのリンク
 
   ```md {linenos=false,anchorLineNos=false}
-  [overview-BBB はこちら]({{</* ref "overview#bbb" */>}} "overview-BBB")
+  [overview-BBB はこちら]({{%/* ref "overview#bbb" */%}} "overview-BBB")
   ```
 
-  → [overview-BBB はこちら]({{< ref "overview#bbb" >}} "overview-BBB")
+  → [overview-BBB はこちら]({{% ref "overview#bbb" %}} "overview-BBB")
 
 <!-- <p> -->
 - overview.md#d2 へのリンク
 
   ```md {linenos=false,anchorLineNos=false}
-   [overview-d2 はこちら]({{</* ref "overview.md#d2" */>}} "About us")
+   [overview-d2 はこちら]({{%/* ref "overview.md#d2" */%}} "About us")
   ```
 
-  → [overview-d2 はこちら]({{< ref "overview.md#d2" >}} "About us")
+  → [overview-d2 はこちら]({{% ref "overview.md#d2" %}} "About us")
 
   Rendered:
 
@@ -555,9 +566,9 @@ target="_self" */>}}
 - overview#d2 へのリンク
 
   ```md {linenos=false,anchorLineNos=false}
-  [overview-d2 はこちら]({{</* relref "overview#d2" */>}} "About us")
+  [overview-d2 はこちら]({{%/* relref "overview#d2" */%}} "About us")
   ```
-  → [overview-d2 はこちら]({{< relref "overview#d2" >}} "About us")  
+  → [overview-d2 はこちら]({{% relref "overview#d2" %}} "About us")  
   Rendered:
   ``` html {lineNos=false}
   <a href="overview/#bbb" title="About us">こちら</a>
@@ -566,10 +577,10 @@ target="_self" */>}}
 - lang="ja"
 
   ```md {linenos=false,anchorLineNos=false}
-  [lang="ja" はこちら]({{</* relref path="overview" lang="ja" */>}})
+  [lang="ja" はこちら]({{%/* relref path="overview" lang="ja" */%}})
   ```
 
-  → [lang="ja" はこちら]({{< relref path="overview" lang="ja" >}})  
+  → [lang="ja" はこちら]({{% relref path="overview" lang="ja" %}})  
 
 ### comment {#comment}
 
