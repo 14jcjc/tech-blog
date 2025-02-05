@@ -18,8 +18,8 @@ tags: ["R", "SQL"]
 
 **参考記事:**
 
-- [【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』]({{< ref "book-review" >}})
-- [R でデータベース操作 – dplyr/dbplyr を使った SQLクエリ生成]({{< ref "r-sql-auto-query" >}})
+- {{% ref2 path="book-review" %}}
+- {{% ref2 path="r-sql-auto-query" %}}
 
 ## はじめに
 

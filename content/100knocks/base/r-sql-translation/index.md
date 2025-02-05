@@ -23,7 +23,7 @@ tableOfContents:
 
 **前回の記事:**
 
-- [R でデータベース操作 – dplyr/dbplyr を用いた SQLクエリの自動生成]({{< ref "r-sql-auto-query" >}})
+- {{< ref2 path="r-sql-auto-query" >}}
 
 ## はじめに
 

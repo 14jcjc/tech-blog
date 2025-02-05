@@ -56,16 +56,25 @@ summary: の設定より優先度が高いです。
 
 ---
 
-### ref2
+## ref2 ショートコード
+
+```go-html-template
+{{%/* ref2 path="overview#d2" */%}}
+```
+→ {{% ref2 path="overview#d2" %}}
+
+```go-html-template
+{{%/* ref2 path="overview" text="これは overview" */%}}
+```
+→ {{% ref2 path="overview" text="これは overview" %}}
 
 {{% ref2 path="overview" %}}
 
-{{% ref2 path="overview#d2" %}}
+{{% ref2 path="overview/index.md#d2" %}}
 
 {{% ref2 path="../standard/test-ref2.md" %}}
 
 {{% ref2 path="../standard/test-ref2.md#d2" %}}
-
 
 ## コード
 
@@ -141,7 +150,7 @@ order by
 ![pareto](pareto.png) ![treemap](treemap.png)
 ![box](box.png) ![tree](tree.png)
 
-## v4
+## PhotoSwipe v4
 
 <ul class="pswp-gallery gallery-base">
   <li>
@@ -167,7 +176,7 @@ order by
 </div>
 {{% /comment %}}
 
-## PhotoSwipe　v5 (Lightbox)
+## PhotoSwipe v5 (Lightbox)
 
 上述のMarkdownシンタックスを使う！
 

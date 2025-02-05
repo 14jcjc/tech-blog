@@ -41,8 +41,7 @@
   {{- end -}}
 {{- end -}}
 
-{{- /* relref を使って URL を取得 */ -}}
-{{/*  {{- $url := relref . $path -}}  */}}
+{{- /* ref を使って URL を取得 */ -}}
 {{- $url := ref . $path -}}
 
 <a class="link" href="{{ $url }}{{ $hash }}">{{ $text }}</a>
