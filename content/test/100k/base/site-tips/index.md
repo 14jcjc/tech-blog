@@ -58,6 +58,16 @@ summary: の設定より優先度が高いです。
 
 ## ref2 ショートコード
 
+### 絶対パス
+
+```go-html-template
+{{%/* ref2 path="/test/100k/base/overview#d2" */%}}
+```
+→ 
+{{% ref2 path="/test/100k/base/overview#d2" %}}
+
+### 相対パス
+
 ```go-html-template
 {{%/* ref2 path="overview#d2" */%}}
 ```

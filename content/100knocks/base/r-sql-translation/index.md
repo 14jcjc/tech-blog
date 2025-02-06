@@ -1,5 +1,6 @@
 ---
-title: "R でデータベース操作 – dplyr コードはどのように SQLクエリに変換されるか"
+# title: "R でデータベース操作 – dplyr コードはどのように SQLクエリに変換されるか"
+title: "R でデータベース操作 – dplyr は SQL にどう変換される？"
 slug: "r-sql-translation"
 date: 2025-01-06T01:22:07+09:00
 draft: false
@@ -18,7 +19,7 @@ tags: ["R", "SQL", "SQL自動生成"]
 tableOfContents:
   ordered: false
   startLevel: 2
-  endLevel: 4
+  endLevel: 3
 ---
 
 **前回の記事:**
@@ -27,10 +28,10 @@ tableOfContents:
 
 ## はじめに
 
-前回の記事では、dplyr を使ったテーブル操作がどのように SQL クエリへ自動変換されるかを解説しました。
-しかし、変換の仕組みを正しく理解していないと、意図しない SQL が生成されることがあります。
+前回は、dplyr を用いたテーブル操作による SQL クエリの自動生成について解説しました。
+今回は、dplyr の主要な操作が SQL にどのように変換されるのかを説明します。
 
-この記事では、dplyr の主要な操作が SQL にどのように変換されるのかを解説し、データベースを効率的に操作する方法を紹介します。
+これにより、R の dplyr コードと SQL クエリの対応関係を理解し、データベースをより効率的に扱えるようになります。
 
 まず、デモ用のデータセットを作成し、それを DuckDB に登録しておきます。
 
@@ -121,9 +122,9 @@ FROM store_sales
 
 - dplyr によるテーブル操作の R コード
 - 自動生成される SQLクエリ
-- テーブル操作の結果となるテーブルの内容
+- テーブル操作の実行結果となるテーブルの内容
 
-## dplyr 操作全体の SQL変換
+## dplyr 操作全体の SQL 変換
 
 dplyr 操作全体がどのように SQL変換されるかについて、主要な操作を例に解説します。
 
@@ -401,22 +402,318 @@ INNER JOIN store_master
 
 `left_join()`、`right_join()` についても同様です。
 
+#### `full_join()`
 
+`full_join()` は `FULL JOIN` 句を生成します。
 
-## dplyr 操作内の式の SQL変換
+```r
+db_sales %>% 
+  full_join(db_master, by = "store") %>% 
+  show_query()
+```
 
-dplyr 操作内の個々の式がどのように SQL変換されるかについて、主な演算子・関数を例に解説します。
+```sql
+SELECT
+  COALESCE(store_sales.store, store_master.store) AS store,
+  "month",
+  sales,
+  profit,
+  "name",
+  pref
+FROM store_sales
+FULL JOIN store_master
+  ON (store_sales.store = store_master.store)
+```
+
+```text
+   store month sales profit name   pref    
+   <chr> <int> <dbl>  <dbl> <chr>  <chr>   
+ 1 S001      4   150     30 storeA Tokyo   
+ 2 S001      5   170     34 storeA Tokyo   
+ 3 S001      6   140     27 storeA Tokyo   
+ 4 S001      7   160     32 storeA Tokyo   
+ 5 S002      4    NA     28 storeB Osaka   
+ 6 S002      5   160     31 storeB Osaka   
+ 7 S002      6   130     27 storeB Osaka   
+ 8 S002      7   150     28 storeB Osaka   
+ 9 S004     NA    NA     NA storeD Fukuoka 
+10 S003     NA    NA     NA storeC Kanagawa
+```
+
+#### `cross_join()`
+
+`cross_join()` は `CROSS JOIN` 句を生成します。
+
+```r
+db_master %>% 
+  select(store) %>% 
+  cross_join(db_sales %>% select(month)) %>% 
+  show_query()
+```
+
+```sql
+SELECT store_master.store AS store, "month"
+FROM store_master
+CROSS JOIN store_sales
+```
+
+```text
+   store month
+   <chr> <int>
+ 1 S001      4
+ 2 S001      5
+ 3 S001      6
+ 4 S001      7
+ ...
+```
+
+#### `semi_join()`
+
+`semi_join()` は `WHERE` 句の `EXISTS` 演算子を生成します。
+
+```r
+db_master %>% 
+  semi_join(db_sales, by = "store") %>% 
+  show_query()
+```
+
+```sql
+SELECT store_master.*
+FROM store_master
+WHERE EXISTS (
+  SELECT 1 FROM store_sales
+  WHERE (store_master.store = store_sales.store)
+)
+```
+
+```text
+  store name   pref 
+  <chr> <chr>  <chr>
+1 S001  storeA Tokyo
+2 S002  storeB Osaka
+```
+
+#### `anti_join()`
+
+`anti_join()` は `WHERE` 句の `NOT EXISTS` 演算子を生成します。
+
+```r
+db_master %>% 
+  anti_join(db_sales, by = "store") %>% 
+  show_query()
+```
+
+```sql
+SELECT store_master.*
+FROM store_master
+WHERE NOT EXISTS (
+  SELECT 1 FROM store_sales
+  WHERE (store_master.store = store_sales.store)
+)
+```
+
+```text
+  store name   pref    
+  <chr> <chr>  <chr>   
+1 S003  storeC Kanagawa
+2 S004  storeD Fukuoka 
+```
+
+#### `intersect()`
+
+`intersect()` は `INTERSECT` 演算子を生成します。
+
+```r
+db_sales %>% 
+  select(store) %>% 
+  intersect(db_master %>% select(store)) %>% 
+  show_query()
+```
+
+```sql
+(
+  SELECT store
+  FROM store_sales
+)
+INTERSECT
+(
+  SELECT store
+  FROM store_master
+)
+```
+
+```text
+  store
+  <chr>
+1 S002 
+2 S001 
+```
+
+#### `union()`
+
+`union()` は `UNION` 演算子を生成します。
+
+```r
+db_sales %>% 
+  select(store) %>% 
+  union(db_master %>% select(store)) %>% 
+  show_query()
+```
+
+```sql
+SELECT store
+FROM store_sales
+
+UNION
+
+SELECT store
+FROM store_master
+```
+
+```text
+  store
+  <chr>
+1 S001 
+2 S003 
+3 S002 
+4 S004 
+```
+
+#### `union_all()`
+
+`union_all()` は `UNION ALL` 演算子を生成します。
+
+```r
+db_sales %>% 
+  select(store) %>% 
+  union_all(db_master %>% select(store)) %>% 
+  show_query()
+```
+
+```sql
+SELECT store
+FROM store_sales
+
+UNION ALL
+
+SELECT store
+FROM store_master
+```
+
+```text
+   store
+   <chr>
+ 1 S001 
+ 2 S001 
+ 3 S001 
+ 4 S001 
+ 5 S002 
+ ...
+```
+
+#### `setdiff()`
+
+`setdiff()` は `EXCEPT` 演算子を生成します。
+
+```r
+db_master %>% 
+  select(store) %>% 
+  setdiff(db_sales %>% select(store)) %>% 
+  show_query()
+```
+
+```sql
+(
+  SELECT store
+  FROM store_master
+)
+EXCEPT
+(
+  SELECT store
+  FROM store_sales
+)
+```
+
+```text
+  store
+  <chr>
+1 S004 
+2 S003 
+```
+
+### その他の操作
+
+`count()`, `slice_min()`, `slice_max()`, `replace_na()`, `pivot_longer()` などのその他の操作については、ここまでに挙げた SQL の句や演算子、SQL 関数を組み合わせて変換されます。
+
+例えば、`count()` は次のように、SQL 関数 `COUNT()` を用いて `SELECT` 句を修正し `GROUP BY` 句を生成します。
+
+```r
+db_sales %>% 
+  count(store, name = "n_month") %>% 
+  show_query()
+```
+
+```sql
+SELECT store, COUNT(*) AS n_month
+FROM store_sales
+GROUP BY store
+```
+
+```text
+  store n_month
+  <chr>   <dbl>
+1 S001        4
+2 S002        4
+```
+
+また、`pivot_longer()` は次のように `UNION ALL` 演算子を用いた形に変換されます。
+
+```r
+db_sales %>% 
+  pivot_longer(
+    -c(store, month), names_to = "name", values_to = "amount"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT store, "month", 'sales' AS "name", sales AS amount
+FROM store_sales
+
+UNION ALL
+
+SELECT store, "month", 'profit' AS "name", profit AS amount
+FROM store_sales
+```
+
+```text
+   store month name   amount
+   <chr> <int> <chr>   <dbl>
+ 1 S001      4 sales     150
+ 2 S001      5 sales     170
+ 3 S001      6 sales     140
+ 4 S001      7 sales     160
+ 5 S002      4 sales      NA
+ ...
+```
+
+## dplyr 操作内の式の SQL 変換
+
+dplyr 操作内の個々の式がどのように SQL 変換されるかについて、主な演算子・関数を例に下記2つの観点から解説します。
 
 - dplyr が認識できる式
 - dplyr が認識できない式
 
 ### dplyr が認識できる式
 
+#### 算術演算子
+
+
 
 ### dplyr が認識できない式
 
 dbplyr が変換方法を知らない関数はそのまま残されます。
-これにより、dplyr でカバーされていないデータベース関数は直接使用できます。
+これにより、dplyr でカバーされていないデータベース関数については直接記述できます。
 
 #### Prefix functions (接頭辞関数)
 
