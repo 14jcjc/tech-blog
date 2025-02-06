@@ -4,11 +4,11 @@ slug: "r-sql-translation"
 date: 2025-01-06T01:22:07+09:00
 draft: false
 # draft: true
-weight: 20
+weight: 40
 # description: ""
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+tags: ["R", "SQL", "SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
 # ShowReadingTime: false
@@ -27,14 +27,18 @@ tableOfContents:
 
 ## はじめに
 
-前回は SQLクエリの自動生成について解説しましたが、`dbplyr` の SQL 変換には以下の 2つの部分があります。
+<!-- 前回は SQLクエリの自動生成について解説しましたが、`dbplyr` の SQL 変換には以下の 2つの部分があります。 -->
+
+前回は dplyr を使ってのテーブル操作による SQLクエリの自動生成について解説しました。
+しかし、その変換の仕組みを理解していないと、意図しない SQL が実行されることもあります。
+この記事では、dplyr の主要な操作がどのように SQL に変換されるのかを解説し、データベースを効率よく操作する方法を示します。
+
+dbplyr の SQL 変換には次の 2つの部分がありますので、2つのセクションに分けて解説します。
 
 - dplyr 操作全体の変換
 - dplyr 操作内の個々の式の変換
 
-この記事では、これらについて 2つのセクションに分けて解説します。
-
-まずデモため、次の 2つのテーブルを用意します。
+まず、デモ用のデータセットを作成し、それを DuckDB に登録しておきます。
 
 ```r
 library(DBI)
@@ -79,8 +83,9 @@ db_sales = tbl(con, "store_sales")
 db_master = tbl(con, "store_master")
 ```
 
-はじめに補足ですが、dbplyr の SQL 変換はいつでも完璧というわけではありません。
-SQL コードは正しくても、簡潔ではない SQLクエリに変換されるケースもあります。
+はじめに補足ですが、dbplyr の SQL 変換は必ずしも最適な SQL を生成するわけではありません。
+冗長的な構造の SQLクエリに変換されるケースもあります。
+
 例えば、次の R コードは
 
 ```r
@@ -95,7 +100,7 @@ FROM store_sales
 WHERE (NOT((sales IS NULL)))
 ```
 
-このコードは正しいですが、`NOT((sales IS NULL))` の箇所は `sales IS NOT NULL` と書くべきですね。
+この SQL は論理的には正しいですが、`NOT((sales IS NULL))` の部分は `sales IS NOT NULL` と書く方が簡潔で可読性が高くなります。
 この点を踏まえた上でご覧いただければと思います。
 
 本題に入りますが、dbplyr は純粋なテーブルに対して次の `SELECT` 文を生成します。
@@ -147,21 +152,21 @@ FROM store_sales
 
 ```r
 db_sales %>% 
-  rename(store_id = store) %>% 
+  rename(store_code = store) %>% 
   show_query()
 ```
 
 ```sql
-SELECT store AS store_id, "month", sales, profit
+SELECT store AS store_code, "month", sales, profit
 FROM store_sales
 ```
 
 ```text
-  store_id month sales profit
-  <chr>    <int> <dbl>  <dbl>
-1 S001         4   150     30
-2 S001         5   170     34
-3 S001         6   140     27
+  store_code month sales profit
+  <chr>      <int> <dbl>  <dbl>
+1 S001           4   150     30
+2 S001           5   170     34
+3 S001           6   140     27
 ...
 ```
 
@@ -218,7 +223,8 @@ FROM store_sales
 
 #### `filter()`
 
-`filter()` は `WHERE` 句を生成します
+`filter()` は `WHERE` 句を生成します。
+
 ```r
 db_sales %>% 
   filter(month == 4L, profit >= 30) %>% 
@@ -336,7 +342,7 @@ HAVING (AVG(profit) > 30.0)
 
 #### `head()`
 
-`head()` は `LIMIT` 句を生成します
+`head()` は `LIMIT` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -360,22 +366,77 @@ LIMIT 3
 
 ### 2つのテーブルの操作
 
+#### `inner_join()`、`left_join()`、`right_join()`
 
-
-
-
-
-
-#### `left_join()` は `LEFT JOIN` 句を生成します
+`inner_join()` は `INNER JOIN` 句を生成します。
 
 ```r
 db_sales %>% 
-  left_join(db_master, by = "store") %>% 
+  inner_join(db_master, by = "store") %>% 
   show_query()
 ```
 
-`inner_join()`、`right_join()` についても同様です。
+```sql
+SELECT store_sales.*, "name", pref
+FROM store_sales
+INNER JOIN store_master
+  ON (store_sales.store = store_master.store)
+```
+
+```text
+  store month sales profit name   pref 
+  <chr> <int> <dbl>  <dbl> <chr>  <chr>
+1 S001      4   150     30 storeA Tokyo
+2 S001      5   170     34 storeA Tokyo
+3 S001      6   140     27 storeA Tokyo
+4 S001      7   160     32 storeA Tokyo
+5 S002      4    NA     28 storeB Osaka
+...
+```
+
+`left_join()`、`right_join()` についても同様です。
+
+
 
 ## dplyr 操作内の式の SQL変換
 
-dplyr 操作内の個々の式がどのように SQL変換されるかについて、以下に主な例を挙げます。
+dplyr 操作内の個々の式がどのように SQL変換されるかについて、主な演算子・関数を例に解説します。
+
+- dplyr が認識できる式・関数
+- dplyr が認識できない式・関数
+
+### dplyr が認識できる式・関数
+
+
+### dplyr が認識できない式・関数
+
+dbplyr が変換方法を知らない関数はそのまま残されます。
+これにより、dplyr でカバーされていないデータベース関数は直接使用できます。
+
+#### Prefix functions (接頭辞関数)
+
+dplyr が認識しない関数はそのまま残されます。
+
+#### Infix functions (中置関数)
+
+dbplyr は関数名が引数の後に来る中置関数も変換します。これにより、次の `LIKE` のような式を使用できます。
+
+#### 特殊な形式 (SQL の構文をそのまま埋め込む)
+
+SQL の式は、R よりも構文の種類が豊富になる傾向があるため、R コードから直接変換できない式もあります。
+次のように sql() によるリテラル SQL を用いると、変換を介さずに 直接 SQL の式を埋め込むことができます。
+
+```r
+db_sales %>% 
+  mutate(
+    f_sales = sql("CAST(sales AS FLOAT)"), 
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT store_sales.*, CAST(sales AS FLOAT) AS f_sales
+FROM store_sales
+```
+
+これにより、必要な SQL をほぼ自由に生成できるようになります。

@@ -502,16 +502,20 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-以下のshortcodeを作成して：
+以下を翻訳して:
 
-フォーマット例：
-{{< ref2  path="/xxx/aaa.md#ddd" text="ttt" >}}
+1. Known functions
+2. Unknown functions
+Any function that dplyr doesn’t know how to convert is left as is. This means that database functions that are not covered by dplyr can often be used directly via translate_sql().
 
-レンダー例：
-<a class="link" href="http://localhost:1313/tech-blog/test/xxx/aaa#ddd">ttt</a>
+1. 既知の関数
+2. 不明な関数
+dplyr が変換方法を知らない関数は、そのままの形で残されます。つまり、dplyr で対応していないデータベース関数も、translate_sql() を介して直接使用できる場合が多いということです。
 
-条件：
-path で指定したファイルが存在しない場合はエラーを返す。
-textの指定が無いときは aaa.md の title をデフォルトとする。
+これらのタイトルはブラッシュアップできる？
 
+1. 認識される関数（または 対応済みの関数）
+2. 未対応の関数（または 認識されない関数）
 
+1. dplyr が変換できる関数
+2. dplyr が変換できない関数

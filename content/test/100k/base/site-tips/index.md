@@ -147,7 +147,7 @@ order by
 イメージファイルはローカルに置く必要がある。
 外部イメージは使用不可。
 
-![pareto](pareto.png) ![treemap](treemap.png)
+![pareto](pareto.png) ![treemap](treemap.png) 
 ![box](box.png) ![tree](tree.png)
 
 ## PhotoSwipe v4

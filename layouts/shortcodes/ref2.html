@@ -1,13 +1,14 @@
 {{- $path := .Params.path -}}
 {{- $text := .Params.text -}}
-{{- $class := .Params.class -}}
+{{- $class := .Params.class | default "link" -}}
 
 {{- if not $path -}}
   {{ errorf "ref2 shortcode error: 'path' is required." }}
 {{- end -}}
 
 {{- /* $path の最初に ../ を追加 */ -}}
-{{- $path = printf "../%s" $path -}}
+{{/*  {{- $path = printf "../%s" $path -}}  */}}
+{{- $path = path.Join ".." $path -}}
 
 {{- /* ハッシュ (#d2) 部分を分離 */ -}}
 {{- $hash := "" -}}
@@ -22,11 +23,13 @@
 
 {{- /* 相対パス (../) を処理し、絶対パスに変換 */ -}}
 {{- if not (hasPrefix $path "/") -}}
-  {{- $path = printf "%s/%s" $currentDir $path | path.Clean -}}
+  {{/*  {{- $path = printf "%s/%s" $currentDir $path | path.Clean -}}  */}}
+  {{- $path = path.Join $currentDir $path | path.Clean -}}
 {{- end -}}
 
 {{- /* Markdown ファイルのパスを取得 (ハッシュ部分を除外) */ -}}
-{{- $file := printf "content/%s" $path -}}
+{{/*  {{- $file := printf "content/%s" $path -}}  */}}
+{{- $file := path.Join "content" $path -}}
 
 {{- /* ファイルが存在しない場合はエラー */ -}}
 {{- if not (fileExists $file) -}}
@@ -42,7 +45,9 @@
   {{- end -}}
 {{- end -}}
 
+{{- $title := .Params.title | default $text -}}
+
 {{- /* ref を使って URL を取得 */ -}}
 {{- $url := ref . $path -}}
 
-<a class="{{ $class }}" href="{{ $url }}{{ $hash }}">{{ $text }}</a>
+<a class="{{- $class -}}" href="{{- $url -}}{{- $hash -}}" title="{{- $title -}}">{{- $text -}}</a>

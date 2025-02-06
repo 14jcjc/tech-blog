@@ -4,7 +4,7 @@ slug: "site-tips"
 date: 2021-04-01T00:20:27+09:00
 draft: true
 # draft: false
-weight: 1000
+weight: 90
 summary: "これはsummaryです (include)."
 description: "This is description. (include)"
 categories: ["Test"]
@@ -14,7 +14,7 @@ params:
   testparam: "これは params.testparam."
   testparam2: 
     nestparam: "これは testparam2.nestparam."
-image: box.png
+image: box-small.png
 
 cover:
   # image: "images/papermod-cover.png" #< /static
@@ -54,6 +54,6 @@ cover:
 
 ---
 
-**/test/100k/site-tips/index.md を include** ⬇️
+**/test/100k/base/site-tips/index.md を include** ⬇️
 
 {{% include "/test/100k/base/site-tips/index.md" %}}

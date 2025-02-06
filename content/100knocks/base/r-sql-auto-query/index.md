@@ -5,11 +5,11 @@ slug: "r-sql-auto-query"
 date: 2025-01-05T00:03:13+09:00
 draft: false
 # draft: true
-weight: 15
+weight: 35
 # description: ""
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+tags: ["R", "SQL", "SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
 # ShowReadingTime: false
