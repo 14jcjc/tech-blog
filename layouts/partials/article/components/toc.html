@@ -16,6 +16,7 @@
             {{- if (.Param "UseHugoToc") }}
               {{/*  katsu  */}}
               {{ partial "toc-list.html" . }}
+
             {{- else }}
             {{- $largest := 6 -}}
             {{- range $headers -}}

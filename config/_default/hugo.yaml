@@ -325,8 +325,8 @@ related:
 
 markup:
     tableOfContents:
-        # ordered: true
-        ordered: false
+        ordered: true
+        # ordered: false
         endLevel: 4
         startLevel: 2
     

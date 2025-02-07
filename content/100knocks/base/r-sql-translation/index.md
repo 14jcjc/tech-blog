@@ -110,7 +110,7 @@ dbplyr による SQL 変換は以下の 2つの側面に分かれるため、そ
 
 上述の R コードの場合、`filter(, !is.na(sales))` が「dplyr 操作全体」、`!is.na(sales)` が「dplyr 操作内の式」に対応します。
 
-### SQL 変換の元となる `SELECT` 文
+### SQL 変換の元となる SELECT 文
 
 dbplyr は純粋なテーブルに対して次の `SELECT` 文を生成します。
 

@@ -103,13 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {{/*  TableOfContents  */}}
 
-{/* 
-次のように修正して：
-ページのスクロールと目次のスクロールを連動させる。
-ページのスクロールすると、ハイライトした項目が目次の中央に来るようにする。 
-目次の項目をクリックしたときは、目次をスクロールさせない。
-*/}
-
 {{/*  次の条件で処理を作成: 
 - 複数の見出しが表示されている場合は、一番上の見出しをハイライトする。
 - 見出しが表示されていない場合は、現在の見出しをハイライトする。  */}}
@@ -117,10 +110,16 @@ document.addEventListener('DOMContentLoaded', function () {
 {{/*  常に、いずれかの項目をハイライトする。  */}}
 {{/*  目次の項目をクリックしたら、それをハイライトする。  */}}
 {{/*  画面中央より上に複数の見出しが表示されている場合は、一番上の見出しをハイライトする。  */}}
+{{/* ページのスクロールと目次のスクロールを連動させる。 */}}
+{{/* ページのスクロールすると、ハイライトした項目が目次の中央に来るようにする。  */}}
+{{/* 目次の項目をクリックしたときは、目次をスクロールさせない。 */}}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const links = document.querySelectorAll('#TableOfContents a'); // 目次リンク
+    // const links = document.querySelectorAll('#TableOfContents a'); // 目次リンク
+    // const links = document.querySelectorAll('widget--toc #TableOfContents a');
+    const links = document.querySelectorAll('section #TableOfContents a');
+    
     const sections = Array.from(links)
       .map(link => document.getElementById(link.getAttribute('href').substring(1)))
       .filter(section => section !== null); // 存在する要素のみ取得
@@ -204,7 +203,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function scrollToCenter(element) {
-      const parent = element.closest('#TableOfContents');
+      // const parent = element.closest('#TableOfContents');
+      // const parent = element.closest('widget--toc #TableOfContents');
+      const parent = element.closest('section #TableOfContents');      
+      
       if (parent) {
         const parentRect = parent.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
