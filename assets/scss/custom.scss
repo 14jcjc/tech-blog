@@ -165,7 +165,7 @@
 
   @include respond(md) {
       // --article-font-size: 1.7rem;
-      --article-font-size: 1.6rem;
+      --article-font-size: 1.58rem;
   }
 
   // --article-line-height: 1.85;
@@ -940,21 +940,25 @@
         -webkit-box-decoration-break: clone;
       }
 
-      a.active {
-        font-weight: bold;
-        color: #007bff;
-        text-decoration: underline;
-      }
-
       ol,
       ul {
           // margin: 0;
-          margin: 0 0 0 10px;
+          margin: 0 0 20px 10px;
           padding: 0;
       }
 
       & > ul, & > ol {
           padding: 0 1em;
+      }
+
+      ol > li a,
+      ul > li a {
+          line-height: 1.2em;
+      }
+
+      ol li li a,
+      ul li li a {
+        line-height: 1.0em;
       }
 
       li {
@@ -981,9 +985,19 @@
               }
           }
       }
-
   }
 }
+
+.widget--toc #TableOfContents a.active {
+  font-weight: bold;
+  color: #007bff;
+  // text-decoration: underline;  
+}
+
+[data-scheme="dark"] .widget--toc #TableOfContents a.active {
+  color: #50C0FF;
+}
+
 
 // -------------------------------------------------------------------------------
 /* Alerts */

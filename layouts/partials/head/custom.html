@@ -105,72 +105,118 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOMContentLoaded発火');
+    // console.log('DOMContentLoaded発火');
   
-    const sections = document.querySelectorAll('h2, h3, h4');  // h5 は含めない
-    const links = document.querySelectorAll('#TableOfContents a');  // 目次リンク
+    {{/*  const sections = document.querySelectorAll('h2, h3, h4'); // h5は除外
+    const links = document.querySelectorAll('#TableOfContents a'); // 目次リンク  */}}
+
+    const links = document.querySelectorAll('#TableOfContents a'); // 目次リンク
+    const sections = Array.from(links)
+      .map(link => document.getElementById(link.getAttribute('href').substring(1)))
+      .filter(section => section !== null); // 存在する要素のみ取得
+    
+    let lastActiveId = null;
+    let isClicking = false;
+    let scrollTimeout = null;
   
-    console.log('取得したセクション:', sections);
-    console.log('取得した目次リンク:', links);
+    // 目次のリンクをクリックしたときの処理
+    links.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
   
-    let timeout;
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+  
+        if (targetElement) {
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+  
+          // クリックした目次のハイライトを即適用
+          links.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+          lastActiveId = targetId;
+  
+          // console.log('目次クリック:', targetId);
+  
+          isClicking = true; // クリック中フラグを立てる
+  
+          // スムーズスクロール
+          // window.scrollTo({ top: targetPosition - 20, behavior: 'smooth' });
+  
+          // スクロール完了後にハイライトを再適用
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isClicking = false; // クリック後のスクロール完了
+            updateTableOfContents(); // ハイライト更新
+          }, 600); // スクロール完了を待つ
+        }
+      });
+    });
+  
     function updateTableOfContents() {
-      console.log('スクロールイベント発火');
+      if (isClicking) return; // クリック中は更新しない
   
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        window.requestAnimationFrame(() => {
-          let aboveCenterSections = [];
-          let belowCenterSections = [];
+      // console.log('スクロールイベント発火');
   
-          sections.forEach(function(section) {
-            const rect = section.getBoundingClientRect();
-            console.log('セクションID:', section.id, 'Rect Top:', rect.top, 'Rect Bottom:', rect.bottom);
+      let aboveCenterSections = [];
+      let currentSection = null;
   
-            if (!section.id) {
-              console.warn('IDなしの見出しをスキップ:', section);
-              return;
-            }
+      sections.forEach(function(section) {
+        const rect = section.getBoundingClientRect();
+        if (!section.id) return; // IDなしの見出しはスキップ
   
-            // 画面中央より上にある見出しをリストに追加
-            if (rect.top < window.innerHeight / 2) {
-              aboveCenterSections.push(section);
-            } else {
-              belowCenterSections.push(section);
-            }
-          });
+        // 画面上部付近にある見出しをリストに追加
+        // if (rect.top < window.innerHeight / 2) {
+        if (rect.top < window.innerHeight / 30) {
+          aboveCenterSections.push(section);
+        }
+      });
   
-          let currentSection = null;
-          if (aboveCenterSections.length > 0) {
-            // 画面中央より上の見出しの中で、一番下のものを選択
-            currentSection = aboveCenterSections[aboveCenterSections.length - 1];
-          } else if (belowCenterSections.length > 0) {
-            // 画面中央より下にある見出しの中で、一番上のものを選択
-            currentSection = belowCenterSections[0];
+      if (aboveCenterSections.length > 0) {
+        // 一番下のものを選択
+        currentSection = aboveCenterSections[aboveCenterSections.length - 1];
+        // 一番上のものを選択
+        // currentSection = aboveCenterSections[0];
+      } else {
+        // 画面上部付近に見出しがない場合、最も近い次の見出しを探す
+        for (let section of sections) {
+          // if (section.getBoundingClientRect().top >= window.innerHeight / 2) {
+          if (section.getBoundingClientRect().top >= window.innerHeight / 30) {
+            currentSection = section;
+            break;
           }
+        }
+      }
   
-          console.log('現在のセクション:', currentSection ? currentSection.id : 'なし');
+      if (!currentSection && sections.length > 0) {
+        currentSection = document.getElementById(lastActiveId) || sections[0];
+      }
   
-          // 目次リンクのハイライト処理
-          links.forEach(function(link) {
-            const targetId = link.getAttribute('href').substring(1);
-            if (currentSection && targetId === currentSection.id) {
-              link.classList.add('active');  // ハイライト
-            } else {
-              link.classList.remove('active');  // ハイライト解除
-            }
-          });
-        });
-      }, 100);  // スクロール後100msで実行
+      if (currentSection) {
+        lastActiveId = currentSection.id;
+      }
+  
+      // 目次リンクのハイライト処理
+      links.forEach(link => {
+        const targetId = link.getAttribute('href').substring(1);
+        if (currentSection && targetId === currentSection.id) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
     }
   
-    // スクロールイベントのリスナーを追加
-    window.addEventListener('scroll', updateTableOfContents);
+    // スクロール時の処理
+    window.addEventListener('scroll', function() {
+      if (isClicking) return; // クリック後のスクロール中は更新しない
+  
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateTableOfContents, 100);
+    });
   
     // 初回の目次更新
     updateTableOfContents();
   });
-  
 </script>
 
 
@@ -180,4 +226,11 @@ document.addEventListener('DOMContentLoaded', function () {
 2. 見出しが表示されていない場合は、現在の見出しをハイライトする。  */}}
 {{/*  ページの中央より上にある見出しをハイライトしてほしい。  */}}
 {{/*  常に、いずれかの項目をハイライトしてほしい。  */}}
+{{/*  目次の項目をクリックしたら、それをハイライトしてほしい。  */}}
+{{/*  画面中央より上に複数の見出しが表示されている場合は、一番上の見出しをハイライトする。  */}}
+
+{{/*  「スクロール時、画面中央より上にある見出しのうち「一番下のもの」をハイライト」
+にすると、目次の項目をクリックして移動した際、その項目の下の項目がハイライトされるケースがある。  */}}
+
+{{/*  目次の項目をクリックすると一瞬だけハイライトされて、すぐに下の項目がハイライトされるケースがある。  */}}
 
