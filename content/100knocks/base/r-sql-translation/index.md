@@ -338,7 +338,7 @@ FROM store_sales
 
 ##### `summarise()`
 
-`summarise()` は要約関数と合わせて `SELECT` 句を修正します。
+`summarise()` は `mean()` などの要約関数と合わせて `SELECT` 句を修正します。
 
 ```r
 db_sales %>% 

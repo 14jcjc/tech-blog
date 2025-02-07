@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .filter(section => section !== null); // 存在する要素のみ取得
     
     let lastActiveId = null;
-    let isClicking = false;
+    // let isClicking = false;
     let scrollTimeout = null;
   
     // 目次のリンクをクリックしたときの処理
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const targetElement = document.getElementById(targetId);
   
         if (targetElement) {
-          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          // const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
   
           // クリックした目次のハイライトを即適用
           links.forEach(link => link.classList.remove('active'));
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
           // console.log('目次クリック:', targetId);
   
-          isClicking = true; // クリック中フラグを立てる
+          // isClicking = true; // クリック中フラグを立てる
   
           // スムーズスクロール
           // window.scrollTo({ top: targetPosition - 20, behavior: 'smooth' });
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
           // スクロール完了後にハイライトを再適用
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
-            isClicking = false; // クリック後のスクロール完了
+            // isClicking = false; // クリック後のスクロール完了
             updateTableOfContents(); // ハイライト更新
           }, 600); // スクロール完了を待つ
         }
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   
     function updateTableOfContents() {
-      if (isClicking) return; // クリック中は更新しない
+      // if (isClicking) return; // クリック中は更新しない
   
       // console.log('スクロールイベント発火');
   
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // スクロール時の処理
     window.addEventListener('scroll', function() {
-      if (isClicking) return; // クリック後のスクロール中は更新しない
+      // if (isClicking) return; // クリック後のスクロール中は更新しない
   
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(updateTableOfContents, 100);
@@ -219,18 +219,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 </script>
 
-
-
-{{/*  次のような条件に修正できる？
+{{/*  次の条件で処理を作成: 
 1. 複数の見出しが表示されている場合は、一番上の見出しをハイライトする。
 2. 見出しが表示されていない場合は、現在の見出しをハイライトする。  */}}
-{{/*  ページの中央より上にある見出しをハイライトしてほしい。  */}}
-{{/*  常に、いずれかの項目をハイライトしてほしい。  */}}
-{{/*  目次の項目をクリックしたら、それをハイライトしてほしい。  */}}
+{{/*  ページの上部にある見出しをハイライトする。  */}}
+{{/*  常に、いずれかの項目をハイライトする。  */}}
+{{/*  目次の項目をクリックしたら、それをハイライトする。  */}}
 {{/*  画面中央より上に複数の見出しが表示されている場合は、一番上の見出しをハイライトする。  */}}
-
-{{/*  「スクロール時、画面中央より上にある見出しのうち「一番下のもの」をハイライト」
-にすると、目次の項目をクリックして移動した際、その項目の下の項目がハイライトされるケースがある。  */}}
-
-{{/*  目次の項目をクリックすると一瞬だけハイライトされて、すぐに下の項目がハイライトされるケースがある。  */}}
-
