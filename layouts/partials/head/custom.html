@@ -100,3 +100,84 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   lightbox.init();
 </script>  */}}
+
+{{/*  TableOfContents  */}}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOMContentLoaded発火');
+  
+    const sections = document.querySelectorAll('h2, h3, h4');  // h5 は含めない
+    const links = document.querySelectorAll('#TableOfContents a');  // 目次リンク
+  
+    console.log('取得したセクション:', sections);
+    console.log('取得した目次リンク:', links);
+  
+    let timeout;
+    function updateTableOfContents() {
+      console.log('スクロールイベント発火');
+  
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          let aboveCenterSections = [];
+          let belowCenterSections = [];
+  
+          sections.forEach(function(section) {
+            const rect = section.getBoundingClientRect();
+            console.log('セクションID:', section.id, 'Rect Top:', rect.top, 'Rect Bottom:', rect.bottom);
+  
+            if (!section.id) {
+              console.warn('IDなしの見出しをスキップ:', section);
+              return;
+            }
+  
+            // 画面中央より上にある見出しをリストに追加
+            if (rect.top < window.innerHeight / 2) {
+              aboveCenterSections.push(section);
+            } else {
+              belowCenterSections.push(section);
+            }
+          });
+  
+          let currentSection = null;
+          if (aboveCenterSections.length > 0) {
+            // 画面中央より上の見出しの中で、一番下のものを選択
+            currentSection = aboveCenterSections[aboveCenterSections.length - 1];
+          } else if (belowCenterSections.length > 0) {
+            // 画面中央より下にある見出しの中で、一番上のものを選択
+            currentSection = belowCenterSections[0];
+          }
+  
+          console.log('現在のセクション:', currentSection ? currentSection.id : 'なし');
+  
+          // 目次リンクのハイライト処理
+          links.forEach(function(link) {
+            const targetId = link.getAttribute('href').substring(1);
+            if (currentSection && targetId === currentSection.id) {
+              link.classList.add('active');  // ハイライト
+            } else {
+              link.classList.remove('active');  // ハイライト解除
+            }
+          });
+        });
+      }, 100);  // スクロール後100msで実行
+    }
+  
+    // スクロールイベントのリスナーを追加
+    window.addEventListener('scroll', updateTableOfContents);
+  
+    // 初回の目次更新
+    updateTableOfContents();
+  });
+  
+</script>
+
+
+
+{{/*  次のような条件に修正できる？
+1. 複数の見出しが表示されている場合は、一番上の見出しをハイライトする。
+2. 見出しが表示されていない場合は、現在の見出しをハイライトする。  */}}
+{{/*  ページの中央より上にある見出しをハイライトしてほしい。  */}}
+{{/*  常に、いずれかの項目をハイライトしてほしい。  */}}
+

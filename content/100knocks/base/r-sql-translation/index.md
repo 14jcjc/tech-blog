@@ -19,7 +19,7 @@ tags: ["R", "SQL", "SQL自動生成"]
 tableOfContents:
   ordered: false
   startLevel: 2
-  endLevel: 3
+  endLevel: 4
 ---
 
 **前回の記事:**
@@ -29,9 +29,10 @@ tableOfContents:
 ## はじめに
 
 前回は、dplyr を用いたテーブル操作による SQL クエリの自動生成について解説しました。
-今回は、dplyr の主要な操作が SQL にどのように変換されるのかを説明します。
+今回は、dplyr の主要な操作が SQL にどのように変換されるのかを説明します。  
+これにより、dplyr コードと SQL クエリの対応関係について理解を深め、R と SQL の両方をより効率的に使いこなせるようになると思います。
 
-これにより、R の dplyr コードと SQL クエリの対応関係を理解し、データベースをより効率的に扱えるようになります。
+### データベースへの接続とデータの準備
 
 まず、デモ用のデータセットを作成し、それを DuckDB に登録しておきます。
 
@@ -78,6 +79,8 @@ db_sales = tbl(con, "store_sales")
 db_master = tbl(con, "store_master")
 ```
 
+### SQL 変換に関する補足
+
 はじめに補足ですが、dbplyr の SQL 変換は必ずしも最適な SQL を生成するわけではありません。
 冗長的な構造の SQLクエリに変換されるケースもあります。
 
@@ -96,7 +99,9 @@ WHERE (NOT((sales IS NULL)))
 ```
 
 この SQL は論理的には正しいですが、`NOT((sales IS NULL))` の部分は `sales IS NOT NULL` と書く方が簡潔で可読性が高くなります。
-この点を踏まえた上でご覧いただければと思います。
+このような点を踏まえた上でご覧いただければと思います。
+
+### dplyr 操作全体と操作内の式について
 
 dbplyr による SQL 変換は以下の 2つの側面に分かれるため、それぞれの観点から解説を行います。
 
@@ -105,7 +110,9 @@ dbplyr による SQL 変換は以下の 2つの側面に分かれるため、そ
 
 上述の R コードの場合、`filter(, !is.na(sales))` が「dplyr 操作全体」、`!is.na(sales)` が「dplyr 操作内の式」に対応します。
 
-まず、dbplyr は純粋なテーブルに対して次の `SELECT` 文を生成します。
+### SQL 変換の元となる `SELECT` 文
+
+dbplyr は純粋なテーブルに対して次の `SELECT` 文を生成します。
 
 ```r
 db_sales %>% show_query()
@@ -116,9 +123,11 @@ SELECT *
 FROM store_sales
 ```
 
-すべての dplyr 操作は、このような全ての列を選択する `SELECT` 文を元にして SQL を生成します。
+すべての dplyr 操作は、このような「全ての列を選択する `SELECT` 文」を元にして SQL を生成します。
 
-以降では、下記の3点を添付して解説します。
+---
+
+以降では、下記の3点を添付して SQL 変換について解説します。
 
 - dplyr によるテーブル操作の R コード
 - 自動生成される SQLクエリ
@@ -126,11 +135,13 @@ FROM store_sales
 
 ## dplyr 操作全体の SQL 変換
 
-dplyr 操作全体がどのように SQL変換されるかについて、主要な操作を例に解説します。
+dplyr 操作全体がどのように SQL 変換されるかについて、主要な操作を例にまとめました。
 
 ### 単一テーブルの操作
 
-#### `select()`、`rename()`、`relocate()`
+#### 行に影響を与える操作
+
+##### `select()`、`rename()`、`relocate()`
 
 `select()` は `SELECT` 句を修正します。
 
@@ -200,7 +211,7 @@ FROM store_sales
 
 ここで、`"month"` がダブルクォートで括られてるのは、これが DuckDB の予約語だからです。
 
-#### `mutate()`
+##### `mutate()`
 
 `mutate()` は `SELECT` 句を修正します。
 
@@ -227,7 +238,9 @@ FROM store_sales
 ...
 ```
 
-#### `filter()`
+#### 列に影響を与える操作
+
+##### `filter()`
 
 `filter()` は `WHERE` 句を生成します。
 
@@ -249,7 +262,7 @@ WHERE ("month" = 4) AND (profit >= 30.0)
 1 S001      4   150     30
 ```
 
-#### `arrange()`
+##### `arrange()`
 
 `arrange()` は `ORDER BY` 句を生成します。
 
@@ -275,78 +288,7 @@ ORDER BY "month", profit DESC
 ...
 ```
 
-#### `summarise()`
-
-`summarise()` は集計関数と合わせて `SELECT` 句を修正します。
-
-```r
-db_sales %>% 
-  summarise(avg_profit = mean(profit)) %>% 
-  show_query()
-```
-
-```sql
-SELECT AVG(profit) AS avg_profit
-FROM store_sales
-```
-
-```text
-  avg_profit
-       <dbl>
-1       29.6
-```
-
-#### `group_by()` \+ `summarise()`
-
-また、`summarise()` は `group_by()` と合わせて `GROUP BY` 句を生成します。
-
-```r
-db_sales %>% 
-  group_by(store) %>% 
-  summarise(avg_profit = mean(profit)) %>% 
-  show_query()
-```
-
-```sql
-SELECT store, AVG(profit) AS avg_profit
-FROM store_sales
-GROUP BY store
-```
-
-```text
-  store avg_profit
-  <chr>      <dbl>
-1 S002        28.5
-2 S001        30.8
-```
-
-#### `group_by()` \+ `summarise()` \+ `filter()`
-
-
-さらに、集計後の `filter()` と合わせて `HAVING` 句を生成します。
-
-```r
-db_sales %>% 
-  group_by(store) %>% 
-  summarise(avg_profit = mean(profit)) %>% 
-  filter(avg_profit > 30) %>% 
-  show_query()
-```
-
-```sql
-SELECT store, AVG(profit) AS avg_profit
-FROM store_sales
-GROUP BY store
-HAVING (AVG(profit) > 30.0)
-```
-
-```text
-  store avg_profit
-  <chr>      <dbl>
-1 S001        30.8
-```
-
-#### `head()`
+##### `head()`
 
 `head()` は `LIMIT` 句を生成します。
 
@@ -370,9 +312,106 @@ LIMIT 3
 3 S001      6   140     27
 ```
 
+##### `distinct()`
+
+`distinct()` は `DISTINCT` 修飾子を生成します。
+
+```r
+db_sales %>% 
+  distinct(store) %>% 
+  show_query()
+```
+
+```sql
+SELECT DISTINCT store
+FROM store_sales
+```
+
+```text
+  store
+  <chr>
+1 S002 
+2 S001 
+```
+
+#### グループ化と要約
+
+##### `summarise()`
+
+`summarise()` は要約関数と合わせて `SELECT` 句を修正します。
+
+```r
+db_sales %>% 
+  summarise(avg_profit = mean(profit)) %>% 
+  show_query()
+```
+
+```sql
+SELECT AVG(profit) AS avg_profit
+FROM store_sales
+```
+
+```text
+  avg_profit
+       <dbl>
+1       29.6
+```
+
+##### `group_by()` \+ `summarise()`
+
+また、`summarise()` は `group_by()` と合わせて `GROUP BY` 句を生成します。
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  summarise(avg_profit = mean(profit)) %>% 
+  show_query()
+```
+
+```sql
+SELECT store, AVG(profit) AS avg_profit
+FROM store_sales
+GROUP BY store
+```
+
+```text
+  store avg_profit
+  <chr>      <dbl>
+1 S002        28.5
+2 S001        30.8
+```
+
+##### `group_by()` \+ `summarise()` \+ `filter()`
+
+
+さらに、要約後の `filter()` と合わせて `HAVING` 句を生成します。
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  summarise(avg_profit = mean(profit)) %>% 
+  filter(avg_profit > 30) %>% 
+  show_query()
+```
+
+```sql
+SELECT store, AVG(profit) AS avg_profit
+FROM store_sales
+GROUP BY store
+HAVING (AVG(profit) > 30.0)
+```
+
+```text
+  store avg_profit
+  <chr>      <dbl>
+1 S001        30.8
+```
+
 ### 2つのテーブルの操作
 
-#### `inner_join()`、`left_join()`、`right_join()`
+#### テーブルの結合
+
+##### `inner_join()`、`left_join()`、`right_join()`
 
 `inner_join()` は `INNER JOIN` 句を生成します。
 
@@ -402,7 +441,7 @@ INNER JOIN store_master
 
 `left_join()`、`right_join()` についても同様です。
 
-#### `full_join()`
+##### `full_join()`
 
 `full_join()` は `FULL JOIN` 句を生成します。
 
@@ -440,7 +479,7 @@ FULL JOIN store_master
 10 S003     NA    NA     NA storeC Kanagawa
 ```
 
-#### `cross_join()`
+##### `cross_join()`
 
 `cross_join()` は `CROSS JOIN` 句を生成します。
 
@@ -467,7 +506,7 @@ CROSS JOIN store_sales
  ...
 ```
 
-#### `semi_join()`
+##### `semi_join()` (準結合)
 
 `semi_join()` は `WHERE` 句の `EXISTS` 演算子を生成します。
 
@@ -493,7 +532,7 @@ WHERE EXISTS (
 2 S002  storeB Osaka
 ```
 
-#### `anti_join()`
+##### `anti_join()` (アンチ結合)
 
 `anti_join()` は `WHERE` 句の `NOT EXISTS` 演算子を生成します。
 
@@ -519,7 +558,9 @@ WHERE NOT EXISTS (
 2 S004  storeD Fukuoka 
 ```
 
-#### `intersect()`
+#### 集合演算
+
+##### `intersect()`
 
 `intersect()` は `INTERSECT` 演算子を生成します。
 
@@ -549,7 +590,7 @@ INTERSECT
 2 S001 
 ```
 
-#### `union()`
+##### `union()`
 
 `union()` は `UNION` 演算子を生成します。
 
@@ -579,7 +620,7 @@ FROM store_master
 4 S004 
 ```
 
-#### `union_all()`
+##### `union_all()`
 
 `union_all()` は `UNION ALL` 演算子を生成します。
 
@@ -611,7 +652,7 @@ FROM store_master
  ...
 ```
 
-#### `setdiff()`
+##### `setdiff()`
 
 `setdiff()` は `EXCEPT` 演算子を生成します。
 
@@ -699,14 +740,543 @@ FROM store_sales
 
 ## dplyr 操作内の式の SQL 変換
 
-dplyr 操作内の個々の式がどのように SQL 変換されるかについて、主な演算子・関数を例に下記2つの観点から解説します。
+dplyr 操作内の個々の式がどのように SQL 変換されるかについて、主な演算子・関数を例に下記2つの観点でまとめました。
 
 - dplyr が認識できる式
 - dplyr が認識できない式
 
 ### dplyr が認識できる式
 
-#### 算術演算子
+#### 基本的な演算子
+
+##### 算術演算子 (`+`、`-`、`*`、`/`、`^`)
+
+```r
+db_sales %>% 
+  mutate(
+    v1 = sales + profit, 
+    v2 = 100 * (sales - profit) / sales, 
+    v3 = profit ^ 2L, 
+    .keep = "none"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  sales + profit AS v1,
+  (100.0 * (sales - profit)) / sales AS v2,
+  POW(profit, 2) AS v3
+FROM store_sales
+```
+
+```text
+     v1    v2    v3
+  <dbl> <dbl> <dbl>
+1   180  80     900
+2   204  80    1156
+3   167  80.7   729
+...
+```
+
+##### 比較演算子、論理演算子(`&`、`|`、`!`)
+
+```r
+db_sales %>% 
+  mutate(
+    v1 = (sales == 150), 
+    v2 = (!(sales > 150)), 
+    v3 = (sales != 150 & profit >= 30), 
+    v4 = (sales < 150 | profit <= 30), 
+    v5 = (store %in% c("S001", "S003")), 
+    .keep = "used"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store,
+  sales,
+  profit,
+  (sales = 150.0) AS v1,
+  (NOT((sales > 150.0))) AS v2,
+  (sales != 150.0 AND profit >= 30.0) AS v3,
+  (sales < 150.0 OR profit <= 30.0) AS v4,
+  (store IN ('S001', 'S003')) AS v5
+FROM store_sales
+```
+
+```text
+  store sales profit v1    v2    v3    v4    v5   
+  <chr> <dbl>  <dbl> <lgl> <lgl> <lgl> <lgl> <lgl>
+1 S001    150     30 TRUE  TRUE  FALSE TRUE  TRUE 
+2 S001    170     34 FALSE FALSE TRUE  FALSE TRUE 
+3 S001    140     27 FALSE TRUE  FALSE TRUE  TRUE 
+4 S001    160     32 FALSE FALSE TRUE  FALSE TRUE 
+5 S002     NA     28 NA    NA    FALSE TRUE  FALSE
+...
+```
+#### 基本的な関数
+
+##### 数学関数、数値の丸め
+
+```r
+db_sales %>% 
+  mutate(
+    v1 = log(profit), 
+    v2 = sqrt(profit), 
+    v3 = sin(profit), 
+    v4 = floor(sales / profit), 
+    .keep = "none"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  LN(profit) AS v1,
+  SQRT(profit) AS v2,
+  SIN(profit) AS v3,
+  FLOOR(sales / profit) AS v4
+FROM store_sales
+```
+
+```text
+     v1    v2     v3    v4
+  <dbl> <dbl>  <dbl> <dbl>
+1  3.40  5.48 -0.988     5
+2  3.53  5.83  0.529     5
+3  3.30  5.20  0.956     5
+4  3.47  5.66  0.551     5
+5  3.33  5.29  0.271    NA
+```
+
+##### キャスト関数
+
+```r
+db_sales %>% 
+  mutate(
+    m = as.character(month), 
+    .keep = "used"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT "month", CAST("month" AS TEXT) AS m
+FROM store_sales
+```
+
+```text
+  month m    
+  <int> <chr>
+1     4 4    
+2     5 5    
+3     6 6    
+...
+```
+
+##### 文字列関数
+
+```r
+db_master %>% 
+  mutate(
+    len = nchar(pref), 
+    upp = toupper(pref), 
+    sub = substr(name, 6, 6), 
+    p = paste(name, pref, sep = "-"), 
+    .keep = "used"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  "name",
+  pref,
+  LENGTH(pref) AS len,
+  UPPER(pref) AS upp,
+  SUBSTR("name", 6, 1) AS sub,
+  CONCAT_WS('-', "name", pref) AS p
+FROM store_master
+```
+
+```text
+  name   pref       len upp      sub   p              
+  <chr>  <chr>    <dbl> <chr>    <chr> <chr>          
+1 storeA Tokyo        5 TOKYO    A     storeA-Tokyo   
+2 storeB Osaka        5 OSAKA    B     storeB-Osaka   
+3 storeC Kanagawa     8 KANAGAWA C     storeC-Kanagawa
+4 storeD Fukuoka      7 FUKUOKA  D     storeD-Fukuoka 
+```
+
+##### 日付関数
+
+```r
+db_master %>% 
+  mutate(
+    ymd = lubridate::as_date("2025-04-01"), 
+    .keep = "none"
+  ) %>% 
+  head(1) %>% 
+  mutate(
+    strftime = strftime(ymd, "%Y/%m/%d"), 
+    month = lubridate::month(ymd), 
+    add = ymd + lubridate::days(7L), 
+    .keep = "used"
+  ) %>% 
+  show_query(cte = T)
+```
+
+```sql
+WITH q01 AS (
+  SELECT CAST('2025-04-01' AS DATE) AS ymd
+  FROM store_master
+  LIMIT 1
+)
+SELECT
+  q01.*,
+  strftime(ymd, '%Y/%m/%d') AS strftime,
+  EXTRACT(MONTH FROM ymd) AS "month",
+  ymd + TO_DAYS(CAST(7 AS INTEGER)) AS "add"
+FROM q01
+```
+
+```text
+  ymd        strftime   month add                
+  <date>     <chr>      <dbl> <dttm>             
+1 2025-04-01 2025/04/01     4 2025-04-08 00:00:00
+```
+
+##### パターンマッチング
+
+```r
+db_master %>% 
+  filter(
+    stringr::str_detect(pref, "ka$")
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT store_master.*
+FROM store_master
+WHERE (REGEXP_MATCHES(pref, 'ka$'))
+```
+
+```text
+  store name   pref   
+  <chr> <chr>  <chr>  
+1 S002  storeB Osaka  
+2 S004  storeD Fukuoka
+```
+
+##### `is.na()`
+
+```r
+db_sales %>% 
+  filter(is.na(sales)) %>% 
+  show_query()
+```
+
+```sql
+SELECT store_sales.*
+FROM store_sales
+WHERE ((sales IS NULL))
+```
+
+```text
+  store month sales profit
+  <chr> <int> <dbl>  <dbl>
+1 S002      4    NA     28
+```
+
+##### `if_else()`
+
+```r
+db_sales %>% 
+  mutate(
+    profit_size = if_else(profit > 30, "big", "small", "none"), 
+    .keep = "used"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  profit,
+  CASE 
+    WHEN (profit > 30.0) THEN 'big' 
+    WHEN NOT (profit > 30.0) THEN 'small' 
+    WHEN ((profit > 30.0) IS NULL) THEN 'none' 
+  END AS profit_size
+FROM store_sales
+```
+
+```text
+  profit profit_size
+   <dbl> <chr>      
+1     30 small      
+2     34 big        
+3     27 small      
+4     32 big        
+...
+```
+
+##### 要約関数 (`summarise()`内)
+
+```r
+db_sales %>% 
+  summarise(
+    n = n(), 
+    n_store = n_distinct(store), 
+    avg = mean(sales), 
+    per50 = median(sales)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  COUNT(*) AS n,
+  COUNT(DISTINCT row(store)) AS n_store,
+  AVG(sales) AS avg,
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY sales) AS per50
+FROM store_sales
+```
+
+```text
+      n n_store   avg per50
+  <dbl>   <dbl> <dbl> <dbl>
+1     8       2  151.   150
+```
+
+#### ウィンドウ関数
+
+##### 要約関数 (`mutate()`内)
+
+```r
+db_sales %>% 
+  mutate(
+    n = n(), 
+    avg = mean(sales), 
+    max = max(sales)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  COUNT(*) OVER () AS n,
+  AVG(sales) OVER () AS avg,
+  MAX(sales) OVER () AS max
+FROM store_sales
+```
+
+```text
+  store month sales profit     n   avg   max
+  <chr> <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
+1 S001      4   150     30     8  151.   170
+2 S001      5   170     34     8  151.   170
+3 S001      6   140     27     8  151.   170
+...
+```
+
+`group_by()` を併用した場合は以下のように変換されます。  
+
+```r
+db_sales %>% 
+  group_by(month) %>% 
+  mutate(
+    n = n(), 
+    avg = mean(sales), 
+    max = max(sales)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  COUNT(*) OVER (PARTITION BY "month") AS n,
+  AVG(sales) OVER (PARTITION BY "month") AS avg,
+  MAX(sales) OVER (PARTITION BY "month") AS max
+FROM store_sales
+```
+
+```text
+  store month sales profit     n   avg   max
+  <chr> <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
+1 S001      4   150     30     2   150   150
+2 S002      4    NA     28     2   150   150
+3 S001      6   140     27     2   135   140
+4 S002      6   130     27     2   135   140
+5 S001      7   160     32     2   155   160
+6 S002      7   150     28     2   155   160
+7 S001      5   170     34     2   165   170
+8 S002      5   160     31     2   165   170
+```
+
+`group_by(month)` により `PARTITION BY "month"` が生成されます。
+
+##### `lag()`、`lead()`
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  window_order(month) %>% 
+  mutate(
+    lag_p = lag(profit, 1L), 
+    lead_p = lead(profit, 1L)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  LAG(profit, 1, NULL) OVER (PARTITION BY store ORDER BY "month") AS lag_p,
+  LEAD(profit, 1, NULL) OVER (PARTITION BY store ORDER BY "month") AS lead_p
+FROM store_sales
+```
+
+```text
+  store month sales profit lag_p lead_p
+  <chr> <int> <dbl>  <dbl> <dbl>  <dbl>
+1 S002      4    NA     28    NA     31
+2 S002      5   160     31    28     27
+3 S002      6   130     27    31     28
+4 S002      7   150     28    27     NA
+5 S001      4   150     30    NA     34
+6 S001      5   170     34    30     27
+7 S001      6   140     27    34     32
+8 S001      7   160     32    27     NA
+```
+
+`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成されます。
+
+##### ランキング関数
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  mutate(
+    rank = min_rank(desc(sales)), 
+    .keep = "used"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store, 
+  sales, 
+  CASE
+    WHEN (NOT((sales IS NULL))) THEN RANK() OVER (
+      PARTITION BY 
+        store, 
+        (CASE WHEN ((sales IS NULL)) THEN 1 ELSE 0 END) 
+      ORDER BY sales DESC
+    )
+  END AS rank
+FROM store_sales
+```
+
+```text
+  store sales  rank
+  <chr> <dbl> <dbl>
+1 S001    170     1
+2 S001    160     2
+3 S001    150     3
+4 S001    140     4
+5 S002     NA    NA
+6 S002    160     1
+7 S002    150     2
+8 S002    130     3
+```
+
+2番目のパーティションキー `CASE WHEN (sales IS NULL) THEN 1 ELSE 0 END` は、`sales` が NULL の行をグループ 1、それ以外をグループ 0 に分類するためのものです。  
+これにより、`sales IS NULL` の行が別グループとして扱われ、ランク付けの対象から確実に切り離されます。  
+`CASE WHEN (NOT (sales IS NULL)) THEN RANK() OVER (...)` という条件があるため、一見、このパーティションキーは不要にも思えます。ですが、指定しない場合、NULL の行も含めてランク付けが行われ、データベースのソート設定によっては NULL が通常の値より前に配置されることがあります。その結果、意図しないランク付けが発生する可能性があるため、このキーを用いて NULL のデータが明示的に分離されています。
+
+##### 累積関数
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  window_order(month) %>% 
+  mutate(
+    cum = cumsum(profit)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  SUM(profit) OVER (
+    PARTITION BY store ORDER BY "month" 
+    ROWS UNBOUNDED PRECEDING
+  ) AS cum
+FROM store_sales
+```
+
+```text
+  store month sales profit   cum
+  <chr> <int> <dbl>  <dbl> <dbl>
+1 S001      4   150     30    30
+2 S001      5   170     34    64
+3 S001      6   140     27    91
+4 S001      7   160     32   123
+5 S002      4    NA     28    28
+6 S002      5   160     31    59
+7 S002      6   130     27    86
+8 S002      7   150     28   114
+```
+
+`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、
+`cumsum()` により `ROWS UNBOUNDED PRECEDING` が生成されます。
+
+##### `window_frame()`
+
+`window_frame()` は `ROWS` 句を生成します。
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  window_order(month) %>% 
+  window_frame(-1, 1) %>% 
+  mutate(
+    avg = mean(profit)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  AVG(profit) OVER (
+    PARTITION BY store ORDER BY "month" 
+    ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING
+  ) AS avg
+FROM store_sales
+```
+
+```text
+  store month sales profit   avg
+  <chr> <int> <dbl>  <dbl> <dbl>
+1 S001      4   150     30  32  
+2 S001      5   170     34  30.3
+3 S001      6   140     27  31  
+4 S001      7   160     32  29.5
+5 S002      4    NA     28  29.5
+6 S002      5   160     31  28.7
+7 S002      6   130     27  28.7
+8 S002      7   150     28  27.5
+```
+
 
 
 
@@ -723,7 +1293,7 @@ dplyr が認識しない関数はそのまま残されます。
 
 dbplyr は関数名が引数の後に来る中置関数も変換します。これにより、次の `LIKE` のような式を使用できます。
 
-#### 特殊な形式 (SQL の構文をそのまま埋め込む)
+#### 特殊な形式 (SQL の構文を埋め込む)
 
 SQL の式は、R よりも構文の種類が豊富になる傾向があるため、R コードから直接変換できない式もあります。
 次のように sql() によるリテラル SQL を用いると、変換を介さずに 直接 SQL の式を埋め込むことができます。

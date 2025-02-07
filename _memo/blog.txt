@@ -75,6 +75,7 @@ r-sql-translation
 - /config/
 
 - R で SVG作成
+- chroma: sql の PARTITION にカラーがつかない
 - 本番環境で, sitemap.xml にdraftのページなどが含まれないようにする
 - robots.txt
 - コードブロックについて調べる: 
