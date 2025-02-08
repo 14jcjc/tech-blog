@@ -1277,26 +1277,75 @@ FROM store_sales
 8 S002      7   150     28  27.5
 ```
 
-
-
-
 ### dplyr が認識できない式
 
-dbplyr が変換方法を知らない関数はそのまま残されます。
-これにより、dplyr でカバーされていないデータベース関数については直接記述できます。
+dbplyr が知らない関数はそのままにされるため、dplyr でカバーされていないデータベース関数については直接記述できます。
 
-#### Prefix functions (接頭辞関数)
+#### プレフィックス関数
 
-dplyr が認識しない関数はそのまま残されます。
+dplyr が認識しない関数はそのまま残されます。  
+SQL 関数は一般的に大文字と小文字を区別しないため、R コード内で SQL 関数を使用する際は大文字を使うことをお勧めします。
+これにより、通常とは異なることをしていることが簡単に確認できます。
 
-#### Infix functions (中置関数)
+```r
+db_sales %>% 
+  mutate(
+    v1 = CEIL(profit / sales), 
+    v2 = EVEN(month)
+  ) %>% 
+  show_query()
+```
 
-dbplyr は関数名が引数の後に来る中置関数も変換します。これにより、次の `LIKE` のような式を使用できます。
+```sql
+SELECT 
+  store_sales.*, 
+  CEIL(profit / sales) AS v1, 
+  EVEN("month") AS v2
+FROM store_sales
+```
+
+```text
+  store month sales profit    v1    v2
+  <chr> <int> <dbl>  <dbl> <dbl> <dbl>
+1 S001      4   150     30     1     4
+2 S001      5   170     34     1     6
+3 S001      6   140     27     1     6
+4 S001      7   160     32     1     8
+5 S002      4    NA     28    NA     4
+6 S002      5   160     31     1     6
+7 S002      6   130     27     1     6
+8 S002      7   150     28     1     8
+```
+
+#### インフィックス関数
+
+dbplyr は `x %in% y` のような関数名が引数の間に挟まる形式の関数(インフィックス関数)も変換します。これにより、次のように `LIKE` などの式を使用できます。
+
+```r
+db_master %>% 
+  filter(
+    pref %LIKE% "%ka"
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT store_master.*
+FROM store_master
+WHERE (pref LIKE '%ka')
+```
+
+```text
+  store name   pref   
+  <chr> <chr>  <chr>  
+1 S002  storeB Osaka  
+2 S004  storeD Fukuoka
+```
 
 #### 特殊な形式 (SQL の構文を埋め込む)
 
-SQL の式は、R よりも構文の種類が豊富になる傾向があるため、R コードから直接変換できない式もあります。
-次のように sql() によるリテラル SQL を用いると、変換を介さずに 直接 SQL の式を埋め込むことができます。
+SQL 関数は R よりも構文のバリエーションが多いため、R コードから直接変換できない式もあります。
+これらを自分のクエリに埋め込むには、次のように `sql()` 内でリテラル SQL を使用します。
 
 ```r
 db_sales %>% 

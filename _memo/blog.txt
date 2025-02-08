@@ -505,21 +505,29 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 以下を翻訳して:
 
-1. Known functions
-2. Unknown functions
-Any function that dplyr doesn’t know how to convert is left as is. This means that database functions that are not covered by dplyr can often be used directly via translate_sql().
+Prefix functions
+Any function that dbplyr doesn’t know about will be left as is:
 
-1. 既知の関数
-2. 不明な関数
-dplyr が変換方法を知らない関数は、そのままの形で残されます。つまり、dplyr で対応していないデータベース関数も、translate_sql() を介して直接使用できる場合が多いということです。
+translate_sql(foofify(x, y), con = con)
+#> <SQL> foofify(`x`, `y`)
+Because SQL functions are general case insensitive, I recommend using upper case when you’re using SQL functions in R code. That makes it easier to spot that you’re doing something unusual:
 
-これらのタイトルはブラッシュアップできる？
+translate_sql(FOOFIFY(x, y), con = con)
+#> <SQL> FOOFIFY(`x`, `y`)
+Infix functions
+As well as prefix functions (where the name of the function comes before the arguments), dbplyr also translates infix functions. That allows you to use expressions like LIKE which does a limited form of pattern matching:
 
-1. 認識される関数（または 対応済みの関数）
-2. 未対応の関数（または 認識されない関数）
+translate_sql(x %LIKE% "%foo%", con = con)
+#> <SQL> `x` LIKE '%foo%'
+Or use || for string concatenation (although most backends will translate paste() and paste0() for you):
 
-1. dplyr が変換できる関数
-2. dplyr が変換できない関数
+translate_sql(x %||% y, con = con)
+#> <SQL> `x` || `y`
+Special forms
+SQL functions tend to have a greater variety of syntax than R. That means there are a number of expressions that can’t be translated directly from R code. To insert these in your own queries, you can use literal SQL inside sql():
+
+
+
 
 #-------------------------------------------------------------------------------
 
@@ -546,8 +554,4 @@ PC用：
 
 PC用の目次で JavaScript を有効にし、スマホの目次ではJavaScriptを無効にしたいです。
 
-const links = document.querySelectorAll('#TableOfContents a');
-を
-const links = document.querySelectorAll('widget--toc #TableOfContents a');
-と書きかえたら、目次の連動機能が効かなくなった。
-
+#-------------------------------------------------------------------------------
