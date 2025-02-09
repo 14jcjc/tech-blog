@@ -12,8 +12,9 @@ categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL", "SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
-# ShowReadingTime: false
-# ShowWordCount: false
+# readingTime: true
+# ShowWordCount: true
+# toc: false
 # ShowToc: true
 TocOpen: false
 tableOfContents:
@@ -28,9 +29,9 @@ tableOfContents:
 
 ## はじめに
 
-前回は、dplyr を用いてテーブル操作を行い、SQL クエリを自動生成する方法について解説しました。  
-今回は、dplyr の主要な操作が SQL にどのように変換されるのかを、具体的な演算や関数の例を交えて説明します。  
-これにより、dplyr コードと SQL クエリの対応関係をより深く理解し、R と SQL を効果的に組み合わせて活用できるようになることを目指します。
+前回は、dplyr を用いたテーブル操作と SQL クエリの自動生成について解説しました。  
+今回は、dplyr の主要な操作が SQL にどのように変換されるのかを、具体例を交えて説明します。
+これにより、dplyr コードと SQL クエリの対応関係を深く理解し、R と SQL を効果的に組み合わせて活用できるようになります。
 
 ### データベースへの接続とデータの準備
 
@@ -105,12 +106,26 @@ WHERE (NOT((sales IS NULL)))
 
 ### dplyr 操作全体と操作内の式について
 
-dbplyr による SQL 変換は以下の 2つの側面に分かれるため、それぞれの観点から解説を行います。
+dbplyr による SQL 変換は、次の **2 つの側面** に分けられます。それぞれの観点から解説します。  
 
-- dplyr 操作全体の SQL 変換
-- dplyr 操作内の個々の式の SQL 変換
+1. **dplyr 操作全体の SQL 変換**  
+2. **dplyr 操作内の個々の式の SQL 変換**  
 
-前述の R コードの場合、`filter(, !is.na(sales))` が「dplyr 操作全体」に対応し、`!is.na(sales)` が「dplyr 操作内の式」に対応します。
+例えば、以下の R コードを考えます。  
+
+```r
+db_sales %>% 
+  filter(!is.na(sales))
+```  
+
+この場合、  
+
+- `filter(, !is.na(sales))` → **「dplyr 操作全体」** に該当  
+- `!is.na(sales)` → **「dplyr 操作内の式」** に該当  
+- `!` 演算子、`is.na(sales)` → **「dplyr 操作内の個々の式」** に該当  
+
+このように、dplyr の処理は **「操作全体」** と **「操作内の式」** に分けて考えることができます。  
+
 
 ### SQL 変換の基となる SELECT 文
 
@@ -581,7 +596,7 @@ WHERE NOT EXISTS (
 2 S004  storeD Fukuoka 
 ```
 
-#### 集合演算
+#### テーブルの集合演算
 
 ##### `intersect()`
 
@@ -813,7 +828,7 @@ FROM store_sales
 
 ##### 比較演算子、論理演算子
 
-dplyr の比較演算子、論理演算子 (`&`、`|`、`!`) は、SQL に変換される際にそれぞれ対応する式にマッピングされます。
+dplyr の比較演算子 (`==`、`<`、`%in%` など)、論理演算子 (`&`、`|`、`!` など) は、SQL に変換される際にそれぞれ対応する式にマッピングされます。
 
 ```r
 db_sales %>% 
@@ -1123,7 +1138,7 @@ FROM store_sales
 #### ウィンドウ関数
 
 次に、ウィンドウ関数の SQL 変換について解説します。  
-ウィンドウ関数は以下の4種類に分類されます。
+R のウィンドウ関数は以下の4種類に分類されます。
 
 - **集約関数:**  
   `sum()`、 `mean()`、`max()`、`median()`、`sd()` など
@@ -1480,6 +1495,24 @@ FROM store_sales
 ```
 
 これにより、必要な SQL をほぼ自由に生成できるようになります。
+
+#### dplyr が認識できない関数をエラーにする
+
+デフォルトでは、dplyr は変換できない関数をそのまま SQL に渡そうとしますが、`dplyr.strict_sql` オプションを `TRUE` に設定すると、変換できない関数を使用した際に **強制的にエラーを発生させる** ことができます。  
+
+```r
+options(dplyr.strict_sql = TRUE)
+
+db_sales %>% 
+  mutate(v = EVEN(month))
+```
+
+```text
+Error in `EVEN()`:
+! Don't know how to translate `EVEN()`
+```
+
+このオプションを有効にすると、誤った SQL クエリの生成を防ぎ、SQL 変換の正確性を高めるのに役立ちます。  
 
 ## まとめ
 
