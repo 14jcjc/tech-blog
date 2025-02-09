@@ -30,7 +30,7 @@ R でも、`dplyr` と `dbplyr` を使えば、データベースを手軽に操
 R では `DBI` パッケージを介してさまざまなデータベースと接続できますが、今回は手軽に扱える **DuckDB** を使用します。  
 DuckDB のメリットについては、以下の記事を参考にしてください。
 
-{{% ref2 path="start#duckdb" text="DuckDB を使用するメリット" %}}
+- {{% ref2 path="start#duckdb" text="DuckDB を使用するメリット" %}}
 
 まずは DuckDB に接続し、サンプルデータを作成します。
 

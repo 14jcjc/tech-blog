@@ -114,8 +114,7 @@ dbplyr による SQL 変換は、次の **2 つの側面** に分けられます
 例えば、以下の R コードを考えます。  
 
 ```r
-db_sales %>% 
-  filter(!is.na(sales))
+db_sales %>% filter(!is.na(sales))
 ```  
 
 この場合、  
@@ -997,7 +996,7 @@ db_master %>%
     add = ymd + lubridate::days(7L), 
     .keep = "used"
   ) %>% 
-  show_query(cte = T)
+  show_query(cte = TRUE)
 ```
 
 ```sql
@@ -1107,7 +1106,7 @@ SQL の 6行目は、`ELSE 'none'` とリライトするとより簡潔になり
 
 ##### 集約関数 (`summarise()`内)
 
-`mean()` などの集約関数は、`summarise()` 内で使用すると `SELECT` 句を修正します。
+`mean()` などの集約関数は、`summarise()` 内で使用すると、SQL に変換される際にそれぞれ対応する集約関数にマッピングされます。
 
 ```r
 db_sales %>% 
