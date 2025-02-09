@@ -1250,7 +1250,7 @@ FROM store_sales
 8 S002      7   150     28   140  
 ```
 
-`AVG(sales) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、`window_frame(-1, 1)` により `ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` という `ROWS` 句が生成されています。
+`AVG(sales) OVER ()` の内部については、`window_order(month)` により `ORDER BY "month"` が生成され、`window_frame(-1, 1)` により `ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` という `ROWS` 句が生成されています。
 
 ##### シフト関数 (`lag()`、`lead()`)
 
@@ -1444,7 +1444,7 @@ WHERE (pref LIKE '%ka')
 2 S004  storeD Fukuoka
 ```
 
-#### 特殊な形式 (SQL の構文を埋め込む)
+#### 特殊な式 (SQL の構文を埋め込む)
 
 SQL 関数は R よりも構文のバリエーションが多いため、R コードから直接変換できない式もあります。
 これらをクエリに埋め込むには、次のように `sql()` 内でリテラル SQL を使用します。
