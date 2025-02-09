@@ -15,7 +15,7 @@ tags: ["R", "SQL", "SQL自動生成"]
 # ShowReadingTime: false
 # ShowWordCount: false
 # ShowToc: true
-# TocOpen: true
+TocOpen: false
 tableOfContents:
   ordered: false
   startLevel: 2
@@ -28,13 +28,13 @@ tableOfContents:
 
 ## はじめに
 
-前回は、dplyr を用いたテーブル操作による SQL クエリの自動生成について解説しました。
-今回は、dplyr の主要な操作が SQL にどのように変換されるのかを説明します。  
-これにより、dplyr コードと SQL クエリの対応関係について理解を深め、R と SQL の両方をより効率的に使いこなせるようになると思います。
+前回は、dplyr を用いてテーブル操作を行い、SQL クエリを自動生成する方法について解説しました。  
+今回は、dplyr の主要な操作が SQL にどのように変換されるのかを、具体的な演算や関数の例を交えて説明します。  
+これにより、dplyr コードと SQL クエリの対応関係をより深く理解し、R と SQL を効果的に組み合わせて活用できるようになることを目指します。
 
 ### データベースへの接続とデータの準備
 
-まず、デモ用のデータセットを作成し、それを DuckDB に登録しておきます。
+まず、デモ用のデータセットを作成し、それを DuckDB に登録します。
 
 ```r
 library(DBI)
@@ -81,16 +81,16 @@ db_master = tbl(con, "store_master")
 
 ### SQL 変換に関する補足
 
-はじめに補足ですが、dbplyr の SQL 変換は必ずしも最適な SQL を生成するわけではありません。
-冗長的な構造の SQLクエリに変換されるケースもあります。
+最初に補足ですが、dbplyr による SQL 変換が常に最適な SQL を生成するわけではありません。
+冗長的な SQLクエリに変換されるケースもあります。
 
-例えば、次の R コードは
+例えば、以下の R コードは、
 
 ```r
 db_sales %>% filter(!is.na(sales))
 ```
 
-以下の SQLクエリに変換されます。
+次の SQLクエリに変換されます。
 
 ```sql
 SELECT store_sales.*
@@ -98,8 +98,10 @@ FROM store_sales
 WHERE (NOT((sales IS NULL)))
 ```
 
-この SQL は論理的には正しいですが、`NOT((sales IS NULL))` の部分は `sales IS NOT NULL` と書く方が簡潔で可読性が高くなります。
-このような点を踏まえた上でご覧いただければと思います。
+この SQL は論理的には正しいですが、  
+`WHERE (NOT((sales IS NULL)))` の部分は  
+`WHERE sales IS NOT NULL` と書いた方が簡潔で可読性が高くなります。  
+このような点も考慮しながら読み進めていただければと思います。
 
 ### dplyr 操作全体と操作内の式について
 
@@ -108,11 +110,11 @@ dbplyr による SQL 変換は以下の 2つの側面に分かれるため、そ
 - dplyr 操作全体の SQL 変換
 - dplyr 操作内の個々の式の SQL 変換
 
-上述の R コードの場合、`filter(, !is.na(sales))` が「dplyr 操作全体」、`!is.na(sales)` が「dplyr 操作内の式」に対応します。
+前述の R コードの場合、`filter(, !is.na(sales))` が「dplyr 操作全体」に対応し、`!is.na(sales)` が「dplyr 操作内の式」に対応します。
 
-### SQL 変換の元となる SELECT 文
+### SQL 変換の基となる SELECT 文
 
-dbplyr は純粋なテーブルに対して次の `SELECT` 文を生成します。
+dbplyr は純粋なテーブルに対して次のような `SELECT` 文を生成します。
 
 ```r
 db_sales %>% show_query()
@@ -123,19 +125,19 @@ SELECT *
 FROM store_sales
 ```
 
-すべての dplyr 操作は、このような「全ての列を選択する `SELECT` 文」を元にして SQL を生成します。
+すべての dplyr 操作は、上記のような「全ての列を選択する `SELECT` 文」を基にして SQL を生成します。
 
 ---
 
-以降では、下記の3点を添付して SQL 変換について解説します。
+以降では、次の3点を添えて SQL 変換について解説します。
 
 - dplyr によるテーブル操作の R コード
 - 自動生成される SQLクエリ
-- テーブル操作の実行結果となるテーブルの内容
+- 実行結果として得られるテーブルの内容
 
 ## dplyr 操作全体の SQL 変換
 
-dplyr 操作全体がどのように SQL 変換されるかについて、主要な操作を例にまとめました。
+dplyr 操作全体がどのように SQL に変換されるかについて、主要な操作をいくつかの例を使って解説します。
 
 ### 単一テーブルの操作
 
@@ -143,7 +145,7 @@ dplyr 操作全体がどのように SQL 変換されるかについて、主要
 
 ##### `select()`、`rename()`、`relocate()`
 
-`select()` は `SELECT` 句を修正します。
+`select()` は SQL の `SELECT` 句を修正します。
 
 ```r
 db_sales %>% 
@@ -165,7 +167,7 @@ FROM store_sales
 ...
 ```
 
-`rename()` についても同様です。
+`rename()` についても同様に変換されます。
 
 ```r
 db_sales %>% 
@@ -187,7 +189,7 @@ FROM store_sales
 ...
 ```
 
-`relocate()` についても同様です。
+`relocate()` についても同様に変換されます。
 
 ```r
 db_sales %>% 
@@ -209,11 +211,11 @@ FROM store_sales
 ...
 ```
 
-ここで、`"month"` がダブルクォートで括られてるのは、これが DuckDB の予約語だからです。
+ここで、`"month"` がダブルクォートで括られているのは、これが DuckDB の予約語だからです。
 
 ##### `mutate()`
 
-`mutate()` は `SELECT` 句を修正します。
+`mutate()` は SQL の `SELECT` 句を修正します。
 
 ```r
 db_sales %>% 
@@ -242,7 +244,7 @@ FROM store_sales
 
 ##### `filter()`
 
-`filter()` は `WHERE` 句を生成します。
+`filter()` は SQL の `WHERE` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -264,7 +266,7 @@ WHERE ("month" = 4) AND (profit >= 30.0)
 
 ##### `arrange()`
 
-`arrange()` は `ORDER BY` 句を生成します。
+`arrange()` は SQL の `ORDER BY` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -290,7 +292,7 @@ ORDER BY "month", profit DESC
 
 ##### `head()`
 
-`head()` は `LIMIT` 句を生成します。
+`head()` は SQL の `LIMIT` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -314,7 +316,7 @@ LIMIT 3
 
 ##### `distinct()`
 
-`distinct()` は `DISTINCT` 修飾子を生成します。
+`distinct()` は SQL の `DISTINCT` 修飾子を生成します。
 
 ```r
 db_sales %>% 
@@ -334,11 +336,11 @@ FROM store_sales
 2 S001 
 ```
 
-#### グループ化と要約
+#### グループ化と集約
 
 ##### `summarise()`
 
-`summarise()` は `mean()` などの要約関数と合わせて `SELECT` 句を修正します。
+`summarise()` は `mean()` などの集約関数と合わせて `SELECT` 句を修正します。
 
 ```r
 db_sales %>% 
@@ -383,8 +385,7 @@ GROUP BY store
 
 ##### `group_by()` \+ `summarise()` \+ `filter()`
 
-
-さらに、要約後の `filter()` と合わせて `HAVING` 句を生成します。
+さらに、集約後の `filter()` と合わせて `HAVING` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -508,7 +509,7 @@ CROSS JOIN store_sales
 
 ##### `semi_join()` (準結合)
 
-`semi_join()` は `WHERE` 句の `EXISTS` 演算子を生成します。
+`semi_join()` は `WHERE EXISTS` 演算子を生成します。
 
 ```r
 db_master %>% 
@@ -534,7 +535,7 @@ WHERE EXISTS (
 
 ##### `anti_join()` (アンチ結合)
 
-`anti_join()` は `WHERE` 句の `NOT EXISTS` 演算子を生成します。
+`anti_join()` は `WHERE NOT EXISTS` 演算子を生成します。
 
 ```r
 db_master %>% 
@@ -684,9 +685,9 @@ EXCEPT
 
 ### その他の操作
 
-`count()`, `slice_min()`, `slice_max()`, `replace_na()`, `pivot_longer()` などのその他の操作については、ここまでに挙げた SQL の句や演算子、SQL 関数を組み合わせて変換されます。
+`count()`, `slice_min()`, `slice_max()`, `replace_na()`, `pivot_longer()` などのその他の操作については、ここまでに紹介した SQL の句や演算子、SQL 関数を組み合わせて変換されます。
 
-例えば、`count()` は次のように、SQL 関数 `COUNT()` を用いて `SELECT` 句を修正し `GROUP BY` 句を生成します。
+例えば、`count()` は次のように、SQL 関数 `COUNT()` を用いて `SELECT` 句を修正し、`GROUP BY` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -711,7 +712,7 @@ GROUP BY store
 
 ```r
 db_sales %>% 
-  pivot_longer(
+  tidyr::pivot_longer(
     -c(store, month), names_to = "name", values_to = "amount"
   ) %>% 
   show_query()
@@ -740,7 +741,7 @@ FROM store_sales
 
 ## dplyr 操作内の式の SQL 変換
 
-dplyr 操作内の個々の式がどのように SQL 変換されるかについて、主な演算子・関数を例に下記2つの観点でまとめました。
+dplyr 操作内の個々の式がどのように SQL に変換されるかについて、主な演算子・関数を例に、以下の 2 つの観点でまとめました。
 
 - dplyr が認識できる式
 - dplyr が認識できない式
@@ -750,6 +751,8 @@ dplyr 操作内の個々の式がどのように SQL 変換されるかについ
 #### 基本的な演算子
 
 ##### 算術演算子 (`+`、`-`、`*`、`/`、`^`)
+
+dplyr の算術演算子は、SQL に変換される際にそれぞれ対応する式や関数にマッピングされます。
 
 ```r
 db_sales %>% 
@@ -779,7 +782,9 @@ FROM store_sales
 ...
 ```
 
-##### 比較演算子、論理演算子(`&`、`|`、`!`)
+##### 比較演算子、論理演算子
+
+dplyr の比較演算子、論理演算子 (`&`、`|`、`!`) は、SQL に変換される際にそれぞれ対応する式にマッピングされます。
 
 ```r
 db_sales %>% 
@@ -817,9 +822,12 @@ FROM store_sales
 5 S002     NA     28 NA    NA    FALSE TRUE  FALSE
 ...
 ```
+
 #### 基本的な関数
 
-##### 数学関数、数値の丸め
+##### 数学関数、数値の丸め関数
+
+一般的な数学関数、数値の丸め関数は、SQL に変換される際にそれぞれ対応する関数にマッピングされます。
 
 ```r
 db_sales %>% 
@@ -850,34 +858,51 @@ FROM store_sales
 3  3.30  5.20  0.956     5
 4  3.47  5.66  0.551     5
 5  3.33  5.29  0.271    NA
+...
 ```
 
 ##### キャスト関数
 
+キャスト関数は、SQL に変換される際にそれぞれ対応する関数にマッピングされます。
+DuckDB では、次の例のように `CAST()` を用いた式に変換されます。
+
 ```r
 db_sales %>% 
   mutate(
-    m = as.character(month), 
+    v1 = as.integer(profit), 
+    v2 = as.numeric(month), 
+    v3 = as.double(month), 
+    v4 = as.character(month), 
+    v5 = as.Date("2025-04-01"), 
     .keep = "used"
   ) %>% 
   show_query()
 ```
 
 ```sql
-SELECT "month", CAST("month" AS TEXT) AS m
+SELECT
+  "month",
+  profit,
+  CAST(profit AS INTEGER) AS v1,
+  CAST("month" AS NUMERIC) AS v2,
+  CAST("month" AS NUMERIC) AS v3,
+  CAST("month" AS TEXT) AS v4,
+  CAST('2025-04-01' AS DATE) AS v5
 FROM store_sales
 ```
 
 ```text
-  month m    
-  <int> <chr>
-1     4 4    
-2     5 5    
-3     6 6    
+  month profit    v1    v2    v3 v4    v5        
+  <int>  <dbl> <int> <dbl> <dbl> <chr> <date>    
+1     4     30    30     4     4 4     2025-04-01
+2     5     34    34     5     5 5     2025-04-01
+3     6     27    27     6     6 6     2025-04-01
 ...
 ```
 
 ##### 文字列関数
+
+基本的な文字列関数は次の例のように SQL に変換できます。`stringr` パッケージの一部の関数にも対応しています。
 
 ```r
 db_master %>% 
@@ -912,6 +937,8 @@ FROM store_master
 ```
 
 ##### 日付関数
+
+基本的な日付関数は次の例のように SQL に変換できます。`lubridate` パッケージの一部の関数にも対応しています。
 
 ```r
 db_master %>% 
@@ -951,6 +978,8 @@ FROM q01
 
 ##### パターンマッチング
 
+`stringr::str_detect()`、`grepl()` は `filter()` との組み合わせで、`WHERE` 句によるパターンマッチングを実行する式を生成します。
+
 ```r
 db_master %>% 
   filter(
@@ -974,6 +1003,8 @@ WHERE (REGEXP_MATCHES(pref, 'ka$'))
 
 ##### `is.na()`
 
+`is.na()` は `IS NULL` 句を生成します。
+
 ```r
 db_sales %>% 
   filter(is.na(sales)) %>% 
@@ -994,37 +1025,45 @@ WHERE ((sales IS NULL))
 
 ##### `if_else()`
 
+`if_else()` は `CASE` 式を生成します。
+
 ```r
 db_sales %>% 
   mutate(
-    profit_size = if_else(profit > 30, "big", "small", "none"), 
+    profit_size = 
+      if_else(sales > 150, "big", "small", "none"), 
     .keep = "used"
   ) %>% 
   show_query()
 ```
 
-```sql
+```sql {linenos=true, hl_lines=6}
 SELECT
-  profit,
+  sales,
   CASE 
-    WHEN (profit > 30.0) THEN 'big' 
-    WHEN NOT (profit > 30.0) THEN 'small' 
-    WHEN ((profit > 30.0) IS NULL) THEN 'none' 
+    WHEN (sales > 150.0) THEN 'big' 
+    WHEN NOT (sales > 150.0) THEN 'small' 
+    WHEN ((sales > 150.0) IS NULL) THEN 'none' 
   END AS profit_size
 FROM store_sales
 ```
 
 ```text
-  profit profit_size
-   <dbl> <chr>      
-1     30 small      
-2     34 big        
-3     27 small      
-4     32 big        
+  sales profit_size
+  <dbl> <chr>      
+1   150 small      
+2   170 big        
+3   140 small      
+4   160 big        
+5    NA none       
 ...
 ```
 
-##### 要約関数 (`summarise()`内)
+SQL の 6行目は、`ELSE 'none'` とリライトするとより簡潔になります。
+
+##### 集約関数 (`summarise()`内)
+
+`mean()` などの集約関数は、`summarise()` 内で使用すると `SELECT` 句を修正します。
 
 ```r
 db_sales %>% 
@@ -1049,12 +1088,35 @@ FROM store_sales
 ```text
       n n_store   avg per50
   <dbl>   <dbl> <dbl> <dbl>
-1     8       2  151.   150
+1     8       2 151.4   150
 ```
 
 #### ウィンドウ関数
 
-##### 要約関数 (`mutate()`内)
+次に、ウィンドウ関数の SQL 変換について説明します。  
+ウィンドウ関数は以下の4項目に分類されます。
+
+- **集約関数:**  
+  `sum()`、 `mean()`、`max()`、`median()`、`sd()` など
+- **シフト関数:**  
+  `lag()`、`lead()`
+- **ランキング関数:**  
+  `min_rank()`、`dense_rank()`、`ntile()` など
+- **累積関数:**  
+  `cumsum()`、`cummean()`、`cummax()`、`cumall()` など
+
+SQL では、`AVG(sales) OVER ()` のように、ウィンドウ(範囲)を指定した集約関数などの式をウィンドウ関数と呼びます。
+
+ウィンドウ関数を適用する `OVER` 句の形式は次の通りです。
+
+- `[式] OVER ([パーティション句] [順序句] [フレーム句])`
+
+`[式]` はウィンドウ関数と変数名の組み合わせです。  
+かなり豊富な表現ができるため、これまでよりも変換後のクエリが複雑になります。
+
+##### 集約関数 (`mutate()`内)
+
+`mean()` などの集約関数は `mutate()` 内で使用するとウィンドウ関数として適用され、`AVG(sales) OVER ()` のようなウィンドウ関数を生成します。
 
 ```r
 db_sales %>% 
@@ -1078,13 +1140,13 @@ FROM store_sales
 ```text
   store month sales profit     n   avg   max
   <chr> <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-1 S001      4   150     30     8  151.   170
-2 S001      5   170     34     8  151.   170
-3 S001      6   140     27     8  151.   170
+1 S001      4   150     30     8 151.4   170
+2 S001      5   170     34     8 151.4   170
+3 S001      6   140     27     8 151.4   170
 ...
 ```
 
-`group_by()` を併用した場合は以下のように変換されます。  
+`group_by()` を併用すると以下のように変換されます。
 
 ```r
 db_sales %>% 
@@ -1119,9 +1181,51 @@ FROM store_sales
 8 S002      5   160     31     2   165   170
 ```
 
-`group_by(month)` により `PARTITION BY "month"` が生成されます。
+ウィンドウ関数では、`group_by(month)` により `GROUP BY` 句ではなく `OVER ()` 内に `PARTITION BY "month"` が生成されます。
 
-##### `lag()`、`lead()`
+また、`window_order()` と `window_frame()` を併用すると、以下のように変換されます。
+
+```r
+db_sales %>% 
+  group_by(store) %>% 
+  window_order(month) %>% 
+  window_frame(-1, 1) %>% 
+  mutate(
+    avg_win = mean(sales)
+  ) %>% 
+  show_query()
+```
+
+```sql
+SELECT
+  store_sales.*,
+  AVG(sales) OVER (
+    PARTITION BY store 
+    ORDER BY "month" 
+    ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING
+  ) AS avg_win
+FROM store_sales
+```
+
+```text
+# Ordered by: month
+  store month sales profit avg_win
+  <chr> <int> <dbl>  <dbl>   <dbl>
+1 S001      4   150     30   160  
+2 S001      5   170     34   153.3
+3 S001      6   140     27   156.7
+4 S001      7   160     32   150  
+5 S002      4    NA     28   160  
+6 S002      5   160     31   145  
+7 S002      6   130     27   146.7
+8 S002      7   150     28   140  
+```
+
+`AVG(sales) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、`window_frame(-1, 1)` により `ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` という `ROWS` 句が生成されています。
+
+##### シフト関数 (`lag()`、`lead()`)
+
+`lag()`、`lead()` を用いた場合の SQL 変換は以下の通りです。
 
 ```r
 db_sales %>% 
@@ -1155,9 +1259,12 @@ FROM store_sales
 8 S001      7   160     32    27     NA
 ```
 
-`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成されます。
+`OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成されています。
+`arrange()` を用いても `OVER` 句に `ORDER BY` は生成されない点にご注意ください。
 
 ##### ランキング関数
+
+ランキング関数の SQL 変換についてですが、`min_rank()` を用いた場合の例を以下に示します。
 
 ```r
 db_sales %>% 
@@ -1199,9 +1306,12 @@ FROM store_sales
 
 2番目のパーティションキー `CASE WHEN (sales IS NULL) THEN 1 ELSE 0 END` は、`sales` が NULL の行をグループ 1、それ以外をグループ 0 に分類するためのものです。  
 これにより、`sales IS NULL` の行が別グループとして扱われ、ランク付けの対象から確実に切り離されます。  
-`CASE WHEN (NOT (sales IS NULL)) THEN RANK() OVER (...)` という条件があるため、一見、このパーティションキーは不要にも思えます。ですが、指定しない場合、NULL の行も含めてランク付けが行われ、データベースのソート設定によっては NULL が通常の値より前に配置されることがあります。その結果、意図しないランク付けが発生する可能性があるため、このキーを用いて NULL のデータが明示的に分離されています。
+
+`WHEN (NOT (sales IS NULL)) THEN RANK()` という条件があるため、一見、このパーティションキーは不要にも思えます。ですが、指定しない場合、NULL の行も含めてランク付けが行われ、データベースのソート設定によっては NULL が通常の値より前に配置されることがあります。その結果、意図しないランク付けが発生する可能性があるため、このキーを用いて NULL のデータが明示的に分離されています。
 
 ##### 累積関数
+
+累積関数の SQL 変換についてですが、`cumsum()` を用いた場合の例を以下に示します。
 
 ```r
 db_sales %>% 
@@ -1236,56 +1346,19 @@ FROM store_sales
 8 S002      7   150     28   114
 ```
 
-`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、
-`cumsum()` により `ROWS UNBOUNDED PRECEDING` が生成されます。
-
-##### `window_frame()`
-
-`window_frame()` は `ROWS` 句を生成します。
-
-```r
-db_sales %>% 
-  group_by(store) %>% 
-  window_order(month) %>% 
-  window_frame(-1, 1) %>% 
-  mutate(
-    avg = mean(profit)
-  ) %>% 
-  show_query()
-```
-
-```sql
-SELECT
-  store_sales.*,
-  AVG(profit) OVER (
-    PARTITION BY store ORDER BY "month" 
-    ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING
-  ) AS avg
-FROM store_sales
-```
-
-```text
-  store month sales profit   avg
-  <chr> <int> <dbl>  <dbl> <dbl>
-1 S001      4   150     30  32  
-2 S001      5   170     34  30.3
-3 S001      6   140     27  31  
-4 S001      7   160     32  29.5
-5 S002      4    NA     28  29.5
-6 S002      5   160     31  28.7
-7 S002      6   130     27  28.7
-8 S002      7   150     28  27.5
-```
+`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、最初の行から現在の行までを累積の対象とするために `ROWS UNBOUNDED PRECEDING` という `ROWS` 句が生成されています。
 
 ### dplyr が認識できない式
 
-dbplyr が知らない関数はそのままにされるため、dplyr でカバーされていないデータベース関数については直接記述できます。
+dplyr が認識できない式については変換が行われずそのまま残されるため、dplyr でカバーされていないデータベース関数は直接記述することができます。
 
 #### プレフィックス関数
 
 dplyr が認識しない関数はそのまま残されます。  
 SQL 関数は一般的に大文字と小文字を区別しないため、R コード内で SQL 関数を使用する際は大文字を使うことをお勧めします。
-これにより、通常とは異なることをしていることが簡単に確認できます。
+これにより、通常とは異なる操作をしていることが簡単に確認できます。
+
+以下は、SQL 関数 `CEIL()`、`EVEN()` を使用した例です。
 
 ```r
 db_sales %>% 
@@ -1312,14 +1385,13 @@ FROM store_sales
 3 S001      6   140     27     1     6
 4 S001      7   160     32     1     8
 5 S002      4    NA     28    NA     4
-6 S002      5   160     31     1     6
-7 S002      6   130     27     1     6
-8 S002      7   150     28     1     8
+...
 ```
 
 #### インフィックス関数
 
-dbplyr は `x %in% y` のような関数名が引数の間に挟まる形式の関数(インフィックス関数)も変換します。これにより、次のように `LIKE` などの式を使用できます。
+`x %in% y` のような関数名が引数の間に挟まる形式の関数 (インフィックス関数) も変換されます。
+これにより、次のように `LIKE` などの式を使用することができます。
 
 ```r
 db_master %>% 
@@ -1345,19 +1417,46 @@ WHERE (pref LIKE '%ka')
 #### 特殊な形式 (SQL の構文を埋め込む)
 
 SQL 関数は R よりも構文のバリエーションが多いため、R コードから直接変換できない式もあります。
-これらを自分のクエリに埋め込むには、次のように `sql()` 内でリテラル SQL を使用します。
+これらをクエリに埋め込むには、次のように `sql()` 内でリテラル SQL を使用します。
 
 ```r
 db_sales %>% 
   mutate(
-    f_sales = sql("CAST(sales AS FLOAT)"), 
+    sales2 = sql("IFNULL(sales, 0.0)"), 
+    store_rev = sql("REVERSE(store)"), 
+    per25 = sql("QUANTILE_CONT(profit, 0.25) OVER ()")
   ) %>% 
   show_query()
 ```
 
 ```sql
-SELECT store_sales.*, CAST(sales AS FLOAT) AS f_sales
+SELECT
+  store_sales.*,
+  IFNULL(sales, 0.0) AS sales2,
+  REVERSE(store) AS store_rev,
+  QUANTILE_CONT(profit, 0.25) OVER () AS per25
 FROM store_sales
 ```
 
+```text
+  store month sales profit sales2 store_rev per25
+  <chr> <int> <dbl>  <dbl>  <dbl> <chr>     <dbl>
+1 S001      4   150     30    150 100S       27.8
+2 S001      5   170     34    170 100S       27.8
+3 S001      6   140     27    140 100S       27.8
+4 S001      7   160     32    160 100S       27.8
+5 S002      4    NA     28      0 200S       27.8
+...
+```
+
 これにより、必要な SQL をほぼ自由に生成できるようになります。
+
+## まとめ
+
+今回は、R のコードがどのように SQL クエリへと変換されるのかを解説しました。  
+dplyr を活用することで、SQL を直接記述せずとも直感的な R コードからクエリを自動生成でき、SQL の構造や書き方を効率的に習得できます。
+
+また、SQL に変換できる形で R コードを書くことで、データ処理をデータベース側で実行できるため、パフォーマンスの向上も期待できます。
+
+R と SQL を組み合わせることで、より柔軟かつ強力なデータ処理が可能になります。  
+ぜひ今回紹介した手法を活用し、実践を通じて SQL の理解を深めながら、さらに高度なデータ分析に挑戦してみてください。

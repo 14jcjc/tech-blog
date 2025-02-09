@@ -4,9 +4,7 @@
     background-color: $background-color;
     // background-color: #ff0000;
     // katsu
-    // --comment-text-color: #75715e;
-    // --comment-text-color: #AEA9A0;
-    --comment-text-color: #A9AEBE;
+    font-size: 15px;
 }
 
 /* Other */
@@ -50,24 +48,43 @@
 
 /* LineHighlight */
 .chroma .hl {
-    display: block;
+    // display: block;
     width: 100%;
-    background-color: #ffffcc;
+    // background-color: #ffffcc;
+    // katsu
+    display: flex;
+    // background-color: var(--chroma-background-color-hl);
+    background-color: $chroma-background-color-hl; 
 }
 
 /* LineNumbersTable */
 .chroma .lnt {
     margin-right: 0.4em;
     padding: 0 0.4em 0 0.4em;
-    color: #7f7f7f;
+    // color: #7f7f7f;
     display: block;
+    // katsu
+    color: #A5A5A5;
 }
 
 /* LineNumbers */
 .chroma .ln {
     margin-right: 0.4em;
     padding: 0 0.4em 0 0.4em;
-    color: #7f7f7f;
+    // color: #7f7f7f;
+    // katsu
+    color: #A5A5A5;
+}
+
+// katsu
+// LineNumbers (link)
+.chroma .ln .lnlinks {
+  color: #A5A5A5;
+  text-decoration: underline;
+}
+.chroma .lnt .lnlinks {
+  color: #A5A5A5;
+  text-decoration: underline;
 }
 
 /* Keyword */
@@ -212,7 +229,7 @@
 
 /* Literal */
 .chroma .l {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralDate */
@@ -257,7 +274,8 @@
 
 /* LiteralStringEscape */
 .chroma .se {
-    color: #ae81ff;
+    // color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralStringHeredoc */
@@ -292,37 +310,37 @@
 
 /* LiteralNumber */
 .chroma .m {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberBin */
 .chroma .mb {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberFloat */
 .chroma .mf {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberHex */
 .chroma .mh {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberInteger */
 .chroma .mi {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberIntegerLong */
 .chroma .il {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* LiteralNumberOct */
 .chroma .mo {
-    color: #ae81ff;
+    color: $literal-number-color;
 }
 
 /* Operator */
@@ -342,37 +360,37 @@
 
 /* Comment */
 .chroma .c {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentHashbang */
 .chroma .ch {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentMultiline */
 .chroma .cm {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentSingle */
 .chroma .c1 {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentSpecial */
 .chroma .cs {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentPreproc */
 .chroma .cp {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* CommentPreprocFile */
 .chroma .cpf {
-    color: var(--comment-text-color);
+    color: $comment-text-color;
 }
 
 /* Generic */

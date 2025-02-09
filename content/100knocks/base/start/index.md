@@ -47,6 +47,11 @@ tags: ["R", "SQL"]
 
 以下のコマンドでリポジトリをクローンします。
 
+Bash
+bash, sh, ksh, zsh, shell
+Bash Session
+bash-session, console, shell-session
+
 ```sh
 cd /your_directory_path
 git clone https://github.com/xxx/100knocks-dp.git
@@ -178,7 +183,7 @@ work_dir_path = "."
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
 {{% /comment %}}
 
-## DuckDB について
+## DuckDB を使用するメリット{#duckdb}
 
 本シリーズでは、軽量かつ高速なデータベースエンジン **DuckDB** を使用します。
 DuckDB は、データサイエンスのニーズに合わせて設計された高性能データベースで、分析向けの機能が充実しています。

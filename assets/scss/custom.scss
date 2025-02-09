@@ -228,29 +228,28 @@
   // --pre-background-color: #fafafa;
   // @import "partials/highlight/light.scss";
   --pre-text-color: #f8f8f2;
-  // --pre-background-color: #272822;
-  --pre-background-color: #27283B;
+  --pre-background-color: #22232D;
   @import "partials/highlight/dark.scss";
 }
 
 [data-scheme="dark"] {
   --pre-text-color: #f8f8f2;
   // --pre-background-color: #272822;
-  --pre-background-color: #27283B;
+  --pre-background-color: #22232D;
   @import "partials/highlight/dark.scss";
 }
 
 // katsu
-:root {
-  // --chroma-background-color-hl: #ffffcc;
-  // --chroma-background-color-hl: #4B4B38;
-  --chroma-background-color-hl: rgba(255, 255, 100, 0.08);
-  &[data-scheme="dark"] {
-    // --chroma-background-color-hl: #474733;
-    // --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
-    --chroma-background-color-hl: rgba(255, 255, 100, 0.08);
-  }
-}
+// :root {
+//   // --chroma-background-color-hl: #ffffcc;
+//   // --chroma-background-color-hl: #4B4B38;
+//   --chroma-background-color-hl: rgba(255, 255, 100, 0.08);
+//   &[data-scheme="dark"] {
+//     // --chroma-background-color-hl: #474733;
+//     // --chroma-background-color-hl: rgba(255, 255, 200, 0.1);
+//     --chroma-background-color-hl: rgba(255, 255, 100, 0.08);
+//   }
+// }
 
 // リスト <li>の中の<p>
 .article-content li p {
@@ -351,18 +350,18 @@
     calc(var(--code-filename-fontsize) * 0.5) 0 0;
 }
 
-.chroma {
-  font-size: 15px;
-}
+// .chroma {
+//   font-size: 15px;
+// }
 
 /* LineHighlight */
-.chroma .hl {
-  // display: block;
-  display: flex;
-  // width: 100% !important;
-  // min-width: 100% !important;
-  background-color: var(--chroma-background-color-hl) !important;
-}
+// .chroma .hl {
+//   // display: block;
+//   display: flex;
+//   // width: 100% !important;
+//   // min-width: 100% !important;
+//   background-color: var(--chroma-background-color-hl) !important;
+// }
 
 // /* LineNumbers Link */
 // .chroma .ln .lnlinks {
@@ -374,22 +373,25 @@
 // }
 
 /* LineNumbersTable */
-.chroma .lnt {
-  margin-right: 0.4em;
-  padding: 0 0.4em 0 0.4em;
-  color: #7f7f7f;
-  display: block;
-}
+// .chroma .lnt {
+//   margin-right: 0.4em;
+//   padding: 0 0.4em 0 0.4em;
+//   // color: #7f7f7f;
+//   color: #A5A5A5 !important;
+//   display: block;
+// }
 
-/* LineNumbers (link) */
-.chroma .ln .lnlinks {
-  color: #7f7f7f;
-  text-decoration: underline;
-}
-.chroma .lnt .lnlinks {
-  color: #7f7f7f;
-  text-decoration: underline;
-}
+// /* LineNumbers (link) */
+// .chroma .ln .lnlinks {
+//   // color: #7f7f7f;
+//   color: #A5A5A5;
+//   text-decoration: underline;
+// }
+// .chroma .lnt .lnlinks {
+//   // color: #7f7f7f;
+//   color: #A5A5A5;
+//   text-decoration: underline;
+// }
 
 // -------------------------------------------------------------------------------
 // PaperMod

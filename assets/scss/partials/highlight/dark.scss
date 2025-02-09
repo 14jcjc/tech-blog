@@ -11,5 +11,12 @@ $keyword-color: #66d9ef;
 $text-color: $color;
 $name-color: #a6e22e;
 $literal-color: #e6db74;
+// katsu
+// $chroma-background-color-hl: rgba(255, 255, 100, 0.08);
+// $chroma-background-color-hl: rgba(255, 255, 0, 0.05);
+$chroma-background-color-hl: rgba(100, 100, 0, 0.3);
+$comment-text-color: #A9AEBE;
+// $literal-number-color: #ae81ff;
+$literal-number-color: #C060FF;
 
 @import "common.scss";

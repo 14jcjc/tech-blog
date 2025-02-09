@@ -503,34 +503,6 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-以下を翻訳して:
-
-Prefix functions
-Any function that dbplyr doesn’t know about will be left as is:
-
-translate_sql(foofify(x, y), con = con)
-#> <SQL> foofify(`x`, `y`)
-Because SQL functions are general case insensitive, I recommend using upper case when you’re using SQL functions in R code. That makes it easier to spot that you’re doing something unusual:
-
-translate_sql(FOOFIFY(x, y), con = con)
-#> <SQL> FOOFIFY(`x`, `y`)
-Infix functions
-As well as prefix functions (where the name of the function comes before the arguments), dbplyr also translates infix functions. That allows you to use expressions like LIKE which does a limited form of pattern matching:
-
-translate_sql(x %LIKE% "%foo%", con = con)
-#> <SQL> `x` LIKE '%foo%'
-Or use || for string concatenation (although most backends will translate paste() and paste0() for you):
-
-translate_sql(x %||% y, con = con)
-#> <SQL> `x` || `y`
-Special forms
-SQL functions tend to have a greater variety of syntax than R. That means there are a number of expressions that can’t be translated directly from R code. To insert these in your own queries, you can use literal SQL inside sql():
-
-
-
-
-#-------------------------------------------------------------------------------
-
 現在、コンテンツに以下の2つの目次(<nav id="TableOfContents">)をレンダリングしてます。
 
 PC用：
@@ -555,3 +527,15 @@ PC用：
 PC用の目次で JavaScript を有効にし、スマホの目次ではJavaScriptを無効にしたいです。
 
 #-------------------------------------------------------------------------------
+
+以下のブログ記事の日本語の説明文を修正して
+
+#-------------------------------------------------------------------------------
+
+
+この記事のタイトルを修正してほしい。
+以下はサンプルです。
+
+R でデータベース操作 – dplyr で SQL クエリを自動生成する
+R でデータベース操作 – dplyr を使って SQL クエリを簡単に自動生成
+
