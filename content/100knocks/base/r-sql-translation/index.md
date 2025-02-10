@@ -306,7 +306,8 @@ ORDER BY "month", profit DESC
 
 ##### `head()`
 
-`head()` は SQL の `LIMIT` 句を生成します。
+`head()` は SQL の `LIMIT` 句を生成します。  
+ただし、一部のデータベース (SQL Server など) では、`TOP` 句や `FETCH FIRST` 句が生成される場合があります。
 
 ```r
 db_sales %>% 

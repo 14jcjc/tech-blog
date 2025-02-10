@@ -976,16 +976,15 @@
               font-weight: normal;
               // margin-top: 10px;
               // margin-top: 15px; // li.margin-top + li.padding-top
-              margin-top: 10px; // li.margin-top + li.padding-top
+              margin-top: 12px; // li.margin-top + li.padding-top
               // padding-left: 10px;
               padding-left: 0;
               // margin-bottom: -5px;
-              margin-bottom: 0px;
+              margin-bottom: 16px;
 
               & > li:last-child {
-                // margin-bottom: 10;
-                // margin-bottom: 20px;
-                margin-bottom: 15px;
+                // margin-bottom: 15px;
+                margin-bottom: 16px;
               }
           }
       }
