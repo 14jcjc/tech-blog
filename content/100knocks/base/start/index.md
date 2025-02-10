@@ -23,20 +23,20 @@ tags: ["R", "SQL"]
 
 ## はじめに
 
-当ブログでは、「データサイエンス100本ノック＋α」と題し、100本ノックの演習問題をベースに、R によるデータベース操作を加えた解説を行います。
+当ブログでは、「データサイエンス100本ノック＋α」と題し、100本ノックの演習問題をベースに、R を使ったデータベース操作を交えて解説します。
 
 - **シリーズ構成**
-  - **標準編**: 100本ノックの中から約30本をピックアップし、R と SQL の両方で解説
-  - **発展編**: オリジナル問題を作成し、より実践的なデータ処理を紹介 (予定)
-<!-- <p> -->
+  - **標準編** : 100本ノックの中から約30本を選び、R と SQL を用いて解説
+  - **発展編** : オリジナル問題を作成し、より多くの構文を用いたデータ処理を紹介 (予定)
+<p>
 
 - **解説方針**  
-  各問題について、以下のコードを掲載します。
+  各問題について、以下のコードを紹介します。
   - **Rコード** : データフレーム操作
   - **Rコード** : データベース操作
   - **SQLクエリ**
 
-サンプルコードは可能な限りエレガントで効率的な記述を心がけたいと思います。
+サンプルコードはできるだけエレガントで効率的な記述を心がけたいと思います。
 
 ## 環境構築
 
@@ -208,33 +208,129 @@ PostgreSQL との互換性が高く、学習した内容を他のデータベー
 
 #### `dbGetQuery()`
 
+`DBI::dbGetQuery()` は、指定した SQL クエリをデータベースに対して実行し、その結果をデータフレーム (`data.frame` クラス) として返します。  
+この関数は、SQL を直接記述して実行する際に非常に便利です。
 
-`DBI::dbGetQuery()`
-
-次のように、sql() と組み合わせて使うと便利です。
-
-
-結果は、以下のようにデータフレーム (デフォルトで tibble) となります。
+```r
+query = 
+  "SELECT sales_ymd, product_cd, amount FROM receipt"
+d = DBI::dbGetQuery(con, query)
+d %>% head(5)
+```
 
 ```text
+  sales_ymd product_cd amount
+1  20181103 P070305012    158
+2  20181118 P070701017     81
+3  20170712 P060101005    170
+4  20190205 P050301001     25
+5  20180821 P060102007     90
+```
 
+`sql()` と組み合わせて使うと、SQL 文をより動的に組み立てたり、複雑なクエリを記述したりすることができ便利です。
+
+```r
+query = sql("
+SELECT product_cd, SUM(amount) AS total_sales
+FROM receipt
+WHERE (sales_ymd >= 20180101)
+GROUP BY product_cd
+ORDER BY total_sales DESC
+"
+)
+
+DBI::dbGetQuery(con, query)
+```
+
+```text
+  product_cd total_sales
+1 P071401001     1233100
+2 P071401002      429000
+3 P071401003      371800
+4 P060303001      346320
+5 P071401012      305800
+...
+```
+
+引数 `n` を指定すると、取得するレコード数を制限できます。  
+
+```r
+DBI::dbGetQuery(con, query, n = 3)
+```
+
+```text
+  product_cd total_sales
+1 P071401001     1233100
+2 P071401002      429000
+3 P071401003      371800
+```
+
+また、`params` 引数を使用して、SQL のバインドパラメータを活用することができ、柔軟かつ安全にクエリを実行できます。
+
+```r {hl_lines=4}
+query = sql("
+SELECT product_cd, SUM(amount) AS total_sales
+FROM receipt
+WHERE (sales_ymd >= ?)
+GROUP BY product_cd
+ORDER BY total_sales DESC
+"
+)
+
+DBI::dbGetQuery(con, query, params = list(20190401))
+```
+
+```text
+  product_cd total_sales
+1 P071401001      376200
+2 P071401002      158400
+3 P071401003      123200
+4 P060303001      117216
+5 P071401013      110000
+...
 ```
 
 #### `my_select()`
 
-DBI::dbGetQuery() のラッパー
+独自関数 `my_select()` は `dbGetQuery()` のラッパーで、次の点を変更しています。
 
-##### convert_tibble 引数
+- デフォルトで結果を tibble として返す。
+- クエリを第1引数として渡す。
 
-convert_tibble = F で data.frame クラスのデータフレームを返すこともできます。
-(あまり使わないとは思いますが。)
+使用例は以下の通りです : 
 
-##### バインドパラメータを使用したクエリ
+```r
+query = sql("
+SELECT product_cd, SUM(amount) AS total_sales
+FROM receipt
+WHERE (sales_ymd >= 20180101)
+GROUP BY product_cd
+ORDER BY total_sales DESC
+"
+)
 
-次のように、バインドパラメータを使用したクエリ
- (params 引数)
+query %>% my_select(con, n = 5)
+```
 
-### 他の DB での SQL クエリを生成する
+実行結果は、次のように tibble として返されます。
+
+```text
+# A tibble: 5 × 2
+  product_cd total_sales
+  <chr>            <dbl>
+1 P071401001     1233100
+2 P071401002      429000
+3 P071401003      371800
+4 P060303001      346320
+5 P071401012      305800
+```
+
+`convert_tibble = FALSE` を指定すると、`data.frame` クラスのデータフレームが返されますが、通常は tibble を使用することをお勧めします。
+
+
+
+
+### 他の DB に対する SQL クエリを生成する
 
 #### `sql_render()`
 
