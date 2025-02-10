@@ -30,7 +30,7 @@ tableOfContents:
 ## はじめに
 
 前回は、dplyr を用いたテーブル操作と SQL クエリの自動生成について解説しました。  
-今回は、dplyr の主要な操作が SQL にどのように変換されるのかを、具体例を交えて説明します。
+今回は、dplyr の主要な操作が SQL にどのように変換されるのかを、具体例を交えて説明します。  
 これにより、dplyr コードと SQL クエリの対応関係を深く理解し、R と SQL を効果的に組み合わせて活用できるようになります。
 
 ### データベースへの接続とデータの準備
@@ -721,7 +721,8 @@ EXCEPT
 
 ### その他のテーブル操作
 
-これまでに紹介した代表的なテーブル操作の関数に加えて、`count()`, `slice_min()`, `slice_max()`, `replace_na()`, `pivot_longer()` などの関数もあります。これらの関数は、前述の SQL の句や演算子、SQL 関数を組み合わせて変換されます。
+これまでに紹介した代表的なテーブル操作の関数に加えて、`count()`, `slice_min()`, `slice_max()`, `replace_na()`, `pivot_longer()` などの関数もあります。  
+これらの関数は、前述の SQL の句や演算子、SQL 関数を組み合わせて変換されます。
 
 以下に、`count()` と `pivot_longer()` を使用した場合の変換例を示します。
 
@@ -783,7 +784,7 @@ FROM store_sales
 
 ## dplyr 操作内の式の SQL 変換
 
-このセクションでは、dplyr 操作内で使用する個々の式がどのように SQL に変換されるかに焦点を当てて解説します。
+このセクションでは、dplyr 操作内で使用する個々の式がどのように SQL に変換されるかに焦点を当てて解説します。  
 主に以下の2つの観点を元に、代表的な演算子や関数について例を挙げて説明します。
 
 - dplyr が認識できる式
@@ -906,7 +907,7 @@ FROM store_sales
 
 ##### キャスト関数
 
-キャスト関数は、SQL に変換される際にそれぞれ対応する関数にマッピングされます。
+キャスト関数は、SQL に変換される際にそれぞれ対応する関数にマッピングされます。  
 DuckDB では、次の例のように `CAST()` を用いた式に変換されます。
 
 ```r
@@ -945,7 +946,8 @@ FROM store_sales
 
 ##### 文字列関数
 
-基本的な文字列関数は次の例のように SQL に変換できます。`stringr` パッケージの一部の関数にも対応しています。
+基本的な文字列関数は次の例のように SQL に変換できます。  
+`stringr` パッケージの一部の関数にも対応しています。
 
 ```r
 db_master %>% 
@@ -981,7 +983,8 @@ FROM store_master
 
 ##### 日付関数
 
-基本的な日付関数は次の例のように SQL に変換できます。`lubridate` パッケージの一部の関数にも対応しています。
+基本的な日付関数は次の例のように SQL に変換できます。  
+`lubridate` パッケージの一部の関数にも対応しています。
 
 ```r
 db_master %>% 
@@ -1159,7 +1162,8 @@ SQL では、`AVG(sales) OVER ()` のように、ウィンドウ (範囲) を指
 
 ##### 集約関数 (`mutate()`内)
 
-`mean()` などの集約関数は `mutate()` 内で使用するとウィンドウ関数として適用され、`AVG(sales) OVER ()` のようなウィンドウ関数を生成します。
+`mean()` などの集約関数は `mutate()` 内で使用するとウィンドウ関数として適用され、  
+`AVG(sales) OVER ()` のようなウィンドウ関数を生成します。
 
 ```r
 db_sales %>% 
@@ -1224,7 +1228,8 @@ FROM store_sales
 8 S002      5   160     31     2   165   170
 ```
 
-ウィンドウ関数では、`group_by(month)` により `GROUP BY` 句ではなく `OVER ()` 内に `PARTITION BY "month"` が生成されます。
+ウィンドウ関数では、`group_by(month)` により `GROUP BY` 句ではなく `OVER ()` 内に  
+`PARTITION BY "month"` が生成されます。
 
 また、`window_order()` と `window_frame()` を併用すると、以下のように変換されます。
 
@@ -1264,7 +1269,9 @@ FROM store_sales
 8 S002      7   150     28   140  
 ```
 
-`AVG(sales) OVER ()` の内部については、`window_order(month)` により `ORDER BY "month"` が生成され、`window_frame(-1, 1)` により `ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` という `ROWS` 句が生成されています。
+`AVG(sales) OVER ()` の内部については、`window_order(month)` により  
+`ORDER BY "month"` が生成され、`window_frame(-1, 1)` により  
+`ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING` という `ROWS` 句が生成されています。
 
 ##### シフト関数 (`lag()`、`lead()`)
 
@@ -1302,7 +1309,8 @@ FROM store_sales
 8 S001      7   160     32    27     NA
 ```
 
-`OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成されています。
+`OVER ()` の内部については、`group_by(store)` と `window_order(month)` により  
+`PARTITION BY store ORDER BY "month"` が生成されています。  
 `arrange()` を用いても `OVER` 句に `ORDER BY` は生成されない点にご注意ください。
 
 ##### ランキング関数
@@ -1350,7 +1358,8 @@ FROM store_sales
 2番目のパーティションキー `CASE WHEN (sales IS NULL) THEN 1 ELSE 0 END` は、`sales` が NULL の行をグループ 1、それ以外をグループ 0 に分類するためのものです。  
 これにより、`sales IS NULL` の行が別グループとして扱われ、ランク付けの対象から確実に切り離されます。  
 
-`WHEN (NOT (sales IS NULL)) THEN RANK()` という条件があるため、一見、このパーティションキーは不要にも思えます。ですが、指定しない場合、NULL の行も含めてランク付けが行われ、データベースのソート設定によっては NULL が通常の値より前に配置されることがあります。その結果、意図しないランク付けが発生する可能性があるため、このキーを用いて NULL のデータが明示的に分離されています。
+`WHEN (NOT (sales IS NULL)) THEN RANK()` という条件があるため、一見、このパーティションキーは不要にも思えます。  
+ですが、指定しない場合、NULL の行も含めてランク付けが行われ、データベースのソート設定によっては NULL が通常の値より前に配置されることがあります。その結果、意図しないランク付けが発生する可能性があるため、このキーを用いて NULL のデータが明示的に分離されています。
 
 ##### 累積関数
 
@@ -1389,11 +1398,14 @@ FROM store_sales
 8 S002      7   150     28   114
 ```
 
-`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により `PARTITION BY store ORDER BY "month"` が生成され、最初の行から現在の行までを累積の対象とするために `ROWS UNBOUNDED PRECEDING` という `ROWS` 句が生成されています。
+`SUM(profit) OVER ()` の内部については、`group_by(store)` と `window_order(month)` により  
+`PARTITION BY store ORDER BY "month"` が生成され、  
+最初の行から現在の行までを累積の対象とするために  
+`ROWS UNBOUNDED PRECEDING` という `ROWS` 句が生成されています。
 
 ### dplyr が認識できない式
 
-dbplyr が変換する方法が分からず dplyr が認識できない式については、変換が行われずそのまま残されます。
+dbplyr が変換する方法が分からず dplyr が認識できない式については、変換が行われずそのまま残されます。  
 これにより、dplyr でカバーされていないデータベース関数は直接記述することができます。
 
 #### プレフィックス関数
@@ -1434,7 +1446,7 @@ FROM store_sales
 
 #### インフィックス関数
 
-`x %in% y` のような関数名が引数の間に挟まる形式の関数 (インフィックス関数) も変換されます。
+`x %in% y` のような関数名が引数の間に挟まる形式の関数 (インフィックス関数) も変換されます。  
 これにより、次のように `LIKE` などの式を使用することができます。
 
 ```r
@@ -1460,7 +1472,7 @@ WHERE (pref LIKE '%ka')
 
 #### 特殊な式 (SQL の構文を埋め込む)
 
-SQL 関数は R よりも構文のバリエーションが多いため、R コードから直接変換できない式もあります。
+SQL 関数は R よりも構文のバリエーションが多いため、R コードから直接変換できない式もあります。  
 これらをクエリに埋め込むには、次のように `sql()` 内でリテラル SQL を使用します。
 
 ```r
