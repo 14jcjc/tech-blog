@@ -95,7 +95,10 @@ PhotoSwipe v5 場合
     <img src="ER.png" alt="ER図" style="display: block; margin: auto;">
   </a>
 </div>
-{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+
+<span style="font-size: 0.9em;">
+−{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+</span>
 
 このデータセットを題材とした演習問題を解くことで、実際のビジネスデータを想定したデータ加工スキルを身につけられます。
 
@@ -121,4 +124,4 @@ SQL、Python、R の解法を比較できるため、異なる言語での実装
 
 興味を持った方は、以下のリンクからチェックできます。
 
-{{< product-link id="ds100kdp" platform="amazon" >}}
+- {{< product-link id="ds100kdp" platform="amazon" >}}
