@@ -932,7 +932,7 @@
 
       // font-size: calc(var(--article-font-size) * 0.9);
       font-size: 0.88em;
-      line-height: 0.88em;
+      // line-height: 0.88em;
       // color: var(--body-text-color);
       font-weight: bold;
 
@@ -942,7 +942,7 @@
         -webkit-box-decoration-break: clone;
       }
 
-      ol,
+      ol, 
       ul {
           // margin: 0;
           margin: 0 0 20px 10px;
@@ -955,7 +955,7 @@
 
       ol > li a,
       ul > li a {
-          line-height: 1.2em;
+          line-height: 1.0em;
       }
 
       ol li li a,
@@ -966,7 +966,8 @@
       li {
           // margin: 15px 0 15px 20px;
           // margin: 15px 0 15px 5px; // 5px ずつインデント
-          margin: 15px 0 15px 4px; // 5px ずつインデント
+          // margin: 15px 0 15px 4px; // 5px ずつインデント
+          margin: 10px 0 10px 4px; // 5px ずつインデント
           // padding: 5px;
           padding: 0 5px 0 0;
 
@@ -974,16 +975,17 @@
           & > ul {
               font-weight: normal;
               // margin-top: 10px;
-              // margin-top: 20px;
-              margin-top: 15px; // li.margin-top + li.padding-top
+              // margin-top: 15px; // li.margin-top + li.padding-top
+              margin-top: 10px; // li.margin-top + li.padding-top
               // padding-left: 10px;
               padding-left: 0;
               // margin-bottom: -5px;
               margin-bottom: 0px;
 
               & > li:last-child {
-                // margin-bottom: 0;
-                margin-bottom: 20px;
+                margin-bottom: 10;
+                // margin-bottom: 20px;
+                // margin-bottom: 15px;
               }
           }
       }

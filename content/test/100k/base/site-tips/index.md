@@ -7,12 +7,17 @@ slug: "site-tips-test"
 # summary: 'これはsummaryです。'
 description: "This is description."
 
+# image: rdb.webp
+# disableShare: false
+# readingTime: true
+# ShowWordCount: true
 # toc: false
-# UseHugoToc: true
 # ShowToc: true
-# ShowToc: false
-# TocOpen: true
-# TocOpen: false
+TocOpen: false
+tableOfContents:
+  ordered: false
+  startLevel: 2
+  endLevel: 5
 
 # related:
 #   show: true
@@ -1201,6 +1206,12 @@ A home template renders your site’s home page. For a single page site this is 
 #### h4 alphabet
 
 ショートコードの定義方法に応じて、引数は名前付き、位置指定、またはその両方になりますが、1 回の呼び出しで引数タイプを混在させることはできません。
+
+##### h5alphabetalphabetalphabetalphabetalphabetalphabet
+
+#### h5 alphabet alphabet alphabetalphabetaaaaaaaaaaaaaaaaaaaaaaaa
+
+##### h5見出し見出し見出し見出し見出し見出し見出し見出し
 
 ## H2 見出し2 ショートコード
 
