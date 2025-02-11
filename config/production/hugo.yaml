@@ -44,7 +44,7 @@ params:
   env: production
   mainSections:
     - "100knocks"
-    - test
+    # - test
     # - post
 
 ### Custom menu
@@ -70,8 +70,8 @@ menu:
       params: 
         icon: question
     - name: レビュー
-      # url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
-      url: "/ds100knocks-alpha/book-review/"
+      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+      # url: "/ds100knocks-alpha/book-review/"
       weight: 20
       params: 
         icon: review
@@ -98,7 +98,7 @@ module:
   mounts:
   - excludeFiles: 
       - post
-      # - test
+      - test
       # - categories
       # - test/books/**
     source: content

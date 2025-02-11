@@ -335,7 +335,7 @@ query %>% my_select(con, n = 5)
 
 例えば、**PostgreSQL の SQL をシミュレーションする** 場合は `simulate_postgres()` を使います。
 
-```r
+```r {hl_lines=["9-10"]}
 db_customer %>% 
   mutate(
     m = birth_day %>% lubridate::month(), 
