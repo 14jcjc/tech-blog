@@ -32,11 +32,11 @@ tags: ["R", "SQL"]
 
 - **解説方針**  
   各問題について、以下のコードを紹介します。
-  - **Rコード** : データフレーム操作
-  - **Rコード** : データベース操作
+  - **Rコード (データフレーム操作)**
+  - **Rコード (データベース操作)**
   - **SQLクエリ**
 
-サンプルコードはできるだけエレガントで効率的な記述を心がけたいと思います。
+サンプルコードは、可読性と効率を重視し、できるだけエレガントな記述を心がけたいと思います。
 
 ## 環境構築
 
@@ -164,7 +164,7 @@ work_dir_path = "."
 - `my_select()`
 - `my_sql_render()`
 
-#### ER図 (データの構造)
+#### 4. ER図 (データの構造)
 
 本シリーズで扱う 6 個のテーブルの関係を示す ER 図です。  
 場所 : `work/data/100knocks_ER.png`
@@ -292,7 +292,7 @@ DBI::dbGetQuery(con, query, params = list(20190401))
 
 #### `my_select()`
 
-独自関数 `my_select()` は `dbGetQuery()` のラッパーで、次の点を変更しています。
+独自関数 `my_select()` は `dbGetQuery()` のラッパー関数で、次の点を変更しています。
 
 - デフォルトで結果を tibble として返す。
 - クエリを第1引数として渡す。
@@ -327,27 +327,169 @@ query %>% my_select(con, n = 5)
 
 `convert_tibble = FALSE` を指定すると、`data.frame` クラスのデータフレームが返されますが、通常は tibble を使用することをお勧めします。
 
-
-
-
-### 他の DB での SQL クエリを生成する
+### 異なるデータベースの SQL を確認する
 
 #### `sql_render()`
 
-対応しているデータベース一覧は以下の公式ページで確認できます。
+`sql_render()` を **データベースシミュレーター `simulate_*()`** と組み合わせて使用すると、異なるデータベース向けの SQL クエリを確認できます。
+
+例えば、**PostgreSQL の SQL をシミュレーションする** 場合は `simulate_postgres()` を使います。
+
+```r
+db_customer %>% 
+  mutate(
+    m = birth_day %>% lubridate::month(), 
+    .keep = "used"
+  ) %>% 
+  head(5) -> 
+  db_result
+
+db_result %>% 
+  sql_render(con = simulate_postgres())
+```
+
+```sql
+<SQL> SELECT `birth_day`, EXTRACT(MONTH FROM `birth_day`) AS `m`
+FROM customer
+LIMIT 5
+```
+
+このように、実際のデータベース接続なしで SQL を確認できるので便利です。
+
+MySQL/MariaDB、Snowflake、Oracle、SQL server での SQL のシミュレーションは、以下のようになります。
+
+- MySQL/MariaDB
+
+```r
+db_result %>% sql_render(con = simulate_mysql())
+```
+
+```sql
+<SQL> SELECT `birth_day`, EXTRACT(month FROM `birth_day`) AS `m`
+FROM customer
+LIMIT 5
+```
+
+- Snowflake
+
+```r
+db_result %>% sql_render(con = simulate_snowflake())
+```
+
+```sql
+<SQL> SELECT `birth_day`, EXTRACT('month', `birth_day`) AS `m`
+FROM customer
+LIMIT 5
+```
+
+- Oracle
+
+```r
+db_result %>% sql_render(con = simulate_oracle())
+```
+
+```sql
+<SQL> SELECT `birth_day`, EXTRACT(month FROM `birth_day`) AS `m`
+FROM customer
+FETCH FIRST 5 ROWS ONLY
+```
+
+- SQL server
+
+```r
+db_result %>% sql_render(con = simulate_mssql())
+```
+
+```sql
+<SQL> SELECT TOP 5 `birth_day`, DATEPART(MONTH, `birth_day`) AS `m`
+FROM customer
+```
+
+対応しているデータベース一覧は、以下の公式ページで確認できます。
 
 {{< href-target-blank url="https://dbplyr.tidyverse.org/reference/index.html#built-in-database-backends" >}}
 
 #### `my_sql_render()`
 
-`sql_render()` のラッパーです。
-`sql_render()` が出力するSQLクエリは、前述のようにテーブル名やカラム名の識別子がバッククォート (`) で囲まれます。
+独自関数 `my_sql_render()` は `sql_render()` のラッパー関数で、以下の点を変更しています。
 
-これはこれで推奨された安全な記法なのでよいのですが、通常は囲まないし読みずらいと思われるため、`my_sql_render()` はデフォルトでバッククォート (`) を消去します。
+- 識別子のバッククォート (`) を制御。
+- `cte` などの SQL オプション指定を簡略化。
 
-識別子をダブルクォートで囲む場合は次のようにします。
+通常、`sql_render()` の出力する SQL では、テーブル名やカラム名の識別子がバッククォート (`) で囲まれます。
 
-また、`cte` などの引数を指定しやすくしてます。例えば、以下の2つのコードは等価です。
+```r
+db_customer %>% 
+  left_join(
+    db_receipt %>% select(customer_id, amount), by = "customer_id"
+  ) %>% 
+  group_by(customer_id) %>% 
+  summarise(sum_amount = sum(amount, na.rm = T)) %>% 
+  arrange(customer_id) -> 
+  db_result
+
+db_result %>% sql_render(
+    con = simulate_mysql(), 
+    sql_options = sql_options(cte = T)
+  )
+```
+
+```sql
+<SQL> WITH `q01` AS (
+  SELECT `customer`.*, `amount`
+  FROM customer
+  LEFT JOIN receipt
+    ON (`customer`.`customer_id` = `receipt`.`customer_id`)
+)
+SELECT `customer_id`, SUM(`amount`) AS `sum_amount`
+FROM `q01`
+GROUP BY `customer_id`
+ORDER BY `customer_id`
+```
+
+識別子の囲みをなくすことで SQL の可読性が向上するため、`my_sql_render()` はデフォルトでバッククォートを削除します。
+
+```r
+db_result %>% 
+  my_sql_render(con = simulate_mysql(), cte = T)
+```
+
+```sql
+<SQL> WITH q01 AS (
+  SELECT customer.*, receipt.amount AS amount
+  FROM customer
+  LEFT JOIN receipt
+    ON (customer.customer_id = receipt.customer_id)
+)
+SELECT customer_id, SUM(amount) AS sum_amount
+FROM q01
+GROUP BY customer_id
+ORDER BY customer_id
+```
+
+また、`replacement` 引数に `"\""` を指定すると、識別子をダブルクォートで囲みます。
+
+```r
+db_result %>% my_sql_render(
+    con = simulate_mysql(), cte = T, 
+    replacement = "\""
+  )
+```
+
+```sql
+<SQL> WITH "q01" AS (
+  SELECT "customer".*, "receipt"."amount" AS "amount"
+  FROM customer
+  LEFT JOIN receipt
+    ON ("customer"."customer_id" = "receipt"."customer_id")
+)
+SELECT "customer_id", SUM("amount") AS "sum_amount"
+FROM "q01"
+GROUP BY "customer_id"
+ORDER BY "customer_id"
+```
+
+また、`cte` などの SQL オプションを簡単に指定できます。以下の 2 つのコードは等価です。
 
 ```r
 # sql_render
