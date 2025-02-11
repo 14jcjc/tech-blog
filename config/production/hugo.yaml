@@ -3,8 +3,8 @@
 baseURL: "https://14katsumix.github.io/tech-blog/"
 
 # Include drafts when building.
-# buildDrafts: false
-buildDrafts: true
+buildDrafts: false
+# buildDrafts: true
 
 # enableRobotsTXT: true # robots.txt の生成を有効にする
 enableRobotsTXT: false
@@ -44,7 +44,7 @@ params:
   env: production
   mainSections:
     - "100knocks"
-    # - test
+    - test
     # - post
 
 ### Custom menu
@@ -98,8 +98,8 @@ module:
   mounts:
   - excludeFiles: 
       - post
-      - test
-      - 100knocks/test
+      # - test
+      # - 100knocks/test
       # - categories
       # - test/books/**
     source: content
