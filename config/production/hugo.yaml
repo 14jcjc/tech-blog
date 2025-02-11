@@ -99,6 +99,7 @@ module:
   - excludeFiles: 
       - post
       - test
+      - content/100knocks/test
       # - categories
       # - test/books/**
     source: content
