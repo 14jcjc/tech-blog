@@ -11,7 +11,7 @@ rg -i "share_icons" ./layouts -uu
 rg -i "Params.Article.toc" ./layouts -uu
 
 rg -i "PhotoSwipe" ./themes/hugo-theme-stack/ -uu
-rg -i "small" ./themes/hugo-theme-stack/assets/scss -uu
+rg -i "menu" ./themes/hugo-theme-stack/assets/scss -uu
 
 rg -i "share-buttons" ../tech-blog-2/themes/PaperMod/assets/css -uu
 rg -i "toc \{" ../tech-blog-2/themes/PaperMod/assets/css -uu
@@ -518,3 +518,96 @@ PC用の目次で JavaScript を有効にし、スマホの目次ではJavaScrip
 
 #-------------------------------------------------------------------------------
 
+#main-menu {
+  list-style: none;
+  overflow-y: auto;
+  flex-grow: 1;
+  font-size: 1.4rem;
+  background-color: var(--card-background);
+
+  box-shadow: var(--shadow-l1);
+  display: none;
+  margin: 0 calc(var(--container-padding) * -1);
+
+  padding: 30px 30px;
+
+  @include respond(xl) {
+      padding: 15px 0;
+  }
+
+  &, .menu-bottom-section ol {
+      flex-direction: column;
+      gap: 30px;
+
+      @include respond(xl) {
+          gap: 25px;
+      }
+  }
+
+  &.show {
+      display: flex;
+  }
+
+  @include respond(md) {
+      align-items: flex-end;
+      display: flex;
+      background-color: transparent;
+      padding: 0;
+      box-shadow: none;
+      margin: 0;
+  }
+
+  li {
+      position: relative;
+      vertical-align: middle;
+      padding: 0;
+
+      @include respond(md) {
+          width: 100%;
+      }
+
+      svg {
+          stroke: currentColor;
+          stroke-width: 1.33;
+          width: 20px;
+          height: 20px;
+      }
+
+      a {
+          height: 100%;
+          display: inline-flex;
+          align-items: center;
+          color: var(--body-text-color);
+          gap: var(--menu-icon-separation);
+      }
+
+      span {
+          flex: 1;
+      }
+
+      &.current {
+          a {
+              color: var(--accent-color);
+              font-weight: bold;
+          }
+      }
+
+      &.menu-bottom-section {
+          margin-top: auto;
+
+          ol {
+              display: flex;
+              padding-left: 0;
+          }
+      }
+  }
+}
+
+上記の設定で、メニュー選択時に、以下の設定が効くアイテムと効かないアイテムがある。
+
+&.current {
+  a {
+      color: var(--accent-color);
+      font-weight: bold;
+  }
+}

@@ -24,17 +24,20 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
   main:
-    - name: Home
+    - identifier: "home"
+      name: Home
       url: /
       weight: -20
       params: 
         icon: home
         # newTab: true
+    
     - name: About
-      url: /about
+      url: /about/
       weight: -10
       params:
         icon: user
+    
     - name: "R+SQL 演習問題 - test"
       # url: "/test/q-list-test"
       pageRef: "/test/100k/base/q-list-test"
@@ -50,30 +53,32 @@ menu:
         icon: review
 
     - name: 100k-test
-      url: "/test/100k"
+      url: "/test/100k/"
       weight: 30
       identifier: 100k
       params: 
         icon: arrow-back
 
     - name: post
-      url: "/post"
+      url: "/post/"
       weight: 35
       params: 
         icon: arrow-back
 
     - name: Archives
     # - name: アーカイブ
-      url: /archives
+      url: /archives/
       weight: 40
       params: 
         icon: archives
+    
     - name: Search
     # - name: 検索
-      url: /search
+      url: /search/
       weight: 50
       params: 
         icon: search
+    
     # - name: Links
     #   url: /links
     #   weight: 60
