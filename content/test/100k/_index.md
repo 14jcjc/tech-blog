@@ -8,12 +8,12 @@ draft: true
 summary: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
 description: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
 
-menu: 
-    main:
-      name: "100k-test"
-      weight: 30
-      params: 
-        icon: arrow-back
+# menu: 
+#     main:
+#       name: "100k-test"
+#       weight: 30
+#       params: 
+#         icon: arrow-back
 
 keywords: 
   - "データサイエンス100本ノック"

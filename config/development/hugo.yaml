@@ -24,54 +24,61 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
   main:
-    - name: Home
+    - identifier: "katsuブログ"
+      name: Home
       url: /
       weight: -20
       params: 
         icon: home
     #     # newTab: true
     
-    - name: About
+    - identifier: About
+      name: About
       url: /about/
       weight: -10
       params:
         icon: user
     
-    # - name: "R+SQL 演習問題 - test"
-    #   # url: "/test/q-list-test"
-    #   pageRef: "/test/100k/base/q-list-test"
-    #   weight: 10
-    #   params: 
-    #     icon: question
+    - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+      name: "R+SQL 演習問題 - test"
+      # url: "/test/q-list-test"
+      pageRef: "/test/100k/base/q-list-test"
+      weight: 10
+      params: 
+        icon: question
     #   # pre: <i class="fa circle-info"></i>
       
-    - name: レビュー (test)
+    - identifier: "レビュー"
+      name: レビュー (test)
       url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
       weight: 20
       params: 
         icon: review
 
-    # - name: "100k-test"
-    #   url: "/test/100k/"
-    #   weight: 30
-    #   identifier: 100k
-    #   params: 
-    #     icon: arrow-back
+    - identifier: "データサイエンス100本ノック＋α"
+      name: "100k-test"
+      url: "/test/100k/"
+      weight: 30
+      params: 
+        icon: arrow-back
 
-    - name: posts
+    - identifier: "posts"
+      name: posts
       url: "/post/"
       weight: 35
       params: 
         icon: arrow-back
 
-    - name: Archives
+    - identifier: "Archives"
+      name: Archives
     # - name: アーカイブ
       url: /archives/
       weight: 40
       params: 
         icon: archives
     
-    - name: Search
+    - identifier: Search
+      name: Search
     # - name: 検索
       url: /search/
       weight: 50
