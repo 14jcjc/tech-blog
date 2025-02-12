@@ -22,6 +22,8 @@ params:
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+# katsu
+# left.html を修正: identifier とカレントページ・タイトルを比較する
 menu:
   main:
     - identifier: "katsuブログ"

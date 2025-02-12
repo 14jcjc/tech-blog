@@ -53,36 +53,45 @@ params:
 
 menu:
   main:
-    - name: Home
-      url: /
+    - identifier: "katsuブログ"
+      name: Home
+      url: /p
       weight: -20
       params: 
         icon: home
-    - name: About
+    
+    - identifier: About
+      name: About
       url: /about
       weight: -10
       params:
         icon: user
 
-    - name: "R+SQL 演習問題"
+    - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+      name: "R+SQL 演習問題"
       url: "/ds100knocks-alpha/q-list"
       weight: 10
       params: 
         icon: question
-    - name: レビュー
+    
+    - identifier: "レビュー"
+      name: レビュー
       url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
       # url: "/ds100knocks-alpha/book-review/"
       weight: 20
       params: 
         icon: review
 
-    - name: Archives
+    - identifier: "Archives"
+      name: Archives
     # - name: アーカイブ
       url: /archives
       weight: 40
       params: 
         icon: archives
-    - name: Search
+    
+    - identifier: Search
+      name: Search
     # - name: 検索
       url: /search
       weight: 50
