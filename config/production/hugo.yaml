@@ -55,7 +55,7 @@ menu:
   main:
     - identifier: "katsuブログ"
       name: Home
-      url: /p
+      url: /
       weight: -20
       params: 
         icon: home
