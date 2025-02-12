@@ -11,6 +11,12 @@ categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 toc: false # 目次
 ShowToc: false
+menu: 
+    main:
+      name: "R+SQL 演習問題"
+      weight: 10
+      params: 
+        icon: question
 ---
 
 - <font color="#F0B007">★</font>は難易度です。  

@@ -24,13 +24,12 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
   main:
-    - identifier: "home"
-      name: Home
+    - name: Home
       url: /
       weight: -20
       params: 
         icon: home
-        # newTab: true
+    #     # newTab: true
     
     - name: About
       url: /about/
@@ -38,13 +37,13 @@ menu:
       params:
         icon: user
     
-    - name: "R+SQL 演習問題 - test"
-      # url: "/test/q-list-test"
-      pageRef: "/test/100k/base/q-list-test"
-      weight: 10
-      params: 
-        icon: question
-      # pre: <i class="fa circle-info"></i>
+    # - name: "R+SQL 演習問題 - test"
+    #   # url: "/test/q-list-test"
+    #   pageRef: "/test/100k/base/q-list-test"
+    #   weight: 10
+    #   params: 
+    #     icon: question
+    #   # pre: <i class="fa circle-info"></i>
       
     - name: レビュー (test)
       url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
@@ -52,14 +51,14 @@ menu:
       params: 
         icon: review
 
-    - name: 100k-test
-      url: "/test/100k/"
-      weight: 30
-      identifier: 100k
-      params: 
-        icon: arrow-back
+    # - name: "100k-test"
+    #   url: "/test/100k/"
+    #   weight: 30
+    #   identifier: 100k
+    #   params: 
+    #     icon: arrow-back
 
-    - name: post
+    - name: posts
       url: "/post/"
       weight: 35
       params: 
