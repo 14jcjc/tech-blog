@@ -492,37 +492,7 @@ dbx::dbxSelect(con, q) %>% as_tibble()
 
 #-------------------------------------------------------------------------------
 
-現在、コンテンツに以下の2つの目次(<nav id="TableOfContents">)をレンダリングしてます。
-
-PC用：
-<h2 class="widget-title section-title">目次</h2>
-<div class="widget--toc">
-    <nav id="TableOfContents">
-    </nav>
-</div>
-
-スマホ用:
-<div class="tocContent">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目次</span>
-        </summary>
-        <div class="inner">
-              <nav id="TableOfContents">
-              </nav>
-        </div>
-</div>
-
-PC用の目次で JavaScript を有効にし、スマホの目次ではJavaScriptを無効にしたいです。
-
-#-------------------------------------------------------------------------------
-
 以下のブログ記事の日本語の説明文を修正して
 
 #-------------------------------------------------------------------------------
 
-{{ $active := or (eq $currentPage.Title .Name) 
-  (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
-
-CPU: 1.6GH
-8GB
