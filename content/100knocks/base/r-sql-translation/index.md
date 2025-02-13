@@ -729,7 +729,7 @@ EXCEPT
 
 #### `count()`
 
-`count()` は次のように、SQL 関数 `COUNT()` を用いて `SELECT` 句を修正し、`GROUP BY` 句を生成します。
+`count()` は次のように、SQL の集約関数 `COUNT()` を用いて `SELECT` 句を修正し、`GROUP BY` 句を生成します。
 
 ```r
 db_sales %>% 
@@ -1144,7 +1144,7 @@ FROM store_sales
 R のウィンドウ関数は以下の4種類に分類されます。
 
 - **集約関数:**  
-  `sum()`、 `mean()`、`max()`、`median()`、`sd()` など
+  `n()`、`sum()`、 `mean()`、`max()`、`sd()` など
 - **シフト関数:**  
   `lag()`、`lead()`
 - **ランキング関数:**  
