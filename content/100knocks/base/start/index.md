@@ -421,7 +421,8 @@ FROM customer
 ```r
 db_customer %>% 
   left_join(
-    db_receipt %>% select(customer_id, amount), by = "customer_id"
+    db_receipt %>% select(customer_id, amount), 
+    by = "customer_id"
   ) %>% 
   group_by(customer_id) %>% 
   summarise(sum_amount = sum(amount, na.rm = T)) %>% 
