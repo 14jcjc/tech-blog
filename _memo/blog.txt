@@ -523,3 +523,6 @@ PC用の目次で JavaScript を有効にし、スマホの目次ではJavaScrip
 
 {{ $active := or (eq $currentPage.Title .Name) 
   (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+
+CPU: 1.6GH
+8GB
