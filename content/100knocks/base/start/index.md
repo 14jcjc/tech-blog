@@ -40,7 +40,7 @@ tags: ["R", "SQL"]
 
 ## 環境構築
 
-このシリーズでは、Docker や Jupyter Notebook などの環境を必要とせず、**RStudio などの R 実行環境** があれば十分です。
+本シリーズでは、Docker や Jupyter Notebook などの環境を必要とせず、**RStudio などの R 実行環境** があれば十分です。
 私は VSCode を愛用していますが、RStudio でも問題なく動作します。
 
 ### 手順
