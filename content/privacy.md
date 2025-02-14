@@ -4,11 +4,9 @@ url: "/privacy/"
 params: 
   author: " "
 summary: privacy policy
-searchHidden: true # Hide page from search
-ShowBreadCrumbs: false
 disableShare: true
-# params: 
-#  author: ""
+# searchHidden: true # Hide page from search
+# ShowBreadCrumbs: false
 ---
 当サイトでは、Google によるアクセス解析ツール「Google アナリティクス」を使用しています。Google アナリティクスはデータの収集のために Cookie を使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
 
