@@ -46,10 +46,11 @@ https://ken-info.com/datascience-100knocks/
 #-------------------------------------------------------------------------------
 * ToDo
 
-r-sql-auto-query
-r-sql-translation
-
 - 画像の圧縮（WebP 形式を利用）
+
+- ポートフォリオ
+http://localhost:1313/tech-blog/portfolio/
+
 
 - privacy を robots.txt などから除外する
 
