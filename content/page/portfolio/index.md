@@ -6,7 +6,6 @@ disableShare: true
 ShowToc: false
 ---
 
-ポートフォリオのリンクです。
+ポートフォリオファイルのリンクです。
 
-- {{< href-target-blank url="ポートフォリオ(金子勝美).zip" text="ポートフォリオ(金子勝美).zip" >}}
-- {{< href-target-blank url="test.png" text="test.png" >}}
+- <a class="link" href="ポートフォリオ(金子勝美).zip" download title="ポートフォリオファイルをダウンロードできます。" target="_self">ポートフォリオ(金子勝美).zip</a>
