@@ -1,11 +1,11 @@
 ---
 title: Portfolio
-description: 
+description: "ポートフォリオのダウンロードページです。"
 date: 2025-02-14
 disableShare: true
 ShowToc: false
 ---
 
-ポートフォリオファイルのリンクです。
+<!-- ポートフォリオファイルのリンクです。 -->
 
-- <a class="link" href="ポートフォリオ(金子勝美).zip" download title="ポートフォリオファイルをダウンロードできます。">ポートフォリオ(金子勝美).zip</a>
+- <a class="link" href="ポートフォリオ(金子勝美).zip" download title="ポートフォリオファイルをダウンロードできます。"> 📂 ポートフォリオ(金子勝美).zip (ダウンロード)</a>
