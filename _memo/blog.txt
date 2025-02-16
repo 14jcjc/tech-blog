@@ -64,9 +64,11 @@ http://localhost:1313/tech-blog/portfolio/
 - menus:
 - /config/
 
+- sitemap.xml: 
+  本番環境で, にdraftのページなどが含まれないようにする
+  portfolio
 - R で SVG作成
 - chroma: sql の PARTITION にカラーがつかない
-- 本番環境で, sitemap.xml にdraftのページなどが含まれないようにする
 - robots.txt
 - コードブロックについて調べる: 
   + ダークモードのハイライトカラーが悪い

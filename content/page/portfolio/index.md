@@ -4,6 +4,11 @@ description: "ポートフォリオのダウンロードページです。"
 date: 2025-02-14
 disableShare: true
 ShowToc: false
+sitemap:
+  priority: 0
+  changefreq: never
+  lastmod: false
+  exclude: true
 ---
 
 <!-- ポートフォリオファイルのリンクです。 -->
