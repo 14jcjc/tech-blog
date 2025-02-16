@@ -51,6 +51,12 @@ https://ken-info.com/datascience-100knocks/
 - ポートフォリオ
 http://localhost:1313/tech-blog/portfolio/
 
+- sitemap.xml: 
+  - 本番環境で, にdraftのページなどが含まれないようにする
+  - portfolio
+  /content/page/portfolio/index.md はレンダリングしたい。
+
+
 
 - privacy を robots.txt などから除外する
 
@@ -63,10 +69,6 @@ http://localhost:1313/tech-blog/portfolio/
 - permalinks:
 - menus:
 - /config/
-
-- sitemap.xml: 
-  本番環境で, にdraftのページなどが含まれないようにする
-  portfolio
 - R で SVG作成
 - chroma: sql の PARTITION にカラーがつかない
 - robots.txt
