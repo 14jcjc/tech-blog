@@ -8,4 +8,4 @@ ShowToc: false
 
 <!-- ポートフォリオファイルのリンクです。 -->
 
-- <a class="link" href="ポートフォリオ(金子勝美).zip" download title="ポートフォリオファイルをダウンロードできます。"> 📂 ポートフォリオ(金子勝美).zip (ダウンロード)</a>
+- <a class="link" href="ポートフォリオ(金子勝美).zip" download title="ポートフォリオファイルをダウンロードできます。"> 📂 ポートフォリオ(金子勝美).zip</a>
