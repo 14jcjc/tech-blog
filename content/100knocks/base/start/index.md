@@ -49,11 +49,6 @@ tags: ["R", "SQL"]
 
 以下のコマンドでリポジトリをクローンします。
 
-Bash
-bash, sh, ksh, zsh, shell
-Bash Session
-bash-session, console, shell-session
-
 ```sh
 cd /your_directory_path
 git clone https://github.com/xxx/100knocks-dp.git
@@ -335,14 +330,13 @@ query %>% my_select(con, n = 5)
 
 例えば、**PostgreSQL の SQL をシミュレーションする** 場合は `simulate_postgres()` を使います。
 
-```r {hl_lines=["9-10"]}
-db_customer %>% 
+```r {hl_lines=["8-9"]}
+db_result = db_customer %>% 
   mutate(
     m = birth_day %>% lubridate::month(), 
     .keep = "used"
   ) %>% 
-  head(5) -> 
-  db_result
+  head(5)
 
 db_result %>% 
   sql_render(con = simulate_postgres())
@@ -419,15 +413,14 @@ FROM customer
 通常、`sql_render()` の出力する SQL では、テーブル名やカラム名の識別子がバッククォート (`) で囲まれます。
 
 ```r
-db_customer %>% 
+db_result = db_customer %>% 
   left_join(
     db_receipt %>% select(customer_id, amount), 
     by = "customer_id"
   ) %>% 
   group_by(customer_id) %>% 
   summarise(sum_amount = sum(amount, na.rm = T)) %>% 
-  arrange(customer_id) -> 
-  db_result
+  arrange(customer_id)
 
 db_result %>% sql_render(
     con = simulate_mysql(), 
