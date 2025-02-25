@@ -34,8 +34,8 @@ Tips:
 SQLクエリからテーブル参照を取得する: tbl()
 SQLクエリを直接実行する: my_select()
   パラメータ付きのSQLクエリ
-dplyrコードにSQLコードを埋め込む
 他のDBでのSQLクエリを確認する: my_sql_render()
+dplyrコードにSQLコードを埋め込む
 # my_show_query()
 
 #-------------------------------------------------------------------------------
@@ -46,6 +46,23 @@ https://ken-info.com/datascience-100knocks/
 #-------------------------------------------------------------------------------
 * ToDo
 
+- start#補足 に translate_sql() について追記する
+
+- T, F -> TRUE, FALSE に修正
+
+- ifelse -> if_else に変更する
+  if_else() の第3引数 missing を用いる形に修正する
+
+- NULL のときに NULL という冗長表現を修正する : 
+  CASE
+    WHEN (sales IS NOT NULL) THEN ... OVER (
+    )
+  END AS ...
+
+- amount が nullable の場合の処理
+  nullable（NULL 許容） ⇔ non-nullable（NULL 非許容）
+  NULL を許容する ⇔ NULL を許容しない
+
 - 画像の圧縮（WebP 形式を利用）
 
 - ポートフォリオ
@@ -55,8 +72,6 @@ http://localhost:1313/tech-blog/portfolio/
   - 本番環境で, にdraftのページなどが含まれないようにする
   - portfolio
   /content/page/portfolio/index.md はレンダリングしたい。
-
-
 
 - privacy を robots.txt などから除外する
 

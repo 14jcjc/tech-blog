@@ -419,12 +419,12 @@ db_result = db_customer %>%
     by = "customer_id"
   ) %>% 
   group_by(customer_id) %>% 
-  summarise(sum_amount = sum(amount, na.rm = T)) %>% 
+  summarise(sum_amount = sum(amount, na.rm = TRUE)) %>% 
   arrange(customer_id)
 
 db_result %>% sql_render(
     con = simulate_mysql(), 
-    sql_options = sql_options(cte = T)
+    sql_options = sql_options(cte = TRUE)
   )
 ```
 
@@ -445,7 +445,7 @@ ORDER BY `customer_id`
 
 ```r
 db_result %>% 
-  my_sql_render(con = simulate_mysql(), cte = T)
+  my_sql_render(con = simulate_mysql(), cte = TRUE)
 ```
 
 ```sql
@@ -465,7 +465,7 @@ ORDER BY customer_id
 
 ```r
 db_result %>% my_sql_render(
-    con = simulate_mysql(), cte = T, 
+    con = simulate_mysql(), cte = TRUE, 
     replacement = "\""
   )
 ```
@@ -490,11 +490,11 @@ ORDER BY "customer_id"
 db_result %>% 
   sql_render(
     sql_options = 
-      sql_options(cte = T, use_star = F, qualify_all_columns = F)
+      sql_options(cte = TRUE, use_star = FALSE, qualify_all_columns = FALSE)
   )
 # my_sql_render
 db_result %>% 
-  my_sql_render(cte = T, use_star = F, qualify_all_columns = F)
+  my_sql_render(cte = TRUE, use_star = FALSE, qualify_all_columns = FALSE)
 ```
 
 ## 謝辞
