@@ -12,8 +12,8 @@ permalinks:
     post: /p/:slug/
     100knocks: /100knocks/:slug/
     # test: /test/:slug/
-
-  # section:
+  section:
+    100knocks: /100knocks/:sections[1:]/
     # 100knocks: /100knocks/:sections[1:]/
     # 100knocks: /100knocks/:sections[last]/
       # 100knocks: /ds100knocks-alpha/:sections[last]/

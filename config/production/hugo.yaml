@@ -33,8 +33,8 @@ permalinks:
     # aaa: /aaa/:year/:month/:slug/
     # xxx: /xxx/:slug
   section:
-    100knocks: /ds100knocks-alpha/:sections[1:]/
-    # 100knocks: /ds100knocks-alpha/:sections[last]/
+    100knocks: /ds100knocks-alpha/:sections[last]/
+    # 100knocks: /ds100knocks-alpha/:sections[1:]/
     # 100knocks: /ds100knocks-alpha/
     # aaa: /aaa/:year/:month/
     # xxx: /xxx/:sections[1:]/
