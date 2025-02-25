@@ -1,6 +1,7 @@
 ### development
 
-baseURL: "https://14katsumix.github.io/tech-blog/"
+# baseURL: "https://14katsumix.github.io/tech-blog/"
+baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 
 # Include drafts when building.
 # buildDrafts: false
@@ -13,9 +14,8 @@ permalinks:
     100knocks: /100knocks/:slug/
     # test: /test/:slug/
   section:
-    100knocks: /100knocks/:sections[1:]/
+    100knocks: /100knocks/:sections[last]/
     # 100knocks: /100knocks/:sections[1:]/
-    # 100knocks: /100knocks/:sections[last]/
       # 100knocks: /ds100knocks-alpha/:sections[last]/
       # 100knocks: /ds100knocks-alpha/
       # aaa: /aaa/:year/:month/
