@@ -5,8 +5,8 @@ date: 2025-01-20T01:01:20+09:00
 draft: false
 # draft: true
 weight: 20
-description: "当ブログで紹介している R と SQL の演習問題です。"
-summary: "当ブログで紹介している R と SQL の演習問題一覧です。"
+description: "当サイトで紹介している R と SQL の演習問題です。"
+summary: "当サイトで紹介している R と SQL の演習問題一覧です。"
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 toc: false # 目次
@@ -19,12 +19,12 @@ ShowToc: false
 #         icon: question
 ---
 
-- <font color="#F0B007">★</font>は難易度です。  
 - {{< k100/site/edition "s" >}}では設問の概要を掲載してます。  
 - 各設問は、基本的に以下の3つのコードを書くという内容です。
   - **Rコード (データフレーム操作)**
   - **Rコード (データベース操作)**
   - **SQLクエリ**
+- <font color="#F0B007">★</font>の数は難易度を示します。(3つのコードから総合的に判定してます。)
 
 <br>
 <div class="list-toggle">
@@ -65,55 +65,55 @@ ShowToc: false
 
   1. {{< k100/site/edition "a" >}}
   
-  {{< k100/q-list ed="advanced" root="../.." sortkey="id" order="asc" >}}
+  {{< k100/q-list ed="advanced" root=".." sortkey="id" order="asc" >}}
 
   2. {{< k100/site/edition "s" >}}
   
-  {{< k100/q-list ed="standard" root="../.." sortkey="id" order="asc" >}}
+  {{< k100/q-list ed="standard" root=".." sortkey="id" order="asc" >}}
 
   {{% comment %}}
-  {{< k100/q-list ed="standard,advanced" root="../.." sortkey="id" order="asc" >}}
+  {{< k100/q-list ed="standard,advanced" root=".." sortkey="id" order="asc" >}}
   {{% /comment %}}
 </div>
 
 <div id="list-difficulty-desc-all" class="question-list" style="display:none;">
   <div class="edition-title">全編（難易度降順）</div>
-  {{< k100/q-list ed="standard,advanced" root="../.." sortkey="difficulty" order="desc" >}}
+  {{< k100/q-list ed="standard,advanced" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-all" class="question-list" style="display:none;">
   <div class="edition-title">全編（難易度昇順）</div>
-  {{< k100/q-list ed="standard,advanced" root="../.." sortkey="difficulty" order="asc" >}}
+  {{< k100/q-list ed="standard,advanced" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
 <div id="list-id-standard" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "s" >}}（番号順）</div>
-  {{< k100/q-list ed="standard" root="../.." sortkey="id" order="asc" >}}
+  {{< k100/q-list ed="standard" root=".." sortkey="id" order="asc" >}}
 </div>
 
 <div id="list-difficulty-desc-standard" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "s" >}}（難易度降順）</div>
-  {{< k100/q-list ed="standard" root="../.." sortkey="difficulty" order="desc" >}}
+  {{< k100/q-list ed="standard" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-standard" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "s" >}}（難易度昇順）</div>
-  {{< k100/q-list ed="standard" root="../.." sortkey="difficulty" order="asc" >}}
+  {{< k100/q-list ed="standard" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
 <div id="list-id-advanced" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "a" >}}（番号順）</div>
-  {{< k100/q-list ed="advanced" root="../.." sortkey="id" order="asc" >}}
+  {{< k100/q-list ed="advanced" root=".." sortkey="id" order="asc" >}}
 </div>
 
 <div id="list-difficulty-desc-advanced" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "a" >}}（難易度降順）</div>
-  {{< k100/q-list ed="advanced" root="../.." sortkey="difficulty" order="desc" >}}
+  {{< k100/q-list ed="advanced" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-advanced" class="question-list" style="display:none;">
   <div class="edition-title">{{< k100/site/edition "a" >}}（難易度昇順）</div>
-  {{< k100/q-list ed="advanced" root="../.." sortkey="difficulty" order="asc" >}}
+  {{< k100/q-list ed="advanced" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
 <script>

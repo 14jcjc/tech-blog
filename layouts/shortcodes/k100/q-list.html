@@ -28,7 +28,8 @@
   {{ $sortedQuestions := sort $allQuestions $sortKey $order "natural" }}
   <div class="q-list">
     {{ range $sortedQuestions }}
-      {{ $url := path.Join $root .category (lower .id) }}
+      {{/*  {{ $url := path.Join $root .category (lower .id) }}  */}}
+      {{ $url := path.Join $root (lower .id) }}
       <div class="q-item">
         <div class="q-header">
           <span class="q-id">
