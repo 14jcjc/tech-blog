@@ -10,8 +10,8 @@ buildDrafts: true
 permalinks:
   page:
     page: /:slug/
-    post: /p/:slug/
     100knocks: /100knocks/:slug/
+    # post: /p/:slug/
     # test: /test/:slug/
   section:
     100knocks: /100knocks/:sections[last]/
@@ -26,7 +26,7 @@ params:
   mainSections:
     - "100knocks"
     - test
-    - post
+    # - post
 
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
@@ -80,12 +80,12 @@ menu:
       params: 
         icon: arrow-back
 
-    - identifier: "posts"
-      name: posts
-      url: "/post/"
-      weight: 35
-      params: 
-        icon: arrow-back
+    # - identifier: "posts"
+    #   name: posts
+    #   url: "/post/"
+    #   weight: 35
+    #   params: 
+    #     icon: arrow-back
 
     - identifier: "Archives"
       name: Archives
@@ -123,6 +123,7 @@ menu:
 module:
   mounts:
   - excludeFiles: 
+      - post
       - test/books/**
     source: content
     target: content
