@@ -1404,7 +1404,7 @@ FROM store_sales
 最初の行から現在の行までを累積の対象とするために  
 `ROWS UNBOUNDED PRECEDING` という `ROWS` 句が生成されています。
 
-### dbplyr が認識できない式
+### dbplyr が認識できない式{#dbplyr-unknown}
 
 dbplyr が認識できない式については、そのまま SQL に残されます。  
 これにより、dplyr でカバーされていないデータベース関数を直接記述することができます。
