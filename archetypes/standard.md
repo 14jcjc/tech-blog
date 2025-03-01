@@ -4,7 +4,7 @@ title: "{{ .Site.Params.k100.site.rsql }}{{ .Site.Params.k100.site.title }} ({{ 
 date: "{{ .Date }}"
 slug: "{{ $id }}"
 # draft: true
-# description: ""
+description: ""
 # summary: ""
 # weight: 10
 categories: 
