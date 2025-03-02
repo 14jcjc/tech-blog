@@ -192,14 +192,14 @@ work_dir_path = "."
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
 {{% /comment %}}
 
-## 補足
+## データベース操作の補足事項
 
 R によるデータベース操作や SQL クエリの自動生成について、以下の記事で紹介しています。
 
 - {{% ref2 path="r-sql-auto-query" %}}
 - {{% ref2 path="r-sql-translation" %}}
 
-データベース操作に関連するその他の補足事項を `my_select()`、`my_sql_render()` の使い方と共に以下にまとめました。
+データベース操作に関連するその他の補足事項を `my_select()`、`my_sql_render()` の使い方と共に以下で説明します。
 
 ### DuckDB を使用するメリット{#duckdb}
 

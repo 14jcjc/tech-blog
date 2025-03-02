@@ -43,8 +43,12 @@ dplyrコードにSQLコードを埋め込む
 
 https://ken-info.com/datascience-100knocks/
 
+https://shiro-no-panda.com/mensa3/
+
 #-------------------------------------------------------------------------------
 * ToDo
+
+- 設問のタイトル作成
 
 - 同じ SELECT 内の列を参照している箇所を修正する
 
