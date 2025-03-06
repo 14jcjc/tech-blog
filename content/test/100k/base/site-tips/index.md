@@ -29,7 +29,7 @@ tags: ["test", "site-tips"]
 params:
   question:
     edition: "standard"
-    id: "R-901"
+    id: "R-038"
   testparam: "これは params.testparam."
   testparam2: 
     nestparam: "これは testparam2.nestparam."
@@ -298,7 +298,7 @@ read: /data/100k/questions.yaml
 
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* k100/question */>}} <-- フロントマターから ed, id を取得
-{{</* k100/question ed="standard" id="R-902" */>}}
+{{</* k100/question ed="standard" id="R-040" */>}}
 {{</* k100/question ed="advanced" id="A-901" */>}}
 ```
 
@@ -306,7 +306,7 @@ read: /data/100k/questions.yaml
 
 ---
 
-{{< k100/question ed="standard" id="R-902" >}}
+{{< k100/question ed="standard" id="R-040" >}}
 
 ---
 
