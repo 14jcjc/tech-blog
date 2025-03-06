@@ -53,6 +53,18 @@ standard:
     text: |
       R-043 で作成した売上サマリデータの性別を縦持ちに変換する問題です。
 
+  - id: "R-045"
+    difficulty: 1
+    title: "日付型を文字列に変換"
+    text: |
+      顧客の生年月日を YYYYMMDD 形式の文字列に変換する問題です。
+
+  - id: "R-047"
+    difficulty: 1
+    title: "売上日を日付型に変換"
+    text: |
+      売上日を日付型に変換し、レシート番号・レシートサブ番号とともに表示する問題です。
+
 advanced: 
   - id: "A-901"
     difficulty: 4
