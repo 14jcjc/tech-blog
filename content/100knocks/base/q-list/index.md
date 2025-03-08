@@ -5,8 +5,8 @@ date: 2025-01-20T01:01:20+09:00
 draft: false
 # draft: true
 weight: 20
-description: "当サイトで紹介している R と SQL の演習問題です。"
-summary: "当サイトで紹介している R と SQL の演習問題一覧です。"
+description: "当サイトで紹介している R と SQL の演習問題です"
+summary: "当サイトで紹介している R と SQL の演習問題一覧です"
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]
 toc: false # 目次

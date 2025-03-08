@@ -42,6 +42,10 @@ dplyrコードにSQLコードを埋め込む
 * アフィリエイトリンクがあるサイト
 
 https://ken-info.com/datascience-100knocks/
+Amazon, 楽天, Yahooショッピング、Google のアフィリエイトリンクあり.
+
+https://jimaru.blog/self-dev/blog-affiliate/
+Amazon, 楽天, Yahooショッピングへのアフィリエイトリンクあり.
 
 https://shiro-no-panda.com/mensa3/
 
