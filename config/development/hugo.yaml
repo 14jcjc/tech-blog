@@ -11,15 +11,16 @@ permalinks:
   page:
     page: /:slug/
     100knocks: /100knocks/:slug/
+    # 100knocks: /ds100knocks-alpha/:slug/
     # post: /p/:slug/
     # test: /test/:slug/
   section:
     100knocks: /100knocks/:sections[last]/
     # 100knocks: /100knocks/:sections[1:]/
-      # 100knocks: /ds100knocks-alpha/:sections[last]/
-      # 100knocks: /ds100knocks-alpha/
-      # aaa: /aaa/:year/:month/
-      # xxx: /xxx/:sections[1:]/
+    # 100knocks: /ds100knocks-alpha/:sections[last]/
+    # 100knocks: /ds100knocks-alpha/
+    # aaa: /aaa/:year/:month/
+    # xxx: /xxx/:sections[1:]/
 
 params:
   env: development
