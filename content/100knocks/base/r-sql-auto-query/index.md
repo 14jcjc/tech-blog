@@ -6,7 +6,7 @@ date: 2025-01-05T00:03:13+09:00
 draft: false
 # draft: true
 weight: 35
-# description: ""
+description: "R からデータベースに接続し、データ加工から SQLクエリの自動生成までの一連の流れについて解説します。"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL", "SQL自動生成"]

@@ -45,7 +45,7 @@ titleCaseStyle: ap # ap, chicago, go, firstupper, or none.
 # デフォルトは false です。
 enableGitInfo: true
 
-timeout: 30s # Timeout for generating page contents, specified as a duration or in seconds.
+timeout: 90s # Timeout for generating page contents, specified as a duration or in seconds.
 
 # sitemap: 
   # changefreq = "monthly"
