@@ -38,7 +38,7 @@ tags: ["R", "SQL"]
 
 サンプルコードは、可読性と効率を重視し、できるだけエレガントな記述を心がけたいと思います。
 
-## 環境構築
+## 環境構築{#setup}
 
 本シリーズでは、Docker や Jupyter Notebook などの環境を必要とせず、**RStudio などの R 実行環境** があれば十分です。
 私は VSCode を愛用していますが、RStudio でも問題なく動作します。
@@ -54,7 +54,7 @@ cd /your_directory_path
 git clone https://github.com/xxx/100knocks-dp.git
 ```
 
-`100knocks-dp` ディレクトリが作成され、構成は以下のようになります。
+`100knocks-dp` ディレクトリが作成され、以下のような構成になります。
 
 ```text {name="100knocks-dp"}
 work
@@ -93,7 +93,7 @@ work
   └── init.R
 ```
 
-ダウンロードした 6 個の CSVファイル (`data/*.csv`)[^1] を読み込み、それぞれテーブルとしてデータベースファイル (`database/100knocks.duckdb`) に保存しています。
+ダウンロードした 6 個の CSVファイル (`data/*.csv`)[^1] を読み込み、それぞれテーブルとして DuckDB データベースファイル (`database/100knocks.duckdb`) に保存しています。
 
 [^1]: データは「{{< param k100.dss.title >}}」のリポジトリより、以下のディレクトリからダウンロードしています。  
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" >}}
