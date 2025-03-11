@@ -54,11 +54,11 @@ cd /your_directory_path
 git clone https://github.com/xxx/100knocks-dp.git
 ```
 
-`100knocks-dp` が作成され、ディレクトリ構成は以下のようになります。
+`100knocks-dp` ディレクトリが作成され、構成は以下のようになります。
 
 ```text {name="100knocks-dp"}
 work
-  ├── DB
+  ├── database
   │   └── _ReadMe.txt
   ├── data
   │   └── _ReadMe.txt
@@ -75,7 +75,7 @@ RStudio などで `init.R` を開いて実行します。
 
 ```text {name="100knocks-dp"}
 work
-  ├── DB
+  ├── database
   │   ├── 100knocks.duckdb
   │   └── _ReadMe.txt
   ├── data
@@ -93,7 +93,7 @@ work
   └── init.R
 ```
 
-ダウンロードした 6 個の CSVファイル (`data/*.csv`)[^1] を読み込み、テーブルとしてデータベースファイル (`DB/100knocks.duckdb`) に保存しています。
+ダウンロードした 6 個の CSVファイル (`data/*.csv`)[^1] を読み込み、それぞれテーブルとしてデータベースファイル (`database/100knocks.duckdb`) に保存しています。
 
 [^1]: データは「{{< param k100.dss.title >}}」のリポジトリより、以下のディレクトリからダウンロードしています。  
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" >}}
@@ -129,7 +129,7 @@ work_dir_path = "."
 
 #### 1. データベースファイル
 
-`work/DB/100knocks.duckdb`
+`work/database/100knocks.duckdb`
 
 #### 2. 主な R パッケージ
 
