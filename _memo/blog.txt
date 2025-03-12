@@ -65,8 +65,11 @@ https://shiro-no-panda.com/mensa3/
 
 - standard.md を改訂する
 
+- コードブロックに {name="R"},  {name="SQL"} を付ける
+
 - q を query に変更する
-q = sql(), q %>% my_select(con)
+q = sql()
+q %>% my_select(con)
 
 - ## 利用するデータ のセクションを追記する
 

@@ -51,7 +51,7 @@ tags: ["R", "SQL"]
 
 ```sh
 cd /your_directory_path
-git clone https://github.com/xxx/100knocks-dp.git
+git clone https://github.com/14katsumix/100knocks-dp.git
 ```
 
 `100knocks-dp` ディレクトリが作成され、以下のような構成になります。
