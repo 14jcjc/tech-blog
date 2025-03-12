@@ -159,6 +159,11 @@ http://localhost:1313/tech-blog/portfolio/
 - categories: "100本ノック＋α (Lv5)" などの編集, 
   /content/categories/*
 
+* リポジトリにアップロードしたCSVファイルの読み込み
+
+data_url = "https://raw.githubusercontent.com/14jcjc/tech-blog/main/static/test/"
+data_url %>% paste0("store.csv") %>% vroom::vroom(col_types = "cccccccddd")
+
 * href-target-blank の名称を変更
 
 * widgets のタグ数の limit などを設定
