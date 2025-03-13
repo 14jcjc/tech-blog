@@ -262,7 +262,7 @@ FROM store_sales
 
 ```r
 db_sales %>% 
-  filter(month == 4L, profit >= 30) %>% 
+  filter(month == 4L & profit >= 30) %>% 
   show_query()
 ```
 
@@ -546,7 +546,7 @@ CROSS JOIN store_sales
 
 ##### `semi_join()` (準結合)
 
-`semi_join()` は `WHERE EXISTS` 演算子を生成します。
+`semi_join()` は `WHERE EXISTS` を生成します。
 
 ```r
 db_master %>% 
@@ -572,7 +572,7 @@ WHERE EXISTS (
 
 ##### `anti_join()` (アンチ結合)
 
-`anti_join()` は `WHERE NOT EXISTS` 演算子を生成します。
+`anti_join()` は `WHERE NOT EXISTS` を生成します。
 
 ```r
 db_master %>% 
@@ -995,7 +995,6 @@ db_master %>%
   ) %>% 
   head(1) %>% 
   mutate(
-    strftime = strftime(ymd, "%Y/%m/%d"), 
     month = lubridate::month(ymd), 
     add = ymd + lubridate::days(7L), 
     .keep = "used"
@@ -1011,16 +1010,15 @@ WITH q01 AS (
 )
 SELECT
   q01.*,
-  strftime(ymd, '%Y/%m/%d') AS strftime,
   EXTRACT(MONTH FROM ymd) AS "month",
   ymd + TO_DAYS(CAST(7 AS INTEGER)) AS "add"
 FROM q01
 ```
 
 ```text
-  ymd        strftime   month add                
-  <date>     <chr>      <dbl> <dttm>             
-1 2025-04-01 2025/04/01     4 2025-04-08 00:00:00
+  ymd        month add                
+  <date>     <dbl> <dttm>             
+1 2025-04-01     4 2025-04-08 00:00:00
 ```
 
 ##### パターンマッチング

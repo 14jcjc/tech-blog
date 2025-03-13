@@ -23,15 +23,15 @@ tags: ["R", "SQL"]
 
 ## はじめに
 
-当サイトでは、「データサイエンス100本ノック＋α」と題し、100本ノックの演習問題をベースに、R を使ったデータベース操作を交えて解説します。
+当サイトでは、「{{< param k100.site.title >}}」というタイトルで、データサイエンス100本ノックをベースにした演習問題を解説します。Rを用いたデータベース操作を交えて学習することができます。
 
 - **シリーズ構成**
-  - **標準編** : 100本ノックの中から約 30 本を選び、R と SQL を用いて解説
-  - **発展編** : オリジナル問題を作成し、より多くの構文を用いたデータ処理を紹介 (予定)
+  - **標準編** : 100本ノックの中から約 30 本を選び、R と SQL を用いて解説します。
+  - **発展編** : オリジナル問題を作成し、より多くの構文を用いたデータ処理を紹介します。(予定)
 <p>
 
 - **解説方針**  
-  各問題について、以下のコードを紹介します。
+  各問題について、以下の 3 つのコードを紹介し解説します。
   - **Rコード (データフレーム操作)**
   - **Rコード (データベース操作)**
   - **SQLクエリ**
@@ -40,14 +40,22 @@ tags: ["R", "SQL"]
 
 ## 環境構築{#setup}
 
-本シリーズでは、Docker や Jupyter Notebook などの環境を必要とせず、**RStudio などの R 実行環境** があれば十分です。
-私は VSCode を愛用していますが、RStudio でも問題なく動作します。
+このシリーズでは、**RStudio などの R 実行環境** があれば十分で、特別なツールは必要ありません。VSCode でも問題なく動作します。
 
-### 手順
+環境構築のために、標準セットアップと簡易セットアップを用意しました。  
+使用目的に応じてお好みの方を選択してください。
 
-#### 1. GitHub リポジトリをクローンする
+1. **標準セットアップ**  
+   git コマンドを使える方にオススメです。
 
-以下のコマンドでリポジトリをクローンします。
+2. **簡易セットアップ**  
+   ローカルにスクリプトやデータを保存せず、すぐに試したい方にオススメします。
+
+### 標準セットアップの手順
+
+#### 1. GitHub リポジトリをクローン
+
+以下のコマンドを実行して、リポジトリをクローンします。
 
 ```sh
 cd /your_directory_path
@@ -61,49 +69,39 @@ work
   ├── database
   │   └── _ReadMe.txt
   ├── data
-  │   └── _ReadMe.txt
-  ├── data_setup.R
-  ├── env_setup.R
-  ├── functions.R
-  └── init.R
-```
-
-#### 2. init.R を実行する
-
-RStudio などで `init.R` を開いて実行します。  
-実行後、以下のようなディレクトリ構成になります。
-
-```text {name="100knocks-dp"}
-work
-  ├── database
-  │   ├── 100knocks.duckdb
-  │   └── _ReadMe.txt
-  ├── data
-  │   ├── 100knocks_ER.png
-  │   ├── _ReadMe.txt
   │   ├── category.csv
   │   ├── customer.csv
   │   ├── geocode.csv
   │   ├── product.csv
   │   ├── receipt.csv
-  │   └── store.csv
+  │   ├── store.csv
+  │   ├── 100knocks_ER.pdf
+  │   └── _ReadMe.txt
   ├── data_setup.R
   ├── env_setup.R
   ├── functions.R
   └── init.R
 ```
 
-ダウンロードした 6 個の CSVファイル (`data/*.csv`)[^1] を読み込み、それぞれテーブルとして DuckDB データベースファイル (`database/100knocks.duckdb`) に保存しています。
+#### 2. init.R を実行
 
-[^1]: データは「{{< param k100.dss.title >}}」のリポジトリより、以下のディレクトリからダウンロードしています。  
-{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" >}}
+RStudio などで `init.R` を開いて実行します。  
+実行後、`database` に DuckDB データベースファイル `100knocks.duckdb` が作成されます。
+
+```text
+work
+  └── database
+      └── 100knocks.duckdb
+```
+
+6 個の CSVファイル (`data/*.csv`) を読み込み、それぞれテーブルとして `100knocks.duckdb` に保存しています。
 
 R セッションを再開した場合は、再度 `init.R` を実行してください。  
-2 回目からは、パッケージのインストールと CSV ファイルなどのダウンロードは不要なため、環境構築は約 5 秒で完了します。
+2 回目からは、パッケージのインストールは不要なため、環境構築は約 5 秒で完了します。
 
-### トラブルシューティング
+#### トラブルシューティング
 
-もしエラーが発生した場合、作業ディレクトリの設定が原因となっている可能性が高いです。
+もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
 
 現在の作業ディレクトリを確認するには、次のコマンドを実行してください。
 
@@ -123,29 +121,141 @@ work_dir_path = init_path |> dirname()
 work_dir_path = "."
 ```
 
+---
+
+### 簡易セットアップの手順
+
+次の R コードを .R ファイル (例: setup.R) にコピー＆ペーストして実行します。
+
+```r {name="R"}
+# pacman を使用してパッケージを管理 ------------
+if (!require("pacman")) {
+  install.packages("pacman")
+  library("pacman")
+}
+
+# 必要なパッケージのロード ------------
+# 存在しない場合は自動でインストールした後にロードする.
+pacman::p_load(
+  # tidyverse: 
+  magrittr, fs, tibble, dplyr, tidyr, stringr, lubridate, forcats, 
+  DBI, dbplyr, duckdb,      # for database
+  rsample, recipes, themis, # tidymodels
+  vroom, tictoc, jsonlite, withr, janitor, skimr, epikit, 
+  install = TRUE,  # 存在しないパッケージをインストールする
+  update = FALSE   # 既存のパッケージの更新は行わない
+)
+
+# CSVファイルをデータフレームとして読み込む ------------
+my_vroom = function(file, col_types) {
+  data_url = "https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/docker/work/data/"
+  tictoc::tic(file)
+  on.exit(tictoc::toc())
+  on.exit(cat("\n"), add = TRUE)
+  csv_url = data_url %>% paste0(file)
+  print(csv_url); flush.console()
+  d = csv_url %>% 
+    vroom::vroom(col_types = col_types) %>% 
+    janitor::clean_names() %>% 
+    dplyr::glimpse() %T>% 
+    { cat("\n") }
+  return(d)
+}
+
+# customer.birth_day は Dateクラス
+df_customer = "customer.csv" %>% my_vroom(col_types = "ccccDiccccc")
+# receipt.sales_ymd は integer
+df_receipt = "receipt.csv" %>% my_vroom(col_types = "iiciiccnn")
+df_store = "store.csv" %>% my_vroom(col_types = "cccccccddd")
+df_product = "product.csv" %>% my_vroom(col_types = "ccccnn")
+df_category = "category.csv" %>% my_vroom(col_types = "cccccc")
+df_geocode = "geocode.csv" %>% my_vroom(col_types = "cccccccnn")
+
+# インメモリモードで一時的な DuckDB 環境を作成する ------------
+con = duckdb::duckdb(dbdir = "") %>% duckdb::dbConnect()
+
+# データフレームを DuckDB にテーブルとして書き込む ------------
+con %>% DBI::dbWriteTable("customer", df_customer, overwrite = TRUE)
+con %>% DBI::dbWriteTable("receipt", df_receipt, overwrite = TRUE)
+con %>% DBI::dbWriteTable("store", df_store, overwrite = TRUE)
+con %>% DBI::dbWriteTable("product", df_product, overwrite = TRUE)
+con %>% DBI::dbWriteTable("category", df_category, overwrite = TRUE)
+con %>% DBI::dbWriteTable("geocode", df_geocode, overwrite = TRUE)
+
+# DuckDB のテーブルを dplyr で参照する ------------
+db_customer = con %>% dplyr::tbl("customer")
+db_receipt = con %>% dplyr::tbl("receipt")
+db_store = con %>% dplyr::tbl("store")
+db_product = con %>% dplyr::tbl("product")
+db_category = con %>% dplyr::tbl("category")
+db_geocode = con %>% dplyr::tbl("geocode")
+
+# 関数の定義 ------------
+
+# my_select() の定義
+# SQLクエリを実行し, データフレーム(tibble)を返す
+my_select = function(
+    statement, con, convert_tibble = TRUE, params = NULL, ...
+  ) {
+  d = DBI::dbGetQuery(con, statement = statement, params = params, ...)
+  if (convert_tibble) d %<>% tibble::as_tibble()
+  return(d)
+}
+
+# my_sql_render() の定義
+# dbplyr::sql_render のラッパー
+# デフォルトでは, バッククォート(`)を削除する
+my_sql_render = function(
+    query, con = NULL, 
+    cte = TRUE, 
+    qualify_all_columns = TRUE, 
+    use_star = TRUE, 
+    sql_op = 
+      dbplyr::sql_options(
+        cte = cte, 
+        use_star = use_star, 
+        qualify_all_columns = qualify_all_columns
+      ), 
+    subquery = FALSE, lvl = 0, 
+    pattern = "`", replacement = ""
+  ) {
+  s = query %>% 
+    dbplyr::sql_render(
+      con = con, sql_options = sql_op, subquery = subquery, lvl = lvl
+    )
+  if (!is.null(pattern)) {
+    s %<>% gsub(pattern, replacement, .)
+  }
+  return(s)
+}
+```
+
+実行後、DuckDB データベースがメモリ上に作成されます。  
+R セッションを再開した場合は、再度このスクリプトを実行してください。
+
+---
+
 ### 利用可能なリソース
 
 環境構築後、以下のリソースを利用できます。
 
-#### 1. データベースファイル
-
-`work/database/100knocks.duckdb`
-
-#### 2. 主な R パッケージ
+#### 1. 主な R パッケージ
 
 - `dplyr`
-- `tidyr`
 - `magrittr`
+- `tidyr`
 - `tibble`
 - `stringr`
 - `lubridate`
+- `forcats`
 - `DBI`
 - `dbplyr`
 - `duckdb`
+- その他 `rsample` など
 
-#### 3. R オブジェクト
+#### 2. R オブジェクト
 
-##### データベースの接続
+##### データベース接続
 
 - `con`
 
@@ -172,10 +282,17 @@ work_dir_path = "."
 - `my_select()`
 - `my_sql_render()`
 
+#### 3. DuckDB データベースファイル
+
+- `work/database/100knocks.duckdb`
+
+(＊ 簡易セットアップでは、DuckDB データベースの環境がメモリ上に作成されます。)
+
 #### 4. ER図 (データの構造)
 
-本シリーズで扱う 6 個のテーブルの関係を示す ER 図です。  
-場所 : `work/data/100knocks_ER.png`
+- `work/data/100knocks_ER.pdf`
+
+6 個のテーブルの関係を示す ER 図です。  
 
 <div class="gallery-image gallery-base">
   <a href="ER.png" data-width="1692" data-height="928">
@@ -191,6 +308,10 @@ work_dir_path = "."
   rel="noopener" target="_blank" >}}
 {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
 {{% /comment %}}
+
+簡易セットアップを行なった場合は、上記リンクから `100knocks_ER.pdf` を保存しておくと便利です。
+
+---
 
 ## データベース操作の補足事項
 
@@ -510,13 +631,25 @@ db_result %>%
   my_sql_render(cte = TRUE, use_star = FALSE, qualify_all_columns = FALSE)
 ```
 
+---
+
 ## 謝辞
 
-当サイトは、{{< param k100.dss.name >}}様が作成された素晴らしい教育コンテンツを、さらに発展させる目的で作成しました。
+当サイトは、{{< param k100.dss.name >}} 様が作成された素晴らしい教育コンテンツを、更なる発展を目指して作成しました。
 
-**当サイトで使用しているデータおよび ER 図は、{{< param k100.dss.name >}}様が作成されたものです。その権利は同協会に帰属します。**
+また、当サイトで使用している以下のリソースは、{{< param k100.dss.sdc >}} 様によって提供された「{{< param k100.dss.title >}}」の GitHub リポジトリにて公開されているものを使用させていただいています。
 
-より多くの方がデータサイエンスのスキルを高める一助となれば幸いです。
+- **データ**  
+  {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data" text="GitHub リポジトリ - データ" >}}
+
+- **ER 図**  
+  {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="GitHub リポジトリ - ER 図" >}}
+
+- **「{{< param k100.site.edition.s >}}」の各演習問題**
+  - {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/doc" text="GitHub リポジトリ - 演習問題" >}}
+  - 書籍📘『{{< param products.ds100kdp.name >}}』
+
+より多くの方々がデータサイエンスのスキルをさらに高める一助となれば幸いです。
 
 ---
 

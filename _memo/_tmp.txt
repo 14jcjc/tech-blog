@@ -1,0 +1,30 @@
+## 謝辞
+
+当サイトは、{{< param k100.dss.name >}} 様が作成された素晴らしい教育コンテンツを、更なる発展を目指して作成しました。
+
+また、当サイトで使用している以下のリソースは、{{< param k100.dss.sdc >}} 様によって提供されている「{{< param k100.dss.title >}}」の GitHub リポジトリから公開されているものを利用させていただいています。
+
+- **データ**  
+  [GitHub リポジトリ - データ](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)
+
+- **ER 図**  
+  [GitHub リポジトリ - ER 図](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf)
+
+- **「{{< param k100.site.edition.s >}}」の各演習問題**  
+  [GitHub リポジトリ - 演習問題](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/doc)  
+  - 書籍📘『{{< param products.ds100kdp.name >}}』
+
+これらのリソースにより、多くの方々がデータサイエンスのスキルをさらに高める助けとなれば幸いです。
+
+
+以下のように改善することで、読みやすさや流れがさらに良くなるかもしれません。
+
+---
+
+当サイトは、{{< param k100.dss.name >}} 様が作成された素晴らしい教育コンテンツを、更なる発展を目指して作成しました。
+
+また、当サイトで使用している以下のリソースは、{{< param k100.dss.sdc >}} 様によって提供された「{{< param k100.dss.title >}}」の GitHub リポジトリから公開されているものを使用させていただいています。
+
+---
+
+ポイントとして、文を少しスムーズにし、「利用させていただいています」を「使用させていただいています」に変更することで、表現が少し統一感が出ます。
