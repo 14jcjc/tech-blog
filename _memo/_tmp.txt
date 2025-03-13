@@ -1,30 +1,53 @@
-## 謝辞
+#### **データベースへの接続とデータの準備**
 
-当サイトは、{{< param k100.dss.name >}} 様が作成された素晴らしい教育コンテンツを、更なる発展を目指して作成しました。
+まず、デモ用の売上データ (`df_sales`) と店舗マスタ (`df_master`) を作成し、DuckDB のインメモリデータベースに登録します。  
+(未インストールのパッケージは `install.packages()` でインストールしてください。)  
 
-また、当サイトで使用している以下のリソースは、{{< param k100.dss.sdc >}} 様によって提供されている「{{< param k100.dss.title >}}」の GitHub リポジトリから公開されているものを利用させていただいています。
+**DuckDB はインメモリデータベースのため、セッション終了時にデータは自動で削除されます。**
 
-- **データ**  
-  [GitHub リポジトリ - データ](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/work/data)
+```r
+library(DBI)
+library(dplyr)
+library(dbplyr)
+library(duckdb)
+library(tibble)
 
-- **ER 図**  
-  [GitHub リポジトリ - ER 図](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf)
+# 売上データ
+df_sales = tribble(
+  ~store, ~month, ~sales, ~profit, 
+  "S001",  4L,     150,   30, 
+  "S001",  5L,     170,   34, 
+  "S001",  6L,     140,   27, 
+  "S001",  7L,     160,   32, 
+  "S002",  4L,     NA,    28, 
+  "S002",  5L,     160,   31, 
+  "S002",  6L,     130,   27, 
+  "S002",  7L,     150,   28
+)
 
-- **「{{< param k100.site.edition.s >}}」の各演習問題**  
-  [GitHub リポジトリ - 演習問題](https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/doc)  
-  - 書籍📘『{{< param products.ds100kdp.name >}}』
+# 店舗マスタ
+df_master = tribble(
+  ~store, ~name,    ~pref, 
+  "S001", "storeA", "Tokyo", 
+  "S002", "storeB", "Osaka", 
+  "S003", "storeC", "Kanagawa", 
+  "S004", "storeD", "Fukuoka"
+)
 
-これらのリソースにより、多くの方々がデータサイエンスのスキルをさらに高める助けとなれば幸いです。
+# DuckDB に接続 (インメモリデータベース)
+con = DBI::dbConnect(duckdb::duckdb())
 
+# DuckDB にテーブルを登録
+DBI::dbWriteTable(con, "store_sales", df_sales, overwrite = TRUE)
+DBI::dbWriteTable(con, "store_master", df_master, overwrite = TRUE)
 
-以下のように改善することで、読みやすさや流れがさらに良くなるかもしれません。
+# テーブルを dplyr で参照
+db_sales = tbl(con, "store_sales")
+db_master = tbl(con, "store_master")
+```
 
 ---
 
-当サイトは、{{< param k100.dss.name >}} 様が作成された素晴らしい教育コンテンツを、更なる発展を目指して作成しました。
-
-また、当サイトで使用している以下のリソースは、{{< param k100.dss.sdc >}} 様によって提供された「{{< param k100.dss.title >}}」の GitHub リポジトリから公開されているものを使用させていただいています。
-
----
-
-ポイントとして、文を少しスムーズにし、「利用させていただいています」を「使用させていただいています」に変更することで、表現が少し統一感が出ます。
+**変更点**
+- **`temporary = TRUE` を削除**（DuckDB のインメモリ特性を考慮）。
+- **「DuckDB はインメモリデータベースのため、セッション終了時にデータは自動で削除されます。」と補足**。
