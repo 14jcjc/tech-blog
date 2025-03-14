@@ -76,6 +76,7 @@ work
   │   ├── receipt.csv
   │   ├── store.csv
   │   ├── 100knocks_ER.pdf
+  │   ├── LICENSE
   │   └── _ReadMe.txt
   ├── data_setup.R
   ├── env_setup.R

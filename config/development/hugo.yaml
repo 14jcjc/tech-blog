@@ -27,7 +27,7 @@ params:
   mainSections:
     - "100knocks"
     - test
-    # - post
+    - post
 
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
@@ -36,7 +36,8 @@ params:
 # left.html を修正: identifier とカレントページ・タイトルを比較する
 menu:
   main:
-    - identifier: "katsuブログ"
+    - identifier: "Katsu Data Science Lab"
+      # identifier: "katsuブログ"
       name: Home
       url: /
       weight: -20

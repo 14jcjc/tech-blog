@@ -4,10 +4,6 @@
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 theme: hugo-theme-stack
 
-# title: katsuブログ
-# title: Katsu Data Lab
-title: Katsu Data Science Lab
-
 copyright: katsu
 author: katsu
 # description: 
@@ -20,6 +16,41 @@ languageCode: ja
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
 DefaultContentLanguage: ja
+
+# title: katsuブログ
+# title: Katsu Data Lab
+title: Katsu Data Science Lab
+
+languages:
+    ja:
+        languageName: 日本語
+        # title: Katsu Data Science Lab
+        weight: 1
+        params:
+            sidebar:
+                subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+    en:
+        languageName: English
+        # title: Example Site
+        weight: 1
+        params:
+            sidebar:
+                subtitle: Example description
+    zh-cn:
+        languageName: 中文
+        # title: 演示站点
+        weight: 2
+        params:
+            sidebar:
+                subtitle: 演示说明
+    ar:
+        languageName: عربي
+        languagedirection: rtl
+        title: موقع تجريبي
+        weight: 3
+        params:
+            sidebar:
+                subtitle: وصف تجريبي
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
@@ -57,9 +88,9 @@ timeout: 90s # Timeout for generating page contents, specified as a duration or 
 #   disableXML: true
 #   minifyOutput: true
 
-languages:
-    ja:
-        languageName: 日本語
+# languages:
+#     ja:
+#         languageName: 日本語
         # contentDir: "content/ja"
     # en:
     #     languageName: English
@@ -138,7 +169,9 @@ params:
         # compact: true
         # emoji: "🧑‍💻"
         # subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
-        subtitle: "現場で役立つデータの世界🌐<br>R と SQL で学ぶ実践スキル"
+        # subtitle: "現場で役立つデータの世界🌐<br>R と SQL で学ぶ実践スキル"
+        subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+        # subtitle: Real-World Data Mastery with R & SQL
         avatar:
             enabled: true
             local: true

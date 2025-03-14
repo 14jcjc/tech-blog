@@ -23,6 +23,7 @@ k100:
   # The Japan DataScientist Society
   dss:
     name: "データサイエンティスト協会"
+    # The Japan DataScientist Society
     # Skill Definition Committee
     sdc: "データサイエンティスト協会スキル定義委員会"
     title: "データサイエンス100本ノック（構造化データ加工編）"
