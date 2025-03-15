@@ -61,10 +61,20 @@ https://shiro-no-panda.com/mensa3/
 #-------------------------------------------------------------------------------
 * ToDo
 
-- tech-blog を変更する
+- X のメアドを更新する
+@kkatsumi_14
+0149ai@gmail.com
+
+- X に登録する
+@katsu_ds_lab
+katsu.ds.lab@gmail.com
+asas1212
+Katsu Data Science Lab
 
 - アカウントの変更
   ドメイン、GitHub、twitter、gmail
+
+- tech-blog を変更する
 
 - 演習問題タイトル「データサイエンス100本ノック＋α」を変更する
 
