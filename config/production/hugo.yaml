@@ -50,58 +50,107 @@ params:
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+languages:
+  ja:
+    menu:
+      main:
+        - identifier: "Katsu Data Science Lab"
+          name: Home
+          url: /
+          weight: -20
+          params: 
+            icon: home
+        
+        - identifier: About
+          name: About
+          url: /about
+          weight: -10
+          params:
+            icon: user
 
-menu:
-  main:
-    - identifier: "katsuブログ"
-      name: Home
-      url: /
-      weight: -20
-      params: 
-        icon: home
-    
-    - identifier: About
-      name: About
-      url: /about
-      weight: -10
-      params:
-        icon: user
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題"
+          url: "/ds100knocks-alpha/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "レビュー"
+          name: レビュー
+          url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          # url: "/ds100knocks-alpha/book-review/"
+          weight: 20
+          params: 
+            icon: review
 
-    - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-      name: "R+SQL 演習問題"
-      url: "/ds100knocks-alpha/q-list"
-      weight: 10
-      params: 
-        icon: question
-    
-    - identifier: "レビュー"
-      name: レビュー
-      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
-      # url: "/ds100knocks-alpha/book-review/"
-      weight: 20
-      params: 
-        icon: review
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /archives
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /search
+          weight: 50
+          params: 
+            icon: search
+        # - name: Links
+        #   url: /links
+        #   weight: 60
+        #   params:
+        #       icon: link
 
-    - identifier: "Archives"
-      name: Archives
-    # - name: アーカイブ
-      url: /archives
-      weight: 40
-      params: 
-        icon: archives
-    
-    - identifier: Search
-      name: Search
-    # - name: 検索
-      url: /search
-      weight: 50
-      params: 
-        icon: search
-    # - name: Links
-    #   url: /links
-    #   weight: 60
-    #   params:
-    #       icon: link
+  en:
+    menu:
+      main:
+        - identifier: "Katsu Data Science Lab"
+          name: Home
+          url: /en/
+          weight: -20
+          params: 
+            icon: home
+        
+        - identifier: About
+          name: About
+          url: /en/about
+          weight: -10
+          params:
+            icon: user
+
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題"
+          url: "/en/ds100knocks-alpha/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "レビュー"
+          name: レビュー
+          url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          # url: "/ds100knocks-alpha/book-review/"
+          weight: 20
+          params: 
+            icon: review
+
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /en/archives
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /en/search
+          weight: 50
+          params: 
+            icon: search
 
 module:
   mounts:
