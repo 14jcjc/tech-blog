@@ -55,7 +55,8 @@ languages:
             icon: user
         
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-          name: "R+SQL 演習問題"
+          # name: "R+SQL 演習問題"
+          name: "[R & SQL] データサイエンス実践ドリル"
           url: "/100knocks/q-list"
           weight: 10
           params: 
@@ -143,7 +144,7 @@ languages:
             icon: user
         
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-          name: "R+SQL 演習問題"
+          name: "[R & SQL] Data Science Practical Drill"
           url: "/en/100knocks/q-list"
           weight: 10
           params: 
@@ -159,7 +160,7 @@ languages:
         #   # pre: <i class="fa circle-info"></i>
           
         - identifier: "レビュー"
-          name: レビュー (test)
+          name: Review (test)
           url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
           weight: 20
           params: 
