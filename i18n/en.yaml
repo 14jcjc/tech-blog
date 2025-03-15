@@ -1,3 +1,11 @@
+# katsu
+toc: Table of contents
+note: Note
+tip: Tip
+important: Important
+warning: Warning
+caution: Caution
+
 toggleMenu:
     other: Toggle Menu
 
@@ -51,9 +59,15 @@ widget:
     tagCloud:
         title:
             other: Tags
+    
     categoriesCloud:
         title:
             other: Categories
+    
+    # katsu
+    shareIcons:
+        title:
+            other: Share
 
 search:
     title:

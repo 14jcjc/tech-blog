@@ -34,93 +34,159 @@ params:
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 # katsu
 # left.html を修正: identifier とカレントページ・タイトルを比較する
-menu:
-  main:
-    - identifier: "Katsu Data Science Lab"
-      # identifier: "katsuブログ"
-      name: Home
-      url: /
-      weight: -20
-      params: 
-        icon: home
-    #     # newTab: true
-    
-    - identifier: About
-      name: About
-      url: /about/
-      weight: -10
-      params:
-        icon: user
-    
-    - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-      name: "R+SQL 演習問題"
-      url: "/100knocks/q-list"
-      weight: 10
-      params: 
-        icon: question
-    
-    - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-      name: "R+SQL 演習問題 - test"
-      # url: "/test/q-list-test"
-      pageRef: "/test/100k/base/q-list-test"
-      weight: 10
-      params: 
-        icon: question
-    #   # pre: <i class="fa circle-info"></i>
-      
-    - identifier: "レビュー"
-      name: レビュー (test)
-      url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
-      weight: 20
-      params: 
-        icon: review
+languages:
+  ja:
+    menu:
+      main:
+        - identifier: "Katsu Data Science Lab"
+          # identifier: "katsuブログ"
+          name: Home
+          url: /
+          weight: -20
+          params: 
+            icon: home
+        #     # newTab: true
+        
+        - identifier: About
+          name: About
+          url: /about/
+          weight: -10
+          params:
+            icon: user
+        
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題"
+          url: "/100knocks/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題 - test"
+          # url: "/test/q-list-test"
+          pageRef: "/test/100k/base/q-list-test"
+          weight: 10
+          params: 
+            icon: question
+        #   # pre: <i class="fa circle-info"></i>
+          
+        - identifier: "レビュー"
+          name: レビュー (test)
+          url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          weight: 20
+          params: 
+            icon: review
 
-    - identifier: "データサイエンス100本ノック＋α"
-      name: "100k-test"
-      url: "/test/100k/"
-      weight: 30
-      params: 
-        icon: arrow-back
+        - identifier: "データサイエンス100本ノック＋α"
+          name: "100k-test"
+          url: "/test/100k/"
+          weight: 30
+          params: 
+            icon: arrow-back
 
-    # - identifier: "posts"
-    #   name: posts
-    #   url: "/post/"
-    #   weight: 35
-    #   params: 
-    #     icon: arrow-back
+        # - identifier: "posts"
+        #   name: posts
+        #   url: "/post/"
+        #   weight: 35
+        #   params: 
+        #     icon: arrow-back
 
-    - identifier: "Archives"
-      name: Archives
-    # - name: アーカイブ
-      url: /archives/
-      weight: 40
-      params: 
-        icon: archives
-    
-    - identifier: Search
-      name: Search
-    # - name: 検索
-      url: /search/
-      weight: 50
-      params: 
-        icon: search
-    
-    # - name: Links
-    #   url: /links
-    #   weight: 60
-    #   params:
-    #       icon: link
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /archives/
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /search/
+          weight: 50
+          params: 
+            icon: search
+        
+        # - name: Links
+        #   url: /links
+        #   weight: 60
+        #   params:
+        #       icon: link
 
-    # - name: "100k-standard"
-    #   url: "/test/100k/standard"
-    #   parent: 100k
-    #   weight: 1
-    #   identifier: standard
-    # - name: "100k-advanced"
-    #   url: "/test/100k/advanced"
-    #   parent: 100k
-    #   weight: 2
-    #   identifier: advanced
+        # - name: "100k-standard"
+        #   url: "/test/100k/standard"
+        #   parent: 100k
+        #   weight: 1
+        #   identifier: standard
+        # - name: "100k-advanced"
+        #   url: "/test/100k/advanced"
+        #   parent: 100k
+        #   weight: 2
+        #   identifier: advanced
+  en:
+    menu:
+      main:
+        - identifier: "Katsu Data Science Lab"
+          # identifier: "katsuブログ"
+          name: Home
+          url: /en/
+          weight: -20
+          params: 
+            icon: home
+        #     # newTab: true
+        
+        - identifier: About
+          name: About
+          url: /en/about/
+          weight: -10
+          params:
+            icon: user
+        
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題"
+          url: "/en/100knocks/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題 - test"
+          # url: "/test/q-list-test"
+          pageRef: "/test/100k/base/q-list-test"
+          weight: 10
+          params: 
+            icon: question
+        #   # pre: <i class="fa circle-info"></i>
+          
+        - identifier: "レビュー"
+          name: レビュー (test)
+          url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          weight: 20
+          params: 
+            icon: review
+
+        - identifier: "データサイエンス100本ノック＋α"
+          name: "100k-test"
+          url: "/en/test/100k/"
+          weight: 30
+          params: 
+            icon: arrow-back
+
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /en/archives/
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /en/search/
+          weight: 50
+          params: 
+            icon: search
 
 module:
   mounts:
