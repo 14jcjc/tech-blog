@@ -1,6 +1,6 @@
 ### _default
 
-# baseURL: "https://14katsumix.github.io/tech-blog/"
+# baseURL: "https://14jcjc.github.io/tech-blog/"
 # baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 theme: hugo-theme-stack
 
