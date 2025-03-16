@@ -122,14 +122,14 @@ languages:
             icon: user
 
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-          name: "R+SQL 演習問題"
+          name: "[R & SQL] Data Science Practical Drill"
           url: "/en/ds100knocks-alpha/q-list"
           weight: 10
           params: 
             icon: question
         
         - identifier: "レビュー"
-          name: レビュー
+          name: Review
           url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
           # url: "/ds100knocks-alpha/book-review/"
           weight: 20

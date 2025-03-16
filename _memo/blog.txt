@@ -71,7 +71,12 @@ katsu.ds.lab@gmail.com
 asas1212
 Katsu Data Science Lab
 
-- アカウントの変更
+- GitHub リポジトリの変更、記事内の変更
+  katsu-ds-lab
+
+- 14katsumix/100knocks-dp を Private に変更する。
+
+- アカウントの変更、記事内の変更
   ドメイン、GitHub、twitter、gmail
 
 - tech-blog を変更する
@@ -111,6 +116,7 @@ q %>% my_select(con)
   - フォント
   - カテゴリ、タグ
   - CSVファイルを作成
+  - questions.yaml
   - 英語版のプログラムの作成・公開 (標準・簡易セットアップ)、コメントアウトも英語にする
   - ER図を作成
 
@@ -251,6 +257,10 @@ G-GLB0HGKER4
 * Google Search Console
 
 以下の TXT レコードを 14jcjc.github.io の DNS 設定にコピーします: 
+
+* 書籍のアフィリエイトリンクのデザイン
+  カード型、ボタン型リンク
+  Hugoのショートコードを活用して、クリックしやすいデザインにする
 
 * 各 platforms のアフィリエイトリンクを出力する shortcodes を作る
   参考: product-link.html
