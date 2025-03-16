@@ -61,6 +61,16 @@ https://shiro-no-panda.com/mensa3/
 #-------------------------------------------------------------------------------
 * ToDo
 
+GitHubリポジトリが「tech-blog」のため、URLが
+https://14jcjc.github.io/tech-blog/
+となる
+
+URLを
+https://14jcjc.github.io/
+としたい
+
+- tech-blog を変更する
+
 - X のメアドを更新する
 @kkatsumi_14
 0149ai@gmail.com
@@ -70,8 +80,6 @@ https://shiro-no-panda.com/mensa3/
 katsu.ds.lab@gmail.com
 asas1212
 katsu データサイエンスラボ
-
-- tech-blog を変更する
 
 - GitHub リポジトリの変更、記事内の変更
   katsu-ds-lab
