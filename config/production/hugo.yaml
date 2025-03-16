@@ -3,7 +3,7 @@
 # baseURL: "https://14katsumix.github.io/"
 # baseURL: "https://14jcjc.github.io/tech-blog/"
 # baseURL: "https://14jcjc.github.io/"
-baseURL: "https://xxx.com/"
+baseURL: "https://katsu-ds-lab.com"
 
 # Include drafts when building.
 buildDrafts: false
