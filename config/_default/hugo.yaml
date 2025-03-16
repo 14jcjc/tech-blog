@@ -18,8 +18,10 @@ languageCode: ja
 DefaultContentLanguage: ja
 
 # title: katsuブログ
-# title: Katsu Data Lab
-title: Katsu Data Science Lab
+# title: Katsu Data Science Lab
+title: katsu データサイエンス・ラボ
+# title: katsu DS ラボ
+# title: katsu DS実践ラボ
 
 # languages:
 #     ja:

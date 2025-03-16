@@ -280,6 +280,37 @@
 //   }
 // }
 
+.site-meta {
+
+  .site-name {
+    word-break: break-word !important;
+    word-wrap: break-word !important;
+    font-size: 17px !important;
+    // medium 以上の画面幅でフォントサイズを変更
+    @include respond(md) {
+      font-size: 16px !important;
+    }
+  }
+
+  .site-description {
+    font-size: 16px !important;
+    @include respond(md) {
+      font-size: 16px !important;
+    }
+  }
+
+  // レスポンシブ対応（例: 小さい画面でフォントサイズを変更）
+  // @media (max-width: 768px) {
+  //   .site-name {
+  //     font-size: 17px !important;
+  //   }
+
+  //   .site-description {
+  //     font-size: 16px !important;
+  //   }
+  // }
+}
+
 // リスト <li>の中の<p>
 .article-content li p {
   margin: 0 0;

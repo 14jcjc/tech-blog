@@ -2,7 +2,7 @@
 * grep
 
 rg -i "photoswipe" ./themes/hugo-theme-stack/ -uu
-rg -i "current" ./themes/hugo-theme-stack/ -uu
+rg -i "@include respond" ./themes/hugo-theme-stack/ -uu
 
 rg -i "@media" ./themes/hugo-theme-stack/assets/scss -uu
 rg -i ".toc" ./themes/hugo-theme-stack -uu
