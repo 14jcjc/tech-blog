@@ -2,7 +2,8 @@
 title: "[R+SQL] データサイエンス100本ノック＋α - 概要・導入"
 slug: "start"
 date: 2025-01-07T22:33:14+09:00
-draft: false
+# draft: false
+draft: true
 weight: 15
 description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について"
 # summary: ""

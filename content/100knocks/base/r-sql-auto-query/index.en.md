@@ -3,8 +3,8 @@
 title: "R でデータベース操作 – dplyr で SQL クエリを自動生成する"
 slug: "r-sql-auto-query"
 date: 2025-01-05T00:03:13+09:00
-draft: false
-# draft: true
+# draft: false
+draft: true
 weight: 35
 description: "R からデータベースに接続し、データ加工から SQLクエリの自動生成までの一連の流れについて解説します。"
 # summary: ""

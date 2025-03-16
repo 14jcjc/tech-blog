@@ -3,8 +3,8 @@
 title: "R でデータベース操作 – dplyr は SQL にどう変換される？"
 slug: "r-sql-translation"
 date: 2025-01-06T01:22:07+09:00
-draft: false
-# draft: true
+# draft: false
+draft: true
 weight: 40
 description: "dplyr を用いたデータベース操作がどのように SQL に変換されるかについて、具体例を交えて解説します。"
 # summary: ""

@@ -2,7 +2,8 @@
 title: "【レビュー】『データサイエンス100本ノック 構造化データ加工編ガイドブック』"
 slug: "book-review"
 date: 2025-01-04T21:01:10+09:00
-draft: false
+# draft: false
+draft: true
 weight: 10
 # description: ""
 # summary: ""
