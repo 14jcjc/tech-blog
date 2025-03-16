@@ -69,7 +69,17 @@ https://shiro-no-panda.com/mensa3/
 @katsu_ds_lab
 katsu.ds.lab@gmail.com
 asas1212
-Katsu Data Science Lab
+katsu データサイエンス・ラボ
+
+これまでは、
+- 演習問題のタイトル
+[R+SQL] データサイエンス100本ノック＋α
+- ディレクトリ名：
+ds100knocks-alpha
+としてました。
+演習問題のタイトルを「」
+
+- tech-blog を変更する
 
 - GitHub リポジトリの変更、記事内の変更
   katsu-ds-lab
@@ -78,8 +88,6 @@ Katsu Data Science Lab
 
 - アカウントの変更、記事内の変更
   ドメイン、GitHub、twitter、gmail
-
-- tech-blog を変更する
 
 - 演習問題タイトル「データサイエンス100本ノック＋α」を変更する
 
