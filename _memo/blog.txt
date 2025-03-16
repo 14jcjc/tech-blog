@@ -212,6 +212,7 @@ http://localhost:1313/tech-blog/portfolio/
   shortcodeも！
 - スマホ画面に目次をつける
   UseHugoToc = false の場合の修正：
+- サイトタイトルとサブタイトルのフォントの設定 (.site-meta { })
 - categories: "100本ノック＋α (Lv5)" などの編集, 
   /content/categories/*
 
