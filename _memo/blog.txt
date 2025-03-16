@@ -69,6 +69,11 @@ URLを
 https://14jcjc.github.io/
 としたい
 
+Hugoの設定で
+https://14jcjc.github.io/ が
+https://14jcjc.github.io/tech-blog/
+の内容を表示するようにできる？
+
 - tech-blog を変更する
 
 - X のメアドを更新する
