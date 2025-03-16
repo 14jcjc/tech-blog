@@ -110,6 +110,9 @@ katsu データサイエンスラボ
 - GitHubにカスタムドメインの設定
   https://katsu-ds-lab.com
 
+- workflows の baseURL の設定
+  --baseURL "https://14jcjc.github.io/"  
+
 - 設問文を実際のものに書き直す
 
 - 設問文の下に引用先について追記する
