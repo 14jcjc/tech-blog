@@ -7,6 +7,20 @@ baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
 # buildDrafts: false
 buildDrafts: true
 
+# languages:
+#     ja:
+#         languageName: Japanese
+#         weight: 1
+#         params:
+#             sidebar:
+#                 subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+#     en:
+#         languageName: English
+#         weight: 2
+#         params:
+#             sidebar:
+#                 subtitle: Real-World Data Mastery with R & SQL
+
 permalinks:
   page:
     page: /:slug/
@@ -29,37 +43,6 @@ params:
     - test
     - post
 
-languages:
-    ja:
-        languageName: Japanese
-        # title: Katsu Data Science Lab
-        weight: 1
-        params:
-            sidebar:
-                subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
-    en:
-        languageName: English
-        # title: Example Site
-        weight: 1
-        params:
-            sidebar:
-                subtitle: Real-World Data Mastery with R & SQL
-    # zh-cn:
-    #     languageName: 中文
-    #     # title: 演示站点
-    #     weight: 2
-    #     params:
-    #         sidebar:
-    #             subtitle: 演示说明
-    # ar:
-    #     languageName: عربي
-    #     languagedirection: rtl
-    #     title: موقع تجريبي
-    #     weight: 3
-    #     params:
-    #         sidebar:
-    #             subtitle: وصف تجريبي
-
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
@@ -67,6 +50,11 @@ languages:
 # left.html を修正: identifier とカレントページ・タイトルを比較する
 languages:
   ja:
+    languageName: Japanese
+    weight: 1
+    params:
+        sidebar:
+            subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
     menu:
       main:
         - identifier: "Katsu Data Science Lab"
@@ -155,7 +143,13 @@ languages:
         #   parent: 100k
         #   weight: 2
         #   identifier: advanced
+  
   en:
+    languageName: English
+    weight: 2
+    params:
+        sidebar:
+            subtitle: Real-World Data Mastery with R & SQL
     menu:
       main:
         - identifier: "Katsu Data Science Lab"
