@@ -57,7 +57,7 @@ languages:
             subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
     menu:
       main:
-        - identifier: "Katsu Data Science Lab"
+        - identifier: "katsu データサイエンスラボ"
           # identifier: "katsuブログ"
           name: Home
           url: /
@@ -169,7 +169,8 @@ languages:
             icon: user
         
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-          name: "[R & SQL] Data Science Practical Drill"
+          # name: "[R & SQL] Data Science Practical Drill"
+          name: "[R & SQL] Data Science Practice Drills"
           url: "/en/100knocks/q-list"
           weight: 10
           params: 

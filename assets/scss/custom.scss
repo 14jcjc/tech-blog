@@ -280,6 +280,7 @@
 //   }
 // }
 
+// サイト名と概要
 .site-meta {
 
   .site-name {
@@ -298,17 +299,17 @@
       font-size: 16px !important;
     }
   }
+}
 
-  // レスポンシブ対応（例: 小さい画面でフォントサイズを変更）
-  // @media (max-width: 768px) {
-  //   .site-name {
-  //     font-size: 17px !important;
-  //   }
+// リストの記事タイトルとサブタイトル
+.article-title-wrapper {
+	.article-title {
+		font-size: 2.2rem;
+	}
 
-  //   .site-description {
-  //     font-size: 16px !important;
-  //   }
-  // }
+	.article-subtitle {
+		font-size: 1.8rem; // サブタイトルのフォントサイズ
+	}
 }
 
 // リスト <li>の中の<p>

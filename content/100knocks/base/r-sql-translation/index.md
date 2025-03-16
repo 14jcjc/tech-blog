@@ -6,7 +6,7 @@ date: 2025-01-06T01:22:07+09:00
 draft: false
 # draft: true
 weight: 40
-description: "dplyr を用いたデータベース操作がどのように SQL に変換されるかについて、具体例を交えて解説します。"
+description: "dplyr を用いたデータベース操作がどのように SQL に変換されるかを、具体例を交えて解説"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL", "SQL自動生成"]
