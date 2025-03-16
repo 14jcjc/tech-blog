@@ -21,37 +21,6 @@ DefaultContentLanguage: ja
 # title: Katsu Data Lab
 title: Katsu Data Science Lab
 
-languages:
-    ja:
-        languageName: Japanese
-        # title: Katsu Data Science Lab
-        weight: 1
-        params:
-            sidebar:
-                subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
-    en:
-        languageName: English
-        # title: Example Site
-        weight: 1
-        params:
-            sidebar:
-                subtitle: Real-World Data Mastery with R & SQL
-    # zh-cn:
-    #     languageName: 中文
-    #     # title: 演示站点
-    #     weight: 2
-    #     params:
-    #         sidebar:
-    #             subtitle: 演示说明
-    # ar:
-    #     languageName: عربي
-    #     languagedirection: rtl
-    #     title: موقع تجريبي
-    #     weight: 3
-    #     params:
-    #         sidebar:
-    #             subtitle: وصف تجريبي
-
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
 hasCJKLanguage: true
