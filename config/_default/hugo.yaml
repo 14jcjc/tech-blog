@@ -24,6 +24,7 @@ title: Katsu Data Science Lab
 # languages:
 #     ja:
 #         languageName: Japanese
+#         contentDir: "content/ja"
 #         # title: Katsu Data Science Lab
 #         weight: 1
 #         params:
@@ -87,33 +88,6 @@ timeout: 90s # Timeout for generating page contents, specified as a duration or 
 # minify:
 #   disableXML: true
 #   minifyOutput: true
-
-# languages:
-#     ja:
-#         languageName: 日本語
-        # contentDir: "content/ja"
-    # en:
-    #     languageName: English
-    #     title: Example Site
-    #     weight: 1
-    #     params:
-    #         sidebar:
-    #             subtitle: Example description
-    # zh-cn:
-    #     languageName: 中文
-    #     title: 演示站点
-    #     weight: 2
-    #     params:
-    #         sidebar:
-    #             subtitle: 演示说明
-    # ar:
-    #     languageName: عربي
-    #     languagedirection: rtl
-    #     title: موقع تجريبي
-    #     weight: 3
-    #     params:
-    #         sidebar:
-    #             subtitle: وصف تجريبي
 
 pagination:
     pagerSize: 10
