@@ -74,25 +74,26 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}tech/" \
-            --destination ./public/tech
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            # --destination ./public/tech
             # --baseURL "${{ steps.pages.outputs.base_url }}/"
+            # --baseURL "${{ steps.pages.outputs.base_url }}tech/"
             # --baseURL "https://14jcjc.github.io/"
             # --destination ./public  # 公開先ディレクトリ
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         # katsu
         with:
-          path: ./public/tech
-          # path: ./public
+          path: ./public
+          # path: ./public/tech
 
   # Deployment job
   deploy:
     # katsu
     environment:
       name: github-pages
-      # url: ${{ steps.deployment.outputs.page_url }}
-      url: "${{ steps.deployment.outputs.page_url }}tech/"
+      url: ${{ steps.deployment.outputs.page_url }}
+      # url: "${{ steps.deployment.outputs.page_url }}tech/"
     runs-on: ubuntu-latest
     needs: build
     steps:
