@@ -79,13 +79,12 @@ jobs:
             # --baseURL "${{ steps.pages.outputs.base_url }}/"
             # --baseURL "https://14jcjc.github.io/"
             # --destination ./public  # 公開先ディレクトリ
-            # --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         # katsu
         with:
-          path: ./public/tech
-          # path: ./public
+          path: ./public
+          # path: ./public/tech
 
   # Deployment job
   deploy:
