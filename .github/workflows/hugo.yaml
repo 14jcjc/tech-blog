@@ -74,7 +74,7 @@ jobs:
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --baseURL "${{ steps.pages.outputs.base_url }}tech/" \
             --destination ./public/tech
             # --baseURL "${{ steps.pages.outputs.base_url }}/"
             # --baseURL "https://14jcjc.github.io/"
