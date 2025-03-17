@@ -1,5 +1,6 @@
 ### production
 
+# workflows/hugo.yaml の --baseURL "${{ steps.pages.outputs.base_url }}/" で定義される
 # baseURL: "https://14katsumix.github.io/"
 # baseURL: "https://14jcjc.github.io/tech-blog/"
 # baseURL: "https://14jcjc.github.io/"

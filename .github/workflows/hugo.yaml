@@ -69,18 +69,23 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
           TZ: America/Los_Angeles
+        # katsu
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --destination ./public/tech \
+            --baseURL "${{ steps.pages.outputs.base_url }}/tech/"
+            #  --baseURL "${{ steps.pages.outputs.base_url }}/"
             # --baseURL "https://14jcjc.github.io/"
             # --destination ./public  # 公開先ディレクトリ
             # --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        # katsu
         with:
-          path: ./public
+          path: ./public/tech
+          # path: ./public
 
   # Deployment job
   deploy:
