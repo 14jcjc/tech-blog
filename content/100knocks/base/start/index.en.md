@@ -221,14 +221,31 @@ my_sql_render = function(
     subquery = FALSE, lvl = 0, 
     pattern = "`", replacement = ""
   ) {
-  s = query %>% 
-    dbplyr::sql_render(
-      con = con, sql_options = sql_op, subquery = subquery, lvl = lvl
-    )
+  ret = tryCatch(
+    {
+      query %>% 
+        dbplyr::sql_render(
+          con = con, sql_options = sql_op, subquery = subquery, lvl = lvl
+        )
+    }, 
+    error = function(e) {
+      # CTE を生成しない処理に cte = TRUE が指定された場合の措置
+      sql_op = 
+        dbplyr::sql_options(
+          cte = FALSE, 
+          use_star = use_star, 
+          qualify_all_columns = qualify_all_columns
+        )
+      query %>% 
+        dbplyr::sql_render(
+          con = con, sql_options = sql_op, subquery = subquery, lvl = lvl
+        )
+    }
+  )
   if (!is.null(pattern)) {
-    s %<>% gsub(pattern, replacement, .)
+    ret %<>% gsub(pattern, replacement, .)
   }
-  return(s)
+  return(ret)
 }
 ```
 
