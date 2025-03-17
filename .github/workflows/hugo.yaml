@@ -83,8 +83,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         # katsu
         with:
-          path: ./public
-          # path: ./public/tech
+          path: ./public/tech
+          # path: ./public
 
   # Deployment job
   deploy:
