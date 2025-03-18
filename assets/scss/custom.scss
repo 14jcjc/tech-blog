@@ -305,10 +305,16 @@
 .article-title-wrapper {
 	.article-title {
 		font-size: 2.2rem;
+    @include respond(md) {
+      font-size: 2.2rem !important;
+    }
 	}
 
 	.article-subtitle {
 		font-size: 1.8rem; // サブタイトルのフォントサイズ
+    @include respond(md) {
+      font-size: 1.8rem !important;
+    }
 	}
 }
 
