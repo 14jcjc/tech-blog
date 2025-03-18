@@ -31,7 +31,6 @@ descriptionは記事タイトルの直下に表示する記事の概要のこと
 https://14jcjc.github.io/tech-blog/ds100knocks-alpha/r-sql-translation/
 このページのdescriptionを書いて。
 
-
 dplyr を用いたデータベース操作がどのように SQL に変換されるかについて、具体例を交えて解説します。
 
 #-------------------------------------------------------------------------------
@@ -73,6 +72,11 @@ https://shiro-no-panda.com/mensa3/
 
 - アカウントの変更、記事内の変更
   ドメイン、GitHub、twitter、gmail
+
+https://katsu-ds-lab.com
+katsu-ds-lab
+@katsu_ds_lab
+katsu.ds.lab@gmail.com
 
 - ディレクトリ名とURLの変更
   - 100knocks -> ds-drills

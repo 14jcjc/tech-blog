@@ -2,8 +2,8 @@
 # サイト: データサイエンス100本ノック＋α
 k100: 
   git: 
-    account: 14katsumix
-    url: "https://github.com/14katsumix/100knocks-dp"
+    account: katsu-ds-lab
+    url: "https://github.com/katsu-ds-lab/ds-drills"
   site: 
     title: 'データサイエンス100本ノック＋α'
     edition: 

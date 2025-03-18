@@ -7,12 +7,12 @@ ShowToc: false
 links:
   - title: Twitter
     description: 
-    website: https://x.com/14katsumix/
+    website: https://x.com/katsu_ds_lab/
     # image: https://abs.twimg.com/responsive-web/client-web/icon-svg.168b89da.svg
     image: twitter.svg
   - title: GitHub
     description: 
-    website: https://github.com/14katsumix/
+    website: https://github.com/katsu-ds-lab/
     # image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
     image: github.svg
 ---
@@ -52,5 +52,5 @@ R と SQL を中心に、データサイエンスに役立つ情報を発信し�
 
 ## お問い合わせ
 
-- X (Twitter): {{< href-target-blank url="https://x.com/14katsumix" text="@14katsumix" >}}
-- Email: [14katsumix@gmail.com](mailto:14katsumix@gmail.com)
+- X (Twitter): {{< href-target-blank url="https://x.com/katsu_ds_lab" text="@katsu_ds_lab" >}}
+- Email: [katsu.ds.lab@gmail.com](mailto:katsu.ds.lab@gmail.com)

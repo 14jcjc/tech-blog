@@ -190,7 +190,7 @@ params:
     # Open Graph プロトコルにより, 任意のWebページをソーシャルグラフ内のリッチオブジェクトにすることができる
         twitter:
             # Your Twitter username
-            site: 14katsumix
+            site: katsu_ds_lab
 
             # Available values: summary, summary_large_image
             card: summary_large_image
@@ -308,18 +308,46 @@ params:
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
-menu:
-  social:
-    - identifier: twitter
-      name: Twitter
-      url: https://x.com/14katsumix
-      params:
-        icon: brand-twitter
-    - identifier: github
-      name: GitHub
-      url: "https://github.com/14katsumix"
-      params:
-        icon: brand-github
+# menu:
+#   social:
+#     - identifier: twitter
+#       name: Twitter
+#       url: https://x.com/katsu_ds_lab
+#       params:
+#         icon: brand-twitter
+#     - identifier: github
+#       name: GitHub
+#       url: "https://github.com/katsu-ds-lab"
+#       params:
+#         icon: brand-github
+
+languages:
+  ja:
+    menu:
+      social:
+        - identifier: twitter
+          name: Twitter
+          url: https://x.com/katsu_ds_lab
+          params:
+            icon: brand-twitter
+        - identifier: github
+          name: GitHub
+          url: "https://github.com/katsu-ds-lab"
+          params:
+            icon: brand-github
+  en:
+    menu:
+      social:
+        - identifier: twitter
+          name: Twitter
+          url: https://x.com/katsu_ds_lab
+          params:
+            icon: brand-twitter
+        - identifier: github
+          name: GitHub
+          url: "https://github.com/katsu-ds-lab"
+          params:
+            icon: brand-github
 
 # 関連ページ (See also)
 related:
