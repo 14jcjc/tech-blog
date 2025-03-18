@@ -62,16 +62,21 @@ https://shiro-no-panda.com/mensa3/
 - db_get_query -> db_get_query
 - sql_render_ext -> sql_render_ext
 
+- supermarket.duckdb -> supermarket.duckdb
+
 - GitHub リポジトリの変更、記事内の変更
-  katsu-ds-lab
+  アカウント: 14katsumix -> katsu-ds-lab
+  リポジトリ: 100knocks-dp -> ds-drills
+  ディレクトリ: 100knocks-dp -> ds-drills
 
 - 14katsumix/100knocks-dp を Private に変更する。
 
 - アカウントの変更、記事内の変更
   ドメイン、GitHub、twitter、gmail
 
-- 100knocks を ds-drills に変更
-- ds100knocks-alpha を ds-practice-drills に変更
+- ディレクトリ名とURLの変更
+  - 100knocks -> ds-drills
+  - ds100knocks-alpha -> ds-practice-drills
 
 - 演習問題タイトル「データサイエンス100本ノック＋α」を変更する
   [R & SQL] データサイエンス実践ドリル

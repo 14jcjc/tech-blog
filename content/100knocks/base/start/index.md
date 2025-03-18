@@ -87,15 +87,15 @@ work
 #### 2. init.R を実行
 
 RStudio などで `init.R` を開いて実行します。  
-実行後、`database` に DuckDB データベースファイル `100knocks.duckdb` が作成されます。
+実行後、`database` に DuckDB データベースファイル `supermarket.duckdb` が作成されます。
 
 ```text
 work
   └── database
-      └── 100knocks.duckdb
+      └── supermarket.duckdb
 ```
 
-6 個の CSVファイル (`data/*.csv`) を読み込み、それぞれテーブルとして `100knocks.duckdb` に保存しています。
+6 個の CSVファイル (`data/*.csv`) を読み込み、それぞれテーブルとして `supermarket.duckdb` に保存しています。
 
 R セッションを再開した場合は、再度 `init.R` を実行してください。  
 2 回目からは、パッケージのインストールは不要なため、環境構築は約 5 秒で完了します。
@@ -285,7 +285,7 @@ R セッションを再開した場合は、再度このスクリプトを実行
 
 #### 3. DuckDB データベースファイル
 
-- `work/database/100knocks.duckdb`
+- `work/database/supermarket.duckdb`
 
 (＊ 簡易セットアップでは、DuckDB データベースの環境がメモリ上に作成されます。)
 
