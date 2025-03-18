@@ -146,6 +146,7 @@ q %>% db_get_query(con)
   - questions.yaml
   - 英語版のプログラムの作成・公開 (標準・簡易セットアップ)、コメントアウトも英語にする
   - ER図を作成
+  - 英語版 twitter, GitHub アカウントを作成する？
 
 - RStudio でプログラムの動作チェックをする
 

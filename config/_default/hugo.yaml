@@ -19,7 +19,7 @@ DefaultContentLanguage: ja
 
 # title: katsuブログ
 # title: Katsu Data Science Lab
-title: katsu データサイエンスラボ
+# title: katsu データサイエンスラボ
 # title: katsu データサイエンス・ラボ
 # title: katsu DS ラボ
 # title: katsu DS実践ラボ
@@ -147,7 +147,7 @@ params:
         # emoji: "🧑‍💻"
         # subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
         # subtitle: "現場で役立つデータの世界🌐<br>R と SQL で学ぶ実践スキル"
-        subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+        # subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
         # subtitle: Real-World Data Mastery with R & SQL
         avatar:
             enabled: true
@@ -323,6 +323,7 @@ params:
 
 languages:
   ja:
+    title: katsu データサイエンスラボ
     menu:
       social:
         - identifier: twitter
@@ -336,6 +337,7 @@ languages:
           params:
             icon: brand-github
   en:
+    title: Katsu Data Science Lab
     menu:
       social:
         - identifier: twitter
