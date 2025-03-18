@@ -148,10 +148,22 @@ languages:
   en:
     languageName: English
     weight: 2
+    title: Katsu Data Science Lab
     params:
         sidebar:
             subtitle: Real-World Data Mastery with R & SQL
     menu:
+      social:
+        - identifier: twitter
+          name: Twitter
+          url: https://x.com/katsu_ds_lab
+          params:
+            icon: brand-twitter
+        - identifier: github
+          name: GitHub
+          url: "https://github.com/katsu-ds-lab"
+          params:
+            icon: brand-github
       main:
         - identifier: "Katsu Data Science Lab"
           # identifier: "katsuブログ"
