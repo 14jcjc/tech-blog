@@ -311,9 +311,9 @@
 	}
 
 	.article-subtitle {
-		font-size: 1.8rem; // サブタイトルのフォントサイズ
+		font-size: 1.6rem;
     @include respond(md) {
-      font-size: 1.8rem !important;
+      font-size: 1.6rem !important;
     }
 	}
 }
