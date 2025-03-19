@@ -47,8 +47,8 @@ R と SQL を中心に、データサイエンスに役立つ情報を発信し�
 
 また、**R によるデータベース操作** については、以下の記事で解説しています。
 
-1. {{% ref2 path="/ds-drills/base/r-sql-auto-query" %}}
-2. {{% ref2 path="/ds-drills/base/r-sql-translation" %}}
+1. {{% ref2 path="/dev/data-engineering/r-sql-auto-query" %}}
+2. {{% ref2 path="/dev/data-engineering/r-sql-translation" %}}
 
 ## お問い合わせ
 

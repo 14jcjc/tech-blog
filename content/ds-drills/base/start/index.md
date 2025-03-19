@@ -19,7 +19,7 @@ tags: ["R", "SQL"]
 **参考記事 :**
 
 - {{% ref2 path="book-review" %}}
-- {{% ref2 path="r-sql-auto-query" %}}
+- {{% ref2 path="/dev/data-engineering/r-sql-auto-query" %}}
 
 ## はじめに
 
