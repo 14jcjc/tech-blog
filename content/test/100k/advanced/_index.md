@@ -9,7 +9,7 @@ weight: 3
 summary: '[R+SQL] データサイエンス100本ノック＋α (発展編) の問題集です。'
 description: '[R+SQL] データサイエンス100本ノック＋α (発展編) の問題集です。'
 cover:
-  image: "images/100knocks/cover-100k-advanced.png" #< /static
+  image: "images/ds-drills/cover-100k-advanced.png" #< /static
   relative: false
   hiddenInList: false
   hiddenInSingle: false # hide on single page

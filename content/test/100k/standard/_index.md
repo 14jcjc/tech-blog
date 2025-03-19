@@ -12,7 +12,7 @@ description: '[R+SQL] データサイエンス100本ノック＋α (標準編) �
 cascade:
   params: 
     cover:
-      image: "images/100knocks/cover-100k-standard.png" #< /static
+      image: "images/ds-drills/cover-100k-standard.png" #< /static
       # image: "images/box.png" #< /static
       relative: false
       hiddenInList: false

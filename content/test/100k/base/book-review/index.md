@@ -12,7 +12,7 @@ tags: ["test", "site-tips"]
 # tags_weight: 1
 cover:
   # image: "images/papermod-cover.png" #< /static
-  # image: "images/100knocks/cover-100k-standard.png" #< /static
+  # image: "images/ds-drills/cover-100k-standard.png" #< /static
   relative: false
   hiddenInList: false
   hiddenInSingle: false # hide on single page

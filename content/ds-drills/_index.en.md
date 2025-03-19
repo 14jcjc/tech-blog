@@ -1,20 +1,12 @@
 ---
-# title: 100K
-title: 'データサイエンス100本ノック＋α'
-# type: "section"
+title: "[R+SQL] データサイエンス100本ノック＋α"
+url: "ds-practice-drills"
+date: 2025-01-04T03:23:23+09:00
 # draft: false
 draft: true
+# summary: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
+# description: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
 # categories: ["100本ノック＋α"]
-summary: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
-description: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
-
-# menu: 
-#     main:
-#       name: "100k-test"
-#       weight: 30
-#       params: 
-#         icon: arrow-back
-
 keywords: 
   - "データサイエンス100本ノック"
   - "データサイエンスブログ"
@@ -55,10 +47,8 @@ keywords:
   - "SQL Processing"
 ---
 
-content/100k/_index.md  
+- 『📘 {{< product-link id="ds100kdp" platform="amazon" >}}』をベースにしたサンプルコード付きの解説やオリジナル問題です。
 
-- 『📘 データサイエンス100本ノック（構造化データ加工編）』をベースにした問題解説やオリジナル問題です。
 - Rコード実行環境のセットアップ・プログラムを 
-{{< href-target-blank url="https://github.com/katsu-ds-lab" text="📂 GitHubリポジトリ" >}} 
+{{< href-target-blank url="https://github.com/katsu-ds-lab" text="GitHubリポジトリ" >}} 
 に公開してます。
-

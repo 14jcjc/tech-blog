@@ -25,22 +25,22 @@ buildDrafts: true
 permalinks:
   page:
     page: /:slug/
-    100knocks: /100knocks/:slug/
-    # 100knocks: /ds100knocks-alpha/:slug/
+    ds-drills: /ds-drills/:slug/
+    # ds-drills: /ds-practice-drills/:slug/
     # post: /p/:slug/
     # test: /test/:slug/
   section:
-    100knocks: /100knocks/:sections[last]/
-    # 100knocks: /100knocks/:sections[1:]/
-    # 100knocks: /ds100knocks-alpha/:sections[last]/
-    # 100knocks: /ds100knocks-alpha/
+    ds-drills: /ds-drills/:sections[last]/
+    # ds-drills: /ds-drills/:sections[1:]/
+    # ds-drills: /ds-practice-drills/:sections[last]/
+    # ds-drills: /ds-practice-drills/
     # aaa: /aaa/:year/:month/
     # xxx: /xxx/:sections[1:]/
 
 params:
   env: development
   mainSections:
-    - "100knocks"
+    - "ds-drills"
     - test
     - post
 
@@ -77,7 +77,7 @@ languages:
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "R+SQL 演習問題"
           name: "[R & SQL] データサイエンス実践ドリル"
-          url: "/100knocks/q-list"
+          url: "/ds-drills/q-list"
           weight: 10
           params: 
             icon: question
@@ -184,7 +184,7 @@ languages:
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "[R & SQL] Data Science Practical Drill"
           name: "[R & SQL] Data Science Practice Drills"
-          url: "/en/100knocks/q-list"
+          url: "/en/ds-drills/q-list"
           weight: 10
           params: 
             icon: question

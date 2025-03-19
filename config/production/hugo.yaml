@@ -30,16 +30,15 @@ services:
 permalinks:
   page:
     page: /:slug/
-    # 100knocks: /ds-100knocks-dp/:sections[1:]/:slug/
-    100knocks: /ds100knocks-alpha/:slug/
+    # ds-drills: /ds-practice-drills/:sections[1:]/:slug/
+    ds-drills: /ds-practice-drills/:slug/
     test: /test/:slug/
     # post: /p/:slug/
     # aaa: /aaa/:year/:month/:slug/
     # xxx: /xxx/:slug
   section:
-    100knocks: /ds100knocks-alpha/:sections[last]/
-    # 100knocks: /ds100knocks-alpha/:sections[1:]/
-    # 100knocks: /ds100knocks-alpha/
+    ds-drills: /ds-practice-drills/:sections[last]/
+    ds-drills: /ds-practice-drills/:sections[1:]/
     # aaa: /aaa/:year/:month/
     # xxx: /xxx/:sections[1:]/
 
@@ -47,7 +46,7 @@ params:
   # (?) to enable google analytics, opengraph, twitter-cards and schema. 
   env: production
   mainSections:
-    - "100knocks"
+    - "ds-drills"
     - test
     # - post
 
@@ -80,7 +79,7 @@ languages:
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "R+SQL 演習問題"
           name: "[R & SQL] データサイエンス実践ドリル"
-          url: "/ds100knocks-alpha/q-list"
+          url: "/ds-practice-drills/q-list"
           weight: 10
           params: 
             icon: question
@@ -173,7 +172,7 @@ module:
   - excludeFiles: 
       - post
       # - test
-      # - 100knocks/test
+      # - ds-drills/test
       # - categories
       # - test/books/**
     source: content

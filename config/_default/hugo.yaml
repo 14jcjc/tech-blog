@@ -102,7 +102,7 @@ pagination:
 
 params:
     # mainSections:
-    #   - "100knocks"
+    #   - "ds-drills"
     #   - test
     #   - post
 

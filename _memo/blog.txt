@@ -380,7 +380,7 @@ hugo new content articles/something.md
 チュートリアル アーキタイプを使用して記事を作成するには:
 hugo new content --kind tutorials articles/something.md
 
-hugo new content --kind standard 100knocks/standard/r-029.md
+hugo new content --kind standard ds-drills/standard/r-029.md
 
 -------------------------------------------------------------------------------
 * ローカルストレージの確認 (ブラウザ)

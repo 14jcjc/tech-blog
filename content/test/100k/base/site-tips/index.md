@@ -444,11 +444,11 @@ Markdown は保持されることに注意。
 ### render-link フック
 
 ```md
-[github](https://github.com/14katsumix/100knocks-dp)
+[github](https://github.com/katsu-ds-lab)
 ```
 
 → 
-[github](https://github.com/14katsumix/100knocks-dp)
+[github](https://github.com/katsu-ds-lab)
 
 ```md
 [overview-test#d2](../overview-test#d2)
@@ -466,37 +466,37 @@ Markdown は保持されることに注意。
 
 ### href-target-blank
 
-aaaa {{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzz" >}} aaaa
+aaaa {{< href-target-blank url="https://github.com/katsu-ds-lab" text="Xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxzzzzz" >}} aaaa
 
 ```go-html-template {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp" */>}}
+{{</* href-target-blank url="https://github.com/katsu-ds-lab" */>}}
 ```
 
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" >}}
+{{< href-target-blank url="https://github.com/katsu-ds-lab" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
 {{</* href-target-blank url="https://..." text="リポジトリ📂" */>}}
 ```
 
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" text="リポジトリ📂" >}}
+{{< href-target-blank url="https://github.com/katsu-ds-lab" text="リポジトリ📂" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
+{{</* href-target-blank url="https://github.com/katsu-ds-lab"
  class="link2" */>}}
 ```
 
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" class="link2" >}}
+{{< href-target-blank url="https://github.com/katsu-ds-lab" class="link2" >}}
 
 ```go-html-template {linenos=false,anchorLineNos=false}
-{{</* href-target-blank url="https://github.com/14katsumix/100knocks-dp"
+{{</* href-target-blank url="https://github.com/katsu-ds-lab"
  title="About us" */>}}
 ```
 
 → 
-{{< href-target-blank url="https://github.com/14katsumix/100knocks-dp" title="About us" >}}
+{{< href-target-blank url="https://github.com/katsu-ds-lab" title="About us" >}}
 
 ```md {linenos=false,anchorLineNos=false}
 {{</* href-target-blank pre="🔗 " url="https://tech.buty4649.net/entry/2024/04/20/122439" */>}}
