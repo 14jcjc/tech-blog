@@ -18,6 +18,6 @@ summary: "[R+SQL] データサイエンス100本ノック＋α - 基本情報"
 ---
 
 {{% comment %}}
-content/ds-drills/base/_index.md  
+content/ds-drills/preprocess/base/_index.md  
 cccccccccccccccccccccccccccccccccc.
 {{% /comment %}}

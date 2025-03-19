@@ -30,18 +30,18 @@ R と SQL を中心に、データサイエンスに役立つ情報を発信し�
 
 演習問題を解く際は、以下の順序で記事を参考にしていただくとスムーズです。
 
-1. **[書籍レビュー]({{% ref "/ds-drills/base/book-review" %}} "書籍レビュー")**  
+1. **[書籍レビュー]({{% ref "/ds-drills/preprocess/base/book-review" %}} "書籍レビュー")**  
    参考書籍の概要を紹介
-2. **[概要・導入]({{% ref "/ds-drills/base/start" %}} "概要・導入")**  
+2. **[概要・導入]({{% ref "/ds-drills/preprocess/base/start" %}} "概要・導入")**  
    必要な知識や準備について解説
-3. **[演習問題一覧]({{% ref "/ds-drills/base/q-list" %}} "演習問題一覧")**  
+3. **[演習問題一覧]({{% ref "/ds-drills/preprocess/base/q-list" %}} "演習問題一覧")**  
    演習問題の設問文とリンクの一覧
 
 {{% comment %}}
 演習問題 (標準編・発展編) の設問文のとリンクの一覧
 演習問題の「発展編」では、オリジナルの問題を掲載しています。
 
-3. [Tips]({{%/* ref "/ds-drills/base/tips" */%}} "Tips")  
+3. [Tips]({{%/* ref "/ds-drills/preprocess/base/tips" */%}} "Tips")  
    役立つテクニックや補足情報
 {{% /comment %}}
 

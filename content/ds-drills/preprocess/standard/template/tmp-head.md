@@ -9,7 +9,7 @@ date: '2025-02-25T21:10:27+09:00'
 
 {{% comment %}}
 これはヘッダーのテンプレート:  
-/ds-drills/standard/template/tmp-head.md
+/ds-drills/preprocess/standard/template/tmp-head.md
 {{% /comment %}}
 
 **参考記事:**  

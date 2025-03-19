@@ -67,6 +67,15 @@ katsu-ds-lab
 @katsu_ds_lab
 katsu.ds.lab@gmail.com
 
+/ds-drills/preprocess/standard/template/tmp-head.md
+/ds-drills/preprocess/standard/template/tmp-head.md
+
+/ds-drills/preprocess/standard/template/tmp-foot.md
+/ds-drills/preprocess/standard/template/tmp-foot.md
+
+/ds-drills/preprocess/base/
+/ds-drills/preprocess/base/
+
 - ディレクトリ名とURLの変更
   - 100knocks -> ds-drills
   - ds100knocks-alpha -> ds-practice-drills

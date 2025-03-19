@@ -30,7 +30,7 @@ R でも、`dplyr` と `dbplyr` を使えば、データベースを手軽に操
 R では `DBI` パッケージを介してさまざまなデータベースと接続できますが、今回は手軽に扱える **DuckDB** を使用します。  
 DuckDB のメリットについては、以下の記事を参考にしてください。
 
-- {{% ref2 path="/ds-drills/base/start#duckdb" text="DuckDB を使用するメリット" %}}
+- {{% ref2 path="/ds-drills/preprocess/base/start#duckdb" text="DuckDB を使用するメリット" %}}
 
 まず、デモ用の売上データ (`df_sales`) を作成し、DuckDB のインメモリデータベースに登録します。  
 (未インストールのパッケージは `install.packages()` でインストールしてください。)
