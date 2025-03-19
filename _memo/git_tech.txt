@@ -60,4 +60,4 @@ git commit -m "Create .github/workflows/hugo.yaml"
 git push -u origin main
 
 From GitHub’s main menu, choose Actions.
-https://github.com/14katsumix/tech-blog-2/actions
+https://github.com/14jcjc/tech/actions
