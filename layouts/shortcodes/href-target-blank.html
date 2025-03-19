@@ -1,0 +1,39 @@
+{{/*  katsu  */}}
+{{/*  {{ $pre := "🔗" }}  */}}
+{{- $pre := "" -}}
+{{- with .Get "pre" -}}
+  {{- $pre = . -}}
+  {{- $trimmedPre := (strings.TrimSpace .) -}}
+  {{- if eq $trimmedPre "" -}}
+    {{- $pre = "" -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $class := .Get "class" | default "link" -}}
+{{- $href := .Get "url" | default "#" -}}
+{{- $href = $href | safeURL -}}
+{{- $title := .Get "title" | default "" -}}
+{{- $text := .Get "text" | default $href | safeHTML -}}
+
+{{/*  {{ .Page.Site.BaseURL }}  */}}
+
+{{- $target := .Get "target" -}}
+
+{{- if not $target -}}
+  {{/*  {{ if strings.HasPrefix $href "http" }}  */}}
+  {{- if and (strings.HasPrefix $href "http") (not (strings.HasPrefix $href .Page.Site.BaseURL)) -}}
+    {{- $target = "_blank" -}}
+  {{- else -}}
+    {{- $target = "_self" -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*  {{- $target -}}  */}}
+
+{{- if ne $pre "" -}}
+<span style="white-space: pre;">{{ $pre }}</span>
+{{- end }}
+<a class="{{- $class -}}" href="{{- $href -}}" title="{{- $title -}}" target="{{- $target -}}"
+{{ if eq $target "_blank" }} rel="noopener noreferrer"{{- end -}}>
+  {{- $text -}}
+</a>

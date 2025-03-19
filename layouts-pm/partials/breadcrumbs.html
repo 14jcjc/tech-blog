@@ -1,0 +1,7 @@
+{{- if (.Param "ShowBreadCrumbs") -}}
+<div class="breadcrumbs">
+    {{- range .Ancestors.Reverse }}
+    <a href="{{ .RelPermalink }}">{{ if .IsHome }}{{ i18n "home" }}{{ else }}{{ print "&nbsp;»&nbsp;" | safeHTML }}{{ .Title }}{{ end }}</a>    
+    {{- end -}}
+</div>
+{{- end -}}

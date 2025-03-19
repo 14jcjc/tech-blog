@@ -1,0 +1,26 @@
+
+{{ $class := dict
+  "note" (printf "class=%q" "fa-solid fa-circle-info")
+  "tip" (printf "class=%q" "fa-solid fa-lightbulb")
+  "important" (printf "class=%q" "fa-solid fa-circle-exclamation")
+  "warning" (printf "class=%q" "fa-solid fa-triangle-exclamation")
+}}
+
+{{- if eq .Type "alert" -}}
+  <blockquote class="alert alert-common alert-{{- .AlertType -}}">
+    <p class="alert-heading">
+      <i {{ printf "%s" (index $class .AlertType) | safeHTMLAttr -}}></i>
+      {{ printf " " }}
+      {{- with .AlertTitle -}}
+        {{- . -}}
+      {{- else -}}
+        {{- or (i18n .AlertType) (title .AlertType) -}}
+      {{- end -}}
+    </p>
+    {{- .Text -}}
+  </blockquote>
+{{- else -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}

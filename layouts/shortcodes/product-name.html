@@ -1,0 +1,15 @@
+{{/*  katsu  */}}
+{{ $id := .Get 0 }}
+{{ if not $id }}
+  {{ errorf "The %q shortcode requires a 'id' argument. See %s" .Name .Position }}
+{{ else }}
+  {{ with index site.Params.products (lower $id) }}
+    {{ with .name }}
+      {{ . }}
+    {{ else }}
+      {{ errorf "The %q shortcode was unable to find 'name' for %q. See %s" $.Name $id $.Position }}
+    {{ end }}
+  {{ else }}
+    {{ errorf "The %q shortcode was unable to find product with id %q. See %s" .Name $id .Position }}
+  {{ end }}
+{{ end }}

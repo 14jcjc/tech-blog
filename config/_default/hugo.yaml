@@ -1,0 +1,425 @@
+### _default
+
+# baseURL: "https://14jcjc.github.io/tech-blog/"
+# baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
+theme: hugo-theme-stack
+
+copyright: katsu
+author: katsu
+# description: 
+
+# Include drafts when building.
+# buildDrafts: false
+buildDrafts: true
+
+languageCode: ja
+# Theme i18n support
+# Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
+DefaultContentLanguage: ja
+
+# title: katsuブログ
+# title: Katsu Data Science Lab
+# title: katsu データサイエンスラボ
+# title: katsu データサイエンス・ラボ
+# title: katsu DS ラボ
+# title: katsu DS実践ラボ
+
+# languages:
+#     ja:
+#         languageName: Japanese
+#         contentDir: "content/ja"
+#         # title: Katsu Data Science Lab
+#         weight: 1
+#         params:
+#             sidebar:
+#                 subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+#     en:
+#         languageName: English
+#         # title: Example Site
+#         weight: 2
+#         params:
+#             sidebar:
+#                 subtitle: Real-World Data Mastery with R & SQL
+#     zh-cn:
+#         languageName: 中文
+#         # title: 演示站点
+#         weight: 3
+#         params:
+#             sidebar:
+#                 subtitle: 演示说明
+#     ar:
+#         languageName: عربي
+#         languagedirection: rtl
+#         title: موقع تجريبي
+#         weight: 4
+#         params:
+#             sidebar:
+#                 subtitle: وصف تجريبي
+
+# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
+# This will make .Summary and .WordCount behave correctly for CJK languages.
+hasCJKLanguage: true
+isCJKLanguage: true # (?) 内容言語が日中韓系のときは true に設定します.
+
+enableRobotsTXT: true # robots.txt の生成を有効にする
+enableInlineShortcodes: true # Markdown内でインラインショートコードを有効化する
+
+# シンボリックリンクを有効化する
+enableSymlinksIfOwnerMatch: true
+
+buildFuture: false # Include content with a future publication date.
+buildExpired: false # Include content already expired.
+enableEmoji: true
+
+# capitalizeListTitles: true
+capitalizeListTitles: false
+
+titleCaseStyle: ap # ap, chicago, go, firstupper, or none.
+# summaryLength: 50
+
+# 各ページの .GitInfo オブジェクトを有効にします (Hugo サイトが Gitでバージョン管理されている場合）.
+# これにより、各ページの Lastmod パラメータが, そのコンテンツファイルの最後の git コミット日時で更新されます.
+# デフォルトは false です。
+enableGitInfo: true
+
+timeout: 90s # Timeout for generating page contents, specified as a duration or in seconds.
+
+# sitemap: 
+  # changefreq = "monthly"
+  # priority = 0.5
+
+# minify:
+#   disableXML: true
+#   minifyOutput: true
+
+pagination:
+    pagerSize: 10
+
+# permalinks:
+#     page: /:slug/
+#     post: /p/:slug/
+#     test: /test/:slug/
+
+params:
+    # mainSections:
+    #   - "100knocks"
+    #   - test
+    #   - post
+
+    ShowShareButtons: true
+    # disableShare: false
+
+    # スマホ画面での目次
+    UseHugoToc: true
+    ShowToc: true
+    TocOpen: true
+    tableOfContents:
+      ordered: false
+      startLevel: 2
+      endLevel: 4
+
+    # To customize which share buttons to be enabled on page: 
+    # ShareButtons: ["x", "linkedin", "facebook", "telegram"]
+
+    # Front Matter field used to get the featured image of a page: 
+    featuredImageField: image
+
+    rssFullContent: true # Output page's full content in RSS.
+
+    favicon: "favicon.png"
+    
+    # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+
+    footer:
+        since: 2025
+        # HTML is supported -> markdownify に改修: 
+        # [Privacy Policy]({{< ref "/privacy" >}})
+        customText: |
+          {{< href-target-blank url="/privacy" text="Privacy Policy" class="link-2" target="_self" >}}
+    
+    dateFormat:
+        published: "2006-01-02"
+        lastUpdated: "2006-01-02 15:04 JST"
+
+    sidebar:
+        compact: false
+        # compact: true
+        # emoji: "🧑‍💻"
+        # subtitle: "現場で役立つデータの世界 : RとSQLで学ぶ実践スキル"
+        # subtitle: "現場で役立つデータの世界🌐<br>R と SQL で学ぶ実践スキル"
+        # subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+        # subtitle: Real-World Data Mastery with R & SQL
+        avatar:
+            enabled: true
+            local: true
+            src: img/avatar.png
+
+    article:
+        toc: true # おそらく無効なパラメータ (frontmatterで指定可)
+        headingAnchor: true # 見出しのアンカー
+        # headingAnchor: false # 見出しのアンカー
+        math: true
+        readingTime: false
+        license:
+            enabled: false
+            default: Licensed under CC BY-NC-SA 4.0
+    widgets:
+        homepage:
+            - type: search
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 20
+            - type: archives
+              params:
+                  limit: 2
+        page:
+            - type: toc
+            - type: tag-cloud
+              params:
+                  limit: 30
+            # - type: sharebutton
+            - type: share-icons
+              params:
+                icon: true
+                # shareButtons: ["x", "linkedin", "facebook", "telegram"]
+    
+    opengraph:
+    # Open Graph プロトコルにより, 任意のWebページをソーシャルグラフ内のリッチオブジェクトにすることができる
+        twitter:
+            # Your Twitter username
+            site: katsu_ds_lab
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage:
+        opengraph: 
+            # Open Graph と Twitter のデフォルト画像を有効にする: 
+            enabled: true
+            # If true, the image is a local file, and must be placed under assets folder. Otherwise, it is a remote URL.
+            local: true
+            # For example, if src is set to img/default.jpg, the image file must be placed under assets/img/default.jpg.
+            src: img/cover-100k.png
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+    
+    comments:
+        # enabled: true
+        enabled: false
+        provider: disqus
+
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+
+        beaudar:
+            repo:
+            issueTerm: pathname
+            label:
+            theme:
+
+        remark42:
+            host:
+            site:
+            locale:
+
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
+
+        # Waline client configuration see: https://waline.js.org/en/reference/component.html
+        waline:
+            serverURL:
+            lang:
+            pageview:
+            emoji:
+                - https://unpkg.com/@waline/emojis@1.0.1/weibo
+            requiredMeta:
+                - name
+                - email
+                - url
+            locale:
+                admin: Admin
+                placeholder:
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
+
+        # See https://cactus.chat/docs/reference/web-client/#configuration for description of the various options
+        cactus:
+            defaultHomeserverUrl: "https://matrix.cactus.chat:8448"
+            serverName: "cactus.chat"
+            siteName: "" # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
+
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+
+        gitalk:
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+            proxy:
+
+        cusdis:
+            host:
+            id:
+
+# セクションのメニュー エントリを自動的に定義する: 
+# sectionPagesMenu: main
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+# menu:
+#   social:
+#     - identifier: twitter
+#       name: Twitter
+#       url: https://x.com/katsu_ds_lab
+#       params:
+#         icon: brand-twitter
+#     - identifier: github
+#       name: GitHub
+#       url: "https://github.com/katsu-ds-lab"
+#       params:
+#         icon: brand-github
+
+languages:
+  ja:
+    title: katsu データサイエンスラボ
+    menu:
+      social:
+        - identifier: twitter
+          name: Twitter
+          url: https://x.com/katsu_ds_lab
+          params:
+            icon: brand-twitter
+        - identifier: github
+          name: GitHub
+          url: "https://github.com/katsu-ds-lab"
+          params:
+            icon: brand-github
+  # en:
+  #   title: Katsu Data Science Lab
+  #   menu:
+  #     social:
+  #       - identifier: twitter
+  #         name: Twitter
+  #         url: https://x.com/katsu_ds_lab
+  #         params:
+  #           icon: brand-twitter
+  #       - identifier: github
+  #         name: GitHub
+  #         url: "https://github.com/katsu-ds-lab"
+  #         params:
+  #           icon: brand-github
+
+# 関連ページ (See also)
+related:
+    # 関連コンテンツ・リストに現在のページよりも新しいページを含める. 
+    # これにより, 新しい関連コンテンツが追加されると, 古い投稿の出力が変わる可能性がある: 
+    includeNewer: true
+    # 0～100. 値が低いほど一致は多くなるが, 関連性は低くなる可能性がある: 
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+        - name: categories
+          weight: 200
+
+markup:
+    tableOfContents:
+        ordered: true
+        # ordered: false
+        endLevel: 4
+        startLevel: 2
+    
+    goldmark:
+        renderer:
+            unsafe: true # HTMLタグがレンダリングされるようにする
+        extensions:
+            # hardWraps: true
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
+        parser:
+          attribute:
+            block: true
+            title: true
+          # 独立した画像要素に属性を適用するには、デフォルトの折り返し動作を無効にする
+          wrapStandAloneImageWithinParagraph: false
+    
+    highlight:
+        codeFences: true
+        # 指定行ハイライトの background-color を 100% にするため, 
+        # noClasses, lineNumbersInTable を true, false とすること!
+        # スクロールしても background-color が途切れないことを確認する!
+
+        # 外部 CSS ファイルの代わりにインライン CSS スタイルを使用するかどうか。外部 CSS ファイルを使用するには、この値を に設定しfalse、 コマンドを使用して CSS ファイルを生成します
+        # hugo gen chromastyles
+        # noClasses: true
+        noClasses: false
+        # lineNumbersInTable = false とすると行番号までコピーされる.
+        lineNumbersInTable: true
+        guessSyntax: false
+        lineNoStart: 1
+        lineNos: false
+        # wrapperClass: highlight
+        # lineNos=inline
+        # equivalent to lineNos=true and lineNumbersInTable=false
+        # lineNos=table
+        # equivalent to lineNos=true and lineNumbersInTable=true
+        # # tabWidth: 4
+        # lineAnchors: ""
+        # hl_inline: false
+        # <code>タグ内を強調表示する. codeタグは code-inline という名前のクラスを取得する: 
+        # hl_Lines: ""
+        # noHl: false
+        # wrapperClass: highlight
+        # style: monokai

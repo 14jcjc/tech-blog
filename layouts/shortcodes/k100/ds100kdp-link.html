@@ -1,0 +1,7 @@
+{{- $class := .Get 0 | default "link" -}}
+{{- $text := .Site.Params.k100.dss.title -}}
+{{/*  {{ $href := .Site.Params.k100.dss.git.url | safeURL}}  */}}
+{{- $href := .Site.Params.k100.dss.git.url -}}
+<a class="{{- $class -}}" href="{{- $href -}}" target="_blank" rel="noopener noreferrer">
+  {{- $text -}}
+</a>

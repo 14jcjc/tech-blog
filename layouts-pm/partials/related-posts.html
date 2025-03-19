@@ -1,0 +1,28 @@
+{{/* katsu: 関連コンテンツ */}}
+{{- $show := (.Param "related.show") | default (.Site.Params.related.show) | default true -}}
+{{- if $show -}}
+  {{- $limit := (.Param "related.limit") | default (.Site.Params.related.limit) | default 5 -}}
+  {{- $related := .Site.RegularPages.Related . | first $limit -}}
+  {{- with $related -}}
+    <div class="related-posts">
+      <h2>関連記事</h2>
+      <ul>
+        {{- range $i, $p := . -}}
+          <li>
+            <a href="{{ .RelPermalink }}">{{- .LinkTitle -}}</a>
+            {{- with .HeadingsFiltered -}}
+              <ul>
+                {{- range . -}}
+                  {{- $link := printf "%s#%s" $p.RelPermalink .ID | safeURL -}}
+                  <li>
+                    <a href="{{ $link }}">{{- .Title -}}</a>
+                  </li>
+                {{- end -}}
+              </ul>
+            {{- end -}}
+          </li>
+        {{- end -}}
+      </ul>
+    </div>
+  {{- end -}}
+{{- end -}}

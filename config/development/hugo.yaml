@@ -1,0 +1,252 @@
+### development
+
+# baseURL: "https://14katsumix.github.io/tech-blog/"
+# baseURL: "http://localhost:1313/tech-blog/" # 開発環境用の URL
+baseURL: "http://localhost:1313/" # 開発環境用の URL
+
+# Include drafts when building.
+# buildDrafts: false
+buildDrafts: true
+
+# languages:
+#     ja:
+#         languageName: Japanese
+#         weight: 1
+#         params:
+#             sidebar:
+#                 subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+#     en:
+#         languageName: English
+#         weight: 2
+#         params:
+#             sidebar:
+#                 subtitle: Real-World Data Mastery with R & SQL
+
+permalinks:
+  page:
+    page: /:slug/
+    100knocks: /100knocks/:slug/
+    # 100knocks: /ds100knocks-alpha/:slug/
+    # post: /p/:slug/
+    # test: /test/:slug/
+  section:
+    100knocks: /100knocks/:sections[last]/
+    # 100knocks: /100knocks/:sections[1:]/
+    # 100knocks: /ds100knocks-alpha/:sections[last]/
+    # 100knocks: /ds100knocks-alpha/
+    # aaa: /aaa/:year/:month/
+    # xxx: /xxx/:sections[1:]/
+
+params:
+  env: development
+  mainSections:
+    - "100knocks"
+    - test
+    - post
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+# katsu
+# left.html を修正: identifier とカレントページ・タイトルを比較する
+languages:
+  ja:
+    languageName: Japanese
+    weight: 1
+    params:
+        sidebar:
+            subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+    menu:
+      main:
+        - identifier: "katsu データサイエンスラボ"
+          # identifier: "katsuブログ"
+          name: Home
+          url: /
+          weight: -20
+          params: 
+            icon: home
+        #     # newTab: true
+        
+        - identifier: About
+          name: About
+          url: /about/
+          weight: -10
+          params:
+            icon: user
+        
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          # name: "R+SQL 演習問題"
+          name: "[R & SQL] データサイエンス実践ドリル"
+          url: "/100knocks/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題 - test"
+          # url: "/test/q-list-test"
+          pageRef: "/test/100k/base/q-list-test"
+          weight: 10
+          params: 
+            icon: question
+        #   # pre: <i class="fa circle-info"></i>
+          
+        - identifier: "レビュー"
+          name: レビュー (test)
+          url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          weight: 20
+          params: 
+            icon: review
+
+        - identifier: "データサイエンス100本ノック＋α"
+          name: "100k-test"
+          url: "/test/100k/"
+          weight: 30
+          params: 
+            icon: arrow-back
+
+        # - identifier: "posts"
+        #   name: posts
+        #   url: "/post/"
+        #   weight: 35
+        #   params: 
+        #     icon: arrow-back
+
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /archives/
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /search/
+          weight: 50
+          params: 
+            icon: search
+        
+        # - name: Links
+        #   url: /links
+        #   weight: 60
+        #   params:
+        #       icon: link
+
+        # - name: "100k-standard"
+        #   url: "/test/100k/standard"
+        #   parent: 100k
+        #   weight: 1
+        #   identifier: standard
+        # - name: "100k-advanced"
+        #   url: "/test/100k/advanced"
+        #   parent: 100k
+        #   weight: 2
+        #   identifier: advanced
+  
+  en:
+    languageName: English
+    weight: 2
+    title: Katsu Data Science Lab
+    params:
+        sidebar:
+            subtitle: Real-World Data Mastery with R & SQL
+    menu:
+      social:
+        - identifier: twitter
+          name: Twitter
+          url: https://x.com/katsu_ds_lab
+          params:
+            icon: brand-twitter
+        - identifier: github
+          name: GitHub
+          url: "https://github.com/katsu-ds-lab"
+          params:
+            icon: brand-github
+      main:
+        - identifier: "Katsu Data Science Lab"
+          # identifier: "katsuブログ"
+          name: Home
+          url: /en/
+          weight: -20
+          params: 
+            icon: home
+        #     # newTab: true
+        
+        - identifier: About
+          name: About
+          url: /en/about/
+          weight: -10
+          params:
+            icon: user
+        
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          # name: "[R & SQL] Data Science Practical Drill"
+          name: "[R & SQL] Data Science Practice Drills"
+          url: "/en/100knocks/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          name: "R+SQL 演習問題 - test"
+          # url: "/test/q-list-test"
+          pageRef: "/test/100k/base/q-list-test"
+          weight: 10
+          params: 
+            icon: question
+        #   # pre: <i class="fa circle-info"></i>
+          
+        - identifier: "レビュー"
+          name: Review (test)
+          url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          weight: 20
+          params: 
+            icon: review
+
+        - identifier: "データサイエンス100本ノック＋α"
+          name: "100k-test"
+          url: "/en/test/100k/"
+          weight: 30
+          params: 
+            icon: arrow-back
+
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /en/archives/
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /en/search/
+          weight: 50
+          params: 
+            icon: search
+
+module:
+  mounts:
+  - excludeFiles: 
+      - post
+      - test/books/**
+    source: content
+    target: content
+  - source: static
+    target: static
+  - source: layouts
+    target: layouts
+  - source: data
+    target: data
+  - source: assets
+    target: assets
+  - source: i18n
+    target: i18n
+  - source: archetypes
+    target: archetypes
+
+# ignoreFiles:
+#   - "content/page/portfolio/index.md"

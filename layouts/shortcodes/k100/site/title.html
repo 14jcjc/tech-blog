@@ -1,0 +1,16 @@
+{{/* これはインライン・コメント */}}
+{{- /*これは余白なしのインライン・コメント */ -}}
+{{- $title := $.Site.Params.k100.site.title -}}
+{{- $rsql := $.Site.Params.k100.site.rsql -}}
+{{- $editionS := $.Site.Params.k100.site.edition.s -}}
+{{- $editionA := $.Site.Params.k100.site.edition.a -}}
+{{- $t := $title -}}
+{{- with .Get 0 -}}
+  {{- if eq . "s" -}}
+    {{/*  {{- $t = printf "%s%s (%s)" $rsql $title $editionS -}}  */}}
+    {{- $t = printf "%s%s" $rsql $title -}}
+  {{- else -}}
+    {{- $t = printf "%s%s (%s)" $rsql $title $editionA -}}
+  {{- end -}}
+{{- end -}}
+{{- $t -}}

@@ -1,0 +1,9 @@
+{{/*  katsu  */}}
+<h{{ .Level }} id="{{ .Anchor }}">
+  {{- if site.Params.Article.HeadingAnchor -}}
+    {{ .Text | safeHTML }}
+    <a class="header-anchor-2" aria-hidden="true" href="#{{ .Anchor }}"></a>
+  {{ else }}
+    {{ .Text | safeHTML }}
+  {{- end -}}
+</h{{ .Level }}>

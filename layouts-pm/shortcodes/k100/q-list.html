@@ -1,0 +1,49 @@
+{{/*  {{ $dictE := dict 
+  "standard" .Site.Params.k100.site.edition.s
+  "advanced" .Site.Params.k100.site.edition.a
+}}  */}}
+{{ $root := .Get "root" | default ".." }}
+{{ $sortKey := .Get "sortkey" | default "id" }}
+{{ $order := .Get "order" | default "asc" }}
+{{ $data := .Site.Data.k100.questions }}
+{{/*  <div class="q-list-category-title">  */}}
+  {{/*  {{ $edition := index $dictE $category }}  */}}
+  {{/*  {{ $edition }}  */}}
+{{/*  </div>  */}}
+{{ if $data }}
+  {{ $ed := split (.Get "ed" | default "standard,advanced") "," }}
+  {{ $allQuestions := slice }}
+
+  {{ range $ed }}
+    {{ $category := . }}
+    {{ $questions := index $data $category }}
+    {{ if $questions }}
+      {{ range $questions }}
+        {{ $allQuestions = $allQuestions | append (merge . (dict "category" $category)) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ $sortedQuestions := sort $allQuestions $sortKey $order }}
+  {{ $sortedQuestions := sort $allQuestions $sortKey $order "natural" }}
+  <div class="q-list">
+    {{ range $sortedQuestions }}
+      {{ $url := path.Join $root .category (lower .id) }}
+      <div class="q-item">
+        <div class="q-header">
+          <span class="q-id">
+            <a href="{{ $url }}">{{ .id }}</a>
+          </span>
+          <span class="q-difficulty">
+            {{ partial "rating-stars.html" (dict "class" "q-difficulty-rating" "rating" .difficulty) }}
+          </span>
+        </div>
+        <div class="q-content">
+          {{ .text | markdownify }}
+        </div>
+      </div>
+    {{ end }}
+  </div>
+{{ else }}
+  <div class="error-message">データが存在しません。</div>
+{{ end }}

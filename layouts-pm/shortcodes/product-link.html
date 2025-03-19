@@ -1,0 +1,32 @@
+{{ $id := .Get "id" }}
+{{ if not $id }}
+  {{ errorf "The %q shortcode requires a 'id' argument. See %s" .Name .Position }}
+{{ end }}
+{{ $platform := .Get "platform" }}
+{{ if not $platform }}
+  {{ errorf "The %q shortcode requires a 'platform' argument. See %s" .Name .Position }}
+{{ end }}
+{{ $type := .Get "type" | default "afiurl" }}
+{{ $text := .Get "text" }}
+{{/*  {{ $found := false }}  */}}
+
+{{/*  for debug  */}}
+{{/*  {{ printf "site.Params.products: %v" site.Params.products | safeHTML }}  */}}
+
+{{ with index site.Params.products (lower $id) }}
+  {{/*  {{ $found = true }}  */}}
+  {{ if not $text }}
+    {{ $text = .name }}
+  {{ end }}
+  {{ with index . $platform }}
+    {{ with index . $type }}
+      <a href="{{- . -}}" target="_blank">{{- $text -}}</a>
+    {{ else }}
+      {{ errorf "%q shortcode: type '%s' not found." $.Name $type }}
+    {{ end }}
+  {{ else }}
+    {{ errorf "%q shortcode: platform '%s' not found." $.Name $platform }}
+  {{ end }}
+{{ else }}
+  {{ errorf "The %q shortcode was unable to find %q. See %s" .Name $id .Position }}
+{{ end }}

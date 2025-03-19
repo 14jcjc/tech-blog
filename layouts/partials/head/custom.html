@@ -1,0 +1,235 @@
+{{- /*  font  */ -}}
+{{- /*  https://stack.jimmycai.com/config/header-footer  */ -}}
+
+{{- /*  Overwrite CSS variable  */ -}}
+{{- /*  <style>
+  :root {
+      --article-font-family: "Noto Sans JP", var(--base-font-family);
+  }
+</style>  */ -}}
+
+{{- /*  <script>
+  (function () {
+      const customFont = document.createElement('link');
+      customFont.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,400;700;1,400;700&display=swap";
+      
+      customFont.type = "text/css";
+      customFont.rel = "stylesheet";
+  
+      document.head.appendChild(customFont);
+  }());
+</script>  */ -}}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{{- /*  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,400;700;1,400;700&display=swap" rel="stylesheet">  */ -}}
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+{{/* 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,400;700;1,400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&family=Roboto+Mono:ital,wght@0,400;700;1,400;700&display=swap" rel="stylesheet">
+*/}}
+
+{{/*  font awesome  */}}
+{{ $css := "awesome/css/awesome.css" | relURL }}
+<link rel="stylesheet" href="{{ $css }}">
+
+{{/*  PhotoSwipe v5 */}}
+
+{{/*  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.min.css" integrity="sha512-LFWtdAXHQuwUGH9cImO9blA3a3GfQNkpF2uRlhaOpSbDevNyK1rmAjs13mtpjvWyi+flP7zYWboqY+8Mkd42xA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  */}}
+
+{{/*  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe.umd.min.js" defer>
+</script>  */}}
+
+{{/*  <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/umd/photoswipe-lightbox.umd.min.js" defer>
+</script>  */}}
+
+{{/*  <script defer>
+  document.addEventListener("DOMContentLoaded", function () {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#gallery-base', 
+      children: 'a',
+      pswpModule: PhotoSwipe
+    });
+    lightbox.init();
+  });
+</script>  */}}
+
+{{/*  PhotoSwipe v4 */}}
+
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  var pswpElement = document.querySelectorAll('.pswp')[0];
+  var galleryElements = document.querySelectorAll('.gallery-base a');
+
+  var items = Array.from(galleryElements).map(function (el) {
+    return {
+      src: el.getAttribute('href'),
+      w: parseInt(el.dataset.width, 10),
+      h: parseInt(el.dataset.height, 10)
+    };
+  });
+
+  galleryElements.forEach(function (el, index) {
+    el.addEventListener('click', function (event) {
+      event.preventDefault();
+      var options = {
+        index: index,
+        bgOpacity: 0.7,
+        showHideOpacity: true
+      };
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+      gallery.init();
+    });
+  });
+});
+</script>
+
+{{/*  
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe-lightbox.esm.min.js';
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-base',
+    children: 'a',
+    pswpModule: () => import('https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.4/photoswipe.esm.min.js')
+  });
+  lightbox.init();
+</script>  */}}
+
+{{/*  TableOfContents  */}}
+
+{{/*  次の条件で処理を作成: 
+- 複数の見出しが表示されている場合は、一番上の見出しをハイライトする。
+- 見出しが表示されていない場合は、現在の見出しをハイライトする。  */}}
+{{/*  ページの上部にある見出しをハイライトする。  */}}
+{{/*  常に、いずれかの項目をハイライトする。  */}}
+{{/*  目次の項目をクリックしたら、それをハイライトする。  */}}
+{{/*  画面中央より上に複数の見出しが表示されている場合は、一番上の見出しをハイライトする。  */}}
+{{/* ページのスクロールと目次のスクロールを連動させる。 */}}
+{{/* ページのスクロールすると、ハイライトした項目が目次の中央に来るようにする。  */}}
+{{/* 目次の項目をクリックしたときは、目次をスクロールさせない。 */}}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // const links = document.querySelectorAll('#TableOfContents a'); // 目次リンク
+    // const links = document.querySelectorAll('widget--toc #TableOfContents a');
+    const links = document.querySelectorAll('section #TableOfContents a');
+    
+    const sections = Array.from(links)
+      .map(link => document.getElementById(link.getAttribute('href').substring(1)))
+      .filter(section => section !== null); // 存在する要素のみ取得
+    
+    let lastActiveId = null;
+    let scrollTimeout = null;
+    let isClicking = false; // クリック時のフラグ
+
+    // 目次のリンクをクリックしたときの処理
+    links.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          links.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+          lastActiveId = targetId;
+
+          isClicking = true; // クリック開始
+
+          // スムーズスクロール
+          // window.scrollTo({ top: targetElement.offsetTop - 20, behavior: 'smooth' });
+
+          clearTimeout(scrollTimeout);
+          scrollTimeout = setTimeout(() => {
+            isClicking = false; // クリック完了
+            updateTableOfContents();
+          }, 600);
+        }
+      });
+    });
+
+    function updateTableOfContents() {
+      if (isClicking) return; // クリック中は更新しない
+
+      let currentSection = null;
+      let aboveCenterSections = [];
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (!section.id) return;
+
+        // 視野の上部より上にある見出しをリストに追加
+        if (rect.top < window.innerHeight / 30) {
+          aboveCenterSections.push(section);
+        }
+      });
+
+      if (aboveCenterSections.length > 0) {
+        currentSection = aboveCenterSections[aboveCenterSections.length - 1];
+      } else {
+        for (let section of sections) {
+          if (section.getBoundingClientRect().top >= window.innerHeight / 30) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+
+      if (!currentSection && sections.length > 0) {
+        currentSection = document.getElementById(lastActiveId) || sections[0];
+      }
+
+      if (currentSection) {
+        lastActiveId = currentSection.id;
+      }
+
+      // 目次リンクのハイライト処理
+      links.forEach(link => {
+        const targetId = link.getAttribute('href').substring(1);
+        if (currentSection && targetId === currentSection.id) {
+          link.classList.add('active');
+          scrollToCenter(link); // 目次のスクロールを中央に
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+
+    function scrollToCenter(element) {
+      // const parent = element.closest('#TableOfContents');
+      // const parent = element.closest('widget--toc #TableOfContents');
+      const parent = element.closest('section #TableOfContents');      
+      
+      if (parent) {
+        const parentRect = parent.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+
+        // 下方向にスクロールする場合、中央に調整
+        if (elementRect.top - parentRect.top > parent.clientHeight / 2) {
+          parent.scrollTop += elementRect.top - parentRect.top - parent.clientHeight / 2 + element.clientHeight / 2;
+        }
+      }
+    }
+
+    // スクロール時の処理
+    window.addEventListener('scroll', function() {
+      if (isClicking) return; // クリック後のスクロール中は更新しない
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateTableOfContents, 100);
+
+      // ページのスクロールでハイライトした項目が目次の中央に来るように
+      updateTableOfContents();
+    });
+
+    // 初回の目次更新
+    updateTableOfContents();
+  });
+</script>

@@ -1,0 +1,22 @@
+/*
+*   Style: monokailight
+*   https://xyproto.github.io/splash/docs/monokailight.html
+*/
+
+$color: #272822;
+// $background-color: #fafafa;
+$background-color: var(--pre-background-color);
+$error-color: #960050;
+$keyword-color: #00a8c8;
+$text-color: #111111;
+$name-color: #75af00;
+$literal-color: #d88200;
+// katsu
+// $chroma-background-color-hl: #ffffcc;
+// $chroma-background-color-hl: #4B4B38;
+$chroma-background-color-hl: rgba(255, 255, 100, 0.3);
+// $comment-text-color: #A9AEBE;
+$comment-text-color: #898E9E;
+$literal-number-color: #ae81ff;
+
+@import "common.scss";

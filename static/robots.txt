@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+Disallow: /portfolio/
+Disallow: /test/
+Sitemap: https://14katsumix.github.io/tech-blog/sitemap.xml

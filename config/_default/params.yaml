@@ -1,0 +1,86 @@
+### params.yaml
+# サイト: データサイエンス100本ノック＋α
+k100: 
+  git: 
+    account: katsu-ds-lab
+    url: "https://github.com/katsu-ds-lab/ds-drills"
+  site: 
+    title: 'データサイエンス100本ノック＋α'
+    edition: 
+      s: '標準編' # standard
+      a: '発展編' # advanced
+    # rsql: '【R+SQL】'
+    rsql: '[R+SQL] '
+    category: 
+      editionS: 'DS-100本ノック＋α (標準編) '
+      editionA: 'DS-100本ノック＋α (発展編) '
+  # afiurl: 
+  #   book: 
+  #     amazon: "https://amzn.to/3Pmq47H"
+  # url: 
+  #   book: 
+  #     amazon: "https://amzn.to/3Pmq47H"
+  # The Japan DataScientist Society
+  dss:
+    name: "データサイエンティスト協会"
+    # The Japan DataScientist Society
+    # Skill Definition Committee
+    sdc: "データサイエンティスト協会スキル定義委員会"
+    title: "データサイエンス100本ノック（構造化データ加工編）"
+    git: 
+      url: "https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess"
+
+products: 
+  ds100kdp: 
+    name: "データサイエンス100本ノック 構造化データ加工編ガイドブック"
+    # platformsリストの順序で出力する (リストに無い項目は対象外)
+    platforms: 
+      - amazon
+      - yahoo
+    amazon: 
+      description: "Amazonで見る"
+      url: "https://www.amazon.co.jp/%E3%83%87%E3%83%BC%E3%82%BF%E3%82%B5%E3%82%A4%E3%82%A8%E3%83%B3%E3%82%B9100%E6%9C%AC%E3%83%8E%E3%83%83%E3%82%AF%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%87%E3%83%BC%E3%82%BF%E5%8A%A0%E5%B7%A5%E7%B7%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF-%E6%A3%AE%E8%B0%B7-%E5%92%8C%E5%BC%98/dp/4802613563/ref=tmm_hrd_swatch_0?_encoding=UTF8"
+      afiurl: "https://amzn.to/3Pmq47H"
+    yahoo: 
+      description: "Yahooで見る"
+      url: "https://amzn.to/3Pmq47H"
+      afiurl: "https://amzn.to/3Pmq47H"
+
+keywords: 
+  - "データサイエンス100本ノック"
+  - "データサイエンスブログ"
+  - "データ分析"
+  - "データ解析"
+  - "データ分析実践"
+  - "データサイエンス基礎"
+  - "データサイエンスノウハウ"
+  - "データサイエンスTips"
+  - "データサイエンス手法"
+  - "プログラミング"
+  - "R言語"
+  - "Rプログラミング"
+  - "SQLクエリ"
+  - "SQLデータベース操作"
+  - "データベースバックエンド"
+  - "Rデータ処理"
+  - "SQLデータ処理"
+  - "高度なデータ処理"
+  - "データサイエンス無料教材"
+  - "データサイエンス解説"
+  - "データサイエンス設問解答"
+  - "データサイエンス発展問題"
+  - "初心者向けデータサイエンス"
+  - "中級者向けデータサイエンス"
+  - "上級者向けデータサイエンス"
+  - "日本語データサイエンス"
+  - "tidyverse"
+  - "dplyr"
+  - "tidyr"
+  - "dbplyr"
+  - "DBI"
+  - "dbx"
+  - "duckdb"
+  - "magrittr"
+  - "tibble"
+  - "Data Science Blog"
+  - "SQL Processing"

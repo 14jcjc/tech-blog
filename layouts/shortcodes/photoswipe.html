@@ -1,0 +1,15 @@
+<div class="gallery">
+  {{ $images := split (.Get "images") "," }}
+  {{ $thumbs := split (.Get "thumbs") "," }}
+  {{ $sizes := split (.Get "sizes") "," }}
+  {{ $captions := split (.Get "captions") "," }}
+
+  {{ range $index, $image := $images }}
+  <figure class="gallery-image">
+    <a href="{{ index $images $index }}" data-size="{{ index $sizes $index }}">
+      <img src="{{ index $thumbs $index }}" alt="{{ index $captions $index }}">
+    </a>
+    <figcaption>{{ index $captions $index }}</figcaption>
+  </figure>
+  {{ end }}
+</div>

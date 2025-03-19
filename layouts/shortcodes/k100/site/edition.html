@@ -1,0 +1,13 @@
+{{/* これはインライン・コメント */}}
+{{- /*これは余白なしのインライン・コメント */ -}}
+{{- $editionS := $.Site.Params.k100.site.edition.s -}}
+{{- $editionA := $.Site.Params.k100.site.edition.a -}}
+{{- $e := "" -}}
+{{- with .Get 0 -}}
+  {{- if eq . "s" -}}
+    {{- $e = printf "%s" $editionS -}}
+  {{- else -}}
+    {{- $e = printf "%s" $editionA -}}
+  {{- end -}}
+{{- end -}}
+{{- $e -}}

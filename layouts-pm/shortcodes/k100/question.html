@@ -1,0 +1,41 @@
+{{- $edition := .Get "ed" | default (.Page.Params.question.edition) -}}
+{{- $id := .Get "id" | default (.Page.Params.question.id) -}}
+
+{{- if not $edition }}
+  {{ errorf "shortcode: %s\n引数 'ed' が指定されておらず、.Page.Params.question.edition も設定されていません。\nSee %s\n\n" .Name .Position }}
+{{ end -}}
+{{- if not $id -}}
+  {{ errorf "shortcode: %s\n引数 'id' が指定されておらず、.Page.Params.question.id も設定されていません。\nSee %s\n\n" .Name .Position }}
+{{ end -}}
+
+{{/*  {{- $data := index .Site.Data.k100.questions -}}  */}}
+{{- $data := .Site.Data.k100.questions -}}
+{{- if not $data }}
+  {{ errorf "shortcode: %s\nデータが見つかりません。\nSee %s\n\n" .Name .Position }}
+{{ end -}}
+
+{{- $questions := index $data $edition -}}
+{{- if not $questions }}
+  {{ errorf "shortcode: %s\n指定された 'ed: %s' に対応するデータが見つかりません。\nSee %s\n\n" .Name $edition .Position }}
+{{ end -}}
+
+{{- $filtered := where $questions "id" $id -}}
+{{- $filteredCount := len $filtered -}}
+
+{{- if eq $filteredCount 0 }}
+  {{ errorf "shortcode: %s\n指定された 'id: %s' に対応する問題が見つかりません。\nSee %s\n\n" .Name $id .Position }}
+{{ end -}}
+{{- if gt $filteredCount 1 }}
+  {{ errorf "shortcode: %s\n指定された 'id: %s' に対応する問題が複数見つかりました。ユニークな ID を指定してください。\nSee %s\n\n" .Name $id .Position }}
+{{ end -}}
+
+{{- $question := index $filtered 0 -}}
+<div class="question-difficulty">
+  <span class="difficulty-label">難易度</span>
+  <span class="difficulty-stars">
+    {{- partial "rating-stars.html" (dict "class" "q-difficulty-rating" "rating" $question.difficulty) -}}
+  </span>
+</div>
+<div class="question-text">
+  {{- $question.text | markdownify -}}
+</div>

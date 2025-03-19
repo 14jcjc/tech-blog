@@ -1,0 +1,48 @@
+{{- /* Head custom content area start */ -}}
+{{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
+{{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
+{{- /* Head custom content area end */ -}}
+
+{{/*  This is contents of extend_head.html.  */}}
+{{/*  katsu  */}}
+
+{{/*  font  */}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+{{/* 
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,400;700;1,400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&family=Roboto+Mono:ital,wght@0,400;700;1,400;700&display=swap" rel="stylesheet">
+*/}}
+
+{{/*  font awesome  */}}
+{{ $css := "awesome/css/awesome.css" | relURL }}
+<link rel="stylesheet" href="{{ $css }}">
+
+{{/*  style を適用する type の配列  */}}
+{{
+  $arrayType := slice "testglossary" "<other-type-string>"
+}}
+
+{{- $tp := "" -}}
+{{- with .Page.Params.type -}}
+  {{- $tp = . -}}
+  {{- $found := false -}}
+  {{- $allowed := $arrayType -}}
+  {{- range $allowed -}}
+    {{- if eq . $tp -}}
+      {{- $found = true -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if $found -}}
+    {{/*  style (css) の定義  */}}
+    <style>
+      .list {
+        background-color: var(--theme); 
+      }
+    </style> 
+  {{- end -}}
+{{- end -}}

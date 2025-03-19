@@ -1,0 +1,9 @@
+{{/*  katsu  */}}
+{{- $default := site.Params.tableOfContents | default dict -}}
+{{- $pageParams := .Page.Params.tableOfContents | default dict -}}
+{{- $params := merge $default $pageParams -}}
+{{/*  "startlevel" のように小文字化されることに注意!  */}}
+{{- $startLevel := (index $params "startlevel") | default 2 -}}
+{{- $endLevel := (index $params "endlevel") | default 4 -}}
+{{- $ordered := (index $params "ordered") | default false -}}
+{{- .Fragments.ToHTML $startLevel $endLevel $ordered -}}

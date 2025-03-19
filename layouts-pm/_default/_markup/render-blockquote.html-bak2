@@ -1,0 +1,62 @@
+{{/*  
+ノート
+<i class="fa-solid fa-circle-info"></i>
+<i class="fa-solid fa-info"></i>
+
+ヒント
+<i class="fa-solid fa-lightbulb"></i>
+<i class="fa-regular fa-lightbulb"></i>
+
+Warnning
+<i class="fa-solid fa-triangle-exclamation"></i>
+<i class="fa-solid fa-exclamation"></i>
+<i class="fa-solid fa-bell"></i>
+
+重要
+<i class="fa-solid fa-circle-exclamation"></i>
+<i class="fa-solid fa-circle"></i>
+<i class="fa-regular fa-circle"></i>
+<i class="fa-solid fa-star"></i>
+
+etc
+<i class="fa-solid fa-message"></i>
+<i class="fa-regular fa-message"></i>
+<i class="fa-solid fa-comment"></i>
+<i class="fa-regular fa-comment"></i>
+<i class="fa-solid fa-comment-dots"></i>
+<i class="fa-regular fa-comment-dots"></i>
+<i class="fa-solid fa-note-sticky"></i>
+<i class="fa-regular fa-note-sticky"></i>
+<i class="fa-solid fa-square-check"></i>
+<i class="fa-regular fa-square-check"></i>
+<i class="fa-solid fa-circle-check"></i>
+<i class="fa-regular fa-circle-check"></i>
+*/}}
+
+{{ $dictClass := dict
+  "note" "fa-solid fa-circle-info"
+  "tip" "fa-solid fa-lightbulb"
+  "important" "fa-solid fa-circle-exclamation"
+  "warning" "fa-solid fa-triangle-exclamation"
+}}
+
+{{- if eq .Type "alert" -}}
+  {{ $class := index $dictClass .AlertType }}
+  {{ $s := printf "class=%q" $class }}
+  <blockquote class="alert alert-common alert-{{- .AlertType -}}">
+    <p class="alert-heading">
+      <i {{ printf "%s" $s | safeHTMLAttr -}}></i>
+      {{ printf " " }}
+      {{- with .AlertTitle -}}
+        {{- . -}}
+      {{- else -}}
+        {{- or (i18n .AlertType) (title .AlertType) -}}
+      {{- end -}}
+    </p>
+    {{- .Text -}}
+  </blockquote>
+{{- else -}}
+  <blockquote>
+    {{ .Text }}
+  </blockquote>
+{{- end -}}

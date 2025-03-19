@@ -1,0 +1,192 @@
+### production
+
+# workflows/hugo.yaml の --baseURL "${{ steps.pages.outputs.base_url }}/" で定義される
+# baseURL: "https://14katsumix.github.io/"
+# baseURL: "https://14jcjc.github.io/tech-blog/"
+# baseURL: "https://14jcjc.github.io/"
+# baseURL: "https://katsu-ds-lab.com/"
+
+# Include drafts when building.
+buildDrafts: false
+# buildDrafts: true
+
+# enableRobotsTXT: true # robots.txt の生成を有効にする
+enableRobotsTXT: false
+
+services:
+  googleAnalytics:
+    ID: G-GLB0HGKER4
+  # Change it to your Disqus shortname before using
+  # disqus:
+  #   shortname: your-disqus-shortname
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true
+
+# permalinks を設定すると, パンクズリストがきちんと表示されなくなる.
+#-> /themes/PaperMod/layouts/partials/breadcrumbs.html を修正することで解決.
+#   https://github.com/adityatelange/hugo-PaperMod/issues/1585
+permalinks:
+  page:
+    page: /:slug/
+    # 100knocks: /ds-100knocks-dp/:sections[1:]/:slug/
+    100knocks: /ds100knocks-alpha/:slug/
+    test: /test/:slug/
+    # post: /p/:slug/
+    # aaa: /aaa/:year/:month/:slug/
+    # xxx: /xxx/:slug
+  section:
+    100knocks: /ds100knocks-alpha/:sections[last]/
+    # 100knocks: /ds100knocks-alpha/:sections[1:]/
+    # 100knocks: /ds100knocks-alpha/
+    # aaa: /aaa/:year/:month/
+    # xxx: /xxx/:sections[1:]/
+
+params:
+  # (?) to enable google analytics, opengraph, twitter-cards and schema. 
+  env: production
+  mainSections:
+    - "100knocks"
+    - test
+    # - post
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+languages:
+  ja:
+    languageName: Japanese
+    weight: 1
+    params:
+        sidebar:
+            subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
+    menu:
+      main:
+        - identifier: "katsu データサイエンスラボ"
+          name: Home
+          url: /
+          weight: -20
+          params: 
+            icon: home
+        
+        - identifier: About
+          name: About
+          url: /about
+          weight: -10
+          params:
+            icon: user
+
+        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+          # name: "R+SQL 演習問題"
+          name: "[R & SQL] データサイエンス実践ドリル"
+          url: "/ds100knocks-alpha/q-list"
+          weight: 10
+          params: 
+            icon: question
+        
+        - identifier: "レビュー"
+          name: レビュー
+          url: "/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+          # url: "/ds100knocks-alpha/book-review/"
+          weight: 20
+          params: 
+            icon: review
+
+        - identifier: "Archives"
+          name: Archives
+        # - name: アーカイブ
+          url: /archives
+          weight: 40
+          params: 
+            icon: archives
+        
+        - identifier: Search
+          name: Search
+        # - name: 検索
+          url: /search
+          weight: 50
+          params: 
+            icon: search
+        # - name: Links
+        #   url: /links
+        #   weight: 60
+        #   params:
+        #       icon: link
+
+  # en:
+  #   languageName: English
+  #   weight: 2
+  #   params:
+  #       sidebar:
+  #           subtitle: Real-World Data Mastery with R & SQL
+  #   menu:
+  #     main:
+  #       - identifier: "Katsu Data Science Lab"
+  #         name: Home
+  #         url: /en/
+  #         weight: -20
+  #         params: 
+  #           icon: home
+        
+  #       - identifier: About
+  #         name: About
+  #         url: /en/about
+  #         weight: -10
+  #         params:
+  #           icon: user
+
+  #       - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+  #         # name: "[R & SQL] Data Science Practical Drill"
+  #         name: "[R & SQL] Data Science Practice Drills"
+  #         url: "/en/ds100knocks-alpha/q-list"
+  #         weight: 10
+  #         params: 
+  #           icon: question
+        
+  #       - identifier: "レビュー"
+  #         name: Review
+  #         url: "/en/categories/%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC/"
+  #         # url: "/ds100knocks-alpha/book-review/"
+  #         weight: 20
+  #         params: 
+  #           icon: review
+
+  #       - identifier: "Archives"
+  #         name: Archives
+  #       # - name: アーカイブ
+  #         url: /en/archives
+  #         weight: 40
+  #         params: 
+  #           icon: archives
+        
+  #       - identifier: Search
+  #         name: Search
+  #       # - name: 検索
+  #         url: /en/search
+  #         weight: 50
+  #         params: 
+  #           icon: search
+
+module:
+  mounts:
+  - excludeFiles: 
+      - post
+      # - test
+      # - 100knocks/test
+      # - categories
+      # - test/books/**
+    source: content
+    target: content
+  - source: static
+    target: static
+  - source: layouts
+    target: layouts
+  - source: data
+    target: data
+  - source: assets
+    target: assets
+  - source: i18n
+    target: i18n
+  - source: archetypes
+    target: archetypes
