@@ -9,7 +9,7 @@ weight: 35
 description: "R からデータベースに接続し、データ加工から SQLクエリ自動生成までの流れについて解説"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL", "SQL自動生成"]
+tags: ["SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
 # ShowReadingTime: false
@@ -30,7 +30,7 @@ R でも、`dplyr` と `dbplyr` を使えば、データベースを手軽に操
 R では `DBI` パッケージを介してさまざまなデータベースと接続できますが、今回は手軽に扱える **DuckDB** を使用します。  
 DuckDB のメリットについては、以下の記事を参考にしてください。
 
-- {{% ref2 path="start#duckdb" text="DuckDB を使用するメリット" %}}
+- {{% ref2 path="/ds-drills/base/start#duckdb" text="DuckDB を使用するメリット" %}}
 
 まず、デモ用の売上データ (`df_sales`) を作成し、DuckDB のインメモリデータベースに登録します。  
 (未インストールのパッケージは `install.packages()` でインストールしてください。)

@@ -7,7 +7,7 @@ weight: 15
 description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について"
 # summary: ""
 categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+# tags: ["R", "SQL"]
 # disableShare: false
 # UseHugoToc: true
 # ShowToc: true
@@ -338,8 +338,8 @@ R セッションを再開した場合は、再度このスクリプトを実行
 
 R によるデータベース操作や SQL クエリの自動生成について、以下の記事で紹介しています。
 
-- {{% ref2 path="r-sql-auto-query" %}}
-- {{% ref2 path="r-sql-translation" %}}
+- {{% ref2 path="/dev/data-engineering/r-sql-auto-query" %}}
+- {{% ref2 path="/dev/data-engineering/r-sql-translation" %}}
 
 データベース操作に関連するその他の補足事項を `db_get_query()`、`sql_render_ext()` の使い方と共に以下で説明します。
 

@@ -32,13 +32,15 @@ permalinks:
     page: /:slug/
     # ds-drills: /ds-practice-drills/:sections[1:]/:slug/
     ds-drills: /ds-practice-drills/:slug/
+    dev: /dev/:slug/
     test: /test/:slug/
     # post: /p/:slug/
     # aaa: /aaa/:year/:month/:slug/
     # xxx: /xxx/:slug
   section:
     ds-drills: /ds-practice-drills/:sections[last]/
-    ds-drills: /ds-practice-drills/:sections[1:]/
+    dev: /dev/:sections[last]/
+    # ds-drills: /ds-practice-drills/:sections[1:]/
     # aaa: /aaa/:year/:month/
     # xxx: /xxx/:sections[1:]/
 

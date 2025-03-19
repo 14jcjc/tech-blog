@@ -26,11 +26,13 @@ permalinks:
   page:
     page: /:slug/
     ds-drills: /ds-drills/:slug/
+    dev: /dev/:slug/
     # ds-drills: /ds-practice-drills/:slug/
     # post: /p/:slug/
     # test: /test/:slug/
   section:
     ds-drills: /ds-drills/:sections[last]/
+    dev: /dev/:sections[last]/
     # ds-drills: /ds-drills/:sections[1:]/
     # ds-drills: /ds-practice-drills/:sections[last]/
     # ds-drills: /ds-practice-drills/
