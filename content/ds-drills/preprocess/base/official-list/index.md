@@ -1,11 +1,11 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-slug: "q-list"
+slug: "official-list"
 date: 2025-01-20T01:01:20+09:00
-# draft: false
-draft: true
+draft: false
+# draft: true
 weight: 20
-description: "当サイトで紹介している R と SQL の演習問題です"
+description: "当サイトで紹介している R と SQL の演習問題"
 summary: "当サイトで紹介している R と SQL の演習問題一覧です"
 categories: ["100本ノック+α (基本情報)"]
 tags: ["R", "SQL"]

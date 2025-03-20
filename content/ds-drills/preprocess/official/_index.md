@@ -1,7 +1,7 @@
 ---
 title: '標準編'
 date: '2025-02-25T20:00:14+09:00'
-# slug: "standard"
+# slug: "official"
 draft: false
 # draft: true
 weight: 2

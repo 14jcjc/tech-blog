@@ -80,6 +80,14 @@ official
 basic
 master
 
+https://katsu-ds-lab.com/ds-drills/official/
+https://katsu-ds-lab.com/ds-drills/basic/
+https://katsu-ds-lab.com/ds-drills/master/
+
+https://katsu-ds-lab.com/ds-drills/q-list/
+https://katsu-ds-lab.com/ds-drills/official-list/
+https://katsu-ds-lab.com/ds-drills/practice-list/
+
 - データを GitHubリポジトリに公開、簡易版プログラムを修正する
 
 - カテゴリーを改訂する
