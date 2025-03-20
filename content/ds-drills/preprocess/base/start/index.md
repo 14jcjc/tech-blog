@@ -152,7 +152,7 @@ pacman::p_load(
 
 # CSVファイルをデータフレームとして読み込む ------------
 my_vroom = function(file, col_types) {
-  data_url = "https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/docker/work/data/"
+  data_url = "https://raw.githubusercontent.com/katsu-ds-lab/ds-drills//main/work/data/"
   tictoc::tic(file)
   on.exit(tictoc::toc())
   on.exit(cat("\n"), add = TRUE)

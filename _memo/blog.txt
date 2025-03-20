@@ -42,8 +42,6 @@ https://shiro-no-panda.com/mensa3/
 #-------------------------------------------------------------------------------
 * ToDo
 
-15:05 : カスタムドメイン
-
 - ブラウザの開発者ツールを活用
   https://bit.ly/42cNeEA
 
@@ -67,26 +65,22 @@ katsu-ds-lab
 @katsu_ds_lab
 katsu.ds.lab@gmail.com
 
-/ds-drills/preprocess/standard/template/tmp-head.md
-/ds-drills/preprocess/standard/template/tmp-head.md
-
-/ds-drills/preprocess/standard/template/tmp-foot.md
-/ds-drills/preprocess/standard/template/tmp-foot.md
-
-/ds-drills/preprocess/base/
-/ds-drills/preprocess/base/
-
 - ディレクトリ名とURLの変更
   - 100knocks -> ds-drills
   - ds100knocks-alpha -> ds-practice-drills
 
-- 演習問題タイトル「データサイエンス100本ノック＋α」を変更する
-  [R & SQL] データサイエンス実践ドリル
+- 演習問題タイトル
+
+[R & SQL] データサイエンス100本ノック＋α
+[R & SQL] データサイエンス実践ドリル - ベーシック版
+[R & SQL] データサイエンス実践ドリル - マスター版
+(オリジナル問題)
 
 - データを GitHubリポジトリに公開、簡易版プログラムを修正する
 
-- タグから R, SQL を削除する
 - カテゴリーを改訂する
+
+- タグから R, SQL を削除する
 
 - ブログ色を出さないように、記事への引用に「記事」という言葉は使わない
 

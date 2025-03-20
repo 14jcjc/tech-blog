@@ -1,6 +1,7 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α"
-url: "ds-practice-drills"
+# url: "ds-practice-drills"
+url: "ds-drills"
 date: 2025-01-04T03:23:23+09:00
 draft: false
 # draft: true
@@ -27,24 +28,23 @@ keywords:
   - "SQLデータ処理"
   - "高度なデータ処理"
   - "データサイエンス無料教材"
+  - "データサイエンス演習問題"
   - "データサイエンス解説"
   - "データサイエンス設問解答"
-  - "データサイエンス発展問題"
   - "初心者向けデータサイエンス"
   - "中級者向けデータサイエンス"
   - "上級者向けデータサイエンス"
   - "日本語データサイエンス"
+  - "Data Science"
+  - "SQL Processing"
   - "tidyverse"
   - "dplyr"
   - "tidyr"
   - "dbplyr"
   - "DBI"
-  - "dbx"
   - "duckdb"
   - "magrittr"
   - "tibble"
-  - "Data Science Blog"
-  - "SQL Processing"
 ---
 
 - 『📘 {{< product-link id="ds100kdp" platform="amazon" >}}』をベースにしたサンプルコード付きの解説やオリジナル問題です。
