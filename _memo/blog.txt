@@ -67,7 +67,7 @@ katsu.ds.lab@gmail.com
 
 - ディレクトリ名とURLの変更
   - 100knocks -> ds-drills
-  - ds100knocks-alpha -> ds-practice-drills
+  - ds100knocks-alpha -> ds-drills
 
 - 演習問題タイトル
 
@@ -75,6 +75,10 @@ katsu.ds.lab@gmail.com
 [R & SQL] データサイエンス実践ドリル - ベーシック版
 [R & SQL] データサイエンス実践ドリル - マスター版
 (オリジナル問題)
+
+official
+basic
+master
 
 - データを GitHubリポジトリに公開、簡易版プログラムを修正する
 
