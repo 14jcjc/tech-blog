@@ -8,10 +8,8 @@ description: ""
 # summary: ""
 # weight: 10
 categories: 
-  - "100本ノック＋α (Lv1)"
+  - "データサイエンス100本ノック＋α"
 tags: 
-  - R
-  - SQL
 params:
   question: 
     edition: standard

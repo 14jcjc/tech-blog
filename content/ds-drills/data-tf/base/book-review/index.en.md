@@ -7,8 +7,8 @@ draft: true
 weight: 10
 # description: ""
 # summary: ""
-categories: ["レビュー", "100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+categories: ["レビュー", "実践ドリル(基本情報)"]
+tags: 
 # tags_weight: 1
 
 # toc: true # Show / hide table of contents of the page.

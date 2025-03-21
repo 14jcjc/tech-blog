@@ -92,7 +92,29 @@ https://katsu-ds-lab.com/ds-drills/vol-1/
 
 - カテゴリーを改訂する
 
+データサイエンス100本ノック＋α
+データサイエンス実践ドリル
+演習問題(基本情報)
+レビュー
+
+
+
+[R & SQL] データサイエンス実践ドリル -
+[R & SQL] データサイエンス実践ドリル -
+
+
+実践ドリル(基本情報) -> 実践ドリル(基本情報)
+
+Free Data Science Drills
+Data Science Practice Drills
+Review
+
+[R & SQL] データサイエンス100本ノック＋α - 
+-> [R & SQL] データサイエンス100本ノック＋α - 
+
 - タグから R, SQL を削除する
+
+- 演習問題一覧ページの改訂
 
 - ブログ色を出さないように、記事への引用に「記事」という言葉は使わない
 
@@ -251,7 +273,7 @@ http://localhost:1313/tech-blog/portfolio/
 - サイトタイトルとサブタイトルのフォントの設定 (.site-meta { })
 - GitHubにカスタムドメインの設定
   https://katsu-ds-lab.com
-- categories: "100本ノック＋α (Lv5)" などの編集, 
+- categories: "データサイエンス100本ノック＋α" などの編集, 
   /content/categories/*
 - データを GitHubリポジトリに公開、簡易版プログラムを修正する
 

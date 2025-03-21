@@ -1,5 +1,5 @@
 ---
-title: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+title: "[R+SQL] 演習問題一覧"
 slug: "drill-list"
 date: 2025-01-20T01:01:20+09:00
 draft: false
@@ -7,8 +7,8 @@ draft: false
 weight: 20
 description: "当サイトで紹介している R と SQL の演習問題"
 summary: "当サイトで紹介している R と SQL の演習問題一覧です"
-categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+categories: ["実践ドリル(基本情報)"]
+tags: 
 toc: false # 目次
 ShowToc: false
 # menu: 

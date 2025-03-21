@@ -8,8 +8,8 @@ draft: false
 weight: 15
 # description: ""
 # summary: ""
-categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+categories: ["実践ドリル(基本情報)"]
+tags: 
 # image: rdb.webp
 # disableShare: false
 # ShowReadingTime: false

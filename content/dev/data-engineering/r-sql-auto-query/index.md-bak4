@@ -8,7 +8,7 @@ draft: false
 weight: 35
 # description: ""
 # summary: ""
-categories: ["100本ノック+α (基本情報)"]
+categories: ["実践ドリル(基本情報)"]
 tags: ["R", "SQL", "SQL自動生成"]
 # image: rdb.webp
 # disableShare: false

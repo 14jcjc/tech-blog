@@ -7,8 +7,8 @@ draft: false
 weight: 20
 description: "データサイエンス100本ノック＋α に関連する便利なノウハウについて。"
 # summary: ""
-categories: ["100本ノック+α (基本情報)"]
-tags: ["R", "SQL"]
+categories: ["実践ドリル(基本情報)"]
+tags: 
 cover:
   # image: "images/papermod-cover.png" #< /static
   # image: "images/ds-drills/cover-100k-standard.png" #< /static

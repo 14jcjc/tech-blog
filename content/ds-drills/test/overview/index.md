@@ -1,6 +1,6 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α - 概要"
-slug: "overview"
+slug: "overview-test"
 date: 2021-04-02T00:31:23+09:00
 draft: true
 weight: 1150

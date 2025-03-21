@@ -6,8 +6,8 @@ draft: false
 weight: 15
 description: "データサイエンス100本ノック＋α の概要とコード実行環境の構築について"
 # summary: ""
-categories: ["100本ノック+α (基本情報)"]
-# tags: ["R", "SQL"]
+categories: ["実践ドリル(基本情報)"]
+# tags: 
 # disableShare: false
 # UseHugoToc: true
 # ShowToc: true
