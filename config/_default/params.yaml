@@ -10,17 +10,10 @@ k100:
       s: '標準編' # standard
       a: '発展編' # advanced
     # rsql: '【R+SQL】'
-    rsql: '[R+SQL] '
+    rsql: '[R & SQL] '
     category: 
       editionS: 'DS-100本ノック＋α (標準編) '
       editionA: 'DS-100本ノック＋α (発展編) '
-  # afiurl: 
-  #   book: 
-  #     amazon: "https://amzn.to/3Pmq47H"
-  # url: 
-  #   book: 
-  #     amazon: "https://amzn.to/3Pmq47H"
-  # The Japan DataScientist Society
   dss:
     name: "データサイエンティスト協会"
     # The Japan DataScientist Society
@@ -49,6 +42,7 @@ products:
 keywords: 
   - "データサイエンス100本ノック"
   - "データサイエンスブログ"
+  - "データ加工"
   - "データ分析"
   - "データ解析"
   - "データ分析実践"
@@ -73,6 +67,9 @@ keywords:
   - "中級者向けデータサイエンス"
   - "上級者向けデータサイエンス"
   - "日本語データサイエンス"
+  - "Data Science Blog"
+  - "Data Transformation"
+  - "SQL Processing"
   - "tidyverse"
   - "dplyr"
   - "tidyr"
@@ -82,5 +79,4 @@ keywords:
   - "duckdb"
   - "magrittr"
   - "tibble"
-  - "Data Science Blog"
-  - "SQL Processing"
+  
