@@ -76,7 +76,7 @@ languages:
           params:
             icon: user
         
-        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+        - identifier: "[R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           name: "R & SQL 演習問題一覧"
           # name: "[R & SQL] データサイエンス実践ドリル"
           url: "/ds-drills/drill-list"
@@ -84,7 +84,7 @@ languages:
           params: 
             icon: question
         
-        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+        - identifier: "Test - [R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           name: "R+SQL 演習問題 - test"
           # url: "/test/q-list-test"
           pageRef: "/test/100k/base/q-list-test"
@@ -183,7 +183,7 @@ languages:
           params:
             icon: user
         
-        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+        - identifier: "[R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "[R & SQL] Data Science Practical Drill"
           name: "[R & SQL] Data Science Practice Drills"
           url: "/en/ds-drills/drill-list"
@@ -191,7 +191,7 @@ languages:
           params: 
             icon: question
         
-        - identifier: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+        - identifier: "Test - [R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           name: "R+SQL 演習問題 - test"
           # url: "/test/q-list-test"
           pageRef: "/test/100k/base/q-list-test"

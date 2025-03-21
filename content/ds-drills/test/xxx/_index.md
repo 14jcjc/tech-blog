@@ -5,7 +5,7 @@ date: '2021-05-01T00:00:03+09:00'
 # weight: 1
 # categories: ["DS-100本ノック＋α (標準編) "]
 summary: "XXX"
-# description: "[R+SQL] データサイエンス100本ノック＋α - 基本情報"
+# description: "[R & SQL] データサイエンス100本ノック＋α - 基本情報"
 
 # cascade:
 #   params: 

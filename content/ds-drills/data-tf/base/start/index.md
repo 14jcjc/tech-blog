@@ -1,5 +1,5 @@
 ---
-title: "[R+SQL] データサイエンス100本ノック＋α - 概要・導入"
+title: "[R & SQL] データサイエンス100本ノック＋α - 概要・導入"
 slug: "start"
 date: 2025-01-07T22:33:14+09:00
 draft: false
@@ -23,7 +23,7 @@ categories: ["実践ドリル(基本情報)"]
 
 ## はじめに
 
-当サイトでは、「{{< param k100.site.title >}}」というタイトルで、データサイエンス100本ノックをベースにした演習問題を解説します。R を用いたデータベース操作を交えて学習することができます。
+当サイトでは、「{{< param k100.site.titleF >}}」というタイトルで、データサイエンス100本ノックをベースにした演習問題を解説します。R を用いたデータベース操作を交えて学習することができます。
 
 - **シリーズ構成**
   - **標準編** : 100本ノックの中から約 30 本を選び、R と SQL を用いて解説します。
@@ -666,7 +666,7 @@ db_result %>%
 - **ER 図**  
   {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="GitHub リポジトリ - ER 図" >}}
 
-- **「{{< param k100.site.edition.s >}}」の各演習問題**
+- **「{{< param k100.site.titleF >}}」の各演習問題**
   - {{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/tree/master/docker/doc" text="GitHub リポジトリ - 演習問題" >}}
   - 書籍📘『{{< param products.ds100kdp.name >}}』
 

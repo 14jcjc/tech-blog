@@ -5,15 +5,16 @@ k100:
     account: katsu-ds-lab
     url: "https://github.com/katsu-ds-lab/ds-drills"
   site: 
-    title: 'データサイエンス100本ノック＋α'
-    edition: 
-      s: '標準編' # standard
-      a: '発展編' # advanced
+    titleF: 'データサイエンス100本ノック＋α'
+    titleP: 'データサイエンス実践ドリル'
+    # edition: 
+    #   s: '標準編' # standard
+    #   a: '発展編' # advanced
     # rsql: '【R+SQL】'
     rsql: '[R & SQL] '
-    category: 
-      editionS: 'DS-100本ノック＋α (標準編) '
-      editionA: 'DS-100本ノック＋α (発展編) '
+    # category: 
+    #   editionS: 'DS-100本ノック＋α (標準編) '
+    #   editionA: 'DS-100本ノック＋α (発展編) '
   dss:
     name: "データサイエンティスト協会"
     # The Japan DataScientist Society

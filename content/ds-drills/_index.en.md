@@ -1,11 +1,11 @@
 ---
-title: "[R+SQL] データサイエンス100本ノック＋α"
+title: "[R & SQL] データサイエンス100本ノック＋α"
 url: "ds-drills"
 date: 2025-01-04T03:23:23+09:00
 # draft: false
 draft: true
-# summary: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
-# description: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
+# summary: '[R & SQL] データサイエンス100本ノック＋α 関連の投稿です。'
+# description: '[R & SQL] データサイエンス100本ノック＋α 関連の投稿です。'
 # categories: ["100本ノック＋α"]
 keywords: 
   - "データサイエンス100本ノック"

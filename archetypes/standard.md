@@ -1,6 +1,6 @@
 ---
 {{ $id := lower .File.ContentBaseName -}}
-title: "{{ .Site.Params.k100.site.rsql }}{{ .Site.Params.k100.site.title }} ({{ .Site.Params.k100.site.edition.s }}) {{ upper .File.ContentBaseName }}"
+title: "{{ .Site.Params.k100.site.rsql }}{{ .Site.Params.k100.site.titleF }} ({{ .Site.Params.k100.site.edition.s }}) {{ upper .File.ContentBaseName }}"
 date: "{{ .Date }}"
 slug: "{{ $id }}"
 # draft: true

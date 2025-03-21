@@ -1,5 +1,5 @@
 ---
-title: "Test - [R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+title: "Test - [R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
 slug: "q-list-test"
 date: 2021-05-03T00:10:20+09:00
 draft: true

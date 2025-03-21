@@ -78,7 +78,7 @@ languages:
           params:
             icon: user
 
-        - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+        - identifier: "[R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "[R & SQL] データサイエンス実践ドリル"
           name: "R & SQL 演習問題一覧"
           url: "/ds-drills/drill-list"
@@ -137,7 +137,7 @@ languages:
   #         params:
   #           icon: user
 
-  #       - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
+  #       - identifier: "[R & SQL] データサイエンス100本ノック＋α - 演習問題一覧"
   #         # name: "[R & SQL] Data Science Practical Drill"
   #         name: "[R & SQL] Data Science Practice Drills"
   #         url: "/en/ds100knocks-alpha/q-list"

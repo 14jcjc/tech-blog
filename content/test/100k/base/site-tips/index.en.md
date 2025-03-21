@@ -322,15 +322,15 @@ read: /data/100k/questions.yaml
 
 ## フォントファミリー (font-family)
 
-179 g Q Ii Ll [R+SQL] データサイエンス100本ノック+α.
+179 g Q Ii Ll [R & SQL] データサイエンス100本ノック+α.
 
-`179 g Q Ii Ll [R+SQL] データサイエンス100本ノック+α.`
+`179 g Q Ii Ll [R & SQL] データサイエンス100本ノック+α.`
 
-**太字: 179 g Q Ii Ll [R+SQL] データサイエンス100本ノック+α.**
+**太字: 179 g Q Ii Ll [R & SQL] データサイエンス100本ノック+α.**
 
-*斜体: 179 g Q Ii Ll [R+SQL] データサイエンス100本ノック+α.*
+*斜体: 179 g Q Ii Ll [R & SQL] データサイエンス100本ノック+α.*
 
-***太字+斜体: 179 g Q Ii Ll [R+SQL] データサイエンス100本ノック+α.***
+***太字+斜体: 179 g Q Ii Ll [R & SQL] データサイエンス100本ノック+α.***
 
 ## 絵文字
 
@@ -422,10 +422,10 @@ Markdown は保持されることに注意。
 1. huto.yaml -> param.k100site.title
 
    ```go-html-template {linenos=false,anchorLineNos=false}
-   {{</* param k100.site.title */>}}  
+   {{</* param k100.site.titleF */>}}  
    ```
 
-   → {{< param k100.site.title >}}  
+   → {{< param k100.site.titleF >}}  
 
 2. content内のparams
 

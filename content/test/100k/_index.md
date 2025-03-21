@@ -5,8 +5,8 @@ title: 'データサイエンス100本ノック＋α'
 # draft: false
 draft: true
 # categories: ["100本ノック＋α"]
-summary: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
-description: '[R+SQL] データサイエンス100本ノック＋α 関連の投稿です。'
+summary: '[R & SQL] データサイエンス100本ノック＋α 関連の投稿です。'
+description: '[R & SQL] データサイエンス100本ノック＋α 関連の投稿です。'
 
 # menu: 
 #     main:

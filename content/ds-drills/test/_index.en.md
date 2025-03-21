@@ -6,7 +6,7 @@ draft: true
 # weight: 1
 # categories: ["DS-100本ノック＋α (標準編) "]
 summary: "Test - 基本情報"
-# description: "[R+SQL] データサイエンス100本ノック＋α - 基本情報"
+# description: "[R & SQL] データサイエンス100本ノック＋α - 基本情報"
 
 # cascade:
 #   params: 
