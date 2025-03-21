@@ -1,6 +1,6 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
-slug: "official-list"
+slug: "drill-list"
 date: 2025-01-20T01:01:20+09:00
 draft: false
 # draft: true

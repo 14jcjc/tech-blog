@@ -26,7 +26,7 @@ params:
 #   endLevel: 5
 ---
 
-{{% include "/ds-drills/preprocess/official/template/tmp-head.md" %}}
+{{% include "/ds-drills/data-tf/free/template/tmp-head.md" %}}
 
 ## 設問概要
 
@@ -135,4 +135,4 @@ params:
 
 ```
 
-{{% include "/ds-drills/preprocess/official/template/tmp-foot.md" %}}
+{{% include "/ds-drills/data-tf/free/template/tmp-foot.md" %}}

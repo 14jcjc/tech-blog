@@ -81,7 +81,7 @@ languages:
         - identifier: "[R+SQL] データサイエンス100本ノック＋α - 演習問題一覧"
           # name: "R+SQL 演習問題"
           name: "[R & SQL] データサイエンス実践ドリル"
-          url: "/ds-drills/official-list"
+          url: "/ds-drills/drill-list"
           weight: 10
           params: 
             icon: question

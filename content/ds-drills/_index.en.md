@@ -1,6 +1,6 @@
 ---
 title: "[R+SQL] データサイエンス100本ノック＋α"
-url: "ds-practice-drills"
+url: "ds-drills"
 date: 2025-01-04T03:23:23+09:00
 # draft: false
 draft: true

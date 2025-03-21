@@ -69,90 +69,26 @@ katsu.ds.lab@gmail.com
   - 100knocks -> ds-drills
   - ds100knocks-alpha -> ds-drills
 
-- 演習問題タイトル
+- 演習問題タイトル, URL
 
+無料コンテンツ：
 [R & SQL] データサイエンス100本ノック＋α
-[R & SQL] データサイエンス実践ドリル - ベーシック版
-[R & SQL] データサイエンス実践ドリル - マスター版
-(オリジナル問題)
+[R & SQL] 30 Free Data Science Drills for Data Transformation
+https://katsu-ds-lab.com/ds-drills/free/
 
-official
-basic
-master
-
-ds-drills/preprocess/base/official-list
-ds-drills/preprocess/base/official-list
-
-https://katsu-ds-lab.com/ds-drills/official/
-https://katsu-ds-lab.com/ds-drills/basic/
-https://katsu-ds-lab.com/ds-drills/master/
-
-https://katsu-ds-lab.com/ds-drills/q-list/
-https://katsu-ds-lab.com/ds-drills/official-list/
-https://katsu-ds-lab.com/ds-drills/practice-list/
-
-* セット販売
-データサイエンス実践ドリル Vol.1 (5問)
-
-データサイエンス実践ドリル の販促化にあたり質問です。
-今、
-[R & SQL] データサイエンス100本ノック＋α
-がサンプルとして存在します。
-今後は、
-[R & SQL] データサイエンス実践ドリル - ベーシック版
-にサンプルを作り、その個別問題からその問題を発展させた有料の問題(マスター版)へ導線を貼ろうと考えてました。
-ですが、マスター版の一題を提供するごとに、ベーシック版の一題を作成するのは非効率と考えます。
-
-はい。
-日本語版では、商材を以下のタイトルにします。
-無料：
-[R & SQL] データサイエンス100本ノック＋α
-有料：
+有料コンテンツ：
 [R & SQL] データサイエンス実践ドリル
+[R & SQL] Data Science Practice Drills for Data Transformation
+https://katsu-ds-lab.com/ds-drills/premium/
 
-英語版では、
-[R & SQL] データサイエンス実践ドリル
-を
-[R & SQL] Data Science Practice Drills
-に対応させたい。
-[R & SQL] データサイエンス100本ノック＋α
-に対応する名前は？
+セット販売 (5問)
+データサイエンス実践ドリル Vol. 1
+[R & SQL] Data Science Practice Drills for Data Transformation Vol. 1
+https://katsu-ds-lab.com/ds-drills/vol-1/
 
-データサイエンス100本ノック＋α
-で提供する問題数は30です。
-また、無料コンテンツです。
-
-無料版の問題の難易度は高めなので、以下がよいかな。
-[R & SQL] Data Science 30 Sample Exercises
-[R & SQL] Data Science 30 Free Challenges
-
-以下のタイトルは？
-無料：
-[R & SQL] Data Science 30 Sample Exercises
-有料：
-[R & SQL] Data Science Practice Drills
-
-できれば、[R & SQL] Data Science Practice Drills
-をタイトルとして共通化したい。
-
-無料版も有料版も
-[R & SQL] Data Science Practice Drills - AAA
-
-のような形式にする場合は？
-
-[R & SQL] Data Science Practice Drills - Sample 30
-[R & SQL] Data Science Practice Drills - Sample Edition
-[R & SQL] Data Science Practice Drills - Extended Edition
-[R & SQL] Data Science Practice Drills - Premium Edition
-
-有料版を
-[R & SQL] Data Science Practice Drills 
-とし、
-そのサンプルとして
-[R & SQL] Data Science Practice Drills - Sample 30
-とするのはどう？
-
-- データを GitHubリポジトリに公開、簡易版プログラムを修正する
+個別問題: 
+[R & SQL] データサイエンス実践ドリル A-001
+[R & SQL] Data Science Practice Drills for Data Transformation A-001
 
 - カテゴリーを改訂する
 
@@ -317,6 +253,7 @@ http://localhost:1313/tech-blog/portfolio/
   https://katsu-ds-lab.com
 - categories: "100本ノック＋α (Lv5)" などの編集, 
   /content/categories/*
+- データを GitHubリポジトリに公開、簡易版プログラムを修正する
 
 * リポジトリにアップロードしたCSVファイルの読み込み
 
