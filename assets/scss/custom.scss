@@ -1410,6 +1410,8 @@ blockquote.alert {
   display: none !important;
 } */
 
+// 幅が狭い画面では、ラジオボタンの形が縦長になってしまう
+
 /* ラジオボタンのレイアウト */
 .list-toggle {
   display: flex;
@@ -1417,24 +1419,46 @@ blockquote.alert {
   align-items: flex-start; /* 左寄せ */
   margin-bottom: 20px;
   gap: 18px; /* ラベル間の間隔 */
+  padding: 16px;
+  border: 1px solid #ccc; /* 全体を囲む枠線 */
+  border-radius: 8px; /* 角を丸める */
+  // background-color: #f9f9f9; /* 薄い背景色 */
+  max-width: 100%;
+}
+
+/* ラジオボタンの行のデフォルト設定 */
+.list-toggle .row-title,
+.list-toggle .row-sort {
+  display: flex;
+  flex-wrap: wrap; /* 画面が狭いとき折り返す */
+  gap: 12px;
 }
 
 /* ラジオボタンの行を横並びに設定 */
 .list-toggle .row-title {
-  display: flex;
+  // display: flex;
   flex-direction: column; /* ラジオボタンを縦並び */
-  justify-content: flex-start;
-  gap: 12px; /* ラジオボタン間の間隔 */
+  // justify-content: flex-start;
+  // gap: 12px; /* ラジオボタン間の間隔 */
   padding-bottom: 12px; /* 罫線と間隔を確保 */
   border-bottom: 1px solid #ccc; /* 灰色の区切り線 */
 }
 
 .list-toggle .row-sort {
-  display: flex;
-  flex-direction: row; /* ラジオボタンを横並び */
-  justify-content: flex-start;
-  gap: 12px; /* ラジオボタン間の間隔 */
-  padding-top: 12px; /* 罫線との間隔 */
+  // display: flex;
+  // flex-direction: row; /* ラジオボタンを横並び */
+  // justify-content: flex-start;
+  // gap: 12px; /* ラジオボタン間の間隔 */
+  padding-top: 0px; /* 罫線との間隔 */
+}
+
+/* 画面幅が狭いときは縦並びに変更 */
+@media (max-width: 600px) {
+  // .list-toggle .row-title,
+  .list-toggle .row-sort {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* チェックされたラジオボタンのラベルの色を変更 */
@@ -1467,8 +1491,10 @@ blockquote.alert {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  aspect-ratio: 1 / 1;
   width: 16px;
   height: 16px;
+  // box-sizing: content-box; /* width, height に padding や border を含めない */
   border: 2px solid #ccc;
   border-radius: 50%;
   background-color: white;

@@ -26,6 +26,7 @@ ShowToc: false
 - <font color="#F0B007">★</font>の数は難易度を表します。(3 種類のコードから総合的に判定しています。)
 
 <br>
+
 <div class="list-toggle">
   <div class="row-title">
     <label>
@@ -60,7 +61,7 @@ ShowToc: false
 
 <!-- 全9パターンのリスト（最初はデフォルト以外を非表示にしておく） -->
 <div id="list-id-all" class="question-list" style="display:block;">
-  <div class="edition-title">全て（番号順）</div>
+  <div class="edition-title">全て (番号順)</div>
 
   1. {{< param k100.site.titleP >}}
   
