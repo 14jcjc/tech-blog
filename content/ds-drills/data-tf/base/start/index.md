@@ -16,7 +16,7 @@ categories: ["実践ドリル(基本情報)"]
 # TocOpen: false
 ---
 
-**参考リンク:**
+**参考ページ:**
 
 - {{% ref2 path="book-review" %}}
 - {{% ref2 path="/dev/data-engineering/r-sql-auto-query" %}}
