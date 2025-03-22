@@ -59,7 +59,7 @@ ShowToc: false
   </div>
 </div>
 
-<!-- 全9パターンのリスト（最初はデフォルト以外を非表示にしておく） -->
+<!-- 全9パターンのリスト (最初はデフォルト以外を非表示にしておく) -->
 <div id="list-id-all" class="question-list" style="display:block;">
   <div class="edition-title">全て (番号順)</div>
 
@@ -77,42 +77,42 @@ ShowToc: false
 </div>
 
 <div id="list-difficulty-desc-all" class="question-list" style="display:none;">
-  <div class="edition-title">全て（難易度降順）</div>
+  <div class="edition-title">全て (難易度降順)</div>
   {{< k100/q-list ed="standard,advanced" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-all" class="question-list" style="display:none;">
-  <div class="edition-title">全て（難易度昇順）</div>
+  <div class="edition-title">全て (難易度昇順)</div>
   {{< k100/q-list ed="standard,advanced" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
 <div id="list-id-standard" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleF >}}（番号順）</div>
+  <div class="edition-title">{{< param k100.site.titleF >}} (番号順)</div>
   {{< k100/q-list ed="standard" root=".." sortkey="id" order="asc" >}}
 </div>
 
 <div id="list-difficulty-desc-standard" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleF >}}（難易度降順）</div>
+  <div class="edition-title">{{< param k100.site.titleF >}} (難易度降順)</div>
   {{< k100/q-list ed="standard" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-standard" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleF >}}（難易度昇順）</div>
+  <div class="edition-title">{{< param k100.site.titleF >}} (難易度昇順)</div>
   {{< k100/q-list ed="standard" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
 <div id="list-id-advanced" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleP >}}（番号順）</div>
+  <div class="edition-title">{{< param k100.site.titleP >}} (番号順)</div>
   {{< k100/q-list ed="advanced" root=".." sortkey="id" order="asc" >}}
 </div>
 
 <div id="list-difficulty-desc-advanced" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleP >}}（難易度降順）</div>
+  <div class="edition-title">{{< param k100.site.titleP >}} (難易度降順)</div>
   {{< k100/q-list ed="advanced" root=".." sortkey="difficulty" order="desc" >}}
 </div>
 
 <div id="list-difficulty-asc-advanced" class="question-list" style="display:none;">
-  <div class="edition-title">{{< param k100.site.titleP >}}（難易度昇順）</div>
+  <div class="edition-title">{{< param k100.site.titleP >}} (難易度昇順)</div>
   {{< k100/q-list ed="advanced" root=".." sortkey="difficulty" order="asc" >}}
 </div>
 
@@ -129,7 +129,7 @@ ShowToc: false
     // すべてのリストを非表示に
     questionLists.forEach(list => list.style.display = 'none');
 
-    // 選択されたリストを表示（存在する場合のみ）
+    // 選択されたリストを表示 (存在する場合のみ)
     const targetList = document.getElementById(`list-${selectedOrder}-${selectedEdition}`);
     if (targetList) {
       targetList.style.display = 'block';
@@ -163,7 +163,7 @@ ShowToc: false
     localStorage.removeItem('edition'); // 不要な値を削除
   }
 
-  // ローカルストレージの値を適用（存在する場合のみ）
+  // ローカルストレージの値を適用 (存在する場合のみ)
   const orderRadio = document.querySelector(`input[name="order-toggle"][value="${savedOrder}"]`);
   const editionRadio = document.querySelector(`input[name="edition-toggle"][value="${savedEdition}"]`);
 
