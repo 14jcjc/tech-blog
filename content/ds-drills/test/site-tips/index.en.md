@@ -1,6 +1,8 @@
 ---
 title: "サイト作成Tips - include"
-slug: "site-tips"
+# slug: "site-tips"
+slug: "site-tips-en"
+aliases: "site-tips"
 date: 2021-04-01T00:20:27+09:00
 draft: true
 # draft: false
