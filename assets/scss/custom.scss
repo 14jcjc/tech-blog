@@ -1420,10 +1420,21 @@ blockquote.alert {
 }
 
 /* ラジオボタンの行を横並びに設定 */
-.list-toggle .row {
+.list-toggle .row-title {
   display: flex;
+  flex-direction: column; /* ラジオボタンを縦並び */
   justify-content: flex-start;
   gap: 12px; /* ラジオボタン間の間隔 */
+  padding-bottom: 12px; /* 罫線と間隔を確保 */
+  border-bottom: 1px solid #ccc; /* 灰色の区切り線 */
+}
+
+.list-toggle .row-sort {
+  display: flex;
+  flex-direction: row; /* ラジオボタンを横並び */
+  justify-content: flex-start;
+  gap: 12px; /* ラジオボタン間の間隔 */
+  padding-top: 12px; /* 罫線との間隔 */
 }
 
 /* チェックされたラジオボタンのラベルの色を変更 */

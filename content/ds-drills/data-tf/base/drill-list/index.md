@@ -27,7 +27,7 @@ ShowToc: false
 
 <br>
 <div class="list-toggle">
-  <div class="row">
+  <div class="row-title">
     <label>
       <input type="radio" name="edition-toggle" value="all" checked>
       <span>全て</span>
@@ -42,7 +42,7 @@ ShowToc: false
     </label>
   </div>
 
-  <div class="row">
+  <div class="row-sort">
     <label>
       <input type="radio" name="order-toggle" value="id" checked>
       <span>番号順</span>
