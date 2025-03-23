@@ -645,6 +645,17 @@ open=false name="name" title="title" >}}
 This is a **bold** word. 
 {{< /details >}}
 
+{{< details 
+summary="See the R コード" 
+open=true >}}
+<br>
+
+```r {name="R"}
+df %>% select(aaa)
+```
+
+{{< /details >}}
+
 ### figure {#figure}
 
 ```html {linenos=false,anchorLineNos=false}

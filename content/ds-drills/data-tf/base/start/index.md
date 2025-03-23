@@ -49,91 +49,17 @@ R を用いたデータベース操作についての解説を追加していま
 環境構築のために、以下の 2 つのセットアップ方法を用意しています。  
 目的に応じて、適した方法を選んでください。
 
-1. **標準セットアップ**  
-   git コマンドに慣れている方におすすめです。
-
-2. **簡易セットアップ**  
+1. **簡易セットアップ**  
    ローカルにスクリプトやデータを保存せず、すぐに試したい方におすすめです。
-
-### 標準セットアップ
-
-#### 1. GitHub リポジトリをクローン
-
-以下のコマンドを実行して、リポジトリをクローンします。
-
-```sh {name="shell", hl_lines=2}
-cd /your_directory_path
-git clone https://github.com/katsu-ds-lab/ds-drills.git
-```
-
-実行後、`ds-drills` ディレクトリが作成され、以下のような構成になります。
-
-```text {name="ds-drills"}
-work
-  ├── database
-  │   └── _ReadMe.txt
-  ├── data
-  │   ├── category.csv
-  │   ├── customer.csv
-  │   ├── geocode.csv
-  │   ├── product.csv
-  │   ├── receipt.csv
-  │   ├── store.csv
-  │   ├── 100knocks_ER.pdf
-  │   ├── LICENSE
-  │   └── _ReadMe.txt
-  ├── data_setup.R
-  ├── env_setup.R
-  ├── functions.R
-  └── init.R
-```
-
-#### 2. init.R を実行
-
-RStudio などで `init.R` を開いて実行します。  
-実行後、`database` に DuckDB データベースファイル `supermarket.duckdb` が作成されます。
-
-```text
-work
-  └── database
-      └── supermarket.duckdb
-```
-
-6 個の CSVファイル (`data/*.csv`) を読み込み、それぞれテーブルとして `supermarket.duckdb` に保存しています。
-
-R セッションを再開した場合は、再度 `init.R` を実行してください。  
-2 回目からは、パッケージのインストールは不要なため、環境構築は約 5 秒で完了します。
-
-#### トラブルシューティング
-
-もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
-
-現在の作業ディレクトリを確認するには、次のコマンドを実行してください。
-
-```r {name="R"}
-getwd()
-```
-
-`init.R` の以下の箇所で作業ディレクトリを設定しています。
-
-```r
-work_dir_path = init_path |> dirname()
-```
-
-作業ディレクトリとして `init.R` と同じ場所 (`ds-drills/work`) を設定する必要がありますので、
-ここを以下のように変更して再実行してみてください。
-
-```r
-work_dir_path = "your_directory_path/ds-drills/work"
-```
-
-この変更を行うことで、エラーが解消される可能性があります。
-
----
+2. **標準セットアップ**  
+   git コマンドに慣れている方におすすめです。
 
 ### 簡易セットアップ
 
 次の R コードを .R ファイル (例: setup.R) にコピー＆ペーストして実行します。
+
+{{< details summary="R コード (簡易セットアップ)" open=false >}}
+<br>
 
 ```r {name="R"}
 # pacman を使用してパッケージを管理 ------------
@@ -255,8 +181,93 @@ sql_render_ext = function(
 }
 ```
 
+{{< /details >}}
+
 実行後、DuckDB データベースがメモリ上に作成されます。  
 R セッションを再開した場合は、再度このスクリプトを実行してください。
+
+---
+
+### 標準セットアップ
+
+`~/projects` にファイルを展開する場合の例を以下に示します。
+
+#### 1. GitHub リポジトリをクローン
+
+次のコマンドを実行して、リポジトリをクローンします。
+
+```sh {name="shell", hl_lines=2}
+cd ~/projects
+git clone https://github.com/katsu-ds-lab/ds-drills.git
+```
+
+実行後、`ds-drills` ディレクトリが作成され、以下のような構成になります。
+
+```text {name="ds-drills" hl_lines=12}
+work
+  ├── database            # DuckDB データベース保存先
+  ├── data                # CSVファイル, ER図
+  │   ├── category.csv
+  │   ├── customer.csv
+  │   ├── geocode.csv
+  │   ├── product.csv
+  │   ├── receipt.csv
+  │   ├── store.csv
+  │   ├── 100knocks_ER.pdf
+  │   └── LICENSE
+  ├── init.R              # セットアップスクリプト
+  ├── data_setup.R
+  ├── env_setup.R
+  └── functions.R
+```
+
+#### 2. init.R を実行
+
+RStudio などで `init.R` を開いて実行します。  
+実行後、`database` に DuckDB データベースファイル `supermarket.duckdb` が作成されます。
+
+```text
+work
+  └── database
+      └── supermarket.duckdb
+```
+
+6 個の CSVファイル (`data/*.csv`) を読み込み、それぞれテーブルとして `supermarket.duckdb` に保存しています。
+
+DuckDB データベースをメモリ上に作成する場合は、`data_setup.R` の以下の箇所のコメントアウトを外して `init.R` を実行してください。
+
+```r {name="data_setup.R"}
+# 一時的にメモリ上に作成する場合は, 以下の行のコメントアウトを外してください.
+is_fbmode = FALSE
+```
+
+R セッションを再開した場合は、再度 `init.R` を実行してください。  
+2 回目からは、パッケージのインストールは不要なため、セットアップは約 5 秒で完了します。
+
+#### トラブルシューティング
+
+もしエラーが発生した場合は、作業ディレクトリの設定が原因となっている可能性が高いです。
+
+現在の作業ディレクトリを確認するには、次のコマンドを実行してください。
+
+```r {name="R"}
+getwd()
+```
+
+`init.R` の以下の箇所で作業ディレクトリを設定しています。
+
+```r
+work_dir_path = init_path |> dirname()
+```
+
+作業ディレクトリとして `init.R` と同じ場所 (`ds-drills/work`) を設定する必要がありますので、
+ここを以下のように変更して再実行してみてください。
+
+```r
+work_dir_path = "~/projects/ds-drills/work"
+```
+
+この変更を行うことで、エラーが解消される可能性があります。
 
 ---
 
