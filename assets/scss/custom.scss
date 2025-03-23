@@ -1296,6 +1296,7 @@ blockquote.alert {
   align-items: center;
   margin-bottom: 5px;
 }
+
 .q-item .q-header .q-difficulty .q-difficulty-rating-container {
   display: flex;
   align-items: center; /* 上下中央揃え */
@@ -1324,9 +1325,10 @@ blockquote.alert {
 [data-scheme="dark"] {
   .q-item .q-header .q-id a {
     border-bottom-color: #40C0FF;
-    /* color: #80C0FF; */
-    /* color: #00ADFF; */
-    color: #40C0FF;
+    // color: #80C0FF;
+    // color: #00ADFF;
+    // color: #40C0FF;
+    color: #50D0FF;
     transition: color 0.3s ease;
   }
 }
@@ -1343,7 +1345,7 @@ blockquote.alert {
   padding-left: 5px;
   padding-right: 5px;
   /* font-size: 0.9em; */
-  font-size: calc(var(--article-font-size) * 0.92);
+  font-size: calc(var(--article-font-size) * 0.96);
   line-height: 1.7;
   color: rgb(30, 30, 50);
   /* background-color: var(--theme); */
@@ -1352,7 +1354,9 @@ blockquote.alert {
 }
 [data-scheme="dark"] {
   .q-item .q-content {
-    color: rgb(218, 218, 219);
+    // color: rgb(218, 218, 219);
+    // color: rgb(250, 250, 250);
+    color: rgb(235, 235, 235);
     background-color: #282834;
   }
 }
@@ -1366,7 +1370,8 @@ blockquote.alert {
 [data-scheme="dark"] {
   .q-item {
     .q-header {
-      background-color: rgb(55, 56, 62);
+      // background-color: rgb(55, 56, 62);
+      background-color: rgb(55, 54, 50);
     }
   }
 }
@@ -1429,10 +1434,13 @@ blockquote.alert {
 [data-scheme="dark"] {
   .list-toggle {
     // background-color: #1f1f25;
-    background-color: #242424;
+    // background-color: #242424;
+    // background-color: rgb(55, 56, 62);
+    // background-color: rgb(55, 56, 57);
+    // background-color: rgb(50, 50, 50);
+    background-color: rgb(55, 54, 50);
   }
 }
-
 
 /* ラジオボタンの行のデフォルト設定 */
 .list-toggle .row-title,
@@ -1440,6 +1448,12 @@ blockquote.alert {
   display: flex;
   flex-wrap: wrap; /* 画面が狭いとき折り返す */
   gap: 12px;
+}
+[data-scheme="dark"] {
+  .list-toggle .row-title,
+  .list-toggle .row-sort {
+    color: rgb(250, 250, 250);
+  }
 }
 
 /* ラジオボタンの行を横並びに設定 */
@@ -1478,8 +1492,8 @@ blockquote.alert {
 }
 [data-scheme="dark"] {
   .list-toggle input[type="radio"]:checked + span {
-    /* color: #60C0FF; */
-    color: #50C0FF;
+    // color: #00E0FF;
+    color: #50D0FF;
   }
 }
 
