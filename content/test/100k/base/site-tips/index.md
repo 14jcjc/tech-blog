@@ -276,7 +276,9 @@ For example, the base template below calls the [partial](https://gohugo.io/func
 
 static/rmd/混雑情報モニター.html
 
-<iframe src="/tech-blog/rmd/混雑情報モニター.html" width="100%" height="600px"></iframe>
+<!-- <iframe src="/tech/rmd/混雑情報モニター.html" width="100%" height="600px"></iframe> -->
+
+<iframe src="/rmd/混雑情報モニター.html" width="100%" height="600px"></iframe>
 
 ## 演習問題
 
