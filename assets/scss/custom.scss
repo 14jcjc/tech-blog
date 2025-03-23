@@ -1422,9 +1422,17 @@ blockquote.alert {
   padding: 16px;
   border: 1px solid #ccc; /* 全体を囲む枠線 */
   border-radius: 8px; /* 角を丸める */
-  // background-color: #f9f9f9; /* 薄い背景色 */
+  // background-color: #fafafc;
+  background-color: #fcfcfc;
   max-width: 100%;
 }
+[data-scheme="dark"] {
+  .list-toggle {
+    // background-color: #1f1f25;
+    background-color: #242424;
+  }
+}
+
 
 /* ラジオボタンの行のデフォルト設定 */
 .list-toggle .row-title,
@@ -1440,7 +1448,7 @@ blockquote.alert {
   flex-direction: column; /* ラジオボタンを縦並び */
   // justify-content: flex-start;
   // gap: 12px; /* ラジオボタン間の間隔 */
-  padding-bottom: 12px; /* 罫線と間隔を確保 */
+  padding-bottom: 18px; /* 罫線と間隔を確保 */
   border-bottom: 1px solid #ccc; /* 灰色の区切り線 */
 }
 

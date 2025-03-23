@@ -42,8 +42,6 @@ https://shiro-no-panda.com/mensa3/
 #-------------------------------------------------------------------------------
 * ToDo
 
-- 簡易セットアップ の R コードを折りたたむ
-
 - ブラウザの開発者ツールを活用
   https://bit.ly/42cNeEA
 
@@ -147,6 +145,8 @@ Review
 
 - ## 利用するデータ のセクションを追記する
 
+- コードを折りたたむ (?)
+
 - 演習問題に、異なるデータベースの SQLクエリを書く問いを追加する (?)
 - sql_render_ext() は不必要なら除外する
 
@@ -170,13 +170,15 @@ q %>% db_get_query(con)
   - ER図を作成
   - 英語版 twitter, GitHub アカウントを作成する？
 
-- RStudio でプログラムの動作チェックをする
+- RStudio でセットアップ・プログラム、演習問題の動作チェックをする
 
-- tech-blog を変更する(?)
+- セットアップ・プログラムを push
 
-- サイト名と概要 のフォントサイズ設定
+- サイト名とサブタイトル のフォントサイズ設定
 
-- 有料コンテンツのサンプルを用意する (RMarkdown でよさそう)
+- 有料コンテンツのサンプルを用意する (note, RMarkdown, ...)
+
+- Free の問題の追加は R-101 〜
 
 - tmp-setup.md を改訂する
 
@@ -209,7 +211,7 @@ q %>% db_get_query(con)
 http://localhost:1313/tech-blog/portfolio/
 
 - sitemap.xml: 
-  - 本番環境で, にdraftのページなどが含まれないようにする
+  - 本番環境で, に draft のページなどが含まれないようにする
   - portfolio
   /content/page/portfolio/index.md はレンダリングしたい。
 
@@ -272,6 +274,8 @@ http://localhost:1313/tech-blog/portfolio/
 - categories: "データサイエンス100本ノック＋α" などの編集, 
   /content/categories/*
 - データを GitHubリポジトリに公開、簡易版プログラムを修正する
+- 簡易セットアップ の R コードを折りたたむ
+- tech-blog を変更する (-> tech)
 
 * リポジトリにアップロードしたCSVファイルの読み込み
 

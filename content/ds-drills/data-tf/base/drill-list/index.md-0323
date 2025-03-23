@@ -10,7 +10,7 @@ summary: "当サイトで紹介している R と SQL の演習問題一覧で�
 categories: ["実践ドリル(基本情報)"]
 tags: 
 toc: true # 目次
-ShowToc: false
+ShowToc: true
 # menu: 
 #     main:
 #       name: "R+SQL 演習問題"
@@ -62,10 +62,9 @@ ShowToc: false
 <!-- 全9パターンのリスト (最初はデフォルト以外を非表示にしておく) -->
 <div id="list-id-all" class="question-list" style="display:block;">
   <div class="edition-title">全て (番号順)</div>
-<!-- 
+
 - [{{% param k100.site.titleP %}}]({{< ref "#a" >}})
 - [{{% param k100.site.titleF %}}]({{< ref "#s" >}})
--->
 
 ## {{% param k100.site.titleP %}}{#a}
   
@@ -122,58 +121,70 @@ ShowToc: false
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const questionLists = document.querySelectorAll('.question-list');
-    const toc = document.querySelector('.widget.archives');
-    // const tocContent = document.querySelector('.tocContent');
-    // const toc = document.querySelector('.widget--toc');
-    // const tocTitle = document.querySelector('.widget-title.section-title'); // h2を取得
+  const questionLists = document.querySelectorAll('.question-list');
 
-    const updateList = () => {
-      const selectedOrder = document.querySelector('input[name="order-toggle"]:checked')?.value;
-      const selectedEdition = document.querySelector('input[name="edition-toggle"]:checked')?.value;
+  const updateList = () => {
+    const selectedOrder = document.querySelector('input[name="order-toggle"]:checked')?.value;
+    const selectedEdition = document.querySelector('input[name="edition-toggle"]:checked')?.value;
 
-      if (!selectedOrder || !selectedEdition) return; // チェックされていない場合は処理を中断
+    if (!selectedOrder || !selectedEdition) return; // チェックされていない場合は処理を中断
 
-      // すべてのリストを非表示に
-      questionLists.forEach(list => list.style.display = 'none');
+    // すべてのリストを非表示に
+    questionLists.forEach(list => list.style.display = 'none');
 
-      // 選択されたリストを表示
-      const targetList = document.getElementById(`list-${selectedOrder}-${selectedEdition}`);
-      if (targetList) {
-        targetList.style.display = 'block';
-      }
+    // 選択されたリストを表示 (存在する場合のみ)
+    const targetList = document.getElementById(`list-${selectedOrder}-${selectedEdition}`);
+    if (targetList) {
+      targetList.style.display = 'block';
+    }
 
-      // 目次の表示・非表示を制御
-      if (selectedOrder === "id" && selectedEdition === "all") {
-        toc.style.display = "block";
-        // tocContent.style.display = "block";
-      } else {
-        toc.style.display = "none";
-        // tocContent.style.display = "none";
-      }
+    // 選択状態を localStorage に保存
+    localStorage.setItem('order', selectedOrder);
+    localStorage.setItem('edition', selectedEdition);
+  };
 
-      // 選択状態を localStorage に保存
-      localStorage.setItem('order', selectedOrder);
-      localStorage.setItem('edition', selectedEdition);
-    };
+  // ページ読み込み時に localStorage から読み取る
+  let savedOrder = localStorage.getItem('order');
+  let savedEdition = localStorage.getItem('edition');
 
-    // ページ読み込み時の処理
-    let savedOrder = localStorage.getItem('order') || "id";
-    let savedEdition = localStorage.getItem('edition') || "all";
+  // localStorage に値がない場合、デフォルトを設定
+  let defaultOrder = document.querySelector('input[name="order-toggle"]:checked')?.value;
+  let defaultEdition = document.querySelector('input[name="edition-toggle"]:checked')?.value;
 
-    // ラジオボタンに適用
-    const orderRadio = document.querySelector(`input[name="order-toggle"][value="${savedOrder}"]`);
-    const editionRadio = document.querySelector(`input[name="edition-toggle"][value="${savedEdition}"]`);
+  // localStorage の値を設定
+  if (!savedOrder && defaultOrder) {
+    savedOrder = defaultOrder;
+    localStorage.setItem('order', savedOrder);
+  } else if (!savedOrder) {
+    localStorage.removeItem('order'); // 不要な値を削除
+  }
 
-    if (orderRadio) orderRadio.checked = true;
-    if (editionRadio) editionRadio.checked = true;
+  if (!savedEdition && defaultEdition) {
+    savedEdition = defaultEdition;
+    localStorage.setItem('edition', savedEdition);
+  } else if (!savedEdition) {
+    localStorage.removeItem('edition'); // 不要な値を削除
+  }
 
-    // イベントリスナーを設定
-    document.querySelectorAll('input[name="order-toggle"], input[name="edition-toggle"]').forEach(radio => {
-      radio.addEventListener('change', updateList);
-    });
+  // ローカルストレージの値を適用 (存在する場合のみ)
+  const orderRadio = document.querySelector(`input[name="order-toggle"][value="${savedOrder}"]`);
+  const editionRadio = document.querySelector(`input[name="edition-toggle"][value="${savedEdition}"]`);
 
-    // 初回のリスト表示
-    updateList();
+  // ローカルストレージの値が正しければラジオボタンにチェックを入れる
+  if (orderRadio) {
+    orderRadio.checked = true;
+  }
+
+  if (editionRadio) {
+    editionRadio.checked = true;
+  }
+
+  // イベントリスナーを設定
+  document.querySelectorAll('input[name="order-toggle"], input[name="edition-toggle"]').forEach(radio => {
+    radio.addEventListener('change', updateList);
   });
+
+  // 初回のリスト表示を確実に行う
+  updateList();
+});
 </script>
