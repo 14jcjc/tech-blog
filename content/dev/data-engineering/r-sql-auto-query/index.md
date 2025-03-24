@@ -8,7 +8,7 @@ draft: false
 weight: 35
 description: "R からデータベースに接続し、データ加工から SQLクエリ自動生成までの流れについて解説"
 # summary: ""
-categories: ["実践ドリル(基本情報)"]
+categories: ["R & SQL 演習問題 - 基本情報"]
 tags: ["SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
