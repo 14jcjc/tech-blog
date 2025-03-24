@@ -351,7 +351,7 @@ work_dir_path = "~/projects/ds-drills/work"
 
 ## データベース操作の補足事項
 
-R によるデータベース操作や SQL クエリの自動生成について、以下のページで紹介しています。
+R によるデータベース操作や SQL クエリの自動生成について、以下の記事で紹介しています。
 
 - {{% ref2 path="/dev/data-engineering/r-sql-auto-query" %}}
 - {{% ref2 path="/dev/data-engineering/r-sql-translation" %}}
