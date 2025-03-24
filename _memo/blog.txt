@@ -71,42 +71,6 @@ katsu.ds.lab@gmail.com
   - 100knocks -> ds-drills
   - ds100knocks-alpha -> ds-drills
 
-- 演習問題タイトル, URL
-
-無料コンテンツ：
-[R & SQL] データサイエンス100本ノック＋α
-[R & SQL] 30 Free Data Science Drills for Data Transformation
-https://katsu-ds-lab.com/ds-drills/free/
-
-有料コンテンツ：
-[R & SQL] データサイエンス実践ドリル
-[R & SQL] Data Science Practice Drills for Data Transformation
-https://katsu-ds-lab.com/ds-drills/premium/
-
-セット販売 (5問)
-データサイエンス実践ドリル Vol. 1
-[R & SQL] Data Science Practice Drills for Data Transformation Vol. 1
-https://katsu-ds-lab.com/ds-drills/vol-1/
-
-個別問題: 
-[R & SQL] データサイエンス100本ノック＋α - R-029
-[R & SQL] データサイエンス100本ノック＋α - R-101 (追加オリジナル問題)
-[R & SQL] データサイエンス実践ドリル - A-001
-[R & SQL] Data Science Practice Drills for Data Transformation - A-001
-
-- カテゴリーを改訂する
-
-データサイエンス100本ノック＋α
-データサイエンス実践ドリル
-演習問題(基本情報)
-R & SQL 演習問題 - 基本情報
-
-レビュー
-
-Free Data Science Drills
-Data Science Practice Drills
-Review
-
 - 「記事」という言葉を使ってOK！（ブログの雰囲気を維持しつつ、有料記事も自然に組み込める）
 「有料記事」という表現もそのままでOK（「有料コンテンツ」よりも親しみやすい）
 読者が違和感なく無料→有料へ進める導線を意識すると効果的！
@@ -130,13 +94,9 @@ Stackテーマはブログ向けなので、「記事」として整理すると
 - データサイエンス100本ノック＋α
   データフレーム操作とSQLクエリについて、Notebook で動作確認する
 
+- 設問文の前に引用先について追記する  
+
 - 設問文を実際のものに書き直す
-
-- 設問文の下に引用先について追記する
-
-- 「データサイエンス100本ノック＋α」の各問題のタイトルは、そのままにするか？
-  - [R & SQL] データサイエンス実践ドリル - 公式版 は必要なくなる
-  - 演習問題一覧のページを工夫する
 
 - データフレーム操作、データベース操作、SQL の各セクションでデータ概要を記載する
 
@@ -145,6 +105,8 @@ Stackテーマはブログ向けなので、「記事」として整理すると
 - standard.md を改訂する
 
 - 解答例(1) → 解答例 (1) など
+
+- h2, h3 のレイアウト の2つ目を作成する
 
 - コードブロックに {name="R"},  {name="SQL"} を付ける (演習問題以外の記事も)
 
@@ -287,6 +249,8 @@ http://localhost:1313/tech-blog/portfolio/
 - params.yaml の改訂
 - 演習問題一覧ページの改訂
 - リポジトリ上のCSVファイルの読み込み
+- 演習問題タイトル, URL
+- カテゴリーを改訂する
 
 * href-target-blank の名称を変更
 
