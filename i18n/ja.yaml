@@ -32,7 +32,8 @@ article:
         other: 目次
 
     relatedContent:
-        other: 関連するコンテンツ
+        other: 関連記事
+        # other: 関連するコンテンツ
 
     lastUpdatedOn:
         other: 最終更新

@@ -32,7 +32,8 @@ article:
         other: Table of contents
 
     relatedContent:
-        other: Related content
+        other: Related articles
+        # other: Related content
 
     lastUpdatedOn:
         other: Last updated on
