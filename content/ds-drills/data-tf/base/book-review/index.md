@@ -6,7 +6,7 @@ draft: false
 weight: 10
 # description: ""
 # summary: ""
-categories: ["レビュー", "実践ドリル(基本情報)"]
+categories: ["レビュー", "R & SQL 演習問題 - 基本情報"]
 tags: 
 # tags_weight: 1
 

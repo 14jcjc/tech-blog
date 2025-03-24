@@ -7,7 +7,7 @@ draft: false
 weight: 20
 description: "当サイトで紹介している R と SQL の演習問題"
 summary: "当サイトで紹介している R と SQL の演習問題一覧です"
-categories: ["実践ドリル(基本情報)"]
+categories: ["R & SQL 演習問題 - 基本情報"]
 tags: 
 toc: true # 目次
 ShowToc: false

@@ -99,6 +99,8 @@ https://katsu-ds-lab.com/ds-drills/vol-1/
 データサイエンス100本ノック＋α
 データサイエンス実践ドリル
 演習問題(基本情報)
+R & SQL 演習問題 - 基本情報
+
 レビュー
 
 Free Data Science Drills

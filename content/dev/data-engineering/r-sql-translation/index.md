@@ -8,7 +8,7 @@ draft: false
 weight: 40
 description: "dplyr を用いたデータベース操作がどのように SQL に変換されるかを、具体例を交えて解説"
 # summary: ""
-categories: ["実践ドリル(基本情報)"]
+categories: ["R & SQL 演習問題 - 基本情報"]
 tags: ["SQL自動生成"]
 # image: rdb.webp
 # disableShare: false
