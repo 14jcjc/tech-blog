@@ -333,13 +333,13 @@ work_dir_path = "~/projects/ds-drills/work"
   </a>
 </div>
 <span style="font-size: 0.94em;">
-−{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+−{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）- ER図" >}}より引用
 </span>
 
 {{% comment %}}
 {{< figure src="ER.png" alt="ER図" title="" caption="" width="100%" link="" 
   rel="noopener" target="_blank" >}}
-{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編）" >}}より引用
+{{< href-target-blank url="https://github.com/The-Japan-DataScientist-Society/100knocks-preprocess/blob/master/docker/doc/100knocks_ER.pdf" text="データサイエンス100本ノック（構造化データ加工編） - ER図" >}}より引用
 {{% /comment %}}
 
 簡易セットアップを行なった場合は、上記リンクから `100knocks_ER.pdf` を保存しておくと便利です。
