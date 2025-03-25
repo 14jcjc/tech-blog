@@ -846,8 +846,8 @@
     margin-top: 40px;
     padding-top: 4pt;
     padding-bottom: 10px; // アンダーラインと文字の間隔
-    border-inline-start-width: 12px;
-    padding-inline-start: calc(var(--card-padding) - 12px);
+    border-inline-start-width: 8px;
+    padding-inline-start: calc(var(--card-padding) - 8px);
 
     &::after {
       content: "";
@@ -870,26 +870,26 @@
 
   h4 {
     font-size: 1.1em;
-    padding-top: 4pt;
-    padding-bottom: 4px;
-    border-inline-start-width: 9px;
-    padding-inline-start: calc(var(--card-padding) - 9px);
-  }
-
-  h5 {
-    font-size: 1.0em;
     padding-top: 3pt;
     padding-bottom: 3px;
     border-inline-start-width: 6px;
     padding-inline-start: calc(var(--card-padding) - 6px);
   }
 
-  h6 {
-    font-size: 0.9em;
+  h5 {
+    font-size: 1.0em;
     padding-top: 2pt;
     padding-bottom: 2px;
     border-inline-start-width: 4px;
     padding-inline-start: calc(var(--card-padding) - 4px);
+  }
+
+  h6 {
+    font-size: 0.9em;
+    padding-top: 1pt;
+    padding-bottom: 1px;
+    border-inline-start-width: 2px;
+    padding-inline-start: calc(var(--card-padding) - 2px);
   }
 
   hr {
