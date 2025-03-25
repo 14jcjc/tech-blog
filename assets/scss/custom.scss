@@ -22,6 +22,9 @@
   --scrollbar-thumb: hsl(0, 0%, 85%);
   --scrollbar-track: var(--body-background);
 
+  --code-block-filename-col: #fff;
+  --code-block-filename-bg: #34495e;
+
   &[data-scheme="dark"] {
       // --body-background: #303030;
       --body-background: #101030;
@@ -31,6 +34,8 @@
       --body-text-color: rgba(255, 255, 255, 0.7);
       --scrollbar-thumb: hsl(0, 0%, 40%);
       --scrollbar-track: var(--body-background);
+      --code-block-filename-col: #fff;
+      --code-block-filename-bg: #34495e;
   }
 }
 
@@ -403,8 +408,11 @@
   // background: var(--accent-color-darker);
   // background: var(--card-background-selected);
   // color: var(--card-text-color-main);
-  background: var(--accent-color);
-  color: var(--accent-color-text);
+  // background: var(--accent-color);
+  background: var(--code-block-filename-bg);
+  // color: var(--accent-color-text);
+  color: var(--code-block-filename-col);
+
   font-size: var(--code-filename-fontsize);
   line-height: 1;
   padding-top: calc(var(--code-filename-fontsize) * 0.5);
