@@ -1,7 +1,7 @@
 
 * grep
 
-rg -i "photoswipe" ./themes/hugo-theme-stack/ -uu
+rg -i "h6 \{" ./themes/hugo-theme-stack/ -uu
 rg -i "@include respond" ./themes/hugo-theme-stack/ -uu
 
 rg -i "@media" ./themes/hugo-theme-stack/assets/scss -uu
@@ -112,7 +112,7 @@ Stackテーマはブログ向けなので、「記事」として整理すると
 
 - 設問に「処理後のイメージ」を追加する
 
-- ## 利用するデータ のセクションを追記する
+- ### 利用するデータ のセクションを追記する
 
 - コードを折りたたむ (?)
 

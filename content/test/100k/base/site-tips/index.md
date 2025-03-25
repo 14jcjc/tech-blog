@@ -1226,11 +1226,11 @@ A home template renders your site’s home page. For a single page site this is 
 
 ショートコードの定義方法に応じて、引数は名前付き、位置指定、またはその両方になりますが、1 回の呼び出しで引数タイプを混在させることはできません。
 
-##### h5alphabetalphabetalphabetalphabetalphabetalphabet
+##### h5 見出し見出し見出し見出し見出し見出し見出し見出し
 
-#### h5 alphabet alphabet alphabetalphabetaaaaaaaaaaaaaaaaaaaaaaaa
+##### h5 alphabet alphabet alphabetalphabetaaaaaaaaaaaaaaaaaaaaaaaa
 
-##### h5見出し見出し見出し見出し見出し見出し見出し見出し
+###### h6 alphabetalphabetalphabetalphabetalphabetalphabet
 
 ## H2 見出し2 ショートコード
 

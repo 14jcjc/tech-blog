@@ -26,7 +26,7 @@ params:
 
 {{% include "/ds-drills/data-tf/free/template/tmp-head.md" %}}
 
-## 設問概要
+## 演習問題
 
 {{< k100/question >}}
 
