@@ -17,6 +17,7 @@ languageCode: ja
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
 DefaultContentLanguage: ja
 
+title: katsu DS Lab
 # title: katsuブログ
 # title: Katsu Data Science Lab
 # title: katsu データサイエンスラボ
@@ -323,7 +324,7 @@ params:
 
 languages:
   ja:
-    title: katsu データサイエンスラボ
+    # title: katsu DS Lab
     menu:
       social:
         - identifier: twitter

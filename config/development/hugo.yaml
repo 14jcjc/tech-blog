@@ -150,7 +150,8 @@ languages:
   en:
     languageName: English
     weight: 2
-    title: Katsu Data Science Lab
+    # title: Katsu Data Science Lab
+    # title: katsu DS Lab
     params:
         sidebar:
             subtitle: Real-World Data Mastery with R & SQL
