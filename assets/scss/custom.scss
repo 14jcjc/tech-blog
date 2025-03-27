@@ -387,6 +387,10 @@
 //   width: 100%;
 // }
 
+.highlight pre.chroma code {
+  padding: 8px 0;
+}
+
 /* inline code */
 .article-content code {
   // margin: auto 4px;
@@ -417,7 +421,7 @@
   line-height: 1;
   padding-top: calc(var(--code-filename-fontsize) * 0.5);
   // padding-left: calc(var(--code-filename-fontsize) * 0.7);
-  padding-right: calc(var(--code-filename-fontsize) * 0.7);
+  // padding-right: calc(var(--code-filename-fontsize) * 0.7);
   padding-left: calc(var(--card-padding) * 1.0);
   padding-right: calc(var(--card-padding) * 1.0);
   padding-bottom: calc(var(--code-filename-fontsize) * 0.7);
@@ -485,9 +489,9 @@
 //   padding: 0 0 0 12px;
 // }
 
-.highlight pre.chroma code {
-  padding: 8px 0;
-}
+// .highlight pre.chroma code {
+//   padding: 8px 0;
+// }
 
 // .highlight pre.chroma .line .cl,
 // .chroma .ln {
@@ -873,7 +877,8 @@
   h5, 
   h6 {
     margin-top: 30px;
-    margin-bottom: -0.2em;
+    // margin-bottom: -0.2em;
+    margin-bottom: 0em;
   }
 
   h4 {
@@ -898,6 +903,23 @@
     padding-bottom: 1px;
     border-inline-start-width: 2px;
     padding-inline-start: calc(var(--card-padding) - 2px);
+  }
+
+  // h4 + div + .code-block-content {
+  //   margin-top: 80px;
+  // }
+  // h4 + div + .code-block-filename {
+  //   margin-top: 80px;
+  // }
+
+  // 見出し (h1 ～ h6) の直後にある div に margin-top を適用
+  h1 + div,
+  h2 + div,
+  h3 + div,
+  h4 + div,
+  h5 + div,
+  h6 + div {
+    margin-top: 20px;
   }
 
   hr {
