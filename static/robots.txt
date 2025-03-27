@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /
 Disallow: /portfolio/
 Disallow: /test/
-Sitemap: https://14katsumix.github.io/tech-blog/sitemap.xml
+Sitemap: https://katsu-ds-lab.com/sitemap.xml
