@@ -686,7 +686,6 @@ This is a **bold** word.
 {{< details 
 summary="See the R コード" 
 open=true >}}
-<br>
 
 ```r {name="R"}
 df %>% select(aaa)

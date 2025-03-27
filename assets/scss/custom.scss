@@ -922,6 +922,11 @@
     margin-top: 20px;
   }
 
+  // <details> 内の <summary> の直後にある <div> に margin-top を適用
+  details > summary + div {
+    margin-top: 20px;
+  }
+
   hr {
     // width: 100px;
     width: 50%;
