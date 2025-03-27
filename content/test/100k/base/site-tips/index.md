@@ -109,7 +109,45 @@ receipt %>%
   arrange(sales_ymd) # コメント
 ```
 
-R
+### 見出しとの干渉
+
+本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+
+#### R 0
+
+本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+
+#### R 1
+
+```r {name="abcde.R"}
+receipt %>% 
+```
+
+本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
+
+#### R 2
+
+```r
+receipt %>% 
+```
+
+```r
+receipt %>% 
+```
+
+- aaa
+
+  ```r {name="abcde.R"}
+  receipt %>% 
+  ```
+
+- bbb
+
+  ```r
+  receipt %>% 
+  ```
+
+#### RRR
 
 ```r {name="abcde.R", lineNos=false,lineNoStart=1,hl_lines=[2,"7-8"]}
 # この行はコメントアウト.
