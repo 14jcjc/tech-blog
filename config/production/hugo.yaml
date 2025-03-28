@@ -64,7 +64,8 @@ languages:
             subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
     menu:
       main:
-        - identifier: "katsu データサイエンスラボ"
+        # - identifier: "katsu データサイエンスラボ"
+        - identifier: "katsu DS Lab"
           name: Home
           url: /
           weight: -20

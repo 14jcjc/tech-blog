@@ -60,8 +60,8 @@ languages:
             subtitle: "R と SQL で学ぶ、データ活用の実践スキル"
     menu:
       main:
-        - identifier: "katsu データサイエンスラボ"
-          # identifier: "katsuブログ"
+        # - identifier: "katsu データサイエンスラボ"
+        - identifier: "katsu DS Lab"
           name: Home
           url: /
           weight: -20
@@ -168,7 +168,8 @@ languages:
           params:
             icon: brand-github
       main:
-        - identifier: "Katsu Data Science Lab"
+        # - identifier: "Katsu Data Science Lab"
+        - identifier: "katsu DS Lab"
           # identifier: "katsuブログ"
           name: Home
           url: /en/
