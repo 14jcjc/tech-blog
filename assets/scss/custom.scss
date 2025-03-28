@@ -291,10 +291,10 @@
   .site-name {
     word-break: break-word !important;
     word-wrap: break-word !important;
-    font-size: 17px !important;
+    font-size: 18px !important;
     // medium 以上の画面幅でフォントサイズを変更
     @include respond(md) {
-      font-size: 16px !important;
+      font-size: 18px !important;
     }
   }
 
