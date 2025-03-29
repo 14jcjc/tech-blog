@@ -50,7 +50,7 @@ https://shiro-no-panda.com/mensa3/
 - db_get_query -> db_get_query
 - sql_render_ext -> sql_render_ext
 
-- supermarket.duckdb -> supermarket.duckdb
+- supermarket.duckdb
 
 - GitHub リポジトリの変更、記事内の変更
   アカウント: 14katsumix -> katsu-ds-lab
@@ -105,8 +105,8 @@ Stackテーマはブログ向けなので、「記事」として整理すると
 
 - 設問に「処理後のイメージ」を追加する
 
-- データフレーム操作、データベース操作、SQL の各セクションでデータ概要を記載する
 - ### 利用するデータ のセクションを追記する
+  (データフレーム操作、データベース操作、SQL の各セクションで)
 
 - 各コードの出力結果を統一させるためソートしている、旨を追記
 
@@ -119,7 +119,7 @@ Stackテーマはブログ向けなので、「記事」として整理すると
 
 - 「自動生成された SQL クエリ」セクションは「R (データベース操作)」に記載する (?)
 
-- standard.md を改訂する
+- free.md を改訂する
 
 - 解答例(1) → 解答例 (1) など
 

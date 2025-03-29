@@ -45,9 +45,9 @@ theme: hugo-theme-stack
 
 * 100本ノック＋α の記事を作成
 
-hugo new content --kind standard 100knocks/standard/r-056.md
+# hugo new content --kind standard 100knocks/standard/r-056.md
 
-hugo new content --kind free ds-drills/data-tf/free/r-099.md
+hugo new content --kind free ds-drills/data-tf/free/t-001.md
 
 * 出力先ディレクトリ（public/）をクリアして再ビルド
 hugo --cleanDestinationDir
