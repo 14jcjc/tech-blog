@@ -826,14 +826,17 @@
 
   h2 {
     // line-height: 1.5;
+    width: calc(100% + 1.5 * var(--card-padding));
+    // margin-inline-end: calc(-0.5 * var(--card-padding)); /* 右側にも伸ばす */
     margin-top: 60px;
     padding-top: 10pt;
     padding-bottom: 10px;
+    padding-right: 8px;
+    // padding-right: -12px;
     border-inline-start-width: 0px;
 
     // color: #209CEE;
     // background-color: #f0f3ff;
-
     color: #187bcd; /* 少し落ち着いたブルー */
     background-color: #e8f0ff; /* もう少し淡い水色 */
     
@@ -854,6 +857,7 @@
   }
 
   h3 {
+    width: calc(100% + 1.2 * var(--card-padding));
     font-size: 1.3em;
     margin-top: 40px;
     padding-top: 4pt;
