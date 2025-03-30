@@ -62,3 +62,10 @@ git push -u origin main
 From GitHub’s main menu, choose Actions.
 https://github.com/14jcjc/tech/actions
 
+* 本番環境のテストサイト
+
+https://14jcjc.github.io/tech-blog/
+
+push: 
+push-test.sh
+
