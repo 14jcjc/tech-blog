@@ -57,7 +57,9 @@ https://shiro-no-panda.com/mensa3/
   リポジトリ: 100knocks-dp -> ds-drills
   ディレクトリ: 100knocks-dp -> ds-drills
 
-- 14katsumix/100knocks-dp を Private に変更する。
+- 14katsumix/100knocks-dp を Private にする。
+
+- 14katsumix/100knocks-dp をテストサイトにする。
 
 - アカウントの変更、記事内の変更
   ドメイン、GitHub、twitter、gmail
