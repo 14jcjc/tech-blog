@@ -13,6 +13,10 @@ buildDrafts: false
 # enableRobotsTXT: true # robots.txt の生成を有効にする
 enableRobotsTXT: false
 
+# disableKinds: true # sitemap.xml の生成を有効にする
+disableKinds: 
+  - sitemap
+
 services:
   googleAnalytics:
     ID: G-GLB0HGKER4
