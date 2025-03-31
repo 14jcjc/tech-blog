@@ -1677,4 +1677,15 @@ blockquote.alert {
   box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.5); 
 }
 
+/* 無効なラジオボタンの親ラベルをグレーアウト */
+.disabled-label {
+  color: #aaa; /* グレーにする */
+  cursor: not-allowed !important; /* カーソルを変更 */
+}
+
+/* 無効なラジオボタン自体も少しグレーに */
+input[type="radio"]:disabled {
+  accent-color: #ccc; /* ラジオボタンの色を変更 */
+}
+
 /* ------------------------------------------------------------------------------- */

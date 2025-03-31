@@ -29,8 +29,7 @@ ShowToc: false
 
 <div class="list-toggle">
   <div class="row-title">
-    <!-- <label> -->
-  	<label class="disabled-label">
+    <label>
       <input type="radio" name="edition-toggle" value="all" disabled>
       <span>全て</span>
     </label>
@@ -38,8 +37,7 @@ ShowToc: false
       <input type="radio" name="edition-toggle" value="standard" checked>
       <span>{{< param k100.site.titleF >}}</span>
     </label>
-    <!-- <label> -->
-    <label class="disabled-label">
+    <label>
       <input type="radio" name="edition-toggle" value="advanced" disabled>
       <span>オリジナル問題集</span>
     </label>
