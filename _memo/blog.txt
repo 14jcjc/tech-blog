@@ -289,7 +289,9 @@ https://chatgpt.com/c/678ef794-3970-8005-8183-b5f17ca3a0ce
 
 * Google Analytics
 
-G-GLB0HGKER4
+- IPアドレスを確認する (内部トラフィックの設定)
+
+- G-GLB0HGKER4
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GLB0HGKER4"></script>
